@@ -10,19 +10,23 @@ const Main = styled.main`
   min-height: calc(100vh - 6rem);
   background-color: ${(props) => props.theme.secondaryColor};
   color: ${(props) => props.theme.primaryColor};
+  padding: 1rem;
 `;
 
-const Home = () => {
+const Kontakt = () => {
   return (
     <>
       <Header />
       <Main>
-        <h1>Willkommen zu meinem Portfolio</h1>
-        <p>Hier können Sie mehr über mich und meine Projekte erfahren.</p>
+        <h1>Kontakt</h1>
+        <p>
+          Wenn Sie Fragen haben oder an einer Zusammenarbeit interessiert sind,
+          kontaktieren Sie mich bitte.
+        </p>
       </Main>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default Kontakt;

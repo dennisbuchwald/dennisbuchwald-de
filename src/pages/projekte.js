@@ -10,19 +10,20 @@ const Main = styled.main`
   min-height: calc(100vh - 6rem);
   background-color: ${(props) => props.theme.secondaryColor};
   color: ${(props) => props.theme.primaryColor};
+  padding: 1rem;
 `;
 
-const Home = () => {
+const Projekte = () => {
   return (
     <>
       <Header />
       <Main>
-        <h1>Willkommen zu meinem Portfolio</h1>
-        <p>Hier können Sie mehr über mich und meine Projekte erfahren.</p>
+        <h1>Projekte</h1>
+        <p>Hier sehen Sie einige meiner bisherigen Projekte.</p>
       </Main>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default Projekte;
