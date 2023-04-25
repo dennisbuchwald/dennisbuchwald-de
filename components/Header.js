@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
+	z-index: 1000;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -29,7 +32,12 @@ const Nav = styled.nav`
 	}
 
 	@media screen and (max-width: 768px) {
-		display: none;
+		display: ${(props) => (props.open ? "flex" : "none")};
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
 	}
 `;
 
@@ -56,7 +64,9 @@ const NavLink = styled.button`
 		text-align: center;
 	}
 `;
+
 const MenuIcon = styled.button`
+	margin-right: 2rem;
 	background: none;
 	border: none;
 	color: ${(props) => props.theme.secondaryColor};
@@ -64,6 +74,7 @@ const MenuIcon = styled.button`
 	font-size: 1.5rem;
 	outline: none;
 	display: none;
+	z-index: 1000; // Hinzugefügt, um sicherzustellen, dass der Button über dem Overlay angezeigt wird
 
 	@media screen and (max-width: 768px) {
 		display: block;
@@ -71,14 +82,23 @@ const MenuIcon = styled.button`
 `;
 
 const MenuOverlay = styled.div`
+	align-items: center;
 	position: fixed;
 	top: 0;
-	left: 0;
-	width: 100%;
+	right: ${(props) => (props.open ? "0" : "-100%")};
+	width: 33.33%;
 	height: 100vh;
 	background-color: ${(props) => props.theme.primaryColor};
-	display: ${(props) => (props.open ? "block" : "none")};
+	transition: right 0.3s ease;
 	z-index: 999;
+
+	@media screen and (max-width: 768px) {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
 `;
 
 const Header = () => {
@@ -104,14 +124,14 @@ const Header = () => {
 				</Nav>
 				<MenuIcon onClick={handleMenuClick}>
 					{menuOpen ? (
-						<i className="fas fa-times"></i>
+						<FontAwesomeIcon icon={faTimes} />
 					) : (
-						<i className="fas fa-bars"></i>
+						<FontAwesomeIcon icon={faBars} />
 					)}
 				</MenuIcon>
 			</StyledHeader>
 			<MenuOverlay open={menuOpen}>
-				<Nav>
+				<Nav open={menuOpen}>
 					<Link href="/#projekte" passHref>
 						<NavLink onClick={handleMenuClick}>Projekte</NavLink>
 					</Link>

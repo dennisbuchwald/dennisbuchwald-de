@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -16,6 +17,13 @@ const theme = {
 };
 
 function MyApp({ Component, pageProps }) {
+	useEffect(() => {
+		const jssStyles = document.querySelector("#jss-server-side");
+		if (jssStyles) {
+			jssStyles.parentElement.removeChild(jssStyles);
+		}
+	}, []);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />

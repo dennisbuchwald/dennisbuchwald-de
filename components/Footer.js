@@ -42,7 +42,9 @@ const StyledLink = styled.nav`
 const Footer = () => {
 	return (
 		<StyledFooter>
-			<FooterText>&copy; {new Date().getFullYear()} Dennis Buchwald</FooterText>
+			<FooterText>
+				&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
+			</FooterText>
 			<StyledLink>
 				<Link href="/impressum" passHref>
 					<FooterLink>Impressum</FooterLink>
