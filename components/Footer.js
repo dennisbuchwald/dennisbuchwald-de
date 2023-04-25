@@ -9,9 +9,6 @@ const StyledFooter = styled.footer`
 	color: ${(props) => props.theme.secondaryColor};
 	padding: 1rem;
 	width: 100%;
-	position: fixed;
-	bottom: 0;
-	left: 0;
 	flex-wrap: wrap;
 `;
 
