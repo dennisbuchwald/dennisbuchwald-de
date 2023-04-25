@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -33,6 +34,9 @@ const Text = styled.p`
 const Home = () => {
 	return (
 		<>
+			<Head>
+				<title>Dennis Buchwald</title>
+			</Head>
 			<Header />
 			<Section id="home">
 				<Title>Hallo, ich bin Dennis!</Title>
