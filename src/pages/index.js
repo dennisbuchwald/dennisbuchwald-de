@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import Typed from "react-typed";
 
 const Section = styled.section`
+	margin: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -15,13 +16,14 @@ const Section = styled.section`
 	padding: 2rem;
 `;
 
+const Container = styled.div`
+	text-align: left;
+	align-items: left;
+`;
+
 const Title = styled.h1`
-	font-size: 3rem;
 	font-weight: bold;
 	color: ${(props) => props.theme.primaryColor};
-	margin-bottom: 1.5rem;
-	text-align: left;
-	align-items: center;
 `;
 
 const Text = styled.p`
@@ -33,19 +35,16 @@ const Text = styled.p`
 `;
 
 const TypedTitle = styled(Typed)`
-	white-space: pre;
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: bold;
 	color: ${(props) => props.theme.primaryColor};
 	margin-bottom: 1.5rem;
-	text-align: left;
-	align-items: center;
 `;
 
 const typedStrings = [
-	"Hallo! 👋",
-	"Mein Name ist Dennis.",
-	"Ich bin Webentwickler.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Kreativ.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Macher.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Webentwickler.",
 ];
 
 const Home = () => {
@@ -56,46 +55,52 @@ const Home = () => {
 			</Head>
 			<Header />
 			<Section id="home">
-				<Title>
-					<TypedTitle
-						strings={typedStrings}
-						typeSpeed={40}
-						backSpeed={50}
-						backDelay={1500}
-						loop
-					/>
-				</Title>
-				<Text>
-					Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
-					Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
-					arbeite ich mit modernen Technologien wie JavaScript ES8+, React 18.2,
-					Next.js, MongoDB, HTML5, CSS3, Bootstrap4 und Git Workflow. Zusätzlich
-					habe ich auch Grundkenntnisse in C.
-				</Text>
-				<Text>
-					Mein Schwerpunkt liegt in der Entwicklung ansprechender und
-					funktionaler Webanwendungen. Während meines Boot Camps habe ich ein
-					interessantes Capstone-Projekt namens Pokemon Battle erstellt, das
-					zeigt, wie leidenschaftlich ich an der Entwicklung von Projekten
-					arbeite.
-				</Text>
-				<Text>
-					Ich lade Sie ein, mehr über mich und meine Arbeit zu erfahren. Wenn
-					Sie an einer Zusammenarbeit interessiert sind oder Fragen haben,
-					zögern Sie bitte nicht, mich zu kontaktieren. Ich freue mich darauf,
-					von Ihnen zu hören!
-				</Text>
+				<Container>
+					<Title>
+						<TypedTitle
+							strings={typedStrings}
+							typeSpeed={40}
+							backSpeed={50}
+							backDelay={1500}
+							smartBackspace
+						/>
+					</Title>
+					<Text>
+						Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
+						Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
+						arbeite ich mit modernen Technologien wie JavaScript ES8+, React
+						18.2, Next.js, MongoDB, HTML5, CSS3, Bootstrap4 und Git Workflow.
+						Zusätzlich habe ich auch Grundkenntnisse in C.
+					</Text>
+					<Text>
+						Mein Schwerpunkt liegt in der Entwicklung ansprechender und
+						funktionaler Webanwendungen. Während meines Boot Camps habe ich ein
+						interessantes Capstone-Projekt namens Pokemon Battle erstellt, das
+						zeigt, wie leidenschaftlich ich an der Entwicklung von Projekten
+						arbeite.
+					</Text>
+					<Text>
+						Ich lade Sie ein, mehr über mich und meine Arbeit zu erfahren. Wenn
+						Sie an einer Zusammenarbeit interessiert sind oder Fragen haben,
+						zögern Sie bitte nicht, mich zu kontaktieren. Ich freue mich darauf,
+						von Ihnen zu hören!
+					</Text>
+				</Container>
 			</Section>
 			<Section id="projekte">
-				<Title>Projekte</Title>
-				<Text>Hier sehen Sie einige meiner bisherigen Projekte.</Text>
+				<Container>
+					<Title>Projekte</Title>
+					<Text>Hier sehen Sie einige meiner bisherigen Projekte.</Text>
+				</Container>
 			</Section>
 			<Section id="kontakt">
-				<Title>Kontakt</Title>
-				<Text>
-					Wenn Sie Fragen haben oder an einer Zusammenarbeit interessiert sind,
-					kontaktieren Sie mich bitte.
-				</Text>
+				<Container>
+					<Title>Kontakt</Title>
+					<Text>
+						Wenn Sie Fragen haben oder an einer Zusammenarbeit interessiert
+						sind, kontaktieren Sie mich bitte.
+					</Text>
+				</Container>
 			</Section>
 			<Footer />
 		</>
