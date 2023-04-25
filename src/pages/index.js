@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Typed from "react-typed";
 
 const Section = styled.section`
 	display: flex;
@@ -31,6 +32,22 @@ const Text = styled.p`
 	margin-bottom: 1.5rem;
 `;
 
+const TypedTitle = styled(Typed)`
+	white-space: pre;
+	font-size: 3rem;
+	font-weight: bold;
+	color: ${(props) => props.theme.primaryColor};
+	margin-bottom: 1.5rem;
+	text-align: left;
+	align-items: center;
+`;
+
+const typedStrings = [
+	"Hallo! 👋",
+	"Mein Name ist Dennis.",
+	"Ich bin Webentwickler.",
+];
+
 const Home = () => {
 	return (
 		<>
@@ -39,7 +56,15 @@ const Home = () => {
 			</Head>
 			<Header />
 			<Section id="home">
-				<Title>Hallo, ich bin Dennis!</Title>
+				<Title>
+					<TypedTitle
+						strings={typedStrings}
+						typeSpeed={40}
+						backSpeed={50}
+						backDelay={1500}
+						loop
+					/>
+				</Title>
 				<Text>
 					Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
 					Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
