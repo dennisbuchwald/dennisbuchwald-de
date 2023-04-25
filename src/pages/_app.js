@@ -10,18 +10,18 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const theme = {
-  primaryColor: "#1a1a1a",
-  secondaryColor: "#f5f5f5",
-  accentColor: "#ff9800",
+	primaryColor: "#1a1a1a",
+	secondaryColor: "#f5f5f5",
+	accentColor: "#ff9800",
 };
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Component {...pageProps} />
+		</ThemeProvider>
+	);
 }
 
 export default MyApp;
