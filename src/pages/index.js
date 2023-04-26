@@ -42,9 +42,9 @@ const TypedTitle = styled.span`
 `;
 
 const typedStrings = [
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Freigeist.",
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Problemlöser.",
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Webentwickler!",
+	"Hallo! <br />Mein Name ist Dennis.<br />Ich bin ein Freigeist.",
+	"Problemlöser.",
+	"Webentwickler!",
 ];
 
 const Home = () => {
@@ -59,14 +59,19 @@ const Home = () => {
 					<Title>
 						<TypedTitle>
 							<Typewriter
+								options={{
+									delay: 50,
+									deleteSpeed: 5,
+									pauseFor: 10,
+								}}
 								onInit={(typewriter) => {
 									typewriter
 										.typeString(typedStrings[0])
 										.pauseFor(2000)
-										.deleteAll()
+										.deleteChars(10)
 										.typeString(typedStrings[1])
 										.pauseFor(2000)
-										.deleteAll()
+										.deleteChars(13)
 										.typeString(typedStrings[2])
 										.start();
 								}}
