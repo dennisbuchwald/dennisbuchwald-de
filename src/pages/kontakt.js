@@ -1,6 +1,11 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import emailjs from "emailjs-com";
+
+const SERVICE_ID = "service_0fk9oqg";
+const TEMPLATE_ID = "template_4waxc8r";
+const USER_ID = "2XPaC-0LWE42ATbg_";
 
 const Main = styled.main`
 	display: flex;
@@ -82,10 +87,26 @@ const Kontakt = () => {
 	const [email, setEmail] = useState("");
 	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
+	const [showForm, setShowForm] = useState(true);
+	const [errorMessage, setErrorMessage] = useState("");
 	const formRef = useRef(null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then(
+			(result) => {
+				console.log("E-Mail erfolgreich gesendet!", result.text);
+				setShowForm(false);
+			},
+			(error) => {
+				console.log("E-Mail konnte nicht gesendet werden: ", error.text);
+				setErrorMessage(
+					"Das hat leider nicht geklappt, versuche es doch besser auf LinkedIn mich zu erreichen"
+				);
+			}
+		);
+
 		formRef.current.reset();
 	};
 
@@ -97,32 +118,39 @@ const Kontakt = () => {
 					Na, neugierig geworden oder eine Fragen im Kopf? <br /> Schick mir ne
 					Nachricht - ich freu mich drauf! 🚀😉
 				</p>
-				<Form ref={formRef} onSubmit={handleSubmit}>
-					<Label htmlFor="email">E-Mail:</Label>
-					<Input
-						type="email"
-						name="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-					<Label htmlFor="subject">Betreff:</Label>
-					<Input
-						type="text"
-						name="subject"
-						value={subject}
-						onChange={(e) => setSubject(e.target.value)}
-						required
-					/>
-					<Label htmlFor="message">Nachricht:</Label>
-					<Textarea
-						name="message"
-						value={message}
-						onChange={(e) => setMessage(e.target.value)}
-						required
-					/>
-					<Button type="submit">Senden</Button>
-				</Form>
+				{showForm ? (
+					<Form ref={formRef} onSubmit={handleSubmit}>
+						<Label htmlFor="email">E-Mail:</Label>
+						<Input
+							type="email"
+							name="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+						<Label htmlFor="subject">Betreff:</Label>
+						<Input
+							type="text"
+							name="subject"
+							value={subject}
+							onChange={(e) => setSubject(e.target.value)}
+							required
+						/>
+						<Label htmlFor="message">Nachricht:</Label>
+						<Textarea
+							name="message"
+							value={message}
+							onChange={(e) => setMessage(e.target.value)}
+							required
+						/>
+						<Button type="submit">Senden</Button>
+					</Form>
+				) : (
+					<p>
+						{errorMessage ||
+							"Deine Email ist erfolgreich an mich gesendet worden! Ich Antworte dir so schnell ich kann. ❤️"}
+					</p>
+				)}
 				<LinkContainer>
 					<LinkedInLink
 						href="https://www.linkedin.com/in/dennis-buchwald-54b21018b/"
