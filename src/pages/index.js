@@ -95,15 +95,17 @@ const Home = () => {
 						</Title>
 					</ContainerTyperWriter>
 					<Text>
-						Hallo liebes Schwarz- Team. diese Website befindet sich aktuell noch
-						im Aufbau. 🙉 <br />
-						Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
-						Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
-						arbeite ich mit modernen Technologien wie JavaScript ES8+, React
-						18.2, Next.js, MongoDB, HTML5, CSS3, Bootstrap4 und Git Workflow.
-						Zusätzlich habe ich auch Grundkenntnisse in C.
+						Hallo liebes Schwarz- Team. Diese Website befindet sich aktuell noch
+						im Aufbau. 🙉
 					</Text>
 					<Text>
+						Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn und hab
+						das Web Dev Boot Camp bei den Neuen Fischen gemeistert! <br />
+						Mein Ding? Webanwendungen entwickeln, die optisch und funktional
+						beeindrucken. Im Boot Camp hab ich zum Beispiel das spannende
+						Capstone-Projekt Pokemon Battle erschaffen – ich liebe es einfach!
+					</Text>
+					{/* <Text>
 						Mein Schwerpunkt liegt in der Entwicklung ansprechender und
 						funktionaler Webanwendungen. Während meines Boot Camps habe ich ein
 						interessantes Capstone-Projekt namens Pokemon Battle erstellt, das
@@ -115,7 +117,7 @@ const Home = () => {
 						Sie an einer Zusammenarbeit interessiert sind oder Fragen haben,
 						zögern Sie bitte nicht, mich zu kontaktieren. Ich freue mich darauf,
 						von Ihnen zu hören!
-					</Text>
+					</Text> */}
 				</Container>
 			</Section>
 			<Section id="projekte">

@@ -1,4 +1,6 @@
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Main = styled.main`
 	display: flex;
@@ -11,15 +13,132 @@ const Main = styled.main`
 	padding: 1rem;
 `;
 
+const Form = styled.form`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+	max-width: 400px;
+`;
+
+const Label = styled.label`
+	font-size: 1rem;
+`;
+
+const Input = styled.input`
+	padding: 0.5rem;
+	border: 1px solid ${(props) => props.theme.primaryColor};
+	border-radius: 4px;
+`;
+
+const Textarea = styled.textarea`
+	padding: 0.5rem;
+	border: 1px solid ${(props) => props.theme.primaryColor};
+	border-radius: 4px;
+`;
+
+const Button = styled.button`
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	background-color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.secondaryColor};
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background-color: ${(props) => props.theme.primaryColorDark};
+	}
+`;
+
+const LinkedInLink = styled.a`
+	padding: 1rem;
+	margin-top: 1rem;
+	color: ${(props) => props.theme.primaryColor};
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.primaryColorDark};
+	}
+`;
+
+const GitHubLink = styled.a`
+	padding: 1rem;
+
+	margin-top: 1rem;
+	color: ${(props) => props.theme.primaryColor};
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.primaryColorDark};
+	}
+`;
+
+const LinkContainer = styled.section`
+	margin: 2rem;
+`;
+
 const Kontakt = () => {
+	const [email, setEmail] = useState("");
+	const [subject, setSubject] = useState("");
+	const [message, setMessage] = useState("");
+	const formRef = useRef(null);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		formRef.current.reset();
+	};
+
 	return (
 		<>
 			<Main>
 				<h1>Kontakt</h1>
 				<p>
-					Wenn Sie Fragen haben oder an einer Zusammenarbeit interessiert sind,
-					kontaktieren Sie mich bitte.
+					Na, neugierig geworden oder eine Fragen im Kopf? <br /> Schick mir ne
+					Nachricht - ich freu mich drauf! 🚀😉
 				</p>
+				<Form ref={formRef} onSubmit={handleSubmit}>
+					<Label htmlFor="email">E-Mail:</Label>
+					<Input
+						type="email"
+						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+					<Label htmlFor="subject">Betreff:</Label>
+					<Input
+						type="text"
+						name="subject"
+						value={subject}
+						onChange={(e) => setSubject(e.target.value)}
+						required
+					/>
+					<Label htmlFor="message">Nachricht:</Label>
+					<Textarea
+						name="message"
+						value={message}
+						onChange={(e) => setMessage(e.target.value)}
+						required
+					/>
+					<Button type="submit">Senden</Button>
+				</Form>
+				<LinkContainer>
+					<LinkedInLink
+						href="https://www.linkedin.com/in/dennis-buchwald-54b21018b/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FaLinkedin size={32} />
+					</LinkedInLink>
+					<GitHubLink
+						href="https://www.linkedin.com/in/dennis-buchwald-54b21018b/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FaGithub size={32} />
+					</GitHubLink>
+				</LinkContainer>
 			</Main>
 		</>
 	);

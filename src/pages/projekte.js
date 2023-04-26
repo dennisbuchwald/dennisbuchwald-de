@@ -80,7 +80,7 @@ const Icon = styled.span`
 
 const projects = [
 	{
-		title: "Project 1",
+		title: "Pokemon Battler",
 		description:
 			"This is a project I built using React, styled-components and Node.js. It is a full-stack application that allows users to...",
 		tags: ["React", "Node.js", "MongoDB"],
@@ -88,7 +88,7 @@ const projects = [
 		demoLink: "https://example.com/",
 	},
 	{
-		title: "Project 2",
+		title: "Kanto Pokedex",
 		description:
 			"This is a project I built using Vue.js and Firebase. It is a real-time chat application that allows users to...",
 		tags: ["Vue.js", "Firebase"],
