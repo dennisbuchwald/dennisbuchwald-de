@@ -42,9 +42,10 @@ const TypedTitle = styled(Typed)`
 `;
 
 const typedStrings = [
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Kreativ.",
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Macher.",
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin Webentwickler.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Freigeist.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Ideengeber.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Problemlöser.",
+	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Webentwickler!",
 ];
 
 const Home = () => {
@@ -59,7 +60,7 @@ const Home = () => {
 					<Title>
 						<TypedTitle
 							strings={typedStrings}
-							typeSpeed={40}
+							typeSpeed={30}
 							backSpeed={50}
 							backDelay={1500}
 							smartBackspace
