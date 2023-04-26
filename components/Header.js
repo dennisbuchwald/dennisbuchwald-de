@@ -30,14 +30,17 @@ const Nav = styled.nav`
 	& > *:last-child {
 		margin-right: 2rem;
 	}
-
 	@media screen and (max-width: 768px) {
 		display: ${(props) => (props.open ? "flex" : "none")};
 		flex-direction: column;
-		text-align: center;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
+		width: 100%;
+
+		& > * {
+			text-align: center;
+		}
 	}
 `;
 
@@ -62,6 +65,8 @@ const NavLink = styled.button`
 		padding: 1rem;
 		width: 100%;
 		text-align: center;
+		align-items: center;
+		justify-content: center;
 	}
 `;
 
@@ -74,8 +79,7 @@ const MenuIcon = styled.button`
 	font-size: 1.5rem;
 	outline: none;
 	display: none;
-	z-index: 1000; // Hinzugefügt, um sicherzustellen, dass der Button über dem Overlay angezeigt wird
-
+	z-index: 1000;
 	@media screen and (max-width: 768px) {
 		display: block;
 	}
@@ -86,8 +90,8 @@ const MenuOverlay = styled.div`
 	position: fixed;
 	top: 0;
 	right: ${(props) => (props.open ? "0" : "-100%")};
-	width: 33.33%;
-	height: 100vh;
+	width: 40%;
+	height: 100%;
 	background-color: ${(props) => props.theme.primaryColor};
 	transition: right 0.3s ease;
 	z-index: 999;
@@ -98,6 +102,11 @@ const MenuOverlay = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
+	}
+
+	& ${Nav} {
+		justify-content: center;
+		width: 100%;
 	}
 `;
 

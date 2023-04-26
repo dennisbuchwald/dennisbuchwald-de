@@ -14,9 +14,17 @@ const Section = styled.section`
 	background-color: ${(props) => props.theme.secondaryColor};
 	color: ${(props) => props.theme.primaryColor};
 	padding: 2rem;
+	@media screen and (max-width: 768px) {
+		margin-top: 100px; // Erhöhen Sie diesen Wert, um den Abstand nach oben zu erhöhen
+	}
 `;
 
 const Container = styled.div`
+	text-align: left;
+	align-items: left;
+`;
+
+const ContainerTyperWriter = styled.div`
 	text-align: left;
 	align-items: left;
 `;
@@ -35,10 +43,13 @@ const Text = styled.p`
 `;
 
 const TypedTitle = styled.span`
-	font-size: 2.5rem;
+	font-size: 2rem;
 	font-weight: bold;
 	color: ${(props) => props.theme.primaryColor};
 	margin-bottom: 1.5rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1.8rem;
+	}
 `;
 
 const typedStrings = [
@@ -56,28 +67,30 @@ const Home = () => {
 			<Header />
 			<Section id="home">
 				<Container>
-					<Title>
-						<TypedTitle>
-							<Typewriter
-								options={{
-									delay: 50,
-									deleteSpeed: 5,
-									pauseFor: 10,
-								}}
-								onInit={(typewriter) => {
-									typewriter
-										.typeString(typedStrings[0])
-										.pauseFor(2000)
-										.deleteChars(10)
-										.typeString(typedStrings[1])
-										.pauseFor(2000)
-										.deleteChars(13)
-										.typeString(typedStrings[2])
-										.start();
-								}}
-							/>
-						</TypedTitle>
-					</Title>
+					<ContainerTyperWriter>
+						<Title>
+							<TypedTitle>
+								<Typewriter
+									options={{
+										delay: 50,
+										deleteSpeed: 5,
+										pauseFor: 10,
+									}}
+									onInit={(typewriter) => {
+										typewriter
+											.typeString(typedStrings[0])
+											.pauseFor(2000)
+											.deleteChars(10)
+											.typeString(typedStrings[1])
+											.pauseFor(2000)
+											.deleteChars(13)
+											.typeString(typedStrings[2])
+											.start();
+									}}
+								/>
+							</TypedTitle>
+						</Title>
+					</ContainerTyperWriter>
 					<Text>
 						Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
 						Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
