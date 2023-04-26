@@ -3,6 +3,8 @@ import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Projekte from "./projekte";
+import Kontakt from "./kontakt";
+
 import Typewriter from "typewriter-effect";
 
 const Section = styled.section`
@@ -94,11 +96,12 @@ const Home = () => {
 					</ContainerTyperWriter>
 					<Text>
 						Hallo liebes Schwarz- Team. diese Website befindet sich aktuell noch
-						im Aufbau. 🙉 Ich bin ein Frontend-Entwickler aus Heilbronn und habe
-						meine Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert.
-						Seitdem arbeite ich mit modernen Technologien wie JavaScript ES8+,
-						React 18.2, Next.js, MongoDB, HTML5, CSS3, Bootstrap4 und Git
-						Workflow. Zusätzlich habe ich auch Grundkenntnisse in C.
+						im Aufbau. 🙉 <br />
+						Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
+						Ausbildung im Web Dev Boot Camp bei Neue Fische absolviert. Seitdem
+						arbeite ich mit modernen Technologien wie JavaScript ES8+, React
+						18.2, Next.js, MongoDB, HTML5, CSS3, Bootstrap4 und Git Workflow.
+						Zusätzlich habe ich auch Grundkenntnisse in C.
 					</Text>
 					<Text>
 						Mein Schwerpunkt liegt in der Entwicklung ansprechender und
@@ -123,13 +126,7 @@ const Home = () => {
 				<Projekte />
 			</Section>
 			<Section id="kontakt">
-				<Container>
-					<Title>Kontakt</Title>
-					<Text>
-						Wenn Sie Fragen haben oder an einer Zusammenarbeit interessiert
-						sind, kontaktieren Sie mich bitte.
-					</Text>
-				</Container>
+				<Kontakt />
 			</Section>
 			<Footer />
 		</>
