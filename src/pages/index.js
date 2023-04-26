@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import Typed from "react-typed";
+import Typewriter from "typewriter-effect";
 
 const Section = styled.section`
 	margin: 1rem;
@@ -34,7 +34,7 @@ const Text = styled.p`
 	margin-bottom: 1.5rem;
 `;
 
-const TypedTitle = styled(Typed)`
+const TypedTitle = styled.span`
 	font-size: 2.5rem;
 	font-weight: bold;
 	color: ${(props) => props.theme.primaryColor};
@@ -43,7 +43,6 @@ const TypedTitle = styled(Typed)`
 
 const typedStrings = [
 	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Freigeist.",
-	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Ideengeber.",
 	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Problemlöser.",
 	"Hallo! 👋<br />Mein Name ist Dennis.<br />Ich bin ein Webentwickler!",
 ];
@@ -58,13 +57,21 @@ const Home = () => {
 			<Section id="home">
 				<Container>
 					<Title>
-						<TypedTitle
-							strings={typedStrings}
-							typeSpeed={30}
-							backSpeed={50}
-							backDelay={1500}
-							smartBackspace
-						/>
+						<TypedTitle>
+							<Typewriter
+								onInit={(typewriter) => {
+									typewriter
+										.typeString(typedStrings[0])
+										.pauseFor(2000)
+										.deleteAll()
+										.typeString(typedStrings[1])
+										.pauseFor(2000)
+										.deleteAll()
+										.typeString(typedStrings[2])
+										.start();
+								}}
+							/>
+						</TypedTitle>
 					</Title>
 					<Text>
 						Ich bin ein Frontend-Entwickler aus Heilbronn und habe meine
