@@ -3,9 +3,13 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import emailjs from "emailjs-com";
 
-const SERVICE_ID = "service_0fk9oqg";
-const TEMPLATE_ID = "template_4waxc8r";
-const USER_ID = "2XPaC-0LWE42ATbg_";
+const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+const USER_ID = process.env.REACT_APP_USER_ID;
+
+console.log("Service ID:", process.env.REACT_APP_SERVICE_ID);
+console.log("Template ID:", process.env.REACT_APP_TEMPLATE_ID);
+console.log("User ID:", process.env.REACT_APP_USER_ID);
 
 const Main = styled.main`
 	display: flex;
