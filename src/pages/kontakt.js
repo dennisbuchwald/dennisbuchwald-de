@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import emailjs from "emailjs-com";
 
-const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
-const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
-const USER_ID = process.env.REACT_APP_USER_ID;
+const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
 console.log("Service ID:", process.env.REACT_APP_SERVICE_ID);
 console.log("Template ID:", process.env.REACT_APP_TEMPLATE_ID);
