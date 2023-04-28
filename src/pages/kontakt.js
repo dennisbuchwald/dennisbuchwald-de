@@ -84,6 +84,7 @@ const LinkContainer = styled.section`
 `;
 
 const Kontakt = () => {
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
@@ -120,20 +121,31 @@ const Kontakt = () => {
 				</p>
 				{showForm ? (
 					<Form ref={formRef} onSubmit={handleSubmit}>
+						<Label htmlFor="name">Name:</Label>
+						<Input
+							type="text"
+							name="from_name"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+							placeholder="Dein Name"
+							required
+						/>
 						<Label htmlFor="email">E-Mail:</Label>
 						<Input
 							type="email"
-							name="email"
+							name="from_email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
+							placeholder="Deine E-Mail-Adresse"
 							required
 						/>
 						<Label htmlFor="subject">Betreff:</Label>
 						<Input
 							type="text"
-							name="subject"
+							name="from_subject"
 							value={subject}
 							onChange={(e) => setSubject(e.target.value)}
+							placeholder="Betreff deiner Nachricht"
 							required
 						/>
 						<Label htmlFor="message">Nachricht:</Label>
@@ -141,6 +153,7 @@ const Kontakt = () => {
 							name="message"
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
+							placeholder="Schreibe hier deine Nachricht"
 							required
 						/>
 						<Button type="submit">Senden</Button>
