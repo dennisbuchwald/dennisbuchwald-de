@@ -117,8 +117,8 @@ const projects = [
 		description:
 			"Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
 		tags: ["Next.js", "React", "Style Components"],
-		githubLink: "https://github.com/",
-		demoLink: "https://example.com/",
+		githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
+		demoLink: "https://pomodoro-app-amber-two.vercel.app",
 		iphoneMockup: "/mockup-pomodoro-app.png",
 	},
 ];
