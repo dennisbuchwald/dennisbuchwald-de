@@ -121,10 +121,6 @@ const Home = () => {
 				</Container>
 			</Section>
 			<Section id="projekte">
-				<Container>
-					<Title>Projekte</Title>
-					<Text>Hier sehen Sie einige meiner bisherigen Projekte.</Text>
-				</Container>
 				<Projekte />
 			</Section>
 			<Section id="kontakt">

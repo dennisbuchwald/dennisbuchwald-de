@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
 
 const ProjectCardsContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center; /* hier geändert */
+	justify-content: center;
 	margin: 0 -1rem;
 	@media (max-width: 768px) {
 		flex-direction: column;
@@ -32,9 +33,22 @@ const ProjectCard = styled.div`
 	}
 `;
 
+const ContainerHeader = styled.div`
+	text-align: center;
+	align-items: center;
+`;
+
 const Title = styled.h3`
 	font-size: 2rem;
 	margin-bottom: 1rem;
+`;
+
+const Text = styled.p`
+	font-size: 1.2rem;
+	line-height: 1.6;
+	max-width: 800px;
+	text-align: justify;
+	margin-bottom: 1.5rem;
 `;
 
 const Description = styled.p`
@@ -82,58 +96,76 @@ const projects = [
 	{
 		title: "Pokemon Battler",
 		description:
-			"This is a project I built using React, styled-components and Node.js. It is a full-stack application that allows users to...",
-		tags: ["React", "Node.js", "MongoDB"],
-		githubLink: "https://github.com/",
-		demoLink: "https://example.com/",
+			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und viel Sp...",
+		tags: ["Next.js", "React", "Style Components"],
+		githubLink:
+			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
+		demoLink: "https://pokemon-battler.dennisbuchwald.de",
+		iphoneMockup: "/mockup-pokemon-battler.png",
 	},
 	{
 		title: "Kanto Pokedex",
 		description:
-			"This is a project I built using Vue.js and Firebase. It is a real-time chat application that allows users to...",
-		tags: ["Vue.js", "Firebase"],
-		githubLink: "https://github.com/",
-		demoLink: "https://example.com/",
+			"Dieses Projekt war die Vorstufe zu meinem Capstone-Projekt und entstand während eines Coding-Wochenendes.",
+		tags: ["React", "PokéAPI API", "Photoshop"],
+		githubLink: "https://github.com/dennisbuchwald/pokedex-react-app",
+		demoLink: "https://pokedex.dennisbuchwald.de/",
+		iphoneMockup: "/mockup-pokedex-react-app.png",
 	},
 	{
-		title: "Project 2",
+		title: "Pomodoro App",
 		description:
-			"This is a project I built using Vue.js and Firebase. It is a real-time chat application that allows users to...",
-		tags: ["Vue.js", "Firebase"],
+			"Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
+		tags: ["Next.js", "React", "Style Components"],
 		githubLink: "https://github.com/",
 		demoLink: "https://example.com/",
+		iphoneMockup: "/mockup-pomodoro-app.png",
 	},
 ];
 
 const Projekte = () => {
 	return (
-		<ProjectCardsContainer>
-			{projects.map((project, index) => (
-				<ProjectCard key={index}>
-					<Title>{project.title}</Title>
-					<Description>{project.description}</Description>
-					<Tags>
-						{project.tags.map((tag, index) => (
-							<Tag key={index}>{tag}</Tag>
-						))}
-					</Tags>
-					<Links>
-						<Link href={project.githubLink} target="_blank">
-							<Icon>
-								<FaGithub />
-							</Icon>
-							GitHub
-						</Link>
-						<Link href={project.demoLink} target="_blank">
-							<Icon>
-								<FaExternalLinkAlt />
-							</Icon>
-							Demo
-						</Link>
-					</Links>
-				</ProjectCard>
-			))}
-		</ProjectCardsContainer>
+		<>
+			<ContainerHeader>
+				<Title>Projekte</Title>
+				<Text>Hier sehen du einige meiner bisherigen Projekte.</Text>
+			</ContainerHeader>
+			<ProjectCardsContainer>
+				{projects.map((project, index) => (
+					<ProjectCard key={index}>
+						<Title>{project.title}</Title>
+						{project.iphoneMockup && (
+							<Image
+								src={project.iphoneMockup}
+								alt={`${project.title} iPhone mockup`}
+								width={307}
+								height={487}
+							/>
+						)}
+						<Description>{project.description}</Description>
+						<Tags>
+							{project.tags.map((tag, index) => (
+								<Tag key={index}>{tag}</Tag>
+							))}
+						</Tags>
+						<Links>
+							<Link href={project.githubLink} target="_blank">
+								<Icon>
+									<FaGithub />
+								</Icon>
+								GitHub
+							</Link>
+							<Link href={project.demoLink} target="_blank">
+								<Icon>
+									<FaExternalLinkAlt />
+								</Icon>
+								Demo
+							</Link>
+						</Links>
+					</ProjectCard>
+				))}
+			</ProjectCardsContainer>
+		</>
 	);
 };
 
