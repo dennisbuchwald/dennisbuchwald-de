@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import emailjs from "emailjs-com";
+import { RotatingLines } from "react-loader-spinner";
 
 const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
@@ -92,19 +93,25 @@ const Kontakt = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const formRef = useRef(null);
 
+	const [loading, setLoading] = useState(false);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		setLoading(true);
 
 		emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then(
 			(result) => {
 				console.log("E-Mail erfolgreich gesendet!", result.text);
 				setShowForm(false);
+				setLoading(false);
 			},
 			(error) => {
 				console.log("E-Mail konnte nicht gesendet werden: ", error.text);
 				setErrorMessage(
 					"Das hat leider nicht geklappt, versuche es doch besser auf LinkedIn mich zu erreichen"
 				);
+				setLoading(false);
 			}
 		);
 
@@ -119,7 +126,15 @@ const Kontakt = () => {
 					Na, neugierig geworden oder eine Fragen im Kopf? <br /> Schick mir ne
 					Nachricht - ich freu mich drauf! 🚀😉
 				</p>
-				{showForm ? (
+				{loading ? (
+					<RotatingLines
+						strokeColor="#ff4081"
+						strokeWidth="5"
+						animationDuration="0.75"
+						width="32"
+						visible={true}
+					/>
+				) : showForm ? (
 					<Form ref={formRef} onSubmit={handleSubmit}>
 						<Label htmlFor="name">Name:</Label>
 						<Input
