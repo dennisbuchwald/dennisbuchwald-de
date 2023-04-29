@@ -4,7 +4,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Projekte from "./projekte";
 import Kontakt from "./kontakt";
-
 import Typewriter from "typewriter-effect";
 
 const Section = styled.section`
@@ -18,8 +17,7 @@ const Section = styled.section`
 	color: ${(props) => props.theme.primaryColor};
 	padding: 2rem;
 	@media screen and (max-width: 768px) {
-		margin-top: 100px; // Erhöhen Sie diesen Wert, um den Abstand nach oben zu erhöhen
-	}
+		margin-top: 100px;
 `;
 
 const Container = styled.div`
