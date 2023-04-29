@@ -84,7 +84,7 @@ const Link = styled.a`
 	margin-right: 1rem;
 	transition: color 0.2s ease-in-out;
 	&:hover {
-		color: ${(props) => props.theme.linkHoverColor};
+		color: ${(props) => props.theme.accentColor};
 	}
 `;
 

@@ -12,9 +12,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const theme = {
-	primaryColor: "#1a1a1a",
-	secondaryColor: "#f5f5f5",
-	accentColor: "#ff9800",
+	primaryColor: "black",
+	secondaryColor: "#1c1c1e",
+	accentColor: "#ff4081",
+	textColor: "white",
+	buttonTextColor: "white",
+	cardTextColor: "whtie",
+	cardBgColor: "grey",
+	linkColor: "black",
+	linkHoverColor: "black",
+	textColorDark: "lightgrey",
 };
 
 function MyApp({ Component, pageProps }) {

@@ -83,7 +83,7 @@ const Main = styled.main`
 	align-items: left;
 	min-height: calc(100vh - 6rem);
 	background-color: ${(props) => props.theme.secondaryColor};
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	padding: 2rem;
 		@media screen and (max-width: 768px) {
 		margin-top: 100px;

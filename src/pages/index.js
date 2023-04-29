@@ -6,6 +6,22 @@ import Projekte from "./projekte";
 import Kontakt from "./kontakt";
 import Typewriter from "typewriter-effect";
 
+const SectionHome = styled.section`
+	margin: 1rem;
+	margin-top: 90px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 6rem);
+	background-color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.textColor};
+	padding: 2rem;
+	border-radius: 1rem;
+	@media screen and (max-width: 768px) {
+		margin-top: 110px;
+`;
+
 const Section = styled.section`
 	margin: 1rem;
 	display: flex;
@@ -14,8 +30,9 @@ const Section = styled.section`
 	align-items: center;
 	min-height: calc(100vh - 6rem);
 	background-color: ${(props) => props.theme.secondaryColor};
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	padding: 2rem;
+	border-radius: 1rem;
 	@media screen and (max-width: 768px) {
 		margin-top: 100px;
 `;
@@ -32,7 +49,7 @@ const ContainerTyperWriter = styled.div`
 
 const Title = styled.h1`
 	font-weight: bold;
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 `;
 
 const Text = styled.p`
@@ -46,7 +63,7 @@ const Text = styled.p`
 const TypedTitle = styled.span`
 	font-size: 2rem;
 	font-weight: bold;
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	margin-bottom: 1.5rem;
 	@media screen and (max-width: 768px) {
 		font-size: 1.8rem;
@@ -66,7 +83,7 @@ const Home = () => {
 				<title>Dennis Buchwald</title>
 			</Head>
 			<Header />
-			<Section id="home">
+			<SectionHome id="home">
 				<Container>
 					<ContainerTyperWriter>
 						<Title>
@@ -117,7 +134,7 @@ const Home = () => {
 						von Ihnen zu hören!
 					</Text> */}
 				</Container>
-			</Section>
+			</SectionHome>
 			<Section id="projekte">
 				<Projekte />
 			</Section>

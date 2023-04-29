@@ -14,7 +14,7 @@ const Main = styled.main`
 	align-items: center;
 	min-height: calc(100vh - 6rem);
 	background-color: ${(props) => props.theme.secondaryColor};
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	padding: 1rem;
 `;
 
@@ -47,23 +47,23 @@ const Button = styled.button`
 	border: none;
 	border-radius: 4px;
 	background-color: ${(props) => props.theme.primaryColor};
-	color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.buttonTextColor};
 	cursor: pointer;
 	transition: all 0.3s ease;
 
 	&:hover {
-		background-color: ${(props) => props.theme.primaryColorDark};
+		background-color: ${(props) => props.theme.accentColor};
 	}
 `;
 
 const LinkedInLink = styled.a`
 	padding: 1rem;
 	margin-top: 1rem;
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	transition: color 0.3s ease;
 
 	&:hover {
-		color: ${(props) => props.theme.primaryColorDark};
+		color: ${(props) => props.theme.accentColor};
 	}
 `;
 
@@ -71,11 +71,11 @@ const GitHubLink = styled.a`
 	padding: 1rem;
 
 	margin-top: 1rem;
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.textColor};
 	transition: color 0.3s ease;
 
 	&:hover {
-		color: ${(props) => props.theme.primaryColorDark};
+		color: ${(props) => props.theme.accentColor};
 	}
 `;
 

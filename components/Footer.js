@@ -6,7 +6,7 @@ const StyledFooter = styled.footer`
 	justify-content: space-between;
 	align-items: center;
 	background-color: ${(props) => props.theme.primaryColor};
-	color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.textColor};
 	padding: 1rem;
 	width: 100%;
 	flex-wrap: wrap;
@@ -22,7 +22,7 @@ const FooterText = styled.p`
 const FooterLink = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.textColor};
 	text-decoration: none;
 	cursor: pointer;
 	margin: 0 1rem;

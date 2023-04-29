@@ -47,7 +47,7 @@ const Nav = styled.nav`
 const NavLink = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.textColor};
 	text-decoration: none;
 	cursor: pointer;
 	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
@@ -74,7 +74,7 @@ const MenuIcon = styled.button`
 	margin-right: 2rem;
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.secondaryColor};
+	color: ${(props) => props.theme.textColor};
 	cursor: pointer;
 	font-size: 1.5rem;
 	outline: none;
