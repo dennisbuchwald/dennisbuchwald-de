@@ -181,7 +181,7 @@ const Kontakt = () => {
         )}
         <LinkContainer>
           <LinkedInLink
-            href="hhttps://www.linkedin.com/in/dennisbuchwald/"
+            href="https://www.linkedin.com/in/dennisbuchwald/"
             target="_blank"
             rel="noopener noreferrer"
           >
