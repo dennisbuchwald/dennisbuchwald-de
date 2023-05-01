@@ -20,6 +20,7 @@ const SectionHome = styled.section`
 	border-radius: 1rem;
 	@media screen and (max-width: 768px) {
 		margin-top: 110px;
+		    margin: 1rem 0;
 `;
 
 const Section = styled.section`
@@ -35,6 +36,8 @@ const Section = styled.section`
 	border-radius: 1rem;
 	@media screen and (max-width: 768px) {
 		margin-top: 100px;
+		    margin: 1rem 0;
+
 `;
 
 const Container = styled.div`

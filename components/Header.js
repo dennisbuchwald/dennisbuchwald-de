@@ -14,7 +14,7 @@ const Header = () => {
 	};
 
 	const listenScrollEvent = () => {
-		if (window.scrollY > 100) {
+		if (window.scrollY > 50) {
 			setHeaderBackground("#000000");
 			setTextColor("white");
 		} else {
@@ -40,10 +40,12 @@ const Header = () => {
 				</Link>
 				<Nav>
 					<Link href="/#projekte" passHref>
-						<NavLink textColor={textColor}>Projekte</NavLink>
+						<NavLink textColor={textColor} changeColor>
+							Projekte
+						</NavLink>
 					</Link>
 					<Link href="/#kontakt" passHref>
-						<NavLink textColor={textColor} framed>
+						<NavLink textColor={textColor} changeColor framed>
 							Kontakt
 						</NavLink>
 					</Link>
@@ -118,8 +120,8 @@ const Nav = styled.nav`
 const NavLink = styled.button`
 	background: none;
 	border: none;
-  color: ${(props) =>
-		props.changeColor ? props.textColor : "white"}	text-decoration: none;
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	text-decoration: none;
 	cursor: pointer;
 	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
 	border: ${(props) => (props.framed ? "2px solid" : "none")};
@@ -138,10 +140,7 @@ const NavLink = styled.button`
 		text-align: center;
 		align-items: center;
 		justify-content: center;
-    color: ${(props) =>
-			props.changeColor
-				? props.textColor
-				: "white"}; /* Set the color depending on the changeColor prop */
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
 	}
 `;
 
