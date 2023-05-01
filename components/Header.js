@@ -1,8 +1,90 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+const Header = () => {
+	const [menuOpen, setMenuOpen] = useState(false);
+	const [headerBackground, setHeaderBackground] = useState("transparent");
+	const [textColor, setTextColor] = useState("black");
+
+	const handleMenuClick = () => {
+		setMenuOpen(!menuOpen);
+	};
+
+	const listenScrollEvent = () => {
+		if (window.scrollY > 50) {
+			setHeaderBackground("#000000");
+			setTextColor("white");
+		} else {
+			setHeaderBackground("transparent");
+			setTextColor("black");
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", listenScrollEvent);
+		return () => {
+			window.removeEventListener("scroll", listenScrollEvent);
+		};
+	}, []);
+
+	return (
+		<>
+			<HeaderContainer>
+				<StyledHeader backgroundColor={headerBackground}>
+					<Link href="/" passHref>
+						<NavLink textColor={textColor} large changeColor>
+							Dennis Buchwald
+						</NavLink>
+					</Link>
+					<Nav>
+						<Link href="/#projekte" passHref>
+							<NavLink textColor={textColor} changeColor>
+								Projekte
+							</NavLink>
+						</Link>
+						<Link href="/#kontakt" passHref>
+							<NavLink textColor={textColor} changeColor framed>
+								Kontakt
+							</NavLink>
+						</Link>
+					</Nav>
+					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
+						{menuOpen ? (
+							<FontAwesomeIcon icon={faTimes} />
+						) : (
+							<FontAwesomeIcon icon={faBars} />
+						)}
+					</MenuIcon>
+				</StyledHeader>
+			</HeaderContainer>
+
+			<MenuOverlay open={menuOpen}>
+				<Nav open={menuOpen}>
+					<Link href="/#projekte" passHref>
+						<NavLink onClick={handleMenuClick}>Projekte</NavLink>
+					</Link>
+					<Link href="/#kontakt" passHref>
+						<NavLink framed onClick={handleMenuClick}>
+							Kontakt
+						</NavLink>
+					</Link>
+				</Nav>
+			</MenuOverlay>
+		</>
+	);
+};
+
+export default Header;
+
+const HeaderContainer = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+`;
 
 const StyledHeader = styled.header`
 	z-index: 1000;
@@ -13,10 +95,11 @@ const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${(props) => props.theme.primaryColor};
+	background-color: ${(props) => props.backgroundColor};
 	padding: 1rem;
 	max-width: 100%;
 	margin: 0 auto;
+	transition: background-color 0.3s ease;
 `;
 
 const Nav = styled.nav`
@@ -47,7 +130,7 @@ const Nav = styled.nav`
 const NavLink = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
 	text-decoration: none;
 	cursor: pointer;
 	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
@@ -67,6 +150,7 @@ const NavLink = styled.button`
 		text-align: center;
 		align-items: center;
 		justify-content: center;
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
 	}
 `;
 
@@ -74,7 +158,7 @@ const MenuIcon = styled.button`
 	margin-right: 2rem;
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.textColor};
 	cursor: pointer;
 	font-size: 1.5rem;
 	outline: none;
@@ -109,50 +193,3 @@ const MenuOverlay = styled.div`
 		width: 100%;
 	}
 `;
-
-const Header = () => {
-	const [menuOpen, setMenuOpen] = useState(false);
-
-	const handleMenuClick = () => {
-		setMenuOpen(!menuOpen);
-	};
-
-	return (
-		<>
-			<StyledHeader>
-				<Link href="/" passHref>
-					<NavLink large>Dennis Buchwald</NavLink>
-				</Link>
-				<Nav>
-					<Link href="/#projekte" passHref>
-						<NavLink>Projekte</NavLink>
-					</Link>
-					<Link href="/#kontakt" passHref>
-						<NavLink framed>Kontakt</NavLink>
-					</Link>
-				</Nav>
-				<MenuIcon onClick={handleMenuClick}>
-					{menuOpen ? (
-						<FontAwesomeIcon icon={faTimes} />
-					) : (
-						<FontAwesomeIcon icon={faBars} />
-					)}
-				</MenuIcon>
-			</StyledHeader>
-			<MenuOverlay open={menuOpen}>
-				<Nav open={menuOpen}>
-					<Link href="/#projekte" passHref>
-						<NavLink onClick={handleMenuClick}>Projekte</NavLink>
-					</Link>
-					<Link href="/#kontakt" passHref>
-						<NavLink framed onClick={handleMenuClick}>
-							Kontakt
-						</NavLink>
-					</Link>
-				</Nav>
-			</MenuOverlay>
-		</>
-	);
-};
-
-export default Header;
