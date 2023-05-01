@@ -145,7 +145,7 @@ const Text = styled.p`
   font-size: 1.2rem;
   line-height: 1.6;
   max-width: 800px;
-  text-align: justify;
+  text-align: justify-center;
   margin-bottom: 1.5rem;
 `;
 
