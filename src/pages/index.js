@@ -47,13 +47,13 @@ const Home = () => {
             <Text>
               Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn.{" "}
               <br />
-              Ich habe erfolgreich das Web Developer Bootcamp bei "neue fische"
-              absolviert! <br />
+              Ich habe erfolgreich das Web Developer Bootcamp bei &quot;neue
+              fische&quot; absolviert! <br />
               Wofür brenne ich? Für die Entwicklung von Webanwendungen, die
               durch ihre Optik und Funktionalität glänzen. Eines meiner
               Highlights während des Bootcamps war die Entwicklung meines
-              Capstone-Projekts "Pokemon Battler" – ein Projekt, das meine
-              Hingabe für die Webentwicklung perfekt zum Ausdruck bringt!
+              Capstone-Projekts &quot;Pokemon Battler&quot; – ein Projekt, das
+              meine Hingabe für die Webentwicklung perfekt zum Ausdruck bringt!
             </Text>
             {/* <Text>
 						Mein Schwerpunkt liegt in der Entwicklung ansprechender und
