@@ -45,10 +45,9 @@ const Home = () => {
               noch im Aufbau. 🙉
             </Text>
             <Text>
-              Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn.{" "}
-              <br />
-              Ich habe erfolgreich das Web Developer Bootcamp bei &quot;neue
-              fische&quot; absolviert! <br />
+              Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn. Ich
+              habe erfolgreich das Web Developer Bootcamp bei &quot;neue
+              fische&quot; absolviert! <br /> <br />
               Wofür brenne ich? Für die Entwicklung von Webanwendungen, die
               durch ihre Optik und Funktionalität glänzen. Eines meiner
               Highlights während des Bootcamps war die Entwicklung meines
