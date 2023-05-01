@@ -32,32 +32,35 @@ const Header = () => {
 
 	return (
 		<>
-			<StyledHeader backgroundColor={headerBackground}>
-				<Link href="/" passHref>
-					<NavLink textColor={textColor} large changeColor>
-						Dennis Buchwald
-					</NavLink>
-				</Link>
-				<Nav>
-					<Link href="/#projekte" passHref>
-						<NavLink textColor={textColor} changeColor>
-							Projekte
+			<HeaderContainer>
+				<StyledHeader backgroundColor={headerBackground}>
+					<Link href="/" passHref>
+						<NavLink textColor={textColor} large changeColor>
+							Dennis Buchwald
 						</NavLink>
 					</Link>
-					<Link href="/#kontakt" passHref>
-						<NavLink textColor={textColor} changeColor framed>
-							Kontakt
-						</NavLink>
-					</Link>
-				</Nav>
-				<MenuIcon textColor={textColor} onClick={handleMenuClick}>
-					{menuOpen ? (
-						<FontAwesomeIcon icon={faTimes} />
-					) : (
-						<FontAwesomeIcon icon={faBars} />
-					)}
-				</MenuIcon>
-			</StyledHeader>
+					<Nav>
+						<Link href="/#projekte" passHref>
+							<NavLink textColor={textColor} changeColor>
+								Projekte
+							</NavLink>
+						</Link>
+						<Link href="/#kontakt" passHref>
+							<NavLink textColor={textColor} changeColor framed>
+								Kontakt
+							</NavLink>
+						</Link>
+					</Nav>
+					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
+						{menuOpen ? (
+							<FontAwesomeIcon icon={faTimes} />
+						) : (
+							<FontAwesomeIcon icon={faBars} />
+						)}
+					</MenuIcon>
+				</StyledHeader>
+			</HeaderContainer>
+
 			<MenuOverlay open={menuOpen}>
 				<Nav open={menuOpen}>
 					<Link href="/#projekte" passHref>
@@ -75,6 +78,13 @@ const Header = () => {
 };
 
 export default Header;
+
+const HeaderContainer = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+`;
 
 const StyledHeader = styled.header`
 	z-index: 1000;

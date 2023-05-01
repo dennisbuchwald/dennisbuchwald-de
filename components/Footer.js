@@ -1,6 +1,27 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+const Footer = () => {
+	return (
+		<StyledFooter>
+			<FooterText>
+				&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
+			</FooterText>
+			<StyledLink>
+				<Link href="/impressum" passHref>
+					<FooterLink>Impressum</FooterLink>
+				</Link>
+
+				<Link href="/datenschutzerklaerung" passHref>
+					<FooterLink>Datenschutzerklärung</FooterLink>
+				</Link>
+			</StyledLink>
+		</StyledFooter>
+	);
+};
+
+export default Footer;
+
 const StyledFooter = styled.footer`
 	display: flex;
 	justify-content: space-between;
@@ -10,6 +31,10 @@ const StyledFooter = styled.footer`
 	padding: 1rem;
 	width: 100%;
 	flex-wrap: wrap;
+	position: sticky;
+	bottom: 0;
+	margin: 0;
+	padding: 1rem;
 `;
 
 const FooterText = styled.p`
@@ -35,27 +60,5 @@ const FooterLink = styled.button`
 
 const StyledLink = styled.nav`
 	display: flex;
-
 	margin-right: 1rem;
 `;
-
-const Footer = () => {
-	return (
-		<StyledFooter>
-			<FooterText>
-				&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
-			</FooterText>
-			<StyledLink>
-				<Link href="/impressum" passHref>
-					<FooterLink>Impressum</FooterLink>
-				</Link>
-
-				<Link href="/datenschutzerklaerung" passHref>
-					<FooterLink>Datenschutzerklärung</FooterLink>
-				</Link>
-			</StyledLink>
-		</StyledFooter>
-	);
-};
-
-export default Footer;
