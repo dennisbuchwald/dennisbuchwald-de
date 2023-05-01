@@ -2,96 +2,6 @@ import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 
-const ProjectCardsContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 0 -1rem;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		align-items: center;
-	}
-`;
-
-const ProjectCard = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: ${(props) => props.theme.cardBgColor};
-	color: ${(props) => props.theme.cardTextColor};
-	padding: 2rem;
-	border-radius: 1rem;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-	margin: 0 1rem 2rem;
-	flex-basis: calc(33.33% - 2rem);
-	max-width: calc(33.33% - 2rem);
-	@media (max-width: 768px) {
-		flex-basis: 100%;
-		max-width: 100%;
-		margin: 0 0 2rem;
-	}
-`;
-
-const ContainerHeader = styled.div`
-	text-align: center;
-	align-items: center;
-`;
-
-const Title = styled.h3`
-	font-size: 2rem;
-	margin-bottom: 1rem;
-`;
-
-const Text = styled.p`
-	font-size: 1.2rem;
-	line-height: 1.6;
-	max-width: 800px;
-	text-align: justify;
-	margin-bottom: 1.5rem;
-`;
-
-const Description = styled.p`
-	font-size: 1.5rem;
-	margin-bottom: 1.5rem;
-`;
-
-const Tags = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 1.5rem;
-`;
-
-const Tag = styled.span`
-	background-color: ${(props) => props.theme.tagBgColor};
-	color: ${(props) => props.theme.tagTextColor};
-	font-size: 1.2rem;
-	padding: 0.5rem;
-	border-radius: 0.5rem;
-	margin-right: 0.5rem;
-`;
-
-const Links = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const Link = styled.a`
-	color: ${(props) => props.theme.linkColor};
-	font-size: 1.5rem;
-	margin-right: 1rem;
-	transition: color 0.2s ease-in-out;
-	&:hover {
-		color: ${(props) => props.theme.accentColor};
-	}
-`;
-
-const Icon = styled.span`
-	margin-right: 0.5rem;
-`;
-
 const projects = [
 	{
 		title: "Pokemon Battler",
@@ -170,3 +80,102 @@ const Projekte = () => {
 };
 
 export default Projekte;
+
+const ProjectCardsContainer = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 -1rem;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		width: 1000px;
+	}
+`;
+
+const ProjectCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: ${(props) => props.theme.cardBgColor};
+	color: ${(props) => props.theme.cardTextColor};
+	padding: 2rem;
+	border-radius: 1rem;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+	margin: 0 1rem 2rem;
+	flex-basis: calc(33.33% - 2rem);
+	max-width: calc(33.33% - 2rem);
+	@media (max-width: 768px) {
+	}
+`;
+
+const ContainerHeader = styled.div`
+	text-align: center;
+	align-items: center;
+`;
+
+const Title = styled.h3`
+	font-size: 2rem;
+	margin-bottom: 1rem;
+`;
+
+const Text = styled.p`
+	font-size: 1.2rem;
+	line-height: 1.6;
+	max-width: 800px;
+	text-align: justify;
+	margin-bottom: 1.5rem;
+`;
+
+const Description = styled.p`
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+`;
+
+const Tags = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1.5rem;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+`;
+
+const Tag = styled.span`
+	background-color: ${(props) => props.theme.tagBgColor};
+	color: ${(props) => props.theme.tagTextColor};
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	margin-right: 0.5rem;
+`;
+
+const Links = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+`;
+
+const Link = styled.a`
+	color: ${(props) => props.theme.linkColor};
+	font-size: 1.5rem;
+	margin-right: 1rem;
+	transition: color 0.2s ease-in-out;
+	&:hover {
+		color: ${(props) => props.theme.accentColor};
+	}
+`;
+
+const Icon = styled.span`
+	margin-right: 0.5rem;
+`;
