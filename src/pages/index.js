@@ -7,8 +7,7 @@ import Kontakt from "./kontakt";
 import Typewriter from "typewriter-effect";
 
 const SectionHome = styled.section`
-  box-sizing: border-box;
-
+	box-sizing: border-box;
 	margin: 1rem;
 	margin-top: 90px;
 	display: flex;
@@ -21,13 +20,15 @@ const SectionHome = styled.section`
 	padding: 2rem;
 	border-radius: 1rem;
 	@media screen and (max-width: 768px) {
-    margin: 1rem 0;
+		margin-left: 1rem 0;
+		margin-right: 1rem 0;
+	}
 `;
 
 const Section = styled.section`
-  box-sizing: border-box;
+	box-sizing: border-box;
 
-  margin: 1rem;
+	margin: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -38,7 +39,9 @@ const Section = styled.section`
 	padding: 2rem;
 	border-radius: 1rem;
 	@media screen and (max-width: 768px) {
-    margin: 1rem 0;
+		margin-left: 1rem 0;
+		margin-right: 1rem 0;
+	}
 `;
 
 const Container = styled.div`
