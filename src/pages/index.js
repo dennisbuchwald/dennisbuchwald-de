@@ -7,6 +7,8 @@ import Kontakt from "./kontakt";
 import Typewriter from "typewriter-effect";
 
 const SectionHome = styled.section`
+  box-sizing: border-box;
+
 	margin: 1rem;
 	margin-top: 90px;
 	display: flex;
@@ -23,6 +25,8 @@ const SectionHome = styled.section`
 `;
 
 const Section = styled.section`
+  box-sizing: border-box;
+
 	margin: 1rem;
 	display: flex;
 	flex-direction: column;
