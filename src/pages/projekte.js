@@ -3,185 +3,185 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 
 const projects = [
-	{
-		title: "Pokemon Battler",
-		description:
-			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und viel Sp...",
-		tags: ["Next.js", "React", "Style Components"],
-		githubLink:
-			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
-		demoLink: "https://pokemon-battler.dennisbuchwald.de",
-		iphoneMockup: "/mockup-pokemon-battler.png",
-	},
-	{
-		title: "Kanto Pokedex",
-		description:
-			"Dieses Projekt war die Vorstufe zu meinem Capstone-Projekt und entstand während eines Coding-Wochenendes.",
-		tags: ["React", "PokéAPI API", "Photoshop"],
-		githubLink: "https://github.com/dennisbuchwald/pokedex-react-app",
-		demoLink: "https://pokedex.dennisbuchwald.de/",
-		iphoneMockup: "/mockup-pokedex-react-app.png",
-	},
-	{
-		title: "Pomodoro App",
-		description:
-			"Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
-		tags: ["Next.js", "React", "Style Components"],
-		githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
-		demoLink: "https://pomodoro-app-amber-two.vercel.app",
-		iphoneMockup: "/mockup-pomodoro-app.png",
-	},
+  {
+    title: "Pokemon Battler",
+    description:
+      "Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und viel Sp...",
+    tags: ["Next.js", "React", "Style Components"],
+    githubLink:
+      "https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
+    demoLink: "https://pokemon-battler.dennisbuchwald.de",
+    iphoneMockup: "/mockup-pokemon-battler.png",
+  },
+  {
+    title: "Kanto Pokedex",
+    description:
+      "Dieses Projekt war die Vorstufe zu meinem Capstone-Projekt und entstand während eines Coding-Wochenendes.",
+    tags: ["React", "PokéAPI API", "Photoshop"],
+    githubLink: "https://github.com/dennisbuchwald/pokedex-react-app",
+    demoLink: "https://pokedex.dennisbuchwald.de/",
+    iphoneMockup: "/mockup-pokedex-react-app.png",
+  },
+  {
+    title: "Pomodoro App",
+    description:
+      "Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
+    tags: ["Next.js", "React", "Style Components"],
+    githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
+    demoLink: "https://pomodoro-app-amber-two.vercel.app",
+    iphoneMockup: "/mockup-pomodoro-app.png",
+  },
 ];
 
 const Projekte = () => {
-	return (
-		<>
-			<ContainerHeader>
-				<Title>Projekte</Title>
-				<Text>Hier sehen du einige meiner bisherigen Projekte.</Text>
-			</ContainerHeader>
-			<ProjectCardsContainer>
-				{projects.map((project, index) => (
-					<ProjectCard key={index}>
-						<Title>{project.title}</Title>
-						{project.iphoneMockup && (
-							<Image
-								src={project.iphoneMockup}
-								alt={`${project.title} iPhone mockup`}
-								width={307}
-								height={487}
-							/>
-						)}
-						<Description>{project.description}</Description>
-						<Tags>
-							{project.tags.map((tag, index) => (
-								<Tag key={index}>{tag}</Tag>
-							))}
-						</Tags>
-						<Links>
-							<Link href={project.githubLink} target="_blank">
-								<Icon>
-									<FaGithub />
-								</Icon>
-								GitHub
-							</Link>
-							<Link href={project.demoLink} target="_blank">
-								<Icon>
-									<FaExternalLinkAlt />
-								</Icon>
-								Demo
-							</Link>
-						</Links>
-					</ProjectCard>
-				))}
-			</ProjectCardsContainer>
-		</>
-	);
+  return (
+    <>
+      <ContainerHeader>
+        <Title>Projekte</Title>
+        <Text>Hier siehst du einige meiner bisherigen Projekte.</Text>
+      </ContainerHeader>
+      <ProjectCardsContainer>
+        {projects.map((project, index) => (
+          <ProjectCard key={index}>
+            <Title>{project.title}</Title>
+            {project.iphoneMockup && (
+              <Image
+                src={project.iphoneMockup}
+                alt={`${project.title} iPhone mockup`}
+                width={307}
+                height={487}
+              />
+            )}
+            <Description>{project.description}</Description>
+            <Tags>
+              {project.tags.map((tag, index) => (
+                <Tag key={index}>{tag}</Tag>
+              ))}
+            </Tags>
+            <Links>
+              <Link href={project.githubLink} target="_blank">
+                <Icon>
+                  <FaGithub />
+                </Icon>
+                GitHub
+              </Link>
+              <Link href={project.demoLink} target="_blank">
+                <Icon>
+                  <FaExternalLinkAlt />
+                </Icon>
+                Demo
+              </Link>
+            </Links>
+          </ProjectCard>
+        ))}
+      </ProjectCardsContainer>
+    </>
+  );
 };
 
 export default Projekte;
 
 const ProjectCardsContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 0 -1rem;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		align-items: center;
-	}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -1rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ProjectCard = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: ${(props) => props.theme.cardBgColor};
-	color: ${(props) => props.theme.cardTextColor};
-	padding: 2rem;
-	border-radius: 1rem;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-	margin: 0 1rem 2rem;
-	flex-basis: calc(30% - 2rem);
-	max-width: calc(30% - 2rem);
-	box-sizing: border-box;
-	@media (max-width: 1024px) {
-		flex-basis: calc(45% - 2rem);
-		max-width: calc(45% - 2rem);
-	}
-	@media (max-width: 768px) {
-		flex-basis: calc(90% - 2rem);
-		max-width: calc(90% - 2rem);
-	}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.cardTextColor};
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 0 1rem 2rem;
+  flex-basis: calc(30% - 2rem);
+  max-width: calc(30% - 2rem);
+  box-sizing: border-box;
+  @media (max-width: 1024px) {
+    flex-basis: calc(45% - 2rem);
+    max-width: calc(45% - 2rem);
+  }
+  @media (max-width: 768px) {
+    flex-basis: calc(90% - 2rem);
+    max-width: calc(90% - 2rem);
+  }
 `;
 
 const ContainerHeader = styled.div`
-	text-align: center;
-	align-items: center;
+  text-align: center;
+  align-items: center;
 `;
 
 const Title = styled.h3`
-	font-size: 2rem;
-	margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 `;
 
 const Text = styled.p`
-	font-size: 1.2rem;
-	line-height: 1.6;
-	max-width: 800px;
-	text-align: justify;
-	margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  text-align: justify;
+  margin-bottom: 1.5rem;
 `;
 
 const Description = styled.p`
-	font-size: 1.5rem;
-	margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Tags = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
 
-	@media (max-width: 768px) {
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-	}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const Tag = styled.span`
-	background-color: ${(props) => props.theme.tagBgColor};
-	color: ${(props) => props.theme.tagTextColor};
-	font-size: 1.2rem;
-	padding: 0.5rem;
-	border-radius: 0.5rem;
-	margin-right: 0.5rem;
+  background-color: ${(props) => props.theme.tagBgColor};
+  color: ${(props) => props.theme.tagTextColor};
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
 `;
 
 const Links = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-	}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const Link = styled.a`
-	color: ${(props) => props.theme.linkColor};
-	font-size: 1.5rem;
-	margin-right: 1rem;
-	transition: color 0.2s ease-in-out;
-	&:hover {
-		color: ${(props) => props.theme.accentColor};
-	}
+  color: ${(props) => props.theme.linkColor};
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
 `;
 
 const Icon = styled.span`
-	margin-right: 0.5rem;
+  margin-right: 0.5rem;
 `;

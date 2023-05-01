@@ -123,7 +123,7 @@ const Kontakt = () => {
       <Main>
         <h1>Kontakt</h1>
         <p>
-          Na, neugierig geworden oder eine Fragen im Kopf? <br /> Schick mir ne
+          Na, neugierig geworden oder eine Frage im Kopf? <br /> Schick mir ne
           Nachricht - ich freu mich drauf! 🚀😉
         </p>
         {loading ? (
