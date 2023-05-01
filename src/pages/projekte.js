@@ -89,7 +89,6 @@ const ProjectCardsContainer = styled.div`
 	@media (max-width: 768px) {
 		flex-direction: column;
 		align-items: center;
-		width: 1000px;
 	}
 `;
 
@@ -104,9 +103,16 @@ const ProjectCard = styled.div`
 	border-radius: 1rem;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 	margin: 0 1rem 2rem;
-	flex-basis: calc(33.33% - 2rem);
-	max-width: calc(33.33% - 2rem);
+	flex-basis: calc(30% - 2rem);
+	max-width: calc(30% - 2rem);
+	box-sizing: border-box;
+	@media (max-width: 1024px) {
+		flex-basis: calc(45% - 2rem);
+		max-width: calc(45% - 2rem);
+	}
 	@media (max-width: 768px) {
+		flex-basis: calc(90% - 2rem);
+		max-width: calc(90% - 2rem);
 	}
 `;
 
