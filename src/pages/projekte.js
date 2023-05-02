@@ -89,6 +89,8 @@ const ProjectCardsContainer = styled.div`
 	@media (max-width: 768px) {
 		flex-direction: column;
 		align-items: center;
+		margin: 0;
+		padding: 0 1.5rem;
 	}
 `;
 
@@ -107,13 +109,17 @@ const ProjectCard = styled.div`
 	max-width: calc(30% - 2rem);
 	min-width: 400px;
 	box-sizing: border-box;
+
 	@media (max-width: 1024px) {
 		flex-basis: calc(45% - 2rem);
 		max-width: calc(45% - 2rem);
+		min-width: 300px;
+		border-radius: 3rem;
 	}
 	@media (max-width: 768px) {
-		flex-basis: calc(90% - 2rem);
-		max-width: calc(90% - 2rem);
+		min-width: 75%;
+		margin: 0 auto 2rem;
+		border-radius: 3rem;
 	}
 `;
 

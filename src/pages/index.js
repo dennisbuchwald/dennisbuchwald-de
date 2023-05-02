@@ -105,8 +105,9 @@ const SectionHome = styled.section`
 	padding: 2rem;
 	border-radius: 4rem;
 	@media screen and (max-width: 768px) {
-		margin-left: 2rem 0;
-		margin-right: 2rem 0;
+		margin-left: 2rem;
+		margin-right: 2rem;
+		border-radius: 3rem;
 	}
 `;
 
@@ -123,8 +124,8 @@ const Section = styled.section`
 	padding: 2rem;
 	border-radius: 4rem;
 	@media screen and (max-width: 768px) {
-		margin-left: 2rem 0;
-		margin-right: 2rem 0;
+		margin: 4rem 2rem;
+		border-radius: 3rem;
 	}
 `;
 

@@ -4,18 +4,23 @@ import Link from "next/link";
 const Footer = () => {
 	return (
 		<StyledFooter>
-			<FooterText>
-				&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
-			</FooterText>
-			<StyledLink>
-				<Link href="/impressum" passHref>
-					<FooterLink>Impressum</FooterLink>
-				</Link>
+			<SectionLeft>
+				<FooterText>
+					&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
+				</FooterText>
+			</SectionLeft>
 
-				<Link href="/datenschutzerklaerung" passHref>
-					<FooterLink>Datenschutzerklärung</FooterLink>
-				</Link>
-			</StyledLink>
+			<SectionRight>
+				<StyledLink>
+					<Link href="/impressum" passHref>
+						<FooterLink>Impressum</FooterLink>
+					</Link>
+
+					<Link href="/datenschutzerklaerung" passHref>
+						<FooterLink>Datenschutzerklärung</FooterLink>
+					</Link>
+				</StyledLink>
+			</SectionRight>
 		</StyledFooter>
 	);
 };
@@ -38,6 +43,9 @@ const StyledFooter = styled.footer`
 `;
 
 const FooterText = styled.p`
+	left: -10;
+	width: 100%;
+	border: 1px solid red;
 	margin-right: 1rem;
 	@media (max-width: 768px) {
 		margin-bottom: 0.5rem;
@@ -70,7 +78,17 @@ const StyledLink = styled.nav`
 	@media (max-width: 768px) {
 		right: 0;
 		flex-direction: column;
-		justify-content: right;
+		justify-content: flex-end;
 		text-align: right;
 	}
+`;
+
+const SectionLeft = styled.section`
+	flex: 1;
+`;
+
+const SectionRight = styled.section`
+	display: flex;
+	justify-content: flex-end;
+	flex: 1;
 `;

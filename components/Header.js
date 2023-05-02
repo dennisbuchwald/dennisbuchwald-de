@@ -199,7 +199,7 @@ const NavLink = styled.button`
 
 	@media screen and (max-width: 768px) {
 		font-size: 1.5rem;
-		padding: 1rem;
+		padding: 0.5rem;
 		text-align: center;
 		align-items: center;
 		justify-content: center;
@@ -225,6 +225,7 @@ const NavTitel = styled.button`
 	}
 
 	@media screen and (max-width: 768px) {
+		margin-left: 2rem;
 		font-size: 1.5rem;
 		padding: 1rem;
 		text-align: center;
@@ -273,6 +274,7 @@ const MenuIcon = styled.button`
 	z-index: 1000;
 	@media screen and (max-width: 768px) {
 		display: block;
+		margin-right: 2rem;
 	}
 `;
 
@@ -281,7 +283,7 @@ const MenuOverlay = styled.div`
 	position: fixed;
 	top: 0;
 	right: ${(props) => (props.open ? "0" : "-100%")};
-	width: 25%;
+	width: 33%;
 	height: 100%;
 	background-color: ${(props) => props.theme.primaryColor};
 	transition: right 0.3s ease;
