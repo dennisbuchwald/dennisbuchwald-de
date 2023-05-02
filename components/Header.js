@@ -49,7 +49,7 @@ const Header = () => {
 					>
 						Dennis Buchwald
 					</NavLink>
-					<Nav>
+					<NavDesktop>
 						<StyledNavWrapper>
 							<NavLinkProject
 								textColor={textColor}
@@ -67,7 +67,7 @@ const Header = () => {
 								Kontakt
 							</NavLink>
 						</StyledNavWrapper>
-					</Nav>
+					</NavDesktop>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
 							<FontAwesomeIcon icon={faTimes} />
@@ -79,7 +79,7 @@ const Header = () => {
 			</HeaderContainer>
 
 			<MenuOverlay open={menuOpen}>
-				<Nav open={menuOpen}>
+				<NavMobil open={menuOpen}>
 					<NavLink
 						onClick={() => {
 							handleMenuClick();
@@ -97,7 +97,7 @@ const Header = () => {
 					>
 						Kontakt
 					</NavLink>
-				</Nav>
+				</NavMobil>
 			</MenuOverlay>
 		</>
 	);
@@ -128,7 +128,7 @@ const StyledHeader = styled.header`
 	transition: background-color 0.3s ease;
 `;
 
-const Nav = styled.nav`
+const NavDesktop = styled.nav`
 	align-items: center;
 	display: flex;
 	margin-right: 2rem;
@@ -147,6 +147,30 @@ const Nav = styled.nav`
 		align-items: center;
 		height: 100%;
 		width: 100%;
+		right: -10px;
+	}
+`;
+
+const NavMobil = styled.nav`
+	align-items: center;
+	display: flex;
+	margin-right: 0rem;
+
+	& > *:not(:last-child) {
+		margin-right: 0rem;
+	}
+
+	& > *:last-child {
+		margin-right: 0rem;
+	}
+	@media screen and (max-width: 768px) {
+		display: ${(props) => (props.open ? "flex" : "none")};
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		right: -10px;
 	}
 `;
 
@@ -243,7 +267,12 @@ const MenuOverlay = styled.div`
 		text-align: center;
 	}
 
-	& ${Nav} {
+	& ${NavDesktop} {
+		justify-content: center;
+		width: 100%;
+	}
+
+	& ${NavMobil} {
 		justify-content: center;
 		width: 100%;
 	}
