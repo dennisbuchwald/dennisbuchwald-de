@@ -23,6 +23,11 @@ const Header = () => {
 		}
 	};
 
+	const smoothScroll = (targetSelector) => {
+		const target = document.querySelector(targetSelector);
+		target.scrollIntoView({ behavior: "smooth" });
+	};
+
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
 		return () => {
@@ -34,23 +39,35 @@ const Header = () => {
 		<>
 			<HeaderContainer>
 				<StyledHeader backgroundColor={headerBackground}>
-					<Link href="/" passHref>
-						<NavLink textColor={textColor} large changeColor>
-							Dennis Buchwald
-						</NavLink>
-					</Link>
-					<Nav>
-						<Link href="/#projekte" passHref>
-							<NavLink textColor={textColor} changeColor>
+					<NavLink
+						textColor={textColor}
+						large
+						changeColor
+						onClick={() => {
+							smoothScroll("#top");
+						}}
+					>
+						Dennis Buchwald
+					</NavLink>
+					<NavDesktop>
+						<StyledNavWrapper>
+							<NavLinkProject
+								textColor={textColor}
+								changeColor
+								onClick={() => smoothScroll("#projekte")}
+							>
 								Projekte
-							</NavLink>
-						</Link>
-						<Link href="/#kontakt" passHref>
-							<NavLink textColor={textColor} changeColor framed>
+							</NavLinkProject>
+							<NavLink
+								textColor={textColor}
+								changeColor
+								framed
+								onClick={() => smoothScroll("#kontakt")}
+							>
 								Kontakt
 							</NavLink>
-						</Link>
-					</Nav>
+						</StyledNavWrapper>
+					</NavDesktop>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
 							<FontAwesomeIcon icon={faTimes} />
@@ -62,16 +79,25 @@ const Header = () => {
 			</HeaderContainer>
 
 			<MenuOverlay open={menuOpen}>
-				<Nav open={menuOpen}>
-					<Link href="/#projekte" passHref>
-						<NavLink onClick={handleMenuClick}>Projekte</NavLink>
-					</Link>
-					<Link href="/#kontakt" passHref>
-						<NavLink framed onClick={handleMenuClick}>
-							Kontakt
-						</NavLink>
-					</Link>
-				</Nav>
+				<NavMobil open={menuOpen}>
+					<NavLink
+						onClick={() => {
+							handleMenuClick();
+							smoothScroll("#projekte");
+						}}
+					>
+						Projekte
+					</NavLink>
+					<NavLink
+						framed
+						onClick={() => {
+							handleMenuClick();
+							smoothScroll("#kontakt");
+						}}
+					>
+						Kontakt
+					</NavLink>
+				</NavMobil>
 			</MenuOverlay>
 		</>
 	);
@@ -102,16 +128,17 @@ const StyledHeader = styled.header`
 	transition: background-color 0.3s ease;
 `;
 
-const Nav = styled.nav`
+const NavDesktop = styled.nav`
 	align-items: center;
 	display: flex;
+	margin-right: 2rem;
 
 	& > *:not(:last-child) {
-		margin-right: 1rem;
+		margin-right: 0rem;
 	}
 
 	& > *:last-child {
-		margin-right: 2rem;
+		margin-right: 0rem;
 	}
 	@media screen and (max-width: 768px) {
 		display: ${(props) => (props.open ? "flex" : "none")};
@@ -120,11 +147,37 @@ const Nav = styled.nav`
 		align-items: center;
 		height: 100%;
 		width: 100%;
-
-		& > * {
-			text-align: center;
-		}
+		right: -10px;
 	}
+`;
+
+const NavMobil = styled.nav`
+	align-items: center;
+	display: flex;
+	margin-right: 0rem;
+
+	& > *:not(:last-child) {
+		margin-right: 0rem;
+	}
+
+	& > *:last-child {
+		margin-right: 0rem;
+	}
+	@media screen and (max-width: 768px) {
+		display: ${(props) => (props.open ? "flex" : "none")};
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		right: -10px;
+	}
+`;
+
+const StyledNavWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 `;
 
 const NavLink = styled.button`
@@ -146,7 +199,33 @@ const NavLink = styled.button`
 	@media screen and (max-width: 768px) {
 		font-size: 1.5rem;
 		padding: 1rem;
-		width: 100%;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	}
+`;
+
+const NavLinkProject = styled.button`
+	margin-right: 1rem;
+	background: none;
+	border: none;
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	text-decoration: none;
+	cursor: pointer;
+	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
+	border: ${(props) => (props.framed ? "2px solid" : "none")};
+	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
+	border-radius: ${(props) => (props.framed ? "5px" : "0")};
+	outline: none;
+
+	&:hover {
+		color: ${(props) => props.theme.accentColor};
+	}
+
+	@media screen and (max-width: 768px) {
+		font-size: 1.5rem;
+		padding: 1rem;
 		text-align: center;
 		align-items: center;
 		justify-content: center;
@@ -188,7 +267,12 @@ const MenuOverlay = styled.div`
 		text-align: center;
 	}
 
-	& ${Nav} {
+	& ${NavDesktop} {
+		justify-content: center;
+		width: 100%;
+	}
+
+	& ${NavMobil} {
 		justify-content: center;
 		width: 100%;
 	}
