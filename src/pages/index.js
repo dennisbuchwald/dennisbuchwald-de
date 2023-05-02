@@ -74,8 +74,8 @@ const Home = () => {
 				<Section>
 					<Projekte />
 				</Section>
-				<a id="kontakt" />
 				<Section>
+					<a id="kontakt" />
 					<Kontakt />
 				</Section>
 			</PageContent>

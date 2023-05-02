@@ -23,17 +23,9 @@ const Header = () => {
 		}
 	};
 
-	const smoothScroll = (target, duration = 1500) => {
-		const element = document.querySelector(target);
-		element.scrollIntoView({
-			behavior: "smooth",
-			block: "start",
-		});
-		if (duration) {
-			setTimeout(() => {
-				window.history.pushState(null, "", target);
-			}, duration);
-		}
+	const smoothScroll = (targetSelector) => {
+		const target = document.querySelector(targetSelector);
+		target.scrollIntoView({ behavior: "smooth" });
 	};
 
 	useEffect(() => {
@@ -52,26 +44,29 @@ const Header = () => {
 						large
 						changeColor
 						onClick={() => {
-							smoothScroll("#top", 1500);
+							smoothScroll("#top");
 						}}
 					>
 						Dennis Buchwald
 					</NavLink>
 					<Nav>
-						<NavLink
-							textColor={textColor}
-							changeColor
-							onClick={() => smoothScroll("#projekte", 1500)}
-						>
-							Projekte
-						</NavLink>
-						<NavLink
-							textColor={textColor}
-							changeColor
-							onClick={() => smoothScroll("#kontakt", 1500)}
-						>
-							Kontakt
-						</NavLink>
+						<StyledNavWrapper>
+							<NavLinkProject
+								textColor={textColor}
+								changeColor
+								onClick={() => smoothScroll("#projekte")}
+							>
+								Projekte
+							</NavLinkProject>
+							<NavLink
+								textColor={textColor}
+								changeColor
+								framed
+								onClick={() => smoothScroll("#kontakt")}
+							>
+								Kontakt
+							</NavLink>
+						</StyledNavWrapper>
 					</Nav>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
@@ -88,7 +83,7 @@ const Header = () => {
 					<NavLink
 						onClick={() => {
 							handleMenuClick();
-							smoothScroll("#projekte", 1000);
+							smoothScroll("#projekte");
 						}}
 					>
 						Projekte
@@ -97,7 +92,7 @@ const Header = () => {
 						framed
 						onClick={() => {
 							handleMenuClick();
-							smoothScroll("#kontakt", 1000);
+							smoothScroll("#kontakt");
 						}}
 					>
 						Kontakt
@@ -136,13 +131,14 @@ const StyledHeader = styled.header`
 const Nav = styled.nav`
 	align-items: center;
 	display: flex;
+	margin-right: 2rem;
 
 	& > *:not(:last-child) {
-		margin-right: 1rem;
+		margin-right: 0rem;
 	}
 
 	& > *:last-child {
-		margin-right: 2rem;
+		margin-right: 0rem;
 	}
 	@media screen and (max-width: 768px) {
 		display: ${(props) => (props.open ? "flex" : "none")};
@@ -151,11 +147,13 @@ const Nav = styled.nav`
 		align-items: center;
 		height: 100%;
 		width: 100%;
-
-		& > * {
-			text-align: center;
-		}
 	}
+`;
+
+const StyledNavWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 `;
 
 const NavLink = styled.button`
@@ -177,7 +175,33 @@ const NavLink = styled.button`
 	@media screen and (max-width: 768px) {
 		font-size: 1.5rem;
 		padding: 1rem;
-		width: 100%;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	}
+`;
+
+const NavLinkProject = styled.button`
+	margin-right: 1rem;
+	background: none;
+	border: none;
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	text-decoration: none;
+	cursor: pointer;
+	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
+	border: ${(props) => (props.framed ? "2px solid" : "none")};
+	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
+	border-radius: ${(props) => (props.framed ? "5px" : "0")};
+	outline: none;
+
+	&:hover {
+		color: ${(props) => props.theme.accentColor};
+	}
+
+	@media screen and (max-width: 768px) {
+		font-size: 1.5rem;
+		padding: 1rem;
 		text-align: center;
 		align-items: center;
 		justify-content: center;
