@@ -45,7 +45,6 @@ const StyledFooter = styled.footer`
 const FooterText = styled.p`
 	left: 0;
 	width: 100%;
-	border: 1px solid red;
 	margin-right: 1rem;
 	@media (max-width: 768px) {
 		margin-bottom: 0.5rem;
