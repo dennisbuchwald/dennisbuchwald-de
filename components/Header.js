@@ -23,6 +23,19 @@ const Header = () => {
 		}
 	};
 
+	const smoothScroll = (target, duration = 1500) => {
+		const element = document.querySelector(target);
+		element.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+		if (duration) {
+			setTimeout(() => {
+				window.history.pushState(null, "", target);
+			}, duration);
+		}
+	};
+
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
 		return () => {
@@ -34,22 +47,31 @@ const Header = () => {
 		<>
 			<HeaderContainer>
 				<StyledHeader backgroundColor={headerBackground}>
-					<Link href="/" passHref>
-						<NavLink textColor={textColor} large changeColor>
-							Dennis Buchwald
-						</NavLink>
-					</Link>
+					<NavLink
+						textColor={textColor}
+						large
+						changeColor
+						onClick={() => {
+							smoothScroll("#top", 1500);
+						}}
+					>
+						Dennis Buchwald
+					</NavLink>
 					<Nav>
-						<Link href="/#projekte" passHref>
-							<NavLink textColor={textColor} changeColor>
-								Projekte
-							</NavLink>
-						</Link>
-						<Link href="/#kontakt" passHref>
-							<NavLink textColor={textColor} changeColor framed>
-								Kontakt
-							</NavLink>
-						</Link>
+						<NavLink
+							textColor={textColor}
+							changeColor
+							onClick={() => smoothScroll("#projekte", 1500)}
+						>
+							Projekte
+						</NavLink>
+						<NavLink
+							textColor={textColor}
+							changeColor
+							onClick={() => smoothScroll("#kontakt", 1500)}
+						>
+							Kontakt
+						</NavLink>
 					</Nav>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
@@ -63,14 +85,23 @@ const Header = () => {
 
 			<MenuOverlay open={menuOpen}>
 				<Nav open={menuOpen}>
-					<Link href="/#projekte" passHref>
-						<NavLink onClick={handleMenuClick}>Projekte</NavLink>
-					</Link>
-					<Link href="/#kontakt" passHref>
-						<NavLink framed onClick={handleMenuClick}>
-							Kontakt
-						</NavLink>
-					</Link>
+					<NavLink
+						onClick={() => {
+							handleMenuClick();
+							smoothScroll("#projekte", 1000);
+						}}
+					>
+						Projekte
+					</NavLink>
+					<NavLink
+						framed
+						onClick={() => {
+							handleMenuClick();
+							smoothScroll("#kontakt", 1000);
+						}}
+					>
+						Kontakt
+					</NavLink>
 				</Nav>
 			</MenuOverlay>
 		</>
