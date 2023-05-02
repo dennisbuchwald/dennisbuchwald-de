@@ -40,11 +40,13 @@ const StyledFooter = styled.footer`
 const FooterText = styled.p`
 	margin-right: 1rem;
 	@media (max-width: 768px) {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
+		text-size: 1rem;
 	}
 `;
 
 const FooterLink = styled.button`
+	text-align: right;
 	background: none;
 	border: none;
 	color: ${(props) => props.theme.textColor};
@@ -56,9 +58,19 @@ const FooterLink = styled.button`
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
 	}
+
+	@media (max-width: 768px) {
+		right: 0;
+	}
 `;
 
 const StyledLink = styled.nav`
 	display: flex;
 	margin-right: 1rem;
+	@media (max-width: 768px) {
+		right: 0;
+		flex-direction: column;
+		justify-content: right;
+		text-align: right;
+	}
 `;

@@ -39,7 +39,7 @@ const Header = () => {
 		<>
 			<HeaderContainer>
 				<StyledHeader backgroundColor={headerBackground}>
-					<NavLink
+					<NavTitel
 						textColor={textColor}
 						large
 						changeColor
@@ -48,7 +48,7 @@ const Header = () => {
 						}}
 					>
 						Dennis Buchwald
-					</NavLink>
+					</NavTitel>
 					<NavDesktop>
 						<StyledNavWrapper>
 							<NavLinkProject
@@ -119,19 +119,20 @@ const StyledHeader = styled.header`
 	left: 0;
 	width: 100%;
 	display: flex;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 	justify-content: space-between;
 	align-items: center;
 	background-color: ${(props) => props.backgroundColor};
-	padding: 1rem;
+	padding: ßrem;
 	max-width: 100%;
-	margin: 0 auto;
 	transition: background-color 0.3s ease;
 `;
 
 const NavDesktop = styled.nav`
 	align-items: center;
 	display: flex;
-	margin-right: 2rem;
+	margin-right: 4rem;
 
 	& > *:not(:last-child) {
 		margin-right: 0rem;
@@ -206,6 +207,33 @@ const NavLink = styled.button`
 	}
 `;
 
+const NavTitel = styled.button`
+	margin-left: 4rem;
+	background: none;
+	border: none;
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	text-decoration: none;
+	cursor: pointer;
+	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
+	border: ${(props) => (props.framed ? "2px solid" : "none")};
+	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
+	border-radius: ${(props) => (props.framed ? "5px" : "0")};
+	outline: none;
+
+	&:hover {
+		color: ${(props) => props.theme.accentColor};
+	}
+
+	@media screen and (max-width: 768px) {
+		font-size: 1.5rem;
+		padding: 1rem;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	}
+`;
+
 const NavLinkProject = styled.button`
 	margin-right: 1rem;
 	background: none;
@@ -234,7 +262,7 @@ const NavLinkProject = styled.button`
 `;
 
 const MenuIcon = styled.button`
-	margin-right: 2rem;
+	margin-right: 4rem;
 	background: none;
 	border: none;
 	color: ${(props) => props.textColor};
@@ -253,7 +281,7 @@ const MenuOverlay = styled.div`
 	position: fixed;
 	top: 0;
 	right: ${(props) => (props.open ? "0" : "-100%")};
-	width: 40%;
+	width: 25%;
 	height: 100%;
 	background-color: ${(props) => props.theme.primaryColor};
 	transition: right 0.3s ease;
