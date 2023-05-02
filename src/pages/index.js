@@ -42,10 +42,6 @@ const Home = () => {
 							</Title>
 						</ContainerTyperWriter>
 						<Text>
-							Hallo liebes Schwarz- Team. Diese Website befindet sich aktuell
-							noch im Aufbau. 🙉
-						</Text>
-						<Text>
 							Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn. Ich
 							habe erfolgreich das Web Developer Bootcamp bei &quot;neue
 							fische&quot; absolviert! <br /> <br />
