@@ -105,6 +105,7 @@ const ProjectCard = styled.div`
   margin: 0 1rem 2rem;
   flex-basis: calc(30% - 2rem);
   max-width: calc(30% - 2rem);
+  min-width: 400px;
   box-sizing: border-box;
   @media (max-width: 1024px) {
     flex-basis: calc(45% - 2rem);

@@ -8,82 +8,6 @@ const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 6rem);
-  background-color: ${(props) => props.theme.secondaryColor};
-  color: ${(props) => props.theme.textColor};
-  padding: 1rem;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 400px;
-`;
-
-const Label = styled.label`
-  font-size: 1rem;
-`;
-
-const Input = styled.input`
-  padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.primaryColor};
-  border-radius: 4px;
-`;
-
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.primaryColor};
-  border-radius: 4px;
-`;
-
-const Button = styled.button`
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: ${(props) => props.theme.primaryColor};
-  color: ${(props) => props.theme.buttonTextColor};
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: ${(props) => props.theme.accentColor};
-  }
-`;
-
-const LinkedInLink = styled.a`
-  padding: 1rem;
-  margin-top: 1rem;
-  color: ${(props) => props.theme.textColor};
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${(props) => props.theme.accentColor};
-  }
-`;
-
-const GitHubLink = styled.a`
-  padding: 1rem;
-
-  margin-top: 1rem;
-  color: ${(props) => props.theme.textColor};
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${(props) => props.theme.accentColor};
-  }
-`;
-
-const LinkContainer = styled.section`
-  margin: 2rem;
-`;
-
 const Kontakt = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -120,12 +44,14 @@ const Kontakt = () => {
 
   return (
     <>
-      <Main>
-        <h1>Kontakt</h1>
-        <p>
+      <ContainerHeader>
+        <Title>Kontakt</Title>
+        <Text>
           Na, neugierig geworden oder eine Frage im Kopf? <br /> Schick mir ne
           Nachricht - ich freu mich drauf! 🚀😉
-        </p>
+        </Text>
+      </ContainerHeader>
+      <Main>
         {loading ? (
           <RotatingLines
             strokeColor="#ff4081"
@@ -201,3 +127,97 @@ const Kontakt = () => {
 };
 
 export default Kontakt;
+
+const ContainerHeader = styled.div`
+  text-align: center;
+  align-items: center;
+`;
+
+const Title = styled.h3`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+`;
+
+const Text = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 1000px;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 6rem);
+  background-color: ${(props) => props.theme.secondaryColor};
+  color: ${(props) => props.theme.textColor};
+  padding: 1rem;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 1000px;
+`;
+
+const Label = styled.label`
+  font-size: 1rem;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  border: 1px solid ${(props) => props.theme.primaryColor};
+  border-radius: 4px;
+`;
+
+const Textarea = styled.textarea`
+  padding: 0.5rem;
+  border: 1px solid ${(props) => props.theme.primaryColor};
+  border-radius: 4px;
+`;
+
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.buttonTextColor};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.accentColor};
+  }
+`;
+
+const LinkedInLink = styled.a`
+  padding: 1rem;
+  margin-top: 1rem;
+  color: ${(props) => props.theme.textColor};
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+
+const GitHubLink = styled.a`
+  padding: 1rem;
+
+  margin-top: 1rem;
+  color: ${(props) => props.theme.textColor};
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+
+const LinkContainer = styled.section`
+  margin: 2rem;
+`;
