@@ -43,7 +43,7 @@ const StyledFooter = styled.footer`
 `;
 
 const FooterText = styled.p`
-	left: -10;
+	left: 0;
 	width: 100%;
 	border: 1px solid red;
 	margin-right: 1rem;

@@ -97,7 +97,7 @@ const ProjectCardsContainer = styled.div`
 const ProjectCard = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: c enter;
 	align-items: center;
 	background-color: ${(props) => props.theme.cardBgColor};
 	color: ${(props) => props.theme.cardTextColor};
@@ -129,6 +129,7 @@ const ContainerHeader = styled.div`
 `;
 
 const Title = styled.h3`
+	text-align: center;
 	font-size: 2rem;
 	margin-bottom: 1rem;
 `;
@@ -144,6 +145,9 @@ const Text = styled.p`
 const Description = styled.p`
 	font-size: 1.5rem;
 	margin-bottom: 1.5rem;
+	@media (max-width: 768px) {
+		font-size: 1rem;
+	}
 `;
 
 const Tags = styled.div`
@@ -165,7 +169,6 @@ const Tag = styled.span`
 	font-size: 1.2rem;
 	padding: 0.5rem;
 	border-radius: 0.5rem;
-	margin-right: 0.5rem;
 `;
 
 const Links = styled.div`
@@ -182,7 +185,6 @@ const Links = styled.div`
 const Link = styled.a`
 	color: ${(props) => props.theme.linkColor};
 	font-size: 1.5rem;
-	margin-right: 1rem;
 	transition: color 0.2s ease-in-out;
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
@@ -190,5 +192,5 @@ const Link = styled.a`
 `;
 
 const Icon = styled.span`
-	margin-right: 0.5rem;
+	padding: 0.5rem;
 `;
