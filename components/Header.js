@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -51,6 +50,13 @@ const Header = () => {
 					</NavTitel>
 					<NavDesktop>
 						<StyledNavWrapper>
+							<NavLinkAbout
+								textColor={textColor}
+								changeColor
+								onClick={() => smoothScroll("#about")}
+							>
+								Über Mich
+							</NavLinkAbout>
 							<NavLinkProject
 								textColor={textColor}
 								changeColor
@@ -236,6 +242,33 @@ const NavTitel = styled.button`
 `;
 
 const NavLinkProject = styled.button`
+	margin-right: 1rem;
+	background: none;
+	border: none;
+	color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	text-decoration: none;
+	cursor: pointer;
+	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
+	border: ${(props) => (props.framed ? "2px solid" : "none")};
+	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
+	border-radius: ${(props) => (props.framed ? "5px" : "0")};
+	outline: none;
+
+	&:hover {
+		color: ${(props) => props.theme.accentColor};
+	}
+
+	@media screen and (max-width: 768px) {
+		font-size: 1.5rem;
+		padding: 1rem;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: ${(props) => (props.changeColor ? props.textColor : "white")};
+	}
+`;
+
+const NavLinkAbout = styled.button`
 	margin-right: 1rem;
 	background: none;
 	border: none;
