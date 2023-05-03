@@ -16,8 +16,12 @@ export const MenuItem = styled.button`
 	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
 	border-radius: ${(props) => (props.framed ? "5px" : "0")};
 
+	// Hover-Animation hinzufügen
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 
 	@media screen and (max-width: 768px) {

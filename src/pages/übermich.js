@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 
-import profilbild from "../../public/profilbild_hover.png";
+import profilbild from "../../public/profilbild.png";
+import profilbildHover from "../../public/profilbild_hover.png";
 
 const ÜberMich = () => {
 	return (
@@ -33,12 +34,23 @@ const ÜberMich = () => {
 							</TypedTitle>
 						</Title>
 					</ContainerTyperWriter>
-					<ProfileImage
-						src={profilbild}
-						alt="Profilbild"
-						width={500}
-						height={500}
-					/>
+					<ProfileImage>
+						<Image
+							src={profilbild}
+							alt="Profilbild"
+							layout="fill"
+							objectFit="cover"
+							priority
+							sizes="100vw"
+						/>
+						<Image
+							src={profilbildHover}
+							alt="Profilbild Hover"
+							layout="fill"
+							objectFit="cover"
+							sizes="100vw"
+						/>
+					</ProfileImage>
 				</MainContainer>
 
 				<TextContainer>
@@ -78,11 +90,42 @@ const MainContainer = styled.section`
 	}
 `;
 
-const ProfileImage = styled(Image)`
-	width: 50%;
-	height: auto;
-	max-width: 500px;
-	max-height: 500px;
+const ProfileImage = styled.div`
+	width: 500px;
+	height: 500px;
+	position: relative;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 0.3s ease;
+	}
+
+	img:first-child {
+		z-index: 1;
+	}
+
+	img:last-child {
+		opacity: 0;
+	}
+
+	&:hover img:first-child {
+		opacity: 0;
+		transform: translateY(-10px) scale(1);
+	}
+
+	&:hover img:last-child {
+		opacity: 1;
+		transform: translateY(-10px) scale(1);
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 100%;
+		height: 0;
+		padding-bottom: 100%;
+	}
 `;
 
 const TextContainer = styled.section`

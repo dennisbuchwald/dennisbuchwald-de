@@ -197,8 +197,11 @@ const Button = styled.button`
 	cursor: pointer;
 	transition: all 0.3s ease;
 
+	transition: transform 0.3s ease;
+
 	&:hover {
 		background-color: ${(props) => props.theme.accentColor};
+		transform: translateY(-2.5px);
 	}
 `;
 
@@ -206,10 +209,11 @@ const LinkedInLink = styled.a`
 	padding: 1rem;
 	margin-top: 1rem;
 	color: ${(props) => props.theme.textColor};
-	transition: color 0.3s ease;
+	transition: color 0.3s ease, transform 0.3s ease;
 
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 `;
 
@@ -218,10 +222,11 @@ const GitHubLink = styled.a`
 
 	margin-top: 1rem;
 	color: ${(props) => props.theme.textColor};
-	transition: color 0.3s ease;
+	transition: color 0.3s ease, transform 0.3s ease;
 
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 `;
 

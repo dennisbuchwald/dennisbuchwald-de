@@ -6,7 +6,7 @@ const projects = [
 	{
 		title: "Pokemon Battler",
 		description:
-			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und viel Sp...",
+			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und..",
 		tags: ["Next.js", "React", "Style Components"],
 		githubLink:
 			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
@@ -185,9 +185,10 @@ const Links = styled.div`
 const Link = styled.a`
 	color: ${(props) => props.theme.linkColor};
 	font-size: 1.5rem;
-	transition: color 0.2s ease-in-out;
+	transition: color 0.3s ease, transform 0.3s ease;
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 `;
 

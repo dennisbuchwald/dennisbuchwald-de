@@ -54,8 +54,6 @@ const Header = () => {
 		target.scrollIntoView({ behavior: "smooth" });
 	};
 
-	const mobileTextColor = menuOpen ? "white" : textColor;
-
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
 		return () => {
@@ -93,11 +91,11 @@ const Header = () => {
 							))}
 						</StyledNavWrapper>
 					</NavDesktop>
-					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
+					<MenuIcon onClick={handleMenuClick}>
 						{menuOpen ? (
-							<FontAwesomeIcon icon={faTimes} />
+							<ColoredFontAwesomeIcon textColor={textColor} icon={faTimes} />
 						) : (
-							<FontAwesomeIcon icon={faBars} />
+							<ColoredFontAwesomeIcon textColor={textColor} icon={faBars} />
 						)}
 					</MenuIcon>
 				</StyledHeader>
@@ -127,6 +125,10 @@ const Header = () => {
 };
 
 export default Header;
+
+const ColoredFontAwesomeIcon = styled(FontAwesomeIcon)`
+	color: ${(props) => props.textColor};
+`;
 
 const HeaderContainer = styled.div`
 	position: absolute;
@@ -217,8 +219,11 @@ const NavTitel = styled.button`
 	border-radius: ${(props) => (props.framed ? "5px" : "0")};
 	outline: none;
 
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 
 	@media screen and (max-width: 768px) {
