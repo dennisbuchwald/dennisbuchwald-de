@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import ÜberMich from "./übermich.js";
 import Projekte from "./projekte";
 import Kontakt from "./kontakt";
-import Typewriter from "typewriter-effect";
+import Start from "./start";
 
 const Home = () => {
 	return (
@@ -16,9 +16,13 @@ const Home = () => {
 			</Head>
 			<Header />
 			<PageContent>
-				<SectionHome id="about">
-					<ÜberMich />
+				<SectionHome>
+					<Start />
 				</SectionHome>
+				<a id="about" />
+				<Section>
+					<ÜberMich />
+				</Section>
 				<a id="projekte" />
 				<Section>
 					<Projekte />
@@ -49,7 +53,7 @@ const SectionHome = styled.section`
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background-color: ${(props) => props.theme.secondaryColor};
+	// background-color: ${(props) => props.theme.secondaryColor};
 	color: ${(props) => props.theme.textColor};
 	padding: 2rem;
 	border-radius: 4rem;

@@ -40,7 +40,7 @@ const Header = () => {
 	};
 
 	const listenScrollEvent = () => {
-		if (window.scrollY > 50) {
+		if (window.scrollY > 1400) {
 			setHeaderBackground("#000000");
 			setTextColor("white");
 		} else {
