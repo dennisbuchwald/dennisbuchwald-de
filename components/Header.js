@@ -54,8 +54,6 @@ const Header = () => {
 		target.scrollIntoView({ behavior: "smooth" });
 	};
 
-	const mobileTextColor = menuOpen ? "white" : textColor;
-
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
 		return () => {
@@ -217,8 +215,11 @@ const NavTitel = styled.button`
 	border-radius: ${(props) => (props.framed ? "5px" : "0")};
 	outline: none;
 
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 
 	@media screen and (max-width: 768px) {

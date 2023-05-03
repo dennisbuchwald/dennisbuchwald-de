@@ -186,8 +186,11 @@ const Link = styled.a`
 	color: ${(props) => props.theme.linkColor};
 	font-size: 1.5rem;
 	transition: color 0.2s ease-in-out;
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 `;
 
