@@ -6,7 +6,7 @@ const projects = [
 	{
 		title: "Pokemon Battler",
 		description:
-			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und viel Sp...",
+			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und...",
 		tags: ["Next.js", "React", "Style Components"],
 		githubLink:
 			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
