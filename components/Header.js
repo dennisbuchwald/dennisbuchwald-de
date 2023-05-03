@@ -94,9 +94,9 @@ const Header = () => {
 					</NavDesktop>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
-							<FontAwesomeIcon icon={faTimes} />
+							<StyledFontAwesomeIcon icon={faTimes} textColor={textColor} />
 						) : (
-							<FontAwesomeIcon icon={faBars} />
+							<StyledFontAwesomeIcon icon={faBars} textColor={textColor} />
 						)}
 					</MenuIcon>
 				</StyledHeader>
@@ -146,7 +146,7 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	background-color: ${(props) => props.backgroundColor};
-	padding: ßrem;
+	padding: 1rem;
 	max-width: 100%;
 	transition: background-color 0.3s ease;
 `;
@@ -248,6 +248,10 @@ const MenuIcon = styled.button`
 		display: block;
 		margin-right: 2rem;
 	}
+`;
+
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+	color: ${(props) => props.textColor};
 `;
 
 const MenuOverlay = styled.div`
