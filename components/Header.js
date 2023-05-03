@@ -126,10 +126,6 @@ const Header = () => {
 
 export default Header;
 
-const ColoredFontAwesomeIcon = styled(FontAwesomeIcon)`
-	color: ${(props) => props.textColor};
-`;
-
 const HeaderContainer = styled.div`
 	position: absolute;
 	top: 0;
