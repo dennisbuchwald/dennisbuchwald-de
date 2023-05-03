@@ -54,8 +54,6 @@ const Header = () => {
 		target.scrollIntoView({ behavior: "smooth" });
 	};
 
-	const mobileTextColor = menuOpen ? "white" : textColor;
-
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
 		return () => {
@@ -77,6 +75,7 @@ const Header = () => {
 					>
 						Dennis Buchwald
 					</NavTitel>
+
 					<NavDesktop>
 						<StyledNavWrapper>
 							{menuItems.map((item) => (
@@ -95,9 +94,9 @@ const Header = () => {
 					</NavDesktop>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
-							<FontAwesomeIcon icon={faTimes} />
+							<StyledFontAwesomeIcon icon={faTimes} textColor={textColor} />
 						) : (
-							<FontAwesomeIcon icon={faBars} />
+							<StyledFontAwesomeIcon icon={faBars} textColor={textColor} />
 						)}
 					</MenuIcon>
 				</StyledHeader>
@@ -136,7 +135,7 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledHeader = styled.header`
-	z-index: 1000;
+	z-index: 999;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -147,7 +146,7 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	background-color: ${(props) => props.backgroundColor};
-	padding: ßrem;
+	padding: 1rem;
 	max-width: 100%;
 	transition: background-color 0.3s ease;
 `;
@@ -217,8 +216,11 @@ const NavTitel = styled.button`
 	border-radius: ${(props) => (props.framed ? "5px" : "0")};
 	outline: none;
 
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 
 	@media screen and (max-width: 768px) {
@@ -241,11 +243,15 @@ const MenuIcon = styled.button`
 	font-size: 1.5rem;
 	outline: none;
 	display: none;
-	z-index: 1000;
+	z-index: 1001;
 	@media screen and (max-width: 768px) {
 		display: block;
 		margin-right: 2rem;
 	}
+`;
+
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+	color: ${(props) => props.textColor};
 `;
 
 const MenuOverlay = styled.div`

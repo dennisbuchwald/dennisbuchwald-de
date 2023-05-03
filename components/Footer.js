@@ -62,8 +62,11 @@ const FooterLink = styled.button`
 	margin: 0 1rem;
 	outline: none;
 
+	transition: transform 0.3s ease;
+
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
+		transform: translateY(-5px);
 	}
 
 	@media (max-width: 768px) {
