@@ -91,11 +91,11 @@ const Header = () => {
 							))}
 						</StyledNavWrapper>
 					</NavDesktop>
-					<MenuIcon onClick={handleMenuClick}>
+					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
 						{menuOpen ? (
-							<ColoredFontAwesomeIcon textColor={textColor} icon={faTimes} />
+							<FontAwesomeIcon icon={faTimes} />
 						) : (
-							<ColoredFontAwesomeIcon textColor={textColor} icon={faBars} />
+							<FontAwesomeIcon icon={faBars} />
 						)}
 					</MenuIcon>
 				</StyledHeader>
@@ -138,7 +138,7 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledHeader = styled.header`
-	z-index: 1000;
+	z-index: 999;
 	position: fixed;
 	top: 0;
 	left: 0;
