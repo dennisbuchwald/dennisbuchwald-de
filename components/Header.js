@@ -2,6 +2,31 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { MenuItem } from "../components/MenuItem";
+
+const menuItems = [
+	{
+		id: "about",
+		text: "Über Mich",
+		onClick: "#about",
+		framed: false,
+		large: false,
+	},
+	{
+		id: "projekte",
+		text: "Projekte",
+		onClick: "#projekte",
+		framed: false,
+		large: false,
+	},
+	{
+		id: "kontakt",
+		text: "Kontakt",
+		onClick: "#kontakt",
+		framed: true,
+		large: false,
+	},
+];
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -10,6 +35,8 @@ const Header = () => {
 
 	const handleMenuClick = () => {
 		setMenuOpen(!menuOpen);
+		setHeaderBackground("#000000");
+		setTextColor("white");
 	};
 
 	const listenScrollEvent = () => {
@@ -26,6 +53,8 @@ const Header = () => {
 		const target = document.querySelector(targetSelector);
 		target.scrollIntoView({ behavior: "smooth" });
 	};
+
+	const mobileTextColor = menuOpen ? "white" : textColor;
 
 	useEffect(() => {
 		window.addEventListener("scroll", listenScrollEvent);
@@ -50,28 +79,18 @@ const Header = () => {
 					</NavTitel>
 					<NavDesktop>
 						<StyledNavWrapper>
-							<NavLinkAbout
-								textColor={textColor}
-								changeColor
-								onClick={() => smoothScroll("#about")}
-							>
-								Über Mich
-							</NavLinkAbout>
-							<NavLinkProject
-								textColor={textColor}
-								changeColor
-								onClick={() => smoothScroll("#projekte")}
-							>
-								Projekte
-							</NavLinkProject>
-							<NavLink
-								textColor={textColor}
-								changeColor
-								framed
-								onClick={() => smoothScroll("#kontakt")}
-							>
-								Kontakt
-							</NavLink>
+							{menuItems.map((item) => (
+								<MenuItem
+									key={item.id}
+									textColor={textColor}
+									changeColor
+									framed={item.framed}
+									large={item.large}
+									onClick={() => smoothScroll(item.onClick)}
+								>
+									{item.text}
+								</MenuItem>
+							))}
 						</StyledNavWrapper>
 					</NavDesktop>
 					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
@@ -86,23 +105,21 @@ const Header = () => {
 
 			<MenuOverlay open={menuOpen}>
 				<NavMobil open={menuOpen}>
-					<NavLink
-						onClick={() => {
-							handleMenuClick();
-							smoothScroll("#projekte");
-						}}
-					>
-						Projekte
-					</NavLink>
-					<NavLink
-						framed
-						onClick={() => {
-							handleMenuClick();
-							smoothScroll("#kontakt");
-						}}
-					>
-						Kontakt
-					</NavLink>
+					{menuItems.map((item) => (
+						<MenuItem
+							key={item.id}
+							textColor={textColor}
+							changeColor
+							framed={item.framed}
+							large={item.large}
+							onClick={() => {
+								handleMenuClick();
+								smoothScroll(item.onClick);
+							}}
+						>
+							{item.text}
+						</MenuItem>
+					))}
 				</NavMobil>
 			</MenuOverlay>
 		</>
@@ -187,32 +204,6 @@ const StyledNavWrapper = styled.div`
 	width: 100%;
 `;
 
-const NavLink = styled.button`
-	background: none;
-	border: none;
-	color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	text-decoration: none;
-	cursor: pointer;
-	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
-	border: ${(props) => (props.framed ? "2px solid" : "none")};
-	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
-	border-radius: ${(props) => (props.framed ? "5px" : "0")};
-	outline: none;
-
-	&:hover {
-		color: ${(props) => props.theme.accentColor};
-	}
-
-	@media screen and (max-width: 768px) {
-		font-size: 1.5rem;
-		padding: 0.5rem;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	}
-`;
-
 const NavTitel = styled.button`
 	margin-left: 4rem;
 	background: none;
@@ -232,60 +223,6 @@ const NavTitel = styled.button`
 
 	@media screen and (max-width: 768px) {
 		margin-left: 2rem;
-		font-size: 1.5rem;
-		padding: 1rem;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	}
-`;
-
-const NavLinkProject = styled.button`
-	margin-right: 1rem;
-	background: none;
-	border: none;
-	color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	text-decoration: none;
-	cursor: pointer;
-	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
-	border: ${(props) => (props.framed ? "2px solid" : "none")};
-	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
-	border-radius: ${(props) => (props.framed ? "5px" : "0")};
-	outline: none;
-
-	&:hover {
-		color: ${(props) => props.theme.accentColor};
-	}
-
-	@media screen and (max-width: 768px) {
-		font-size: 1.5rem;
-		padding: 1rem;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	}
-`;
-
-const NavLinkAbout = styled.button`
-	margin-right: 1rem;
-	background: none;
-	border: none;
-	color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	text-decoration: none;
-	cursor: pointer;
-	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
-	border: ${(props) => (props.framed ? "2px solid" : "none")};
-	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
-	border-radius: ${(props) => (props.framed ? "5px" : "0")};
-	outline: none;
-
-	&:hover {
-		color: ${(props) => props.theme.accentColor};
-	}
-
-	@media screen and (max-width: 768px) {
 		font-size: 1.5rem;
 		padding: 1rem;
 		text-align: center;
