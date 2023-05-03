@@ -40,7 +40,11 @@ const Header = () => {
 	};
 
 	const listenScrollEvent = () => {
-		if (window.scrollY > 1400) {
+		const aboutSection = document.getElementById("about");
+		const sectionPosition = aboutSection.getBoundingClientRect().top;
+		const offset = 85;
+
+		if (sectionPosition <= offset) {
 			setHeaderBackground("#000000");
 			setTextColor("white");
 		} else {
