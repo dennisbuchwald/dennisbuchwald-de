@@ -44,12 +44,12 @@ const ÜberMich = () => {
 				<TextContainer>
 					<Text>
 						Hey, ich bin ein kreativer Frontend-Entwickler aus Heilbronn. Ich
-						habe erfolgreich das Web Developer Bootcamp bei "neue fische"
-						absolviert! <br /> <br />
+						habe erfolgreich das Web Developer Bootcamp bei &quot;neue
+						fische&quot; absolviert! <br /> <br />
 						Wofür brenne ich? Für die Entwicklung von Webanwendungen, die durch
 						ihre Optik und Funktionalität glänzen. Eines meiner Highlights
 						während des Bootcamps war die Entwicklung meines Capstone-Projekts
-						"Pokemon Battler" – ein Projekt, das meine Hingabe für die
+						&quot;Pokemon Battler&quot; – ein Projekt, das meine Hingabe für die
 						Webentwicklung perfekt zum Ausdruck bringt!
 					</Text>
 				</TextContainer>
@@ -60,12 +60,20 @@ const ÜberMich = () => {
 
 export default ÜberMich;
 
+const Container = styled.div`
+	width: 100%;
+	display: grid;
+	grid-template-rows: auto auto;
+	align-items: center;
+`;
+
 const MainContainer = styled.section`
 	display: flex;
 	width: 100%;
-	justify-content: space-arround;
+	justify-content: space-evenly;
+	align-items: center;
 	@media screen and (max-width: 768px) {
-		flex-direction: column;
+		flex-direction: column-reverse;
 		align-items: center;
 	}
 `;
@@ -78,17 +86,17 @@ const ProfileImage = styled(Image)`
 `;
 
 const TextContainer = styled.section`
-	width: 100%;
-`;
-
-const Container = styled.div`
-	display: grid;
-	grid-template-rows: auto auto;
+	width: 80%;
+	display: flex;
 	align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 `;
 
 const ContainerTyperWriter = styled.div`
-	width: 50%;
+	width: 400px;
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: left;
@@ -109,17 +117,23 @@ const Text = styled.p`
 	font-size: 1.2rem;
 	line-height: 1.6;
 	width: 100%;
-	text-align: justify;
+	text-align: left;
 	margin-bottom: 1.5rem;
 `;
 
 const TypedTitle = styled.span`
+	position: relative;
 	font-size: 2rem;
 	font-weight: bold;
 	color: ${(props) => props.theme.textColor};
 	margin-bottom: 1.5rem;
+	left: 0;
 	@media screen and (max-width: 768px) {
-		font-size: 1.8rem;
+		font-size: 1.4rem;
+		left: 0;
+		transform: none;
+		margin-bottom: 2rem;
+		text-align: center;
 	}
 `;
 
