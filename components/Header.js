@@ -75,6 +75,7 @@ const Header = () => {
 					>
 						Dennis Buchwald
 					</NavTitel>
+
 					<NavDesktop>
 						<StyledNavWrapper>
 							{menuItems.map((item) => (
@@ -242,7 +243,7 @@ const MenuIcon = styled.button`
 	font-size: 1.5rem;
 	outline: none;
 	display: none;
-	z-index: 1000;
+	z-index: 1001;
 	@media screen and (max-width: 768px) {
 		display: block;
 		margin-right: 2rem;

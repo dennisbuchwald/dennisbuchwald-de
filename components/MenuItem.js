@@ -17,7 +17,6 @@ export const MenuItem = styled.button`
 	border-radius: ${(props) => (props.framed ? "5px" : "0")};
 
 	// Hover-Animation hinzufügen
-	transition: transform 0.3s ease;
 
 	&:hover {
 		color: ${(props) => props.theme.accentColor};
