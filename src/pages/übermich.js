@@ -22,10 +22,15 @@ const ÜberMich = () => {
             </Text>
           </TextContainer>
           <ProfileImage>
-            <Image src={profilbild} alt="Profilbild" width={500} height={500} />
+            <Image
+              src={profilbild}
+              alt="Dennis Buchwald"
+              width={500}
+              height={500}
+            />
             <Image
               src={profilbildHover}
-              alt="Profilbild Hover"
+              alt="Dennis Buchwald Hover"
               width={500}
               height={500}
             />
