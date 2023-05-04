@@ -28,7 +28,7 @@ const projects = [
       "Auch diese Webseite ist ein komplett selbstgecodetes Projekt von mir und soll mein Web-Handwerk zur Scha...",
     tags: ["Next.js", "React", "Vercel", "Style Components"],
     githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
-    demoLink: "https://pomodoro-app-amber-two.vercel.app",
+    demoLink: "https://www.dennisbuchwald.de",
     iphoneMockup: "/mockup-portfolio-website.png",
   },
   {
@@ -37,7 +37,7 @@ const projects = [
       "Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
     tags: ["Next.js", "React", "Style Components"],
     githubLink: "https://github.com/dennisbuchwald/dennisbuchwald-de",
-    demoLink: "https://www.dennisbuchwald.de",
+    demoLink: "https://pomodoro-app-amber-two.vercel.app",
     iphoneMockup: "/mockup-pomodoro-app.png",
   },
 ];
