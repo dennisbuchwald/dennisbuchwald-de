@@ -23,12 +23,21 @@ const projects = [
     iphoneMockup: "/mockup-pokedex-react-app.png",
   },
   {
+    title: "Portfolio Website",
+    description:
+      "Auch diese Webseite ist ein komplett selbstgecodetes Projekt von mir und soll mein Web-Handwerk zur Scha...",
+    tags: ["Next.js", "React", "Vercel", "Style Components"],
+    githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
+    demoLink: "https://pomodoro-app-amber-two.vercel.app",
+    iphoneMockup: "/mockup-portfolio-website.png",
+  },
+  {
     title: "Pomodoro App",
     description:
       "Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
     tags: ["Next.js", "React", "Style Components"],
-    githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
-    demoLink: "https://pomodoro-app-amber-two.vercel.app",
+    githubLink: "https://github.com/dennisbuchwald/dennisbuchwald-de",
+    demoLink: "https://www.dennisbuchwald.de",
     iphoneMockup: "/mockup-pomodoro-app.png",
   },
 ];
