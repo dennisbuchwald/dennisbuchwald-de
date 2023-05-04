@@ -39,7 +39,7 @@ const Container = styled.div`
 `;
 
 const ContainerTyperWriter = styled.div`
-  width: 80vh;
+  width:100vh;
   top: -4rem;
   position: relative;
   display: flex;
