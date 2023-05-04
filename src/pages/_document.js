@@ -32,12 +32,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
-          <link rel="icon" href="/icon.ico" />
+          <link rel="icon" href="/icon.png" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=LeagueSpartan&family=FiraCode&display=swap"
-            rel="stylesheet"
-          />
         </Head>
         <body>
           <Main />

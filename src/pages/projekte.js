@@ -103,7 +103,7 @@ const ProjectCard = styled.div`
   color: ${(props) => props.theme.cardTextColor};
   padding: 2rem;
   border-radius: 4rem;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
   margin: 0 1rem 2rem;
   flex-basis: calc(30% - 2rem);
   max-width: calc(30% - 2rem);
@@ -175,10 +175,12 @@ const Links = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 0.5rem;
   }
 `;
 

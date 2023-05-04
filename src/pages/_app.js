@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Head from "next/head";
 import "../../public/fonts.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -54,7 +57,7 @@ function MyApp({ Component, pageProps }) {
           name="description"
           content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn."
         />
-        <link rel="icon" href="/icon.icos" />
+        <link rel="icon" href="/icon.png" />
       </Head>
       <Component {...pageProps} />
     </ThemeProvider>
