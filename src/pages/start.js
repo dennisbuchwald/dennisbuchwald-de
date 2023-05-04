@@ -53,7 +53,7 @@ const ContainerTyperWriter = styled.div`
     display: flex;
     justify-content: left;
     text-align: left;
-  }
+  }1
 `;
 
 const Title = styled.h1`
