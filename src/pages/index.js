@@ -13,6 +13,10 @@ const Home = () => {
       <a id="top" />
       <Head>
         <title>Dennis Buchwald</title>
+        <meta
+          name="description"
+          content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn. Entdecken Sie meine Projekte und erfahren Sie mehr über mich und meine Arbeit."
+        />
       </Head>
       <Header />
       <PageContent>

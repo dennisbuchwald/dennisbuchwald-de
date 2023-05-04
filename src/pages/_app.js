@@ -50,7 +50,11 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/icon.ico" />
+        <meta
+          name="description"
+          content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn."
+        />
+        <link rel="icon" href="/icon.icos" />
       </Head>
       <Component {...pageProps} />
     </ThemeProvider>
