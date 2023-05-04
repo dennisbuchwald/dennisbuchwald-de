@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="/icon.png" />
+          <link rel="icon" href="/icon.ico" />
         </Head>
         <body>
           <Main />
