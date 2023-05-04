@@ -1,6 +1,6 @@
 # Dennis Buchwald - Personal Website
 
-This is the personal [website](https://dennisbuchwald.de/) of me.
+This is the personal [website](https://www.dennisbuchwald.de) of me.
 
 ## Technologies and Tools
 
