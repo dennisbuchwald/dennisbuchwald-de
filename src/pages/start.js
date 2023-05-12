@@ -28,7 +28,6 @@ const Start = () => {
                   .pauseFor(2000)
                   .deleteChars(13)
                   .typeString(typedStrings[4])
-
                   .start();
               }}
             />
@@ -82,7 +81,7 @@ const TypedTitle = styled.span`
 `;
 
 const typedStrings = [
-  "Hallo!",
+  "Hallo! 👋",
   "Mein Name ist Dennis.",
   "Ich bin ein Freigeist.",
   "Problemlöser.",
