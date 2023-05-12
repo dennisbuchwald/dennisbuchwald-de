@@ -81,7 +81,7 @@ const TypedTitle = styled.span`
 `;
 
 const typedStrings = [
-  "Hallo! 👋",
+  "Hallo!",
   "Mein Name ist Dennis.",
   "Ich bin ein Freigeist.",
   "Problemlöser.",
