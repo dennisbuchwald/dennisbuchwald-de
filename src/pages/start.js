@@ -17,11 +17,18 @@ const Start = () => {
                 typewriter
                   .typeString(typedStrings[0])
                   .pauseFor(2000)
-                  .deleteChars(10)
+                  .deleteChars(20)
                   .typeString(typedStrings[1])
                   .pauseFor(2000)
-                  .deleteChars(13)
+                  .deleteChars(21)
                   .typeString(typedStrings[2])
+                  .pauseFor(2000)
+                  .deleteChars(10)
+                  .typeString(typedStrings[3])
+                  .pauseFor(2000)
+                  .deleteChars(13)
+                  .typeString(typedStrings[4])
+
                   .start();
               }}
             />
@@ -39,11 +46,10 @@ const Container = styled.div`
 `;
 
 const ContainerTyperWriter = styled.div`
-  width: 100vh;
-  top: -4rem;
+  width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: left;
   text-align: left;
   @media screen and (max-width: 768px) {
@@ -53,7 +59,7 @@ const ContainerTyperWriter = styled.div`
     display: flex;
     justify-content: left;
     text-align: left;
-  }1
+  }
 `;
 
 const Title = styled.h1`
@@ -69,16 +75,16 @@ const TypedTitle = styled.span`
   margin-bottom: 1.5rem;
   left: 0;
   @media screen and (max-width: 768px) {
-    position: relative;
     font-size: 2rem;
     left: 0;
-    transform: none;
     text-align: left;
   }
 `;
 
 const typedStrings = [
-  "Hallo! <br />Mein Name ist Dennis.<br />Ich bin ein Freigeist.",
+  "Hallo!",
+  "Mein Name ist Dennis.",
+  "Ich bin ein Freigeist.",
   "Problemlöser.",
   "Webentwickler!",
 ];
