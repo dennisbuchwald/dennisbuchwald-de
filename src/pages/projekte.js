@@ -32,6 +32,15 @@ const projects = [
     iphoneMockup: "/mockup-portfolio-website.png",
   },
   {
+    title: "Wetter App",
+    description:
+      "Eine demonstrative App, bei der ich mit einer API arbeite und verschiedenste Werte davon verwende.",
+    tags: ["Next.js", "React", "OpenWeatherMap API", "Tailwind CSS"],
+    githubLink: "https://github.com/dennisbuchwald/nextjs-wheaterapp",
+    demoLink: "https://wetter.dennisbuchwald.de",
+    iphoneMockup: "/mockup-wetter-app.png",
+  },
+  {
     title: "Pomodoro App",
     description:
       "Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
