@@ -58,6 +58,7 @@ const ContainerTyperWriter = styled.div`
     display: flex;
     justify-content: left;
     text-align: left;
+    margin-top: -150px;
   }
 `;
 
