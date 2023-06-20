@@ -115,7 +115,7 @@ const ProjectCardsContainer = styled.div`
 const ProjectCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: c enter;
+  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.cardTextColor};
@@ -125,13 +125,14 @@ const ProjectCard = styled.div`
   margin: 0 1rem 2rem;
   flex-basis: calc(30% - 2rem);
   max-width: calc(30% - 2rem);
-  min-width: 400px;
+  min-width: 480px;
   box-sizing: border-box;
+  text-align: center;
 
   @media (max-width: 1024px) {
     flex-basis: calc(45% - 2rem);
     max-width: calc(45% - 2rem);
-    min-width: 300px;
+    min-width: 480px;
     border-radius: 3rem;
   }
   @media (max-width: 768px) {
