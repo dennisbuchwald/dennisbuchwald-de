@@ -243,13 +243,14 @@ const MenuIcon = styled.button`
   border: none;
   color: ${(props) => props.textColor};
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   outline: none;
   display: none;
   z-index: 1000;
   @media screen and (max-width: 768px) {
     display: block;
     margin-right: 2rem;
+    font-size: 1.5rem;
   }
 `;
 
