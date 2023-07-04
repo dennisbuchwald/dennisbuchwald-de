@@ -76,6 +76,7 @@ const Impressum = () => {
 export default Impressum;
 
 const Main = styled.main`
+	margin-top: 100px;
 	margin: 1rem;
 	display: flex;
 	flex-direction: column;
