@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Header from "../../components/Header";
+import Header2 from "../../components/Header2";
 import Footer from "../../components/Footer";
 
 const Impressum = () => {
@@ -11,7 +11,7 @@ const Impressum = () => {
 
 	return (
 		<>
-			<Header />
+			<Header2 />
 			<Main>
 				<h1>Impressum</h1>
 				<h2>Angaben gemäß § 5 TMG:</h2>
@@ -76,6 +76,7 @@ const Impressum = () => {
 export default Impressum;
 
 const Main = styled.main`
+	border-radius: 4rem;
 	margin-top: 100px;
 	margin: 1rem;
 	display: flex;
@@ -87,5 +88,4 @@ const Main = styled.main`
 	color: ${(props) => props.theme.textColor};
 	padding: 2rem;
 		@media screen and (max-width: 768px) {
-		margin-top: 100px;
 `;

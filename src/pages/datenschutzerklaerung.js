@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Header from "../../components/Header";
+import Header2 from "../../components/Header2";
 import Footer from "../../components/Footer";
 
 const Datenschutzerklaerung = () => {
@@ -8,7 +8,7 @@ const Datenschutzerklaerung = () => {
 
 	return (
 		<>
-			<Header />
+			<Header2 />
 			<Main>
 				<h1>Datenschutzerklärung</h1>
 				<p>
@@ -47,6 +47,7 @@ const Datenschutzerklaerung = () => {
 export default Datenschutzerklaerung;
 
 const Main = styled.main`
+border-radius: 4rem;
 		margin-top: 100px;
 	margin: 1rem;
 	display: flex;
