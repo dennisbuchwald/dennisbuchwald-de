@@ -5,10 +5,6 @@ import "../../public/fonts.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
-import ReactGA from "react-ga";
-
-ReactGA.initialize("G-2Y9HRYRMGP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const GlobalStyle = createGlobalStyle`
   body {

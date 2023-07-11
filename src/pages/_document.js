@@ -34,22 +34,6 @@ export default class MyDocument extends Document {
 				<Head>
 					<link rel="icon" href="/icon.png" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" />
-					{/* Global Site Tag (gtag.js) - Google Analytics */}
-					<script
-						async
-						src={`https://www.googletagmanager.com/gtag/js?id=G-EJ24SC2Z42`}
-					></script>
-					<script
-						dangerouslySetInnerHTML={{
-							__html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-EJ24SC2Z42');
-              `,
-						}}
-					/>
 				</Head>
 				<body>
 					<Main />
