@@ -20,6 +20,13 @@ const menuItems = [
 		large: false,
 	},
 	{
+		id: "youtube",
+		text: "Youtube",
+		onClick: "#youtube",
+		framed: false,
+		large: false,
+	},
+	{
 		id: "kontakt",
 		text: "Kontakt",
 		onClick: "#kontakt",

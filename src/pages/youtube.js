@@ -1,63 +1,41 @@
 import styled from "styled-components";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
+import { useWindowSize } from "react-use";
 
 const projects = [
 	{
-		title: "Pokemon Battler",
-		description:
-			"Dieses Projekt entstand im Rahmen meines Capstone-Projekts bei neueFische. Schaut es euch an und...",
-		tags: ["Next.js", "React", "Style Components"],
-		githubLink:
-			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
-		demoLink: "https://pokemon-battler.dennisbuchwald.de",
-		iphoneMockup: "/mockup-pokemon-battler.png",
-	},
-	{
-		title: "Kanto Pokedex",
-		description:
-			"Dieses Projekt war die Vorstufe zu meinem Capstone-Projekt und entstand während eines Coding-Wochenendes.",
-		tags: ["React", "PokéAPI", "Photoshop"],
-		githubLink: "https://github.com/dennisbuchwald/pokedex-react-app",
-		demoLink: "https://pokedex.dennisbuchwald.de/",
-		iphoneMockup: "/mockup-pokedex-react-app.png",
-	},
-	{
-		title: "Portfolio Website",
-		description:
-			"Auch diese Webseite ist ein komplett selbstgecodetes Projekt von mir und soll mein Web-Handwerk zur Scha...",
-		tags: ["Next.js", "React", "Vercel", "Style Components"],
-		githubLink: "https://github.com/dennisbuchwald/dennisbuchwald-de",
-		demoLink: "https://www.dennisbuchwald.de",
-		iphoneMockup: "/mockup-portfolio-website.png",
-	},
-	{
-		title: "Wetter App",
-		description:
-			"Eine demonstrative App, bei der ich mit einer API arbeite und verschiedenste Werte davon verwende.",
-		tags: ["Next.js", "React", "OpenWeatherMap API", "Tailwind CSS"],
-		githubLink: "https://github.com/dennisbuchwald/nextjs-wheaterapp",
-		demoLink: "https://wetter.dennisbuchwald.de",
-		iphoneMockup: "/mockup-wetter-app.png",
-	},
-	{
-		title: "Pomodoro App",
-		description:
-			"Dies ist eine Pomodoro-App, die mit React und Next.js erstellt wurde. Die App hilft Benutzern, ihre Produk...",
-		tags: ["Next.js", "React", "Style Components"],
-		githubLink: "https://github.com/dennisbuchwald/pomodoro-app",
-		demoLink: "https://pomodoro-app-amber-two.vercel.app",
-		iphoneMockup: "/mockup-pomodoro-app.png",
+		title: "Neustes Video",
+		description: "Ich habe mir Pokémon Rote Edition auf AliExpress bestellt.",
+		tags: ["#Selbstexperiment", "#Pokemon"],
+		Link: "https://www.youtube.com/@dennisbuchwald",
+		iphoneMockup: "/YT/Pokemon_Aliexpress.png",
 	},
 ];
 
-const Projekte = () => {
+const Youtube = () => {
+	const { width } = useWindowSize();
+
+	let divider;
+	if (width <= 500) {
+		divider = 4.5;
+	} else if (width <= 768) {
+		divider = 3;
+	} else if (width <= 1024) {
+		divider = 2.5;
+	} else {
+		divider = 2;
+	}
+
 	return (
 		<>
-			<a id="projekte" />
+			<a id="youtube" />
 			<ContainerHeader>
-				<Title>Projekte</Title>
-				<Text>Hier siehst du einige meiner bisherigen Projekte.</Text>
+				<Title>Youtube</Title>
+				<Text>
+					Nebenbei bin ich noch Content Creator auf YouTube. <br /> Dort filme
+					und dokumentiere ich die verschiedensten Selbstexperimente.
+				</Text>
 			</ContainerHeader>
 			<ProjectCardsContainer>
 				{projects.map((project, index) => (
@@ -67,8 +45,8 @@ const Projekte = () => {
 							<Image
 								src={project.iphoneMockup}
 								alt={`${project.title} iPhone mockup`}
-								width={307}
-								height={487}
+								width={1280 / divider}
+								height={720 / divider}
 							/>
 						)}
 						<Description>{project.description}</Description>
@@ -78,17 +56,11 @@ const Projekte = () => {
 							))}
 						</Tags>
 						<Links>
-							<Link href={project.githubLink} target="_blank">
+							<Link href={project.Link} target="_blank">
 								<Icon>
-									<FaGithub />
+									<FaYoutube />
 								</Icon>
-								GitHub
-							</Link>
-							<Link href={project.demoLink} target="_blank">
-								<Icon>
-									<FaExternalLinkAlt />
-								</Icon>
-								Demo
+								Youtube
 							</Link>
 						</Links>
 					</ProjectCard>
@@ -98,7 +70,7 @@ const Projekte = () => {
 	);
 };
 
-export default Projekte;
+export default Youtube;
 
 const ProjectCardsContainer = styled.div`
 	display: flex;
@@ -126,18 +98,24 @@ const ProjectCard = styled.div`
 	margin: 0 1rem 2rem;
 	flex-basis: calc(30% - 2rem);
 	max-width: calc(30% - 2rem);
-	min-width: 480px;
+	min-width: 700px;
 	box-sizing: border-box;
 	text-align: center;
+	height: auto;
 
 	@media (max-width: 1024px) {
 		flex-basis: calc(45% - 2rem);
 		max-width: calc(45% - 2rem);
-		min-width: 480px;
+		min-width: 550px;
 		border-radius: 3rem;
 	}
 	@media (max-width: 768px) {
-		min-width: 75%;
+		min-width: 460px;
+		margin: 0 auto 2rem;
+		border-radius: 3rem;
+	}
+	@media (max-width: 500px) {
+		min-width: 310px;
 		margin: 0 auto 2rem;
 		border-radius: 3rem;
 	}
@@ -158,7 +136,7 @@ const Text = styled.p`
 	font-size: 1.2rem;
 	line-height: 1.6;
 	max-width: 800px;
-	text-align: justify;
+	text-align: center;
 	margin-bottom: 1.5rem;
 `;
 

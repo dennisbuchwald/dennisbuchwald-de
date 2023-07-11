@@ -44,6 +44,7 @@ const Kontakt = () => {
 
 	return (
 		<>
+			<a id="kontakt" />
 			<ContainerHeader>
 				<Title>Kontakt</Title>
 				<Text>
