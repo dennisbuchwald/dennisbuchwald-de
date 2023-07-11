@@ -5,6 +5,10 @@ import "../../public/fonts.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
+import ReactGA from "react-ga";
+
+ReactGA.initialize("G-2Y9HRYRMGP");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,40 +33,40 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const theme = {
-  primaryColor: "black",
-  secondaryColor: "#1c1c1e",
-  accentColor: "#ff4081",
-  textColor: "white",
-  buttonTextColor: "white",
-  cardTextColor: "whtie",
-  cardBgColor: "grey",
-  linkColor: "black",
-  linkHoverColor: "black",
-  textColorDark: "lightgrey",
+	primaryColor: "black",
+	secondaryColor: "#1c1c1e",
+	accentColor: "#ff4081",
+	textColor: "white",
+	buttonTextColor: "white",
+	cardTextColor: "whtie",
+	cardBgColor: "grey",
+	linkColor: "black",
+	linkHoverColor: "black",
+	textColorDark: "lightgrey",
 };
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+	useEffect(() => {
+		const jssStyles = document.querySelector("#jss-server-side");
+		if (jssStyles) {
+			jssStyles.parentElement.removeChild(jssStyles);
+		}
+	}, []);
 
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn."
-        />
-        <link rel="icon" href="/icon.png" />
-      </Head>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta
+					name="description"
+					content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn."
+				/>
+				<link rel="icon" href="/icon.png" />
+			</Head>
+			<Component {...pageProps} />
+		</ThemeProvider>
+	);
 }
 
 export default MyApp;
