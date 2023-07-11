@@ -17,7 +17,9 @@ const Youtube = () => {
 	const { width } = useWindowSize();
 
 	let divider;
-	if (width <= 768) {
+	if (width <= 500) {
+		divider = 4.5;
+	} else if (width <= 768) {
 		divider = 3;
 	} else if (width <= 1024) {
 		divider = 2.5;
@@ -108,7 +110,12 @@ const ProjectCard = styled.div`
 		border-radius: 3rem;
 	}
 	@media (max-width: 768px) {
-		min-width: 480px;
+		min-width: 460px;
+		margin: 0 auto 2rem;
+		border-radius: 3rem;
+	}
+	@media (max-width: 500px) {
+		min-width: 310px;
 		margin: 0 auto 2rem;
 		border-radius: 3rem;
 	}
