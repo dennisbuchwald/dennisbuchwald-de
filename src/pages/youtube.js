@@ -7,7 +7,7 @@ const projects = [
 	{
 		title: "Neustes Video",
 		description: "Ich habe mir Pokémon Rote Edition auf AliExpress bestellt.",
-		tags: ["Selbstexperiment", "Pokemon"],
+		tags: ["#Selbstexperiment", "#Pokemon"],
 		Link: "https://www.youtube.com/@dennisbuchwald",
 		iphoneMockup: "/YT/Pokemon_Aliexpress.png",
 	},
