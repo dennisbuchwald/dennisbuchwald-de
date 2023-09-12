@@ -5,10 +5,15 @@ import { useWindowSize } from "react-use";
 
 const projects = [
 	{
-		title: "Neustes Video",
+		description: "Ich versuche eine Website im Darkweb zu veröffentlichen.",
+		tags: ["#Selbstexperiment", "#Darkweb"],
+		Link: "https://www.youtube.com/watch?v=0dOk40juT-Q&t=7s",
+		iphoneMockup: "/YT/Darkweb_Website.png",
+	},
+	{
 		description: "Ich habe mir Pokémon Rote Edition auf AliExpress bestellt.",
 		tags: ["#Selbstexperiment", "#Pokemon"],
-		Link: "https://www.youtube.com/@dennisbuchwald",
+		Link: "https://www.youtube.com/watch?v=wvlB20Naaqs&t=2s",
 		iphoneMockup: "/YT/Pokemon_Aliexpress.png",
 	},
 ];
