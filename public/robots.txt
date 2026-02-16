@@ -3,8 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://dennisbuchwald.de
+Host: https://www.dennisbuchwald.de
 
 # Sitemaps
-Sitemap: https://dennisbuchwald.de/sitemap.xml
-Sitemap: https://dennisbuchwald.de/server-sitemap.xml
+Sitemap: https://www.dennisbuchwald.de/sitemap.xml

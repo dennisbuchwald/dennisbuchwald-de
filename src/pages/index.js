@@ -2,30 +2,77 @@ import styled from "styled-components";
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import ÜberMich from "./übermich.js";
-import Projekte from "./projekte";
-import Youtube from "./youtube";
-import Kontakt from "./kontakt";
-import Start from "./start";
+import Start from "../../components/Start";
+import UeberMich from "../../components/UeberMich";
+import Projekte from "../../components/Projekte";
+import Youtube from "../../components/Youtube";
+import Kontakt from "../../components/Kontakt";
 
 const Home = () => {
 	return (
-		<>
-			<a id="top" />
+		<div id="top">
 			<Head>
-				<title>Dennis Buchwald</title>
+				<title>
+					Dennis Buchwald – Webentwickler & Gründer dbw media | Heilbronn
+				</title>
 				<meta
 					name="description"
-					content="Dennis Buchwald - Kreativer Frontend-Entwickler aus Heilbronn. Entdecken Sie meine Projekte und erfahren Sie mehr über mich und meine Arbeit."
+					content="Dennis Buchwald – Webentwickler und Gründer von dbw media. Digitalagentur für Webdesign, SEO und Online-Marketing in Heilbronn."
+				/>
+				<link rel="canonical" href="https://www.dennisbuchwald.de" />
+				<meta
+					property="og:title"
+					content="Dennis Buchwald – Webentwickler & Gründer dbw media"
+				/>
+				<meta
+					property="og:description"
+					content="Webentwickler und Gründer von dbw media. Digitalagentur für Webdesign, SEO und Online-Marketing in Heilbronn."
+				/>
+				<meta property="og:url" content="https://www.dennisbuchwald.de" />
+				<meta
+					name="twitter:title"
+					content="Dennis Buchwald – Webentwickler & Gründer dbw media"
+				/>
+				<meta
+					name="twitter:description"
+					content="Webentwickler und Gründer von dbw media. Digitalagentur für Webdesign, SEO und Online-Marketing in Heilbronn."
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Person",
+							name: "Dennis Buchwald",
+							url: "https://www.dennisbuchwald.de",
+							jobTitle: "Webentwickler & Gründer",
+							worksFor: {
+								"@type": "Organization",
+								name: "dbw media",
+								url: "https://dbw-media.de",
+							},
+							address: {
+								"@type": "PostalAddress",
+								addressLocality: "Heilbronn",
+								addressCountry: "DE",
+							},
+							sameAs: [
+								"https://dbw-media.de",
+								"https://github.com/dennisbuchwald",
+								"https://www.linkedin.com/in/dennisbuchwald/",
+								"https://www.youtube.com/@dennisbuchwald",
+							],
+						}),
+					}}
 				/>
 			</Head>
 			<Header />
 			<PageContent>
-				<SectionHome>
+				<HeroSection>
 					<Start />
-				</SectionHome>
+				</HeroSection>
 				<Section>
-					<ÜberMich />
+					<UeberMich />
 				</Section>
 				<Section>
 					<Projekte />
@@ -37,53 +84,44 @@ const Home = () => {
 					<Kontakt />
 				</Section>
 			</PageContent>
-
 			<Footer />
-		</>
+		</div>
 	);
 };
 
 export default Home;
 
-const PageContent = styled.div`
+const PageContent = styled.main`
 	flex-grow: 1;
 `;
 
-const SectionHome = styled.section`
-	box-sizing: border-box;
-	margin: 4rem;
-	margin-top: 90px;
+const HeroSection = styled.section`
+	margin: 0 auto;
+	padding: 2rem 4rem;
+	padding-top: 120px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	// background-color: ${(props) => props.theme.secondaryColor};
-	color: ${(props) => props.theme.textColor};
-	padding: 2rem;
-	border-radius: 4rem;
+	max-width: 1200px;
+
 	@media screen and (max-width: 768px) {
-		margin-left: 1rem;
-		margin-right: 1rem;
-		border-radius: 3rem;
+		padding: 2rem 1.5rem;
+		padding-top: 100px;
 	}
 `;
 
 const Section = styled.section`
-	box-sizing: border-box;
-	margin: 4rem;
+	margin: 0 auto;
+	padding: 6rem 4rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
-	background-color: ${(props) => props.theme.secondaryColor};
-	color: ${(props) => props.theme.textColor};
-	padding: 2rem;
-	border-radius: 4rem;
+	max-width: 1200px;
+
 	@media screen and (max-width: 768px) {
-		margin-left: 1rem;
-		margin-right: 1rem;
-		border-radius: 3rem;
+		padding: 4rem 1.5rem;
 	}
 `;

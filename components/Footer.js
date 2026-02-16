@@ -4,93 +4,86 @@ import Link from "next/link";
 const Footer = () => {
 	return (
 		<StyledFooter>
-			<SectionLeft>
-				<FooterText>
-					&copy; {new Date().getFullYear()} Made with ❤️ by Dennis Buchwald
-				</FooterText>
-			</SectionLeft>
-
-			<SectionRight>
-				<StyledLink>
-					<Link href="/impressum" passHref>
-						<FooterLink>Impressum</FooterLink>
-					</Link>
-
-					<Link href="/datenschutzerklaerung" passHref>
-						<FooterLink>Datenschutzerklärung</FooterLink>
-					</Link>
-				</StyledLink>
-			</SectionRight>
+			<FooterInner>
+				<FooterLeft>
+					Mit ❤️ gemacht in Heilbronn – &copy; {new Date().getFullYear()}{" "}
+					<AccentLink
+						href="https://dbw-media.de"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						dbw media
+					</AccentLink>
+				</FooterLeft>
+				<FooterRight>
+					<FooterNavLink href="/impressum">Impressum</FooterNavLink>
+					<FooterNavLink href="/datenschutzerklaerung">
+						Datenschutzerklärung
+					</FooterNavLink>
+				</FooterRight>
+			</FooterInner>
 		</StyledFooter>
 	);
 };
 
 export default Footer;
 
+const FooterNavLink = ({ href, children }) => (
+	<Link href={href} passHref legacyBehavior>
+		<StyledNavLink>{children}</StyledNavLink>
+	</Link>
+);
+
 const StyledFooter = styled.footer`
+	width: 100%;
+	border-top: 1px solid ${(props) => props.theme.borderCard};
+	background: ${(props) => props.theme.bg};
+`;
+
+const FooterInner = styled.div`
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem 4rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${(props) => props.theme.primaryColor};
-	color: ${(props) => props.theme.textColor};
-	padding: 1rem;
-	width: 100%;
-	flex-wrap: wrap;
-	position: sticky;
-	bottom: 0;
-	margin: 0;
-	padding: 1rem;
-`;
 
-const FooterText = styled.p`
-	left: 0;
-	width: 100%;
-	margin-right: 1rem;
 	@media (max-width: 768px) {
-		margin-bottom: 0.5rem;
-		text-size: 1rem;
+		padding: 1.5rem;
+		flex-direction: column;
+		gap: 1rem;
+		text-align: center;
 	}
 `;
 
-const FooterLink = styled.button`
-	text-align: right;
-	background: none;
-	border: none;
-	color: ${(props) => props.theme.textColor};
-	text-decoration: none;
-	cursor: pointer;
-	margin: 0 1rem;
-	outline: none;
+const FooterLeft = styled.p`
+	font-size: 0.9rem;
+	color: ${(props) => props.theme.textMuted};
+`;
 
-	transition: transform 0.3s ease;
+const AccentLink = styled.a`
+	color: ${(props) => props.theme.accent};
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${(props) => props.theme.accentColor};
-		transform: translateY(-5px);
-	}
-
-	@media (max-width: 768px) {
-		right: 0;
+		color: ${(props) => props.theme.accentHover};
 	}
 `;
 
-const StyledLink = styled.nav`
+const FooterRight = styled.nav`
 	display: flex;
-	margin-right: 1rem;
-	@media (max-width: 768px) {
-		right: 0;
-		flex-direction: column;
-		justify-content: flex-end;
-		text-align: right;
+	gap: 1.5rem;
+`;
+
+const StyledNavLink = styled.a`
+	font-size: 0.9rem;
+	color: ${(props) => props.theme.textMuted};
+	text-decoration: none;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.text};
 	}
-`;
-
-const SectionLeft = styled.section`
-	flex: 1;
-`;
-
-const SectionRight = styled.section`
-	display: flex;
-	justify-content: flex-end;
-	flex: 1;
 `;
