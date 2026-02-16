@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 import Header2 from "../../components/Header2";
 import Footer from "../../components/Footer";
 
@@ -11,6 +12,12 @@ const Impressum = () => {
 
 	return (
 		<>
+			<Head>
+				<title>Impressum – Dennis Buchwald</title>
+				<meta name="description" content="Impressum von Dennis Buchwald, Heilbronn." />
+				<link rel="canonical" href="https://www.dennisbuchwald.de/impressum" />
+				<meta name="robots" content="noindex, follow" />
+			</Head>
 			<Header2 />
 			<Main>
 				<h1>Impressum</h1>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Head from "next/head";
 import Header2 from "../../components/Header2";
 import Footer from "../../components/Footer";
 
@@ -8,6 +9,12 @@ const Datenschutzerklaerung = () => {
 
 	return (
 		<>
+			<Head>
+				<title>Datenschutzerklärung – Dennis Buchwald</title>
+				<meta name="description" content="Datenschutzerklärung von dennisbuchwald.de." />
+				<link rel="canonical" href="https://www.dennisbuchwald.de/datenschutzerklaerung" />
+				<meta name="robots" content="noindex, follow" />
+			</Head>
 			<Header2 />
 			<Main>
 				<h1>Datenschutzerklärung</h1>

@@ -1,137 +1,70 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { MenuItem } from "../components/MenuItem";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const menuItems = [
-	{
-		id: "about",
-		text: "Über Mich",
-		onClick: "#about",
-		framed: false,
-		large: false,
-	},
-	{
-		id: "projekte",
-		text: "Projekte",
-		onClick: "#projekte",
-		framed: false,
-		large: false,
-	},
-	{
-		id: "youtube",
-		text: "Youtube",
-		onClick: "#youtube",
-		framed: false,
-		large: false,
-	},
-	{
-		id: "kontakt",
-		text: "Kontakt",
-		onClick: "#kontakt",
-		framed: true,
-		large: false,
-	},
+	{ id: "about", text: "Über Mich", onClick: "#about" },
+	{ id: "projekte", text: "Early Work", onClick: "#projekte" },
+	{ id: "youtube", text: "YouTube", onClick: "#youtube" },
+	{ id: "kontakt", text: "Kontakt", onClick: "#kontakt" },
 ];
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [headerBackground, setHeaderBackground] = useState("transparent");
-	const [textColor, setTextColor] = useState("black");
-
-	const handleMenuClick = () => {
-		setMenuOpen(!menuOpen);
-		setHeaderBackground("#000000");
-		setTextColor("white");
-	};
-
-	const listenScrollEvent = () => {
-		const aboutSection = document.getElementById("about");
-		if (aboutSection) {
-			const sectionPosition = aboutSection.getBoundingClientRect().top;
-			const offset = 85;
-
-			if (sectionPosition <= offset) {
-				setHeaderBackground("#000000");
-				setTextColor("white");
-			} else {
-				setHeaderBackground("transparent");
-				setTextColor("black");
-			}
-		}
-	};
+	const [scrolled, setScrolled] = useState(false);
 
 	const smoothScroll = (targetSelector) => {
 		const target = document.querySelector(targetSelector);
-		target.scrollIntoView({ behavior: "smooth" });
+		if (target) target.scrollIntoView({ behavior: "smooth" });
 	};
 
 	useEffect(() => {
-		window.addEventListener("scroll", listenScrollEvent);
-		return () => {
-			window.removeEventListener("scroll", listenScrollEvent);
-		};
+		const handleScroll = () => setScrolled(window.scrollY > 50);
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
 	return (
 		<>
-			<HeaderContainer>
-				<StyledHeader backgroundColor={headerBackground}>
-					<NavTitel
-						textColor={textColor}
-						large
-						changeColor
-						onClick={() => {
-							smoothScroll("#top");
-						}}
-					>
-						Dennis Buchwald
-					</NavTitel>
-					<NavDesktop>
-						<StyledNavWrapper>
-							{menuItems.map((item) => (
-								<MenuItem
-									key={item.id}
-									textColor={textColor}
-									changeColor
-									framed={item.framed}
-									large={item.large}
-									onClick={() => smoothScroll(item.onClick)}
-								>
-									{item.text}
-								</MenuItem>
-							))}
-						</StyledNavWrapper>
-					</NavDesktop>
-					<MenuIcon textColor={textColor} onClick={handleMenuClick}>
-						{menuOpen ? (
-							<FontAwesomeIcon icon={faTimes} />
-						) : (
-							<FontAwesomeIcon icon={faBars} />
-						)}
-					</MenuIcon>
-				</StyledHeader>
-			</HeaderContainer>
-
-			<MenuOverlay open={menuOpen}>
-				<NavMobil open={menuOpen}>
+			<StyledHeader $scrolled={scrolled}>
+				<Logo
+					onClick={() => smoothScroll("#top")}
+					aria-label="Nach oben scrollen"
+				>
+					Dennis Buchwald
+				</Logo>
+				<NavDesktop>
 					{menuItems.map((item) => (
-						<MenuItem
+						<NavItem
 							key={item.id}
-							textColor={textColor}
-							changeColor
-							framed={item.framed}
-							large={item.large}
+							onClick={() => smoothScroll(item.onClick)}
+						>
+							{item.text}
+						</NavItem>
+					))}
+				</NavDesktop>
+				<MenuIcon
+					onClick={() => setMenuOpen(!menuOpen)}
+					aria-label="Menü öffnen"
+				>
+					{menuOpen ? <FaTimes /> : <FaBars />}
+				</MenuIcon>
+			</StyledHeader>
+
+			<MenuOverlay $open={menuOpen} onClick={() => setMenuOpen(false)}>
+				<MobileNav>
+					{menuItems.map((item) => (
+						<MobileNavItem
+							key={item.id}
 							onClick={() => {
-								handleMenuClick();
+								setMenuOpen(false);
 								smoothScroll(item.onClick);
 							}}
 						>
 							{item.text}
-						</MenuItem>
+						</MobileNavItem>
 					))}
-				</NavMobil>
+				</MobileNav>
 			</MenuOverlay>
 		</>
 	);
@@ -139,156 +72,121 @@ const Header = () => {
 
 export default Header;
 
-const HeaderContainer = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-`;
-
 const StyledHeader = styled.header`
-	z-index: 1000;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	display: flex;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${(props) => props.backgroundColor};
-	padding: ßrem;
-	max-width: 100%;
-	transition: background-color 0.3s ease;
+	padding: 1rem 4rem;
+	z-index: 1000;
+	transition: all 0.3s ease;
+	background: ${(props) =>
+		props.$scrolled ? "rgba(10, 10, 10, 0.85)" : "transparent"};
+	backdrop-filter: ${(props) => (props.$scrolled ? "blur(12px)" : "none")};
+	-webkit-backdrop-filter: ${(props) =>
+		props.$scrolled ? "blur(12px)" : "none"};
+	border-bottom: 1px solid
+		${(props) =>
+			props.$scrolled ? "rgba(255, 255, 255, 0.06)" : "transparent"};
+
+	@media (max-width: 768px) {
+		padding: 1rem 1.5rem;
+	}
+`;
+
+const Logo = styled.button`
+	background: none;
+	border: none;
+	color: ${(props) => props.theme.text};
+	font-size: 1.3rem;
+	font-weight: 700;
+	font-family: inherit;
+	cursor: pointer;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.accent};
+	}
 `;
 
 const NavDesktop = styled.nav`
+	display: flex;
 	align-items: center;
-	display: flex;
-	margin-right: 4rem;
+	gap: 0.5rem;
 
-	& > *:not(:last-child) {
-		margin-right: 0rem;
-	}
-
-	& > *:last-child {
-		margin-right: 0rem;
-	}
-	@media screen and (max-width: 768px) {
-		display: ${(props) => (props.open ? "flex" : "none")};
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		width: 100%;
-		right: -10px;
+	@media (max-width: 768px) {
+		display: none;
 	}
 `;
 
-const NavMobil = styled.nav`
-	align-items: center;
-	display: flex;
-	margin-right: 0rem;
-
-	& > *:not(:last-child) {
-		margin-right: 0rem;
-	}
-
-	& > *:last-child {
-		margin-right: 0rem;
-	}
-	@media screen and (max-width: 768px) {
-		display: ${(props) => (props.open ? "flex" : "none")};
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		width: 100%;
-		right: -10px;
-	}
-`;
-
-const StyledNavWrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-`;
-
-const NavTitel = styled.button`
-	margin-left: 4rem;
+const NavItem = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => (props.changeColor ? props.textColor : "white")};
-	text-decoration: none;
+	color: ${(props) => props.theme.textSecondary};
+	font-size: 0.95rem;
+	font-family: inherit;
 	cursor: pointer;
-	font-size: ${(props) => (props.large ? "1.5rem" : "1rem")};
-	border: ${(props) => (props.framed ? "2px solid" : "none")};
-	padding: ${(props) => (props.framed ? "0.5rem" : "0")};
-	border-radius: ${(props) => (props.framed ? "5px" : "0")};
-	outline: none;
-
-	transition: transform 0.3s ease;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	transition: all 0.2s ease;
 
 	&:hover {
-		color: ${(props) => props.theme.accentColor};
-		transform: translateY(-5px);
-	}
-
-	@media screen and (max-width: 768px) {
-		margin-left: 2rem;
-		font-size: 1.5rem;
-		padding: 1rem;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		color: ${(props) => (props.changeColor ? props.textColor : "white")};
+		color: ${(props) => props.theme.text};
+		background: rgba(255, 255, 255, 0.05);
 	}
 `;
 
 const MenuIcon = styled.button`
-	margin-right: 4rem;
 	background: none;
 	border: none;
-	color: ${(props) => props.textColor};
+	color: ${(props) => props.theme.text};
 	cursor: pointer;
-	font-size: 1rem;
-	outline: none;
+	font-size: 1.3rem;
 	display: none;
-	z-index: 1000;
-	@media screen and (max-width: 768px) {
+	z-index: 1001;
+
+	@media (max-width: 768px) {
 		display: block;
-		margin-right: 2rem;
-		font-size: 1.5rem;
 	}
 `;
 
 const MenuOverlay = styled.div`
-	align-items: center;
 	position: fixed;
-	top: 0;
-	right: ${(props) => (props.open ? "0" : "-100%")};
-	width: 33%;
-	height: 100%;
-	background-color: ${(props) => props.theme.primaryColor};
-	transition: right 0.3s ease;
+	inset: 0;
+	background: rgba(10, 10, 10, 0.95);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: ${(props) => (props.$open ? 1 : 0)};
+	pointer-events: ${(props) => (props.$open ? "all" : "none")};
+	transition: opacity 0.3s ease;
+`;
 
-	@media screen and (max-width: 768px) {
-		position: fixed;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-	}
+const MobileNav = styled.nav`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+`;
 
-	& ${NavDesktop} {
-		justify-content: center;
-		width: 100%;
-	}
+const MobileNavItem = styled.button`
+	background: none;
+	border: none;
+	color: ${(props) => props.theme.text};
+	font-size: 1.8rem;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	padding: 0.75rem 2rem;
+	transition: color 0.2s ease;
 
-	& ${NavMobil} {
-		justify-content: center;
-		width: 100%;
+	&:hover {
+		color: ${(props) => props.theme.accent};
 	}
 `;
