@@ -46,7 +46,7 @@ const Youtube = () => {
 		<Container id="youtube">
 			<Header>
 				<Eyebrow>YouTube</Eyebrow>
-				<Heading>Content, der bewegt.</Heading>
+				<Heading>Was mich bewegt.</Heading>
 				<Sub>
 					Tech-Experimente, WordPress-Insights und alles, was mich antreibt.
 				</Sub>
@@ -116,10 +116,8 @@ const Eyebrow = styled.span`
 	letter-spacing: 0.12em;
 	color: #fff;
 	border-radius: 999px;
-	background: linear-gradient(
-				${(props) => props.theme.bg},
-				${(props) => props.theme.bg}
-			)
+	background:
+		linear-gradient(${(props) => props.theme.bg}, ${(props) => props.theme.bg})
 			padding-box,
 		linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff)
 			border-box;
@@ -152,7 +150,9 @@ const Card = styled.a`
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
-	transition: border-color 0.2s ease, transform 0.2s ease;
+	transition:
+		border-color 0.2s ease,
+		transform 0.2s ease;
 
 	&:hover {
 		border-color: ${(props) => props.theme.borderCardHover};
@@ -226,10 +226,8 @@ const Tag = styled.span`
 	padding: 0.22rem 0.65rem;
 	border-radius: 999px;
 	color: #fff;
-	background: linear-gradient(
-				${(props) => props.theme.bg},
-				${(props) => props.theme.bg}
-			)
+	background:
+		linear-gradient(${(props) => props.theme.bg}, ${(props) => props.theme.bg})
 			padding-box,
 		linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff)
 			border-box;
