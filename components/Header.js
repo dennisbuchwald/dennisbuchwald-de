@@ -28,6 +28,7 @@ const Header = () => {
 		<>
 			<StyledHeader $scrolled={scrolled}>
 				<Logo
+					$scrolled={scrolled}
 					onClick={() => smoothScroll("#top")}
 					aria-label="Nach oben scrollen"
 				>
@@ -37,6 +38,7 @@ const Header = () => {
 					{menuItems.map((item) => (
 						<NavItem
 							key={item.id}
+							$scrolled={scrolled}
 							onClick={() => smoothScroll(item.onClick)}
 						>
 							{item.text}
@@ -44,6 +46,7 @@ const Header = () => {
 					))}
 				</NavDesktop>
 				<MenuIcon
+					$scrolled={scrolled}
 					onClick={() => setMenuOpen(!menuOpen)}
 					aria-label="Menü öffnen"
 				>
@@ -100,7 +103,7 @@ const StyledHeader = styled.header`
 const Logo = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.text};
+	color: ${(props) => (props.$scrolled ? props.theme.text : "#111")};
 	font-size: 1.3rem;
 	font-weight: 700;
 	font-family: inherit;
@@ -125,7 +128,7 @@ const NavDesktop = styled.nav`
 const NavItem = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.textSecondary};
+	color: ${(props) => (props.$scrolled ? props.theme.textSecondary : "#555")};
 	font-size: 0.95rem;
 	font-family: inherit;
 	cursor: pointer;
@@ -134,15 +137,16 @@ const NavItem = styled.button`
 	transition: all 0.2s ease;
 
 	&:hover {
-		color: ${(props) => props.theme.text};
-		background: rgba(255, 255, 255, 0.05);
+		color: ${(props) => (props.$scrolled ? props.theme.text : "#111")};
+		background: ${(props) =>
+			props.$scrolled ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)"};
 	}
 `;
 
 const MenuIcon = styled.button`
 	background: none;
 	border: none;
-	color: ${(props) => props.theme.text};
+	color: ${(props) => (props.$scrolled ? props.theme.text : "#111")};
 	cursor: pointer;
 	font-size: 1.3rem;
 	display: none;

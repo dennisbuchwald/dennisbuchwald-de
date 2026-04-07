@@ -1,27 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { FaExternalLinkAlt } from "react-icons/fa";
-
-import profilbild from "../public/profilbild.webp";
-import profilbildHover from "../public/profilbild_hover.webp";
-
-const services = [
-	"Webdesign",
-	"SEO",
-	"Online-Marketing",
-	"Digitalstrategie",
-	"Social Media",
-];
 
 const UeberMich = () => {
 	return (
 		<Container id="about">
-			<SectionLabel>Über mich</SectionLabel>
-			<MainContainer>
-				<TextContainer>
-					<Heading>
-						Webentwickler aus Leidenschaft, Unternehmer aus Überzeugung.
-					</Heading>
+			<Inner>
+				<TextContent>
+					<Badge>Über mich</Badge>
+					<Heading>Vom Nerd zum Unternehmer.</Heading>
 					<Text>
 						Ich bin Dennis – Gründer und Geschäftsführer von{" "}
 						<AccentLink
@@ -32,54 +18,26 @@ const UeberMich = () => {
 							dbw media
 						</AccentLink>
 						, meiner Digitalagentur aus Heilbronn. Was als Leidenschaft für Code
-						begann, ist heute mein Lebenswerk: Unternehmen dabei zu helfen,
-						online sichtbar zu werden und messbar zu wachsen.
+						begann, ist heute mein Alltag: Unternehmen dabei helfen, online
+						sichtbar zu werden und wirklich zu wachsen.
 					</Text>
 					<Text>
-						Wir entwickeln Webseiten, die nicht nur gut aussehen, sondern
-						performen – mehr Sichtbarkeit, mehr Anfragen, mehr Umsatz. Das ist
-						unser Anspruch bei jedem Projekt.
+						Ich glaube nicht an Websites um der Website willen. Ich glaube an
+						Lösungen, die Business-Probleme lösen – mehr Sichtbarkeit, mehr
+						Anfragen, mehr Umsatz. Das ist der Anspruch, den ich an jedes
+						Projekt stelle.
 					</Text>
-				</TextContainer>
-				<ProfileImage>
+				</TextContent>
+				<ImageWrapper>
 					<Image
-						src={profilbild}
+						src="/dennis-2-ohne-hintergrund.webp"
 						alt="Dennis Buchwald – Gründer & Geschäftsführer dbw media"
-						width={500}
-						height={500}
-						priority
+						width={400}
+						height={520}
+						style={{ width: "100%", height: "auto", display: "block" }}
 					/>
-					<Image
-						src={profilbildHover}
-						alt="Dennis Buchwald"
-						width={500}
-						height={500}
-					/>
-				</ProfileImage>
-			</MainContainer>
-
-			<AgencyCard>
-				<AgencyCardInner>
-					<AgencyInfo>
-						<AgencyName>dbw media</AgencyName>
-						<AgencyTagline>
-							Digitalagentur für Unternehmen, die online wachsen wollen.
-						</AgencyTagline>
-						<ServiceTags>
-							{services.map((s) => (
-								<ServiceTag key={s}>{s}</ServiceTag>
-							))}
-						</ServiceTags>
-					</AgencyInfo>
-					<AgencyCTA
-						href="https://dbw-media.de"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FaExternalLinkAlt /> dbw-media.de
-					</AgencyCTA>
-				</AgencyCardInner>
-			</AgencyCard>
+				</ImageWrapper>
+			</Inner>
 		</Container>
 	);
 };
@@ -90,92 +48,66 @@ const Container = styled.div`
 	width: 100%;
 `;
 
-const SectionLabel = styled.p`
-	font-size: 0.9rem;
+const Inner = styled.div`
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	gap: 4rem;
+	align-items: end;
+	width: 100%;
+
+	@media (max-width: 900px) {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+`;
+
+const TextContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+`;
+
+const ImageWrapper = styled.div`
+	@media (max-width: 900px) {
+		max-width: 220px;
+	}
+`;
+
+const Badge = styled.span`
+	display: inline-block;
+	align-self: flex-start;
+	padding: 0.28rem 0.85rem;
+	font-size: 0.75rem;
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.15em;
-	color: ${(props) => props.theme.accent};
-	margin-bottom: 2rem;
-`;
-
-const MainContainer = styled.div`
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	align-items: center;
-	gap: 4rem;
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column-reverse;
-		gap: 2rem;
-	}
-`;
-
-const ProfileImage = styled.div`
-	width: 40%;
-	max-width: 400px;
-	aspect-ratio: 1;
-	position: relative;
-	overflow: hidden;
-	border-radius: 1.25rem;
-	flex-shrink: 0;
-
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: all 0.4s ease;
-		border-radius: 1.25rem;
-	}
-
-	img:first-child {
-		z-index: 1;
-	}
-
-	img:last-child {
-		opacity: 0;
-	}
-
-	&:hover img:first-child {
-		opacity: 0;
-		transform: scale(1.02);
-	}
-
-	&:hover img:last-child {
-		opacity: 1;
-		transform: scale(1.02);
-	}
-
-	@media screen and (max-width: 768px) {
-		width: 70%;
-	}
-`;
-
-const TextContainer = styled.div`
-	flex: 1;
+	letter-spacing: 0.12em;
+	color: ${(props) => props.theme.text};
+	border-radius: 999px;
+	background:
+		linear-gradient(${(props) => props.theme.bg}, ${(props) => props.theme.bg})
+			padding-box,
+		linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff)
+			border-box;
+	border: 1px solid transparent;
 `;
 
 const Heading = styled.h2`
-	font-size: 2.5rem;
+	font-size: 2rem;
 	font-weight: 700;
-	line-height: 1.2;
 	color: ${(props) => props.theme.text};
-	margin-bottom: 1.5rem;
+	line-height: 1.25;
+	margin: 0;
 
-	@media screen and (max-width: 768px) {
-		font-size: 1.8rem;
+	@media (max-width: 768px) {
+		font-size: 1.6rem;
 	}
 `;
 
 const Text = styled.p`
-	font-size: 1.1rem;
-	line-height: 1.7;
+	font-size: 1rem;
+	line-height: 1.75;
 	color: ${(props) => props.theme.textSecondary};
-	margin-bottom: 1rem;
+	margin: 0;
 `;
 
 const AccentLink = styled.a`
@@ -186,90 +118,5 @@ const AccentLink = styled.a`
 
 	&:hover {
 		color: ${(props) => props.theme.accentHover};
-	}
-`;
-
-const AgencyCard = styled.div`
-	margin-top: 4rem;
-	position: relative;
-	border-radius: 1.25rem;
-	padding: 1px;
-	background: ${(props) => props.theme.gradient};
-`;
-
-const AgencyCardInner = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 2rem;
-	padding: 2rem 2.5rem;
-	border-radius: 1.25rem;
-	background: ${(props) => props.theme.bgElevated};
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-		text-align: center;
-		padding: 2rem 1.5rem;
-	}
-`;
-
-const AgencyInfo = styled.div`
-	flex: 1;
-`;
-
-const AgencyName = styled.h3`
-	font-size: 1.6rem;
-	font-weight: 700;
-	margin-bottom: 0.4rem;
-	background: ${(props) => props.theme.gradient};
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-`;
-
-const AgencyTagline = styled.p`
-	font-size: 1rem;
-	color: ${(props) => props.theme.textSecondary};
-	margin-bottom: 1rem;
-`;
-
-const ServiceTags = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-
-	@media screen and (max-width: 768px) {
-		justify-content: center;
-	}
-`;
-
-const ServiceTag = styled.span`
-	font-size: 0.8rem;
-	font-weight: 500;
-	padding: 0.3rem 0.75rem;
-	border-radius: 999px;
-	background: ${(props) => props.theme.accentGlow};
-	color: ${(props) => props.theme.accentHover};
-	border: 1px solid rgba(126, 86, 255, 0.2);
-`;
-
-const AgencyCTA = styled.a`
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 0.85rem 2rem;
-	background: ${(props) => props.theme.gradient};
-	color: #fff;
-	font-size: 1rem;
-	font-weight: 600;
-	border-radius: 0.75rem;
-	text-decoration: none;
-	white-space: nowrap;
-	flex-shrink: 0;
-	transition: all 0.3s ease;
-
-	&:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 30px ${(props) => props.theme.gradientGlow};
 	}
 `;
