@@ -46,7 +46,7 @@ const Youtube = () => {
 		<Container id="youtube">
 			<Header>
 				<Eyebrow>YouTube</Eyebrow>
-				<Heading>Was mich bewegt.</Heading>
+				<Heading>Aus meinem Alltag.</Heading>
 				<Sub>
 					Tech-Experimente, WordPress-Insights und alles, was mich antreibt.
 				</Sub>

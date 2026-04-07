@@ -6,7 +6,7 @@ const FinalCTA = () => {
 			<Inner>
 				<TextCol>
 					<Eyebrow>Kontakt</Eyebrow>
-					<Heading>Lass uns reden. ❤️</Heading>
+					<Heading>Lass uns reden.</Heading>
 					<Sub>
 						Du hast ein Projekt, eine Idee oder einfach Lust auf ein Gespräch?
 						Ich freue mich drauf.
