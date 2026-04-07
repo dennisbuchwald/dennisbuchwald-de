@@ -1,14 +1,22 @@
 @font-face {
-  font-family: "FiraCode";
-  src: url("/font/FiraCode-VariableFont_wght.ttf") format("truetype");
-  font-weight: 600;
+  font-family: "Aspekta";
+  src: url("/font/AspektaVF.woff2") format("woff2-variations");
+  font-weight: 100 1000;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "LeagueSpartan";
-  src: url("/font/LeagueSpartan-Bold.otf") format("opentype");
+  font-family: "Inter";
+  src: url("/font/Inter.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("/font/FiraCode-VariableFont_wght.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;

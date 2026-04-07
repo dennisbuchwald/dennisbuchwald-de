@@ -5,12 +5,16 @@ import "../../public/fonts.css";
 const SITE_URL = "https://www.dennisbuchwald.de";
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
   body {
-    font-family: "LeagueSpartan", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
       "Roboto", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,6 +33,12 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     overflow-x: hidden;
     flex-grow: 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Aspekta", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: 800;
   }
 
   ::selection {
