@@ -68,10 +68,8 @@ const Eyebrow = styled.span`
 	letter-spacing: 0.12em;
 	color: #fff;
 	border-radius: 999px;
-	background: linear-gradient(
-				${(props) => props.theme.bg},
-				${(props) => props.theme.bg}
-			)
+	background:
+		linear-gradient(${(props) => props.theme.bg}, ${(props) => props.theme.bg})
 			padding-box,
 		linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff)
 			border-box;
@@ -107,7 +105,14 @@ const PrimaryBtn = styled.a`
 	display: inline-flex;
 	align-items: center;
 	padding: 1rem 2.5rem;
-	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+	background: linear-gradient(
+		135deg,
+		#ea2b1f,
+		#ff3c6f,
+		#ff4fdd,
+		#7e56ff,
+		#00b2ff
+	);
 	color: #fff;
 	font-size: 1.05rem;
 	font-weight: 700;
