@@ -6,7 +6,8 @@ import Start from "../../components/Start";
 import UeberMich from "../../components/UeberMich";
 import Projekte from "../../components/Projekte";
 import Youtube from "../../components/Youtube";
-import WordCamp from "../../components/WordCamp";
+import Speaking from "../../components/Speaking";
+import AppsTeaser from "../../components/AppsTeaser";
 import DBWMedia from "../../components/DBWMedia";
 import FinalCTA from "../../components/FinalCTA";
 
@@ -15,29 +16,29 @@ const Home = () => {
 		<div id="top">
 			<Head>
 				<title>
-					Dennis Buchwald – Webentwickler, Speaker & Gründer dbw media
+					Dennis Buchwald - Webentwickler, Speaker & Gründer dbw media
 				</title>
 				<meta
 					name="description"
-					content="Dennis Buchwald – Webentwickler, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden. Digitalagentur für Webdesign, SEO und Online-Marketing in Heilbronn."
+					content="Dennis Buchwald - WordPress-Entwickler, Plugin-Autor, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden. Digitalagentur für Webdesign, SEO und Online-Marketing in Heilbronn."
 				/>
 				<link rel="canonical" href="https://www.dennisbuchwald.de" />
 				<meta
 					property="og:title"
-					content="Dennis Buchwald – Webentwickler, Speaker & Gründer dbw media"
+					content="Dennis Buchwald - Webentwickler, Speaker & Gründer dbw media"
 				/>
 				<meta
 					property="og:description"
-					content="Webentwickler, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden – mit Webdesign, SEO und Online-Marketing aus Heilbronn."
+					content="Webentwickler, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden: mit Webdesign, SEO und Online-Marketing aus Heilbronn."
 				/>
 				<meta property="og:url" content="https://www.dennisbuchwald.de" />
 				<meta
 					name="twitter:title"
-					content="Dennis Buchwald – Webentwickler, Speaker & Gründer dbw media"
+					content="Dennis Buchwald - Webentwickler, Speaker & Gründer dbw media"
 				/>
 				<meta
 					name="twitter:description"
-					content="Webentwickler, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden – mit Webdesign, SEO und Online-Marketing aus Heilbronn."
+					content="Webentwickler, Speaker und Gründer von dbw media. Ich helfe Unternehmen, online sichtbar zu werden: mit Webdesign, SEO und Online-Marketing aus Heilbronn."
 				/>
 				<script
 					type="application/ld+json"
@@ -48,7 +49,12 @@ const Home = () => {
 								"@type": "Person",
 								name: "Dennis Buchwald",
 								url: "https://www.dennisbuchwald.de",
-								jobTitle: ["Webentwickler", "Gründer", "Speaker"],
+								jobTitle: [
+									"Webentwickler",
+									"Plugin-Entwickler",
+									"Gründer",
+									"Speaker",
+								],
 								worksFor: {
 									"@type": "Organization",
 									name: "dbw media",
@@ -92,6 +98,11 @@ const Home = () => {
 									url: "https://www.dennisbuchwald.de",
 								},
 								url: "https://vienna.wordcamp.org/2026/",
+								recordedIn: {
+									"@type": "VideoObject",
+									name: "Schluss mit Was kostet eine Website? - So machst du dich als Dienstleister unvergleichlich",
+									url: "https://wordpress.tv/2026/04/27/schluss-mit-was-kostet-eine-website-so-machst-du-dich-als-dienstleister-unvergleichlich/",
+								},
 								eventStatus: "https://schema.org/EventScheduled",
 								eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
 							},
@@ -107,15 +118,18 @@ const Home = () => {
 					</HeroSection>
 					<GradientDivider />
 				</HeroWrapper>
-				<WordCamp />
 				<Section>
 					<UeberMich />
 				</Section>
-				<SliderSection>
-					<Projekte />
-				</SliderSection>
+				<Section>
+					<AppsTeaser />
+				</Section>
+				<Speaking />
 				<SliderSection>
 					<Youtube />
+				</SliderSection>
+				<SliderSection>
+					<Projekte />
 				</SliderSection>
 				<FinalCTA />
 				<DBWMedia />
@@ -176,7 +190,7 @@ const Section = styled.section`
 	}
 `;
 
-/* Full-width wrapper for slider sections — no horizontal padding so cards bleed to viewport edge */
+/* Full-width wrapper for slider sections - no horizontal padding so cards bleed to viewport edge */
 const SliderSection = styled.section`
 	width: 100%;
 	padding: 6rem 0;

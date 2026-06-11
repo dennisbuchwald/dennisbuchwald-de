@@ -18,7 +18,7 @@ const DBWMedia = () => {
 					<LogoWrapper>
 						<Image
 							src="/dbw-logo_white.png"
-							alt="dbw media – Digitalagentur"
+							alt="dbw media Digitalagentur"
 							width={320}
 							height={320}
 							style={{ width: "280px", height: "auto" }}

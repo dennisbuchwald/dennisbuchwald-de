@@ -15,8 +15,8 @@ const Start = () => {
 			<TextCol>
 				<Title>
 					<SrOnly>
-						Dennis Buchwald – Webentwickler, Unternehmer, Speaker und Gründer
-						von dbw media in Heilbronn
+						Dennis Buchwald: Webentwickler, Plugin-Autor, Unternehmer, Speaker
+						und Gründer von dbw media in Heilbronn
 					</SrOnly>
 					<TypedTitle aria-hidden="true">
 						<Typewriter
@@ -36,6 +36,9 @@ const Start = () => {
 									.typeString("Webentwickler.")
 									.pauseFor(2000)
 									.deleteChars(14)
+									.typeString("Plugin-Entwickler.")
+									.pauseFor(2000)
+									.deleteChars(18)
 									.typeString("Unternehmer.")
 									.pauseFor(2000)
 									.deleteChars(12)
@@ -50,12 +53,12 @@ const Start = () => {
 					</TypedTitle>
 				</Title>
 				<Subtitle>
-					Webentwickler, Unternehmer & Speaker aus Heilbronn. Gründer von{" "}
-					<strong>dbw media</strong> – Digitalagentur für Webdesign, SEO &
-					Online-Marketing.
+					WordPress-Entwickler, Plugin-Autor & Speaker aus Heilbronn. Gründer
+					von <strong>dbw media</strong>, der Digitalagentur für Webdesign,
+					SEO & Online-Marketing.
 				</Subtitle>
-				<SpeakerBadge href="#wordcamp">
-					Speaker @ WordCamp Wien 2026
+				<SpeakerBadge href="#speaking">
+					WordPress Speaker · zuletzt WordCamp Wien 2026
 				</SpeakerBadge>
 				<CTARow>
 					<CTAPrimary
@@ -73,6 +76,20 @@ const Start = () => {
 						Dennis kennenlernen
 					</CTASecondary>
 				</CTARow>
+				<StatsRow>
+					<Stat>
+						<StatNumber>9+</StatNumber>
+						<StatLabel>Jahre Webentwicklung</StatLabel>
+					</Stat>
+					<Stat>
+						<StatNumber>300+</StatNumber>
+						<StatLabel>Websites analysiert</StatLabel>
+					</Stat>
+					<Stat>
+						<StatNumber>3</StatNumber>
+						<StatLabel>eigene Apps & Plugins</StatLabel>
+					</Stat>
+				</StatsRow>
 				<SocialRow>
 					<SocialLink
 						href="https://www.instagram.com/dennisbuchwald/"
@@ -289,6 +306,32 @@ const CTASecondary = styled.a`
 		border-color: #888;
 		transform: translateY(-2px);
 	}
+`;
+
+const StatsRow = styled.div`
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 1.75rem;
+`;
+
+const Stat = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+`;
+
+const StatNumber = styled.span`
+	font-size: 1.4rem;
+	font-weight: 800;
+	color: #111;
+	line-height: 1.2;
+`;
+
+const StatLabel = styled.span`
+	font-size: 0.8rem;
+	color: #666;
 `;
 
 const SocialRow = styled.div`

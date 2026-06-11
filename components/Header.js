@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 
+// Real hrefs so the nav also works from subpages like /apps
 const menuItems = [
-	{ id: "about", text: "Über Mich", onClick: "#about" },
-	{ id: "projekte", text: "Early Work", onClick: "#projekte" },
-	{ id: "youtube", text: "YouTube", onClick: "#youtube" },
-	{ id: "kontakt", text: "Kontakt", onClick: "#kontakt" },
+	{ id: "about", text: "Über Mich", href: "/#about" },
+	{ id: "apps", text: "Apps", href: "/apps" },
+	{ id: "speaking", text: "Speaking", href: "/#speaking" },
+	{ id: "youtube", text: "YouTube", href: "/#youtube" },
+	{ id: "kontakt", text: "Kontakt", href: "#kontakt" },
 ];
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
-
-	const smoothScroll = (targetSelector) => {
-		const target = document.querySelector(targetSelector);
-		if (target) target.scrollIntoView({ behavior: "smooth" });
-	};
 
 	useEffect(() => {
 		const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -27,20 +25,12 @@ const Header = () => {
 	return (
 		<>
 			<StyledHeader $scrolled={scrolled}>
-				<Logo
-					$scrolled={scrolled}
-					onClick={() => smoothScroll("#top")}
-					aria-label="Nach oben scrollen"
-				>
+				<Logo $scrolled={scrolled} href="/" aria-label="Zur Startseite">
 					Dennis Buchwald
 				</Logo>
 				<NavDesktop>
 					{menuItems.map((item) => (
-						<NavItem
-							key={item.id}
-							$scrolled={scrolled}
-							onClick={() => smoothScroll(item.onClick)}
-						>
+						<NavItem key={item.id} $scrolled={scrolled} href={item.href}>
 							{item.text}
 						</NavItem>
 					))}
@@ -59,10 +49,8 @@ const Header = () => {
 					{menuItems.map((item) => (
 						<MobileNavItem
 							key={item.id}
-							onClick={() => {
-								setMenuOpen(false);
-								smoothScroll(item.onClick);
-							}}
+							href={item.href}
+							onClick={() => setMenuOpen(false)}
 						>
 							{item.text}
 						</MobileNavItem>
@@ -100,14 +88,11 @@ const StyledHeader = styled.header`
 	}
 `;
 
-const Logo = styled.button`
-	background: none;
-	border: none;
+const Logo = styled(Link)`
 	color: ${(props) => (props.$scrolled ? props.theme.text : "#111")};
 	font-size: 1.3rem;
 	font-weight: 700;
-	font-family: inherit;
-	cursor: pointer;
+	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
@@ -125,13 +110,10 @@ const NavDesktop = styled.nav`
 	}
 `;
 
-const NavItem = styled.button`
-	background: none;
-	border: none;
+const NavItem = styled(Link)`
 	color: ${(props) => (props.$scrolled ? props.theme.textSecondary : "#555")};
 	font-size: 0.95rem;
-	font-family: inherit;
-	cursor: pointer;
+	text-decoration: none;
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 	transition: all 0.2s ease;
@@ -179,14 +161,11 @@ const MobileNav = styled.nav`
 	gap: 1rem;
 `;
 
-const MobileNavItem = styled.button`
-	background: none;
-	border: none;
+const MobileNavItem = styled(Link)`
 	color: ${(props) => props.theme.text};
 	font-size: 1.8rem;
 	font-weight: 600;
-	font-family: inherit;
-	cursor: pointer;
+	text-decoration: none;
 	padding: 0.75rem 2rem;
 	transition: color 0.2s ease;
 

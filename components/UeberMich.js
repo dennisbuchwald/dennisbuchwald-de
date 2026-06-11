@@ -9,7 +9,7 @@ const UeberMich = () => {
 					<Badge>Über mich</Badge>
 					<Heading>Vom Nerd zum Unternehmer.</Heading>
 					<Text>
-						Ich bin Dennis – Gründer und Geschäftsführer von{" "}
+						Ich bin Dennis, Gründer und Geschäftsführer von{" "}
 						<AccentLink
 							href="https://dbw-media.de"
 							target="_blank"
@@ -23,7 +23,7 @@ const UeberMich = () => {
 					</Text>
 					<Text>
 						Ich glaube nicht an Websites um der Website willen. Ich glaube an
-						Lösungen, die Business-Probleme lösen – mehr Sichtbarkeit, mehr
+						Lösungen, die Business-Probleme lösen: mehr Sichtbarkeit, mehr
 						Anfragen, mehr Umsatz. Das ist der Anspruch, den ich an jedes
 						Projekt stelle.
 					</Text>
@@ -31,7 +31,7 @@ const UeberMich = () => {
 				<ImageWrapper>
 					<Image
 						src="/dennis-2-ohne-hintergrund.webp"
-						alt="Dennis Buchwald – Gründer & Geschäftsführer dbw media"
+						alt="Dennis Buchwald, Gründer & Geschäftsführer von dbw media"
 						width={400}
 						height={520}
 						style={{ width: "100%", height: "auto", display: "block" }}

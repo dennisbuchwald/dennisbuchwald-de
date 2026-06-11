@@ -42,7 +42,7 @@ const Kontakt = () => {
 			<Container>
 				<Title>Lass uns reden.</Title>
 				<Subtitle>
-					Du hast ein Projekt im Kopf oder eine Frage? Schreib mir – ich melde
+					Du hast ein Projekt im Kopf oder eine Frage? Schreib mir, ich melde
 					mich zeitnah.
 				</Subtitle>
 
