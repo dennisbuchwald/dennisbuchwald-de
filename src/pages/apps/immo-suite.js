@@ -51,6 +51,16 @@ const pillars = [
 		title: "WhatsApp-Integration",
 		desc: "Sidebar-Button, Floating-Button, Mobile Sticky Bar und Modal-Redirect. Vorgefüllte Nachricht mit Platzhaltern. Nicht aufgesetzt, sondern durchdacht integriert.",
 	},
+	{
+		icon: <FaMapMarkerAlt />,
+		title: "Kartenansicht ohne Google",
+		desc: "OpenStreetMap via Leaflet: kein API-Key, keine laufenden Kosten, kein Consent-Banner für Google Maps nötig. Klick-Popups mit Bild, Titel und Preis. Datenschutz-Platzhalter eingebaut.",
+	},
+	{
+		icon: <FaShieldAlt />,
+		title: "DSGVO von Grund auf",
+		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Merkliste per localStorage statt Accounts. Consent-Platzhalter vor Karten. Du/Sie-Toggle für alle Texte. Privacy by Design.",
+	},
 ];
 
 const wowFeatures = [
@@ -109,6 +119,7 @@ const compareRows = [
 	{ feature: "Gutenberg-Blöcke nativ", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Kein PageBuilder nötig", immo: true, wpImmo: false, immonex: true, frymo: false },
 	{ feature: "Unbegrenzte Objekte", immo: true, wpImmo: false, immonex: true, frymo: "Ab Pro" },
+	{ feature: "DSGVO (keine ext. Dienste)", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
 	{ feature: "Preis", immo: "499 EUR/J.", wpImmo: "Ab 649 EUR", immonex: "Auf Anfrage", frymo: "Ab 348 EUR/J." },
 ];
 
@@ -203,12 +214,19 @@ const ImmoSuite = () => {
 						<HeroActions>
 							<PriceBadge>499 EUR / Jahr</PriceBadge>
 							<PrimaryButton
+								href="https://immo-suite-demo.dbw-development.de/immobilien/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Live-Demo ansehen
+							</PrimaryButton>
+							<SecondaryButton
 								href="https://github.com/dbwmedia/Immo-Suite"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								<FaGithub /> GitHub
-							</PrimaryButton>
+							</SecondaryButton>
 						</HeroActions>
 					</Hero>
 					<GradientDivider />
@@ -496,6 +514,26 @@ const PrimaryButton = styled.a`
 	}
 `;
 
+const SecondaryButton = styled.a`
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	background: transparent;
+	color: #111;
+	font-size: 0.95rem;
+	font-weight: 600;
+	border: 1.5px solid #ddd;
+	border-radius: 999px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: #999;
+		transform: translateY(-2px);
+	}
+`;
+
 /* ── Sections (dunkel) ── */
 
 const Section = styled.section`
@@ -531,10 +569,10 @@ const SectionSub = styled.p`
 
 const PillarGrid = styled.div`
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 1.5rem;
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1200px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
