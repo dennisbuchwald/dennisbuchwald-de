@@ -25,27 +25,27 @@ const SITE_URL = "https://www.dennisbuchwald.de";
 const steps = [
 	{
 		num: "1",
-		title: "Maklersoftware verbinden",
-		desc: "OpenImmo-Export in deiner Software aktivieren und per FTP auf den Server legen. Einmal einrichten, danach läuft alles automatisch.",
+		title: "Wir richten alles ein",
+		desc: "Einmal-Setup durch uns: wir verbinden deine Maklersoftware mit der Website. Du musst nichts Technisches machen. Danach läuft alles automatisch.",
 	},
 	{
 		num: "2",
-		title: "Objekte erscheinen auf der Website",
-		desc: "Die Immo Suite importiert stündlich per WP-Cron: neue Objekte anlegen, geänderte aktualisieren, verkaufte archivieren. Inklusive Bilder, Grundrisse und Kontaktdaten.",
+		title: "Objekte erscheinen automatisch",
+		desc: "Neue Objekte tauchen auf der Website auf, geänderte werden aktualisiert, verkaufte archiviert. Inklusive aller Bilder, Grundrisse und Kontaktdaten.",
 	},
 	{
 		num: "3",
 		title: "Anfragen kommen rein",
-		desc: "Jede Detailseite wird zur Verkaufsmaschine: Finanzrechner, Exposé-PDF, Kontaktmodal, WhatsApp. Der Interessent findet alles, was er braucht, und meldet sich direkt.",
+		desc: "Jede Detailseite wird zur Verkaufsmaschine: Finanzrechner, Exposé, Kontaktmodal, WhatsApp. Der Interessent findet alles und meldet sich direkt bei dir.",
 	},
 ];
 
 const software = [
-	{ name: "OnOffice", desc: "OpenImmo-XML-Export direkt aus OnOffice enterprise. Automatischer FTP-Upload, stündliche Synchronisation." },
-	{ name: "FlowFact", desc: "FlowFact exportiert per OpenImmo-Schnittstelle. Objekte, Bilder und Kontaktdaten werden vollständig übernommen." },
-	{ name: "JustImmo", desc: "JustImmo von Immo United: OpenImmo-Export aktivieren, FTP-Pfad konfigurieren, fertig." },
-	{ name: "Propstack", desc: "Propstack unterstützt OpenImmo-XML. Export einrichten, die Immo Suite erledigt den Rest." },
-	{ name: "Andere Software", desc: "Jede Maklersoftware mit OpenImmo-XML-Export funktioniert. Das ist der offene Standard der Branche." },
+	{ name: "OnOffice", desc: "Du arbeitest mit OnOffice? Wir verbinden deine Objekte direkt mit WordPress. Alles synchronisiert sich automatisch." },
+	{ name: "FlowFact", desc: "FlowFact-Nutzer: Objekte, Bilder und Kontaktdaten werden vollständig auf die Website übernommen." },
+	{ name: "JustImmo", desc: "JustImmo von Immo United: wir richten die Verbindung ein, danach läuft der Abgleich von allein." },
+	{ name: "Propstack", desc: "Propstack-Nutzer profitieren von der automatischen Synchronisation. Wir kümmern uns um die Einrichtung." },
+	{ name: "Andere Software", desc: "Deine Software ist nicht dabei? Kein Problem. Wir unterstützen den offenen Branchenstandard, den alle gängigen Produkte sprechen." },
 ];
 
 const pillars = [
@@ -66,8 +66,8 @@ const pillars = [
 	},
 	{
 		icon: <FaSearch />,
-		title: "AJAX-Filter und Kartenansicht",
-		desc: "Grid, Liste und OpenStreetMap-Karte mit Live-Switcher. Preisslider mit Histogramm, Autocomplete, aktive Filter-Chips. Ohne Page Reload.",
+		title: "Filter und Kartenansicht",
+		desc: "Drei Ansichten (Kacheln, Liste, Karte) mit Live-Switcher. Preisslider, Autocomplete, aktive Filter-Chips. Alles ohne Neuladen der Seite.",
 	},
 	{
 		icon: <FaWhatsapp />,
@@ -77,12 +77,12 @@ const pillars = [
 	{
 		icon: <FaMapMarkerAlt />,
 		title: "Karte ohne Google",
-		desc: "OpenStreetMap via Leaflet: kein API-Key, keine laufenden Kosten, kein Consent-Banner für Google Maps nötig. Datenschutz-Platzhalter eingebaut.",
+		desc: "Interaktive Karte ohne Google Maps: keine laufenden Kosten, kein Cookie-Banner nötig. Datenschutz-Platzhalter ist eingebaut.",
 	},
 	{
 		icon: <FaShieldAlt />,
 		title: "DSGVO von Grund auf",
-		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Merkliste per localStorage. Consent-Platzhalter vor Karten. Privacy by Design.",
+		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Merkliste funktioniert ohne Benutzerkonten. Datenschutzkonform ohne Zusatzaufwand.",
 	},
 	{
 		icon: <FaUniversalAccess />,
@@ -129,15 +129,15 @@ const allFeatures = [
 	"Energieausweis-Skala mit visueller Pfeilanzeige (EnEV A+ bis H)",
 	"Referenzen-System: Verkauft, Reserviert, Referenz mit Statusschutz",
 	"7-Tab-Property-Editor (Basis, Preise, Flächen, Ausstattung, Technik, Kontakt, Import)",
-	"Import-Dashboard mit System-Check, manueller Import-Trigger, Historie",
-	"25+ Customizer-Optionen für Design und Sichtbarkeit",
-	"Gutenberg-Blöcke: Immobilien-Grid und Referenzen",
-	"Geo-Landingpages über Shortcodes mit Orts-Parameter",
+	"Import-Dashboard: Status, manueller Import, Verlauf der letzten Importe",
+	"25+ Design-Optionen: Farben, Sichtbarkeit, Layout direkt im Customizer",
+	"Fertige Blöcke für den WordPress-Editor: Immobilien-Grid und Referenzen",
+	"Stadtseiten: zeige nur Objekte aus einem bestimmten Ort",
 	"Floating Action Buttons: Zurück, Teilen, Exposé, Grundrisse",
 	"Ähnliche Objekte mit 3-stufiger Fallback-Logik",
 	"Honeypot und Rate Limiting für alle Formulare",
-	"Stündlicher WP-Cron-Import mit Lock-Mechanismus",
-	"Hash-basierte Duplikaterkennung (unveränderte Objekte werden übersprungen)",
+	"Stündlicher automatischer Abgleich mit deiner Maklersoftware",
+	"Intelligente Duplikaterkennung (unveränderte Objekte werden übersprungen)",
 ];
 
 const compareRows = [
@@ -236,11 +236,11 @@ const ImmoSuite = () => {
 							Deine Objekte automatisch auf der Website. Mit allem, was Anfragen bringt.
 						</Title>
 						<Intro>
-							Die Immo Suite verbindet deine Maklersoftware per OpenImmo
-							mit WordPress und macht aus jeder Detailseite eine
-							Verkaufsmaschine: Finanzierungsrechner, Infrastruktur-Score,
-							PDF-Exposé, Kontaktmodal, WhatsApp. Kein PageBuilder,
-							kein Google-API-Key, keine Objektlimits.
+							Die Immo Suite verbindet deine Maklersoftware mit WordPress
+							und macht aus jeder Objektseite eine Verkaufsmaschine:
+							Finanzierungsrechner, Infrastruktur-Score, druckfertiges
+							Exposé, Kontaktmodal und WhatsApp. Wir richten alles für
+							dich ein. Keine Objektlimits, keine versteckten Kosten.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton href="#anfrage">
@@ -266,12 +266,12 @@ const ImmoSuite = () => {
 								Deine Objekte stecken in der Maklersoftware fest
 							</SectionHeading>
 							<ProblemDesc>
-								Du pflegst Immobilien in OnOffice, FlowFact oder JustImmo.
-								Aber deine Website zeigt veraltete Daten, hat kein
-								vernünftiges Exposé und die Detailseiten generieren keine
-								Anfragen. Interessenten springen ab, weil sie nicht finden,
-								was sie brauchen: Finanzierungsinformationen, Lage-Bewertung,
-								ein schnelles Kontaktformular.
+								Du pflegst deine Objekte in der Maklersoftware. Aber auf
+								deiner Website sieht es anders aus: veraltete Daten, kein
+								vernünftiges Exposé und Detailseiten, die keine Anfragen
+								bringen. Interessenten springen ab, weil sie nicht finden,
+								was sie brauchen: was kostet die Finanzierung? Wie ist die
+								Lage? Wie erreiche ich den Makler?
 							</ProblemDesc>
 							<ProblemDesc>
 								<strong>Die Immo Suite löst genau das.</strong> Objekte
@@ -285,7 +285,7 @@ const ImmoSuite = () => {
 				{/* ── 3 SCHRITTE ── */}
 				<Section>
 					<SectionHeading>
-						So funktioniert die OpenImmo-Schnittstelle
+						Einmal einrichten, dann läuft es
 					</SectionHeading>
 					<StepGrid>
 						{steps.map((step) => (
@@ -304,8 +304,9 @@ const ImmoSuite = () => {
 						Funktioniert mit deiner Maklersoftware
 					</SectionHeading>
 					<SectionSub>
-						Die Immo Suite importiert per OpenImmo-XML. Das ist der offene
-						Branchenstandard, den alle gängigen Softwareprodukte unterstützen.
+						Egal welche Software du nutzt: wir verbinden sie mit deiner
+						WordPress-Website. Einmal einrichten, danach synchronisiert
+						sich alles automatisch.
 					</SectionSub>
 					<SoftwareGrid>
 						{software.map((sw) => (
@@ -509,6 +510,47 @@ const ImmoSuite = () => {
 						</InquiryForm>
 					</InquiryCard>
 				</InquirySection>
+
+				{/* ── SEO KEYWORD SEKTIONEN ── */}
+				<Section>
+					<FaqGrid>
+						<FaqItem>
+							<FaqTitle>OnOffice mit WordPress verbinden</FaqTitle>
+							<FaqText>
+								Du nutzt OnOffice und willst deine Objekte automatisch auf
+								deiner WordPress-Website anzeigen? Die Immo Suite übernimmt
+								den kompletten Abgleich: neue Objekte erscheinen sofort,
+								Änderungen werden synchronisiert, verkaufte Objekte
+								automatisch archiviert. Wir richten die Verbindung für dich ein.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>FlowFact mit WordPress verbinden</FaqTitle>
+							<FaqText>
+								FlowFact-Nutzer profitieren von der automatischen
+								Synchronisation mit WordPress. Alle Objektdaten, Bilder
+								und Grundrisse werden übernommen. Einmal einrichten,
+								danach läuft der Abgleich ohne dein Zutun.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>JustImmo mit WordPress verbinden</FaqTitle>
+							<FaqText>
+								JustImmo von Immo United lässt sich nahtlos mit der Immo
+								Suite verbinden. Deine Objekte landen automatisch auf der
+								Website, inklusive aller Details und Medien.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Propstack mit WordPress verbinden</FaqTitle>
+							<FaqText>
+								Propstack-Nutzer können ihre Objekte direkt mit WordPress
+								synchronisieren. Die Immo Suite übernimmt den Import
+								und hält deine Website immer auf dem aktuellen Stand.
+							</FaqText>
+						</FaqItem>
+					</FaqGrid>
+				</Section>
 
 				<FinalCTA />
 			</PageContent>
@@ -1068,6 +1110,42 @@ const ReqValue = styled.span`
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: ${(props) => props.theme.text};
+`;
+
+/* ── SEO Keyword Sektionen ── */
+
+const FaqGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+const FaqItem = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1.75rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1rem;
+`;
+
+const FaqTitle = styled.h3`
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+	margin: 0;
+`;
+
+const FaqText = styled.p`
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0;
 `;
 
 /* ── Anfrage ── */
