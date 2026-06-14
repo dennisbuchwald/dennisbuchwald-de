@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="50 50 300 300" width="300" height="300">
+	<defs>
+		<linearGradient id="dbw" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" stop-color="#ea2b1f"/>
+			<stop offset="25%" stop-color="#ff3c6f"/>
+			<stop offset="50%" stop-color="#ff4fdd"/>
+			<stop offset="75%" stop-color="#7e56ff"/>
+			<stop offset="100%" stop-color="#00b2ff"/>
+		</linearGradient>
+	</defs>
+	<g transform="translate(200 200)">
+		<rect x="-78" y="-78" width="156" height="156" rx="30" transform="rotate(-25)" fill="url(#dbw)" opacity="0.4"/>
+		<rect x="-78" y="-78" width="156" height="156" rx="30" transform="rotate(25)"  fill="url(#dbw)" opacity="0.4"/>
+		<rect x="-78" y="-78" width="156" height="156" rx="30" fill="url(#dbw)"/>
+	</g>
+	<svg x="135" y="135" width="130" height="130" viewBox="0 -960 960 960">
+		<path fill="#fff" d="M80-360v-240q0-33 23.5-56.5T160-680q33 0 56.5 23.5T240-600v240q0 33-23.5 56.5T160-280q-33 0-56.5-23.5T80-360Zm280 160q-33 0-56.5-23.5T280-280v-400q0-33 23.5-56.5T360-760h240q33 0 56.5 23.5T680-680v400q0 33-23.5 56.5T600-200H360Zm360-160v-240q0-33 23.5-56.5T800-680q33 0 56.5 23.5T880-600v240q0 33-23.5 56.5T800-280q-33 0-56.5-23.5T720-360Zm-360 80h240v-400H360v400Zm120-200Z"/>
+	</svg>
+</svg>

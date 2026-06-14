@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Head from "next/head";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import AppsGrid from "../../components/AppsGrid";
-import FinalCTA from "../../components/FinalCTA";
-import { apps } from "../../components/appsData";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import AppsGrid from "../../../components/AppsGrid";
+import FinalCTA from "../../../components/FinalCTA";
+import { apps } from "../../../components/appsData";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
 
@@ -45,7 +45,7 @@ const Apps = () => {
 				<title>Apps & WordPress-Plugins - Dennis Buchwald</title>
 				<meta
 					name="description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie PerForm Forms, die dbw Immo Suite und der Logo Slider Block. Kostenlos und kommerziell."
+					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block. Kostenlos und kommerziell."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps`} />
 				<meta
@@ -54,7 +54,7 @@ const Apps = () => {
 				/>
 				<meta
 					property="og:description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie PerForm Forms, die dbw Immo Suite und der Logo Slider Block."
+					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
 				/>
 				<meta property="og:url" content={`${SITE_URL}/apps`} />
 				<meta
@@ -63,7 +63,7 @@ const Apps = () => {
 				/>
 				<meta
 					name="twitter:description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie PerForm Forms, die dbw Immo Suite und der Logo Slider Block."
+					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
 				/>
 				<script
 					type="application/ld+json"
