@@ -47,6 +47,7 @@ export const apps = [
 	{
 		slug: "infinite-logo-carousel-block",
 		icon: "/apps/icons/logoslider-app.svg",
+		detailPage: "/apps/logo-slider",
 		name: "Logo Slider - Infinite Carousel",
 		tagline: "Logos im endlos laufenden Carousel.",
 		description:
@@ -58,6 +59,11 @@ export const apps = [
 				label: "WordPress.org",
 				href: "https://wordpress.org/plugins/infinite-logo-carousel-block/",
 				type: "wordpress",
+			},
+			{
+				label: "GitHub",
+				href: "https://github.com/dbwmedia/Infinite-Logo-Carousel-Block",
+				type: "github",
 			},
 		],
 		schema: {
