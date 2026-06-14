@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
@@ -338,6 +339,75 @@ const ImmoSuite = () => {
 						</ReqItem>
 					</ReqGrid>
 				</Section>
+
+				{/* Anfrage */}
+				<InquirySection id="anfrage">
+					<InquiryCard>
+						<InquiryHeading>Interesse? Lass uns kurz sprechen.</InquiryHeading>
+						<InquiryDesc>
+							Sag mir, welche Maklersoftware du nutzt und wo deine
+							Website steht. Ich schaue mir das an und melde mich
+							bei dir.
+						</InquiryDesc>
+						<InquiryForm
+							onSubmit={(e) => {
+								e.preventDefault();
+								const form = e.target;
+								const firma = form.firma.value;
+								const software = form.software.value;
+								const website = form.website.value;
+								const subject = encodeURIComponent(
+									`Immo Suite Anfrage - ${firma}`
+								);
+								const body = encodeURIComponent(
+									`Firma: ${firma}\nMaklersoftware: ${software}\nWebsite: ${website}`
+								);
+								window.location.href = `mailto:dennis@dbw-media.de?subject=${subject}&body=${body}`;
+							}}
+						>
+							<FormField>
+								<FormLabel htmlFor="firma">Firma</FormLabel>
+								<FormInput
+									id="firma"
+									name="firma"
+									type="text"
+									placeholder="Mustermann Immobilien GmbH"
+									required
+								/>
+							</FormField>
+							<FormField>
+								<FormLabel htmlFor="software">
+									Welche Maklersoftware nutzt du?
+								</FormLabel>
+								<FormSelect id="software" name="software" required>
+									<option value="">Bitte wählen</option>
+									<option value="OnOffice">OnOffice</option>
+									<option value="FlowFact">FlowFact</option>
+									<option value="JustImmo">JustImmo</option>
+									<option value="Propstack">Propstack</option>
+									<option value="OpenImmo (andere)">
+										OpenImmo (andere Software)
+									</option>
+									<option value="Noch keine">Noch keine</option>
+								</FormSelect>
+							</FormField>
+							<FormField>
+								<FormLabel htmlFor="website">
+									Link zu deiner aktuellen Website
+								</FormLabel>
+								<FormInput
+									id="website"
+									name="website"
+									type="url"
+									placeholder="https://www.deine-website.de"
+								/>
+							</FormField>
+							<SubmitButton type="submit">
+								Anfrage absenden
+							</SubmitButton>
+						</InquiryForm>
+					</InquiryCard>
+				</InquirySection>
 
 				<FinalCTA />
 			</PageContent>
@@ -794,6 +864,129 @@ const CellText = styled.span`
 	font-weight: ${(props) => (props.$highlight ? "700" : "400")};
 	color: ${(props) =>
 		props.$highlight ? props.theme.accent : props.theme.textSecondary};
+`;
+
+/* ── Anfrage-Section ── */
+
+const InquirySection = styled.section`
+	max-width: calc(1200px + 8rem);
+	width: 100%;
+	margin: 0 auto;
+	padding: 5rem 4rem;
+
+	@media screen and (max-width: 768px) {
+		padding: 3rem 1.5rem;
+	}
+`;
+
+const InquiryCard = styled.div`
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 3rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1.5rem;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 2rem 1.5rem;
+	}
+`;
+
+const InquiryHeading = styled.h2`
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+	margin: 0 0 0.75rem;
+`;
+
+const InquiryDesc = styled.p`
+	font-size: 1rem;
+	line-height: 1.6;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0 0 2rem;
+`;
+
+const InquiryForm = styled.form`
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+`;
+
+const FormField = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+`;
+
+const FormLabel = styled.label`
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: ${(props) => props.theme.text};
+`;
+
+const FormInput = styled.input`
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	color: ${(props) => props.theme.text};
+	background: ${(props) => props.theme.bg};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 0.75rem;
+	outline: none;
+	transition: border-color 0.2s ease;
+
+	&::placeholder {
+		color: ${(props) => props.theme.textMuted};
+	}
+
+	&:focus {
+		border-color: ${(props) => props.theme.accent};
+	}
+`;
+
+const FormSelect = styled.select`
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	color: ${(props) => props.theme.text};
+	background: ${(props) => props.theme.bg};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 0.75rem;
+	outline: none;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
+
+	&:focus {
+		border-color: ${(props) => props.theme.accent};
+	}
+`;
+
+const SubmitButton = styled.button`
+	padding: 0.85rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+	border: none;
+	border-radius: 999px;
+	cursor: pointer;
+	margin-top: 0.5rem;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		opacity: 0.9;
+		transform: translateY(-2px);
+	}
 `;
 
 /* ── Voraussetzungen ── */
