@@ -308,15 +308,21 @@ const ImmoSuite = () => {
 								Wenn du ein Objekt in deiner Maklersoftware freigibst,
 								geht es an ImmoScout, Kleinanzeigen, Immowelt. Aber
 								deine eigene Website? Die hinkt hinterher. Veraltete
-								Daten, kein Exposé, keine Anfragen. Dabei ist deine
-								Website der einzige Kanal, der dir gehört und auf dem
-								du keine Provision zahlst.
+								Daten, kein Exposé, keine Anfragen. Oder noch schlimmer:
+								du pflegst die Objekte manuell auf der Website und machst
+								alles doppelt.
+							</ProblemDesc>
+							<ProblemDesc>
+								Dabei ist deine Website der einzige Kanal, der dir
+								wirklich gehört. Keine Konkurrenz links und rechts neben
+								deinen Objekten. Keine Provision pro Anfrage. Keine
+								Abhängigkeit von Portalen, die morgen die Regeln ändern.
 							</ProblemDesc>
 							<ProblemDesc>
 								<strong>Mit der Immo Suite wird deine Website zum
 								eigenen Portal.</strong> Objekte erscheinen automatisch,
-								Detailseiten generieren Anfragen. Direkt von dir, ohne
-								Umweg über Drittanbieter.
+								Detailseiten generieren Anfragen. Alles unter deiner
+								Kontrolle.
 							</ProblemDesc>
 						</ProblemText>
 					</ProblemGrid>
@@ -554,55 +560,36 @@ const ImmoSuite = () => {
 				{/* ── FAQ ── */}
 				<Section>
 					<SectionHeading>Häufige Fragen</SectionHeading>
-					<FaqGrid>
-						<FaqItem>
-							<FaqTitle>Muss ich meine Objekte doppelt pflegen?</FaqTitle>
-							<FaqText>
-								Nein. Du pflegst alles in deiner Maklersoftware wie bisher.
-								Die Immo Suite holt sich die Daten automatisch und hält
-								deine Website immer aktuell.
-							</FaqText>
-						</FaqItem>
-						<FaqItem>
-							<FaqTitle>Wie viele Objekte kann ich anzeigen?</FaqTitle>
-							<FaqText>
-								Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder
-								500 Immobilien.
-							</FaqText>
-						</FaqItem>
-						<FaqItem>
-							<FaqTitle>Brauche ich technisches Wissen?</FaqTitle>
-							<FaqText>
-								Nein. Wir richten die Immo Suite komplett für dich ein.
-								Du musst nichts installieren, konfigurieren oder
-								programmieren.
-							</FaqText>
-						</FaqItem>
-						<FaqItem>
-							<FaqTitle>Was passiert, wenn ein Objekt verkauft wird?</FaqTitle>
-							<FaqText>
-								Sobald du das Objekt in deiner Maklersoftware als verkauft
-								markierst, wird es auf der Website automatisch archiviert
-								oder in den Referenzen angezeigt.
-							</FaqText>
-						</FaqItem>
-						<FaqItem>
-							<FaqTitle>Funktioniert das mit meinem WordPress-Theme?</FaqTitle>
-							<FaqText>
-								Ja. Die Immo Suite bringt eigene Templates mit und passt
-								sich über den Customizer an dein Design an. Kein PageBuilder
-								nötig.
-							</FaqText>
-						</FaqItem>
-						<FaqItem>
-							<FaqTitle>Ist die Website DSGVO-konform?</FaqTitle>
-							<FaqText>
-								Ja. Keine externen Dienste, keine Tracking-Cookies, keine
-								IP-Speicherung. Die Karte läuft ohne Google Maps.
-								Datenschutz-Platzhalter sind eingebaut.
-							</FaqText>
-						</FaqItem>
-					</FaqGrid>
+					<FaqList>
+						{[
+							{
+								q: "Muss ich meine Objekte doppelt pflegen?",
+								a: "Nein. Du pflegst alles in deiner Maklersoftware wie bisher. Die Immo Suite holt sich die Daten automatisch und hält deine Website immer aktuell.",
+							},
+							{
+								q: "Wie viele Objekte kann ich anzeigen?",
+								a: "Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder 500 Immobilien.",
+							},
+							{
+								q: "Brauche ich technisches Wissen?",
+								a: "Nein. Wir richten die Immo Suite komplett für dich ein. Du musst nichts installieren, konfigurieren oder programmieren.",
+							},
+							{
+								q: "Was passiert, wenn ein Objekt verkauft wird?",
+								a: "Sobald du das Objekt in deiner Maklersoftware als verkauft markierst, wird es auf der Website automatisch archiviert oder in den Referenzen angezeigt.",
+							},
+							{
+								q: "Funktioniert das mit meinem WordPress-Theme?",
+								a: "Ja. Die Immo Suite bringt eigene Templates mit und passt sich über den Customizer an dein Design an. Kein PageBuilder nötig.",
+							},
+							{
+								q: "Ist die Website DSGVO-konform?",
+								a: "Ja. Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Karte läuft ohne Google Maps. Datenschutz-Platzhalter sind eingebaut.",
+							},
+						].map((faq) => (
+							<AccordionItem key={faq.q} question={faq.q} answer={faq.a} />
+						))}
+					</FaqList>
 				</Section>
 
 				{/* ── SEO KEYWORD SEKTIONEN ── */}
@@ -650,6 +637,21 @@ const ImmoSuite = () => {
 			</PageContent>
 			<Footer />
 		</div>
+	);
+};
+
+const AccordionItem = ({ question, answer }) => {
+	const [open, setOpen] = useState(false);
+	return (
+		<AccordionWrapper>
+			<AccordionTrigger onClick={() => setOpen(!open)} $open={open}>
+				<span>{question}</span>
+				<AccordionIcon $open={open}>+</AccordionIcon>
+			</AccordionTrigger>
+			<AccordionContent $open={open}>
+				<AccordionText>{answer}</AccordionText>
+			</AccordionContent>
+		</AccordionWrapper>
 	);
 };
 
@@ -1204,6 +1206,66 @@ const ReqValue = styled.span`
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: ${(props) => props.theme.text};
+`;
+
+/* ── FAQ Akkordeon ── */
+
+const FaqList = styled.div`
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+`;
+
+const AccordionWrapper = styled.div`
+	border-bottom: 1px solid ${(props) => props.theme.borderCard};
+
+	&:first-child {
+		border-top: 1px solid ${(props) => props.theme.borderCard};
+	}
+`;
+
+const AccordionTrigger = styled.button`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 1.25rem 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	font-size: 1.05rem;
+	font-weight: 600;
+	color: ${(props) => props.theme.text};
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.accent};
+	}
+`;
+
+const AccordionIcon = styled.span`
+	font-size: 1.4rem;
+	font-weight: 300;
+	color: ${(props) => props.theme.textMuted};
+	transition: transform 0.3s ease;
+	transform: ${(props) => (props.$open ? "rotate(45deg)" : "rotate(0)")};
+	flex-shrink: 0;
+	margin-left: 1rem;
+`;
+
+const AccordionContent = styled.div`
+	max-height: ${(props) => (props.$open ? "200px" : "0")};
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+`;
+
+const AccordionText = styled.p`
+	font-size: 0.95rem;
+	line-height: 1.65;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0;
+	padding-bottom: 1.25rem;
 `;
 
 /* ── SEO Keyword Sektionen ── */
