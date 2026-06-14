@@ -31,7 +31,7 @@ const steps = [
 	{
 		num: "2",
 		title: "Objekte erscheinen automatisch",
-		desc: "Neue Objekte tauchen auf der Website auf, geänderte werden aktualisiert, verkaufte archiviert. Inklusive aller Bilder, Grundrisse und Kontaktdaten.",
+		desc: "Neue Objekte tauchen auf der Website auf, geänderte werden aktualisiert, verkaufte wandern automatisch in deine Referenzen-Seite. Inklusive aller Bilder, Grundrisse und Kontaktdaten.",
 	},
 	{
 		num: "3",
