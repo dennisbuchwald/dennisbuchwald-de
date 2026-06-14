@@ -191,7 +191,7 @@ const Flinkform = () => {
 							<HeroIcon src="/apps/icons/flinkform-app.svg" alt="Flinkform" />
 							<Eyebrow>WordPress-Plugin</Eyebrow>
 						</HeroIconRow>
-						<Title>Flinkform.</Title>
+						<Title>Flinkform</Title>
 						<Tagline>
 							Das letzte Formular-Plugin, das du installieren wirst.
 						</Tagline>
@@ -223,7 +223,7 @@ const Flinkform = () => {
 
 				{/* 4 Säulen */}
 				<Section>
-					<SectionInner>
+					
 						<PillarGrid>
 							{pillars.map((p) => (
 								<PillarCard key={p.title}>
@@ -233,12 +233,11 @@ const Flinkform = () => {
 								</PillarCard>
 							))}
 						</PillarGrid>
-					</SectionInner>
 				</Section>
 
 				{/* Features */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>Alles drin. Alles kostenlos.</SectionHeading>
 						<SectionSub>
 							Multi-Step und bedingte Logik kosten bei anderen Plugins ab 99 $
@@ -254,12 +253,11 @@ const Flinkform = () => {
 								</FeatureItem>
 							))}
 						</FeatureList>
-					</SectionInner>
 				</Section>
 
 				{/* Vergleich */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>
 							Wie Flinkform im Vergleich abschneidet
 						</SectionHeading>
@@ -295,12 +293,11 @@ const Flinkform = () => {
 								</tbody>
 							</CompareTable>
 						</CompareWrapper>
-					</SectionInner>
 				</Section>
 
 				{/* Voraussetzungen */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>Voraussetzungen</SectionHeading>
 						<ReqGrid>
 							<ReqItem>
@@ -320,7 +317,6 @@ const Flinkform = () => {
 								<ReqValue>GPL v2</ReqValue>
 							</ReqItem>
 						</ReqGrid>
-					</SectionInner>
 				</Section>
 
 				<FinalCTA />
@@ -516,17 +512,14 @@ const SecondaryButton = styled.a`
 /* ── Sections (dunkel) ── */
 
 const Section = styled.section`
+	max-width: calc(1200px + 8rem);
 	width: 100%;
+	margin: 0 auto;
 	padding: 5rem 4rem;
 
 	@media screen and (max-width: 768px) {
 		padding: 3rem 1.5rem;
 	}
-`;
-
-const SectionInner = styled.div`
-	max-width: calc(1200px + 8rem);
-	margin: 0 auto;
 `;
 
 const SectionHeading = styled.h2`

@@ -27,7 +27,8 @@ export const apps = [
 	{
 		slug: "dbw-immo-suite",
 		icon: "/apps/icons/immosuite-app.svg",
-		name: "dbw Immo Suite",
+		detailPage: "/apps/immo-suite",
+		name: "Immo Suite",
 		tagline: "Die Immobilien-Komplettlösung für WordPress.",
 		description:
 			"Immobilien präsentieren und verwalten: automatischer OpenImmo-Import, Filter, Karten, Exposé-PDFs und Referenzen-System. Im Einsatz bei Maklern und Hausverwaltungen.",

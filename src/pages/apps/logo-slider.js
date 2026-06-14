@@ -113,7 +113,7 @@ const LogoSlider = () => {
 							/>
 							<Eyebrow>WordPress.org Plugin</Eyebrow>
 						</HeroIconRow>
-						<Title>Logo Slider.</Title>
+						<Title>Logo Slider</Title>
 						<Tagline>Endlos laufende Logo-Carousels als Gutenberg-Block.</Tagline>
 						<Intro>
 							Kundenlogos, Partnerlogos, Zertifikate: einfach Bilder reinwerfen,
@@ -142,7 +142,7 @@ const LogoSlider = () => {
 
 				{/* Features */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>Was der Block kann</SectionHeading>
 						<FeatureGrid>
 							{features.map((feature) => (
@@ -152,12 +152,11 @@ const LogoSlider = () => {
 								</FeatureCard>
 							))}
 						</FeatureGrid>
-					</SectionInner>
 				</Section>
 
 				{/* Highlights */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>Und ausserdem</SectionHeading>
 						<HighlightList>
 							{highlights.map((item) => (
@@ -169,12 +168,11 @@ const LogoSlider = () => {
 								</HighlightItem>
 							))}
 						</HighlightList>
-					</SectionInner>
 				</Section>
 
 				{/* Voraussetzungen */}
 				<Section>
-					<SectionInner>
+					
 						<SectionHeading>Voraussetzungen</SectionHeading>
 						<ReqGrid>
 							<ReqItem>
@@ -194,7 +192,6 @@ const LogoSlider = () => {
 								<ReqValue>Kostenlos</ReqValue>
 							</ReqItem>
 						</ReqGrid>
-					</SectionInner>
 				</Section>
 
 				<FinalCTA />
@@ -382,17 +379,14 @@ const SecondaryButton = styled.a`
 /* ── Sections (dunkel) ── */
 
 const Section = styled.section`
+	max-width: calc(1200px + 8rem);
 	width: 100%;
+	margin: 0 auto;
 	padding: 5rem 4rem;
 
 	@media screen and (max-width: 768px) {
 		padding: 3rem 1.5rem;
 	}
-`;
-
-const SectionInner = styled.div`
-	max-width: calc(1200px + 8rem);
-	margin: 0 auto;
 `;
 
 const SectionHeading = styled.h2`
