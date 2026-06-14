@@ -213,20 +213,15 @@ const ImmoSuite = () => {
 							keine Objektlimits.
 						</Intro>
 						<HeroActions>
-							<PriceBadge>499 EUR / Jahr</PriceBadge>
-							<PrimaryButton
+							<PrimaryButton href="#anfrage">
+								Unverbindlich anfragen
+							</PrimaryButton>
+							<SecondaryButton
 								href="https://immo-suite-demo.dbw-development.de/immobilien/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								Live-Demo ansehen
-							</PrimaryButton>
-							<SecondaryButton
-								href="https://github.com/dbwmedia/Immo-Suite"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FaGithub /> GitHub
 							</SecondaryButton>
 						</HeroActions>
 					</Hero>
@@ -343,11 +338,15 @@ const ImmoSuite = () => {
 				{/* Anfrage */}
 				<InquirySection id="anfrage">
 					<InquiryCard>
-						<InquiryHeading>Interesse? Lass uns kurz sprechen.</InquiryHeading>
+						<InquiryHeading>
+							Bereit, mehr aus deinen Objektseiten rauszuholen?
+						</InquiryHeading>
 						<InquiryDesc>
-							Sag mir, welche Maklersoftware du nutzt und wo deine
-							Website steht. Ich schaue mir das an und melde mich
-							bei dir.
+							Mehr Anfragen pro Objekt, bessere User Experience,
+							professionelle Detailseiten mit Finanzrechner und Exposé.
+							Sag mir kurz, welche Maklersoftware du nutzt und wo
+							deine Website steht. Ich schaue mir das an und melde
+							mich persönlich bei dir.
 						</InquiryDesc>
 						<InquiryForm
 							onSubmit={(e) => {
@@ -398,8 +397,8 @@ const ImmoSuite = () => {
 								<FormInput
 									id="website"
 									name="website"
-									type="url"
-									placeholder="https://www.deine-website.de"
+									type="text"
+									placeholder="www.deine-website.de"
 								/>
 							</FormField>
 							<SubmitButton type="submit">

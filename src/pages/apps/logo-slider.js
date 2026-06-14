@@ -126,15 +126,8 @@ const LogoSlider = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<FaWordpress /> Auf WordPress.org
+								<FaWordpress /> Kostenlos installieren
 							</PrimaryButton>
-							<SecondaryButton
-								href="https://github.com/dbwmedia/Infinite-Logo-Carousel-Block"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FaGithub /> GitHub
-							</SecondaryButton>
 						</HeroActions>
 					</Hero>
 					<GradientDivider />

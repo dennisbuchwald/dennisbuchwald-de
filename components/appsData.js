@@ -12,13 +12,7 @@ export const apps = [
 			"Block-basiertes Formular-Plugin für WordPress: nativ im Editor, schlank, ohne jQuery und mit eingebautem Spam-Schutz. 13 Feldtypen, Multi-Step, bedingte Logik, Submissions-Dashboard.",
 		badges: ["Bald auf WordPress.org", "Kostenlos"],
 		tags: ["WordPress", "Gutenberg", "Formulare"],
-		links: [
-			{
-				label: "GitHub",
-				href: "https://github.com/dbwmedia/flinkform",
-				type: "github",
-			},
-		],
+		links: [],
 		schema: {
 			price: "0",
 			category: "Plugin",
@@ -34,13 +28,7 @@ export const apps = [
 			"Immobilien präsentieren und verwalten: automatischer OpenImmo-Import, Filter, Karten, Exposé-PDFs und Referenzen-System. Im Einsatz bei Maklern und Hausverwaltungen.",
 		badges: ["Kommerziell", "Lizenz"],
 		tags: ["WordPress", "OpenImmo", "Immobilien"],
-		links: [
-			{
-				label: "GitHub",
-				href: "https://github.com/dbwmedia/dbw-immo-suite",
-				type: "github",
-			},
-		],
+		links: [],
 		schema: {
 			category: "Plugin",
 		},
@@ -60,11 +48,6 @@ export const apps = [
 				label: "WordPress.org",
 				href: "https://wordpress.org/plugins/infinite-logo-carousel-block/",
 				type: "wordpress",
-			},
-			{
-				label: "GitHub",
-				href: "https://github.com/dbwmedia/Infinite-Logo-Carousel-Block",
-				type: "github",
 			},
 		],
 		schema: {

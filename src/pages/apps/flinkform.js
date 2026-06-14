@@ -203,19 +203,12 @@ const Flinkform = () => {
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
-								href="https://github.com/dennisbuchwald/Flinkform"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FaGithub /> GitHub
-							</PrimaryButton>
-							<SecondaryButton
 								href="https://wordpress.org/plugins/flinkform/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								<FaWordpress /> Bald auf WordPress.org
-							</SecondaryButton>
+							</PrimaryButton>
 						</HeroActions>
 					</Hero>
 					<GradientDivider />
