@@ -6,7 +6,6 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import FinalCTA from "../../../components/FinalCTA";
 import {
-	FaGithub,
 	FaCheck,
 	FaTimes,
 	FaSync,
@@ -17,70 +16,110 @@ import {
 	FaWhatsapp,
 	FaShieldAlt,
 	FaChartBar,
+	FaUniversalAccess,
+	FaWordpress,
 } from "react-icons/fa";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
 
-const pillars = [
+const steps = [
 	{
-		icon: <FaSync />,
-		title: "OpenImmo-Autoimport",
-		desc: "OnOffice, FlowFact, JustImmo: ZIP oder XML hochladen, der Rest passiert automatisch. Stündliche Synchronisation per WP-Cron. Anlegen, aktualisieren, archivieren, löschen.",
+		num: "1",
+		title: "Maklersoftware verbinden",
+		desc: "OpenImmo-Export in deiner Software aktivieren und per FTP auf den Server legen. Einmal einrichten, danach läuft alles automatisch.",
 	},
 	{
+		num: "2",
+		title: "Objekte erscheinen auf der Website",
+		desc: "Die Immo Suite importiert stündlich per WP-Cron: neue Objekte anlegen, geänderte aktualisieren, verkaufte archivieren. Inklusive Bilder, Grundrisse und Kontaktdaten.",
+	},
+	{
+		num: "3",
+		title: "Anfragen kommen rein",
+		desc: "Jede Detailseite wird zur Verkaufsmaschine: Finanzrechner, Exposé-PDF, Kontaktmodal, WhatsApp. Der Interessent findet alles, was er braucht, und meldet sich direkt.",
+	},
+];
+
+const software = [
+	{ name: "OnOffice", desc: "OpenImmo-XML-Export direkt aus OnOffice enterprise. Automatischer FTP-Upload, stündliche Synchronisation." },
+	{ name: "FlowFact", desc: "FlowFact exportiert per OpenImmo-Schnittstelle. Objekte, Bilder und Kontaktdaten werden vollständig übernommen." },
+	{ name: "JustImmo", desc: "JustImmo von Immo United: OpenImmo-Export aktivieren, FTP-Pfad konfigurieren, fertig." },
+	{ name: "Propstack", desc: "Propstack unterstützt OpenImmo-XML. Export einrichten, die Immo Suite erledigt den Rest." },
+	{ name: "Andere Software", desc: "Jede Maklersoftware mit OpenImmo-XML-Export funktioniert. Das ist der offene Standard der Branche." },
+];
+
+const pillars = [
+	{
 		icon: <FaCalculator />,
-		title: "Kaufnebenkosten und Finanzierung",
-		desc: "Grunderwerbsteuer nach Bundesland (PLZ-basiert), Notar, Grundbuch, Provision. Plus interaktiver Finanzierungsrechner mit Eigenkapital, Zinssatz und Tilgung. Hält Interessenten auf der Seite und qualifiziert Leads.",
+		title: "Kaufnebenkostenrechner",
+		desc: "Grunderwerbsteuer nach Bundesland (PLZ-basiert), Notar, Grundbuch, Provision. Plus interaktiver Finanzierungsrechner mit Eigenkapital, Zinssatz und Tilgung.",
 	},
 	{
 		icon: <FaChartBar />,
 		title: "Infrastruktur-Score",
-		desc: "Walk-Score-artiges Bewertungssystem: ÖPNV, Shopping, Bildung, Gastronomie, Verkehr. SVG-Ring mit 5 gewichteten Kategorien und aufklappbaren Entfernungsdetails.",
+		desc: "ÖPNV, Shopping, Bildung, Gastronomie, Verkehr: 5 gewichtete Kategorien als SVG-Ring. Aufklappbare Entfernungsdetails pro Kategorie.",
 	},
 	{
 		icon: <FaFileAlt />,
-		title: "Exposé-PDF zum Drucken",
-		desc: "Professionelles A4-Exposé als druckbare Standalone-Seite. Cover, Daten, Features, Lage, Energieausweis, Galerie, Grundrisse, Kontakt. Kein externes Tool nötig.",
+		title: "PDF-Exposé zum Drucken",
+		desc: "Professionelles A4-Exposé: Cover, Key-Facts, Ausstattung, Lage, Energieausweis, Galerie, Grundrisse, Ansprechpartner. Direkt aus dem Browser drucken.",
 	},
 	{
 		icon: <FaSearch />,
-		title: "AJAX-Filter und drei Ansichten",
-		desc: "Grid, Liste und Kartenansicht mit Live-Switcher. Filterbar mit Autocomplete, Preisslider mit Histogramm und aktiven Filter-Chips. Ohne Page Reload.",
+		title: "AJAX-Filter und Kartenansicht",
+		desc: "Grid, Liste und OpenStreetMap-Karte mit Live-Switcher. Preisslider mit Histogramm, Autocomplete, aktive Filter-Chips. Ohne Page Reload.",
 	},
 	{
 		icon: <FaWhatsapp />,
 		title: "WhatsApp-Integration",
-		desc: "Sidebar-Button, Floating-Button, Mobile Sticky Bar und Modal-Redirect. Vorgefüllte Nachricht mit Platzhaltern. Nicht aufgesetzt, sondern durchdacht integriert.",
+		desc: "Sidebar-Button, Floating-Button und Mobile Sticky Bar. Vorgefüllte Nachricht mit Objekt-Titel und Ansprechpartner. Durchdacht integriert, nicht aufgesetzt.",
 	},
 	{
 		icon: <FaMapMarkerAlt />,
-		title: "Kartenansicht ohne Google",
-		desc: "OpenStreetMap via Leaflet: kein API-Key, keine laufenden Kosten, kein Consent-Banner für Google Maps nötig. Klick-Popups mit Bild, Titel und Preis. Datenschutz-Platzhalter eingebaut.",
+		title: "Karte ohne Google",
+		desc: "OpenStreetMap via Leaflet: kein API-Key, keine laufenden Kosten, kein Consent-Banner für Google Maps nötig. Datenschutz-Platzhalter eingebaut.",
 	},
 	{
 		icon: <FaShieldAlt />,
 		title: "DSGVO von Grund auf",
-		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Merkliste per localStorage statt Accounts. Consent-Platzhalter vor Karten. Du/Sie-Toggle für alle Texte. Privacy by Design.",
+		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Merkliste per localStorage. Consent-Platzhalter vor Karten. Privacy by Design.",
+	},
+	{
+		icon: <FaUniversalAccess />,
+		title: "Du/Sie-Umschaltung",
+		desc: "Ein Toggle im Backend ändert alle Texte im gesamten Plugin: Formulare, Modals, Mails, Buttons. Respektiert deutsche Grammatik, kein Regex-Hack.",
 	},
 ];
 
 const wowFeatures = [
 	{
 		title: "Kontaktmodal, das Leads qualifiziert",
-		desc: "Kein langweiliges Formular. Erst wählt der Interessent seinen Intent (Besichtigung, Infos, Preisauskunft, Rückruf), dann kommen passende Felder. Objekt-Preview im Header, Fortschrittsbalken, animierter Erfolgsscreen mit Ansprechpartner.",
+		desc: "Erst wählt der Interessent seinen Intent (Besichtigung, Infos, Preisauskunft, Rückruf), dann kommen passende Felder. Objekt-Preview im Header, Fortschrittsbalken, animierter Erfolgsscreen.",
 	},
 	{
 		title: "Energiekostenrechner",
-		desc: "Was kostet mich das Heizen? Automatische Schätzung aus dem Energieausweis, 9 Energieträger, konfigurierbarer Preis-Slider. Hält Interessenten länger auf der Seite und erzeugt Vertrauen.",
+		desc: "Was kostet das Heizen? Automatische Schätzung aus dem Energieausweis. 9 Energieträger, konfigurierbarer Preis-Slider. Hält Interessenten auf der Seite.",
 	},
 	{
 		title: "Preis-pro-qm-Vergleich",
-		desc: "Kaufpreis geteilt durch Wohnfläche, verglichen mit dem Standort-Durchschnitt aus dem eigenen Portfolio. Zeigt dem Interessenten sofort, ob der Preis fair ist. Schafft Transparenz, baut Vertrauen auf.",
+		desc: "Kaufpreis geteilt durch Wohnfläche, verglichen mit dem Standort-Durchschnitt aus dem eigenen Portfolio. Zeigt sofort, ob der Preis fair ist.",
 	},
 	{
 		title: "View Transitions",
-		desc: "Das Objektbild morpht nahtlos von der Listenansicht zur Detailseite. Modernes UI-Pattern, das professionelle Websites von 08/15-Plugins unterscheidet.",
+		desc: "Das Objektbild morpht nahtlos von der Listenansicht zur Detailseite. Modernes UI-Pattern, das professionelle Websites von Standard-Plugins unterscheidet.",
 	},
+];
+
+const seoFeatures = [
+	"Schema.org JSON-LD auf jeder Detailseite (RealEstateListing mit Preis, Fläche, Zimmern, Koordinaten)",
+	"BreadcrumbList-Markup auf Archiv- und Detailseiten",
+	"RealEstateAgent-Schema seitenweit (Firmeninfos aus den Einstellungen)",
+	"Open Graph und Twitter Cards automatisch aus Objektdaten generiert",
+	"Canonical Tags auf gefilterten Archivseiten gegen Duplicate Content",
+	"Saubere URL-Struktur mit konfigurierbarem CPT-Slug",
+	"Kompatibel mit Yoast SEO und RankMath (keine doppelte Ausgabe)",
+	"Responsive Images mit srcset, fetchpriority und Lazy Loading",
+	"Conditional Asset Loading: CSS/JS nur auf Immobilienseiten",
 ];
 
 const allFeatures = [
@@ -89,19 +128,16 @@ const allFeatures = [
 	"Merkliste per localStorage (DSGVO-konform, ohne Accounts)",
 	"Energieausweis-Skala mit visueller Pfeilanzeige (EnEV A+ bis H)",
 	"Referenzen-System: Verkauft, Reserviert, Referenz mit Statusschutz",
-	"Schema.org JSON-LD (RealEstateListing, BreadcrumbList, RealEstateAgent)",
-	"Open Graph und Twitter Cards aus Objektdaten generiert",
-	"Conditional Asset Loading (CSS/JS nur auf Immobilienseiten)",
-	"Responsive Images mit srcset, fetchpriority, Lazy Loading",
-	"Globale Du/Sie-Umschaltung für alle Texte im gesamten Plugin",
-	"7-Tab-Property-Editor im Backend (Basis, Preise, Flächen, Ausstattung, Technik, Kontakt, Import)",
+	"7-Tab-Property-Editor (Basis, Preise, Flächen, Ausstattung, Technik, Kontakt, Import)",
+	"Import-Dashboard mit System-Check, manueller Import-Trigger, Historie",
+	"25+ Customizer-Optionen für Design und Sichtbarkeit",
 	"Gutenberg-Blöcke: Immobilien-Grid und Referenzen",
 	"Geo-Landingpages über Shortcodes mit Orts-Parameter",
-	"OpenStreetMap via Leaflet (kein Google API-Key nötig)",
 	"Floating Action Buttons: Zurück, Teilen, Exposé, Grundrisse",
 	"Ähnliche Objekte mit 3-stufiger Fallback-Logik",
 	"Honeypot und Rate Limiting für alle Formulare",
-	"25+ Customizer-Optionen für Design und Sichtbarkeit",
+	"Stündlicher WP-Cron-Import mit Lock-Mechanismus",
+	"Hash-basierte Duplikaterkennung (unveränderte Objekte werden übersprungen)",
 ];
 
 const compareRows = [
@@ -112,15 +148,15 @@ const compareRows = [
 	{ feature: "Energiekostenrechner", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Preis/qm-Vergleich", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "PDF-Exposé (druckfertig)", immo: true, wpImmo: "Ab PLUS", immonex: "Add-on", frymo: false },
-	{ feature: "Multi-Step Kontaktmodal", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Kontaktmodal mit Intent", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "WhatsApp-Integration", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Karte ohne API-Key", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
 	{ feature: "Merkliste (DSGVO-safe)", immo: true, wpImmo: true, immonex: false, frymo: false },
 	{ feature: "Schema.org JSON-LD", immo: true, wpImmo: false, immonex: true, frymo: true },
 	{ feature: "Gutenberg-Blöcke nativ", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Kein PageBuilder nötig", immo: true, wpImmo: false, immonex: true, frymo: false },
-	{ feature: "Unbegrenzte Objekte", immo: true, wpImmo: false, immonex: true, frymo: "Ab Pro" },
 	{ feature: "DSGVO (keine ext. Dienste)", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
+	{ feature: "Unbegrenzte Objekte", immo: true, wpImmo: false, immonex: true, frymo: "Ab Pro" },
 	{ feature: "Preis", immo: "499 EUR/J.", wpImmo: "Ab 649 EUR", immonex: "Auf Anfrage", frymo: "Ab 348 EUR/J." },
 ];
 
@@ -129,7 +165,7 @@ const immoSuiteSchema = {
 	"@type": "SoftwareApplication",
 	name: "Immo Suite",
 	description:
-		"Immobilien-Komplettlösung fuer WordPress mit OpenImmo-Import, Finanzrechner, Infrastruktur-Score und Exposé-PDF.",
+		"WordPress Immobilien-Plugin mit OpenImmo-Import, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé. Die Komplettlösung fuer Makler und Hausverwaltungen.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/immo-suite`,
@@ -158,20 +194,20 @@ const ImmoSuite = () => {
 		<div id="top">
 			<Head>
 				<title>
-					Immo Suite - Immobilien-Plugin fuer WordPress mit OpenImmo, Finanzrechner und Exposé
+					WordPress Immobilien-Plugin mit OpenImmo-Import - Immo Suite
 				</title>
 				<meta
 					name="description"
-					content="Immo Suite: die Immobilien-Komplettlösung fuer WordPress. OpenImmo-Autoimport, Kaufnebenkostenrechner, Infrastruktur-Score, PDF-Exposé, AJAX-Filter, Kartenansicht. Ab 499 EUR."
+					content="Immo Suite: WordPress Immobilien-Plugin mit automatischem OpenImmo-Import aus OnOffice, FlowFact und JustImmo. Kaufnebenkostenrechner, Infrastruktur-Score, PDF-Exposé, AJAX-Filter und Kartenansicht. Ab 499 EUR/Jahr."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/immo-suite`} />
 				<meta
 					property="og:title"
-					content="Immo Suite - Immobilien-Plugin fuer WordPress"
+					content="WordPress Immobilien-Plugin mit OpenImmo-Import - Immo Suite"
 				/>
 				<meta
 					property="og:description"
-					content="OpenImmo-Import, Finanzrechner, Infrastruktur-Score, PDF-Exposé. Die Immobilien-Komplettlösung fuer WordPress."
+					content="Objekte automatisch importieren, professionell präsentieren, mehr Anfragen generieren. Die Komplettlösung fuer Makler und Hausverwaltungen."
 				/>
 				<meta property="og:url" content={`${SITE_URL}/apps/immo-suite`} />
 				<meta property="og:type" content="website" />
@@ -184,7 +220,7 @@ const ImmoSuite = () => {
 			</Head>
 			<Header />
 			<PageContent>
-				{/* Hero */}
+				{/* ── HERO ── */}
 				<HeroWrapper>
 					<Hero>
 						<Breadcrumb>
@@ -193,24 +229,18 @@ const ImmoSuite = () => {
 							<span>Immo Suite</span>
 						</Breadcrumb>
 						<HeroIconRow>
-							<HeroIcon
-								src="/apps/icons/immosuite-app.svg"
-								alt="Immo Suite"
-							/>
-							<Eyebrow>WordPress-Plugin</Eyebrow>
+							<HeroIcon src="/apps/icons/immosuite-app.svg" alt="Immo Suite" />
+							<Eyebrow>WordPress Immobilien-Plugin</Eyebrow>
 						</HeroIconRow>
-						<Title>Immo Suite</Title>
-						<Tagline>
-							Mehr Anfragen pro Objekt. Nicht nur eine hübsche Listenansicht.
-						</Tagline>
+						<Title>
+							Deine Objekte automatisch auf der Website. Mit allem, was Anfragen bringt.
+						</Title>
 						<Intro>
-							Andere Immobilien-Plugins zeigen deine Objekte auf einer
-							Archivseite. Die Immo Suite macht aus jeder Detailseite
-							eine Verkaufsmaschine: Finanzierungsrechner, Infrastruktur-Score,
-							Energiekosten, Kaufnebenkosten, druckfertiges Exposé und ein
-							Kontaktmodal, das Leads qualifiziert. Dazu OpenImmo-Autoimport,
-							AJAX-Filter, Kartenansicht. Kein PageBuilder, kein Google-API-Key,
-							keine Objektlimits.
+							Die Immo Suite verbindet deine Maklersoftware per OpenImmo
+							mit WordPress und macht aus jeder Detailseite eine
+							Verkaufsmaschine: Finanzierungsrechner, Infrastruktur-Score,
+							PDF-Exposé, Kontaktmodal, WhatsApp. Kein PageBuilder,
+							kein Google-API-Key, keine Objektlimits.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton href="#anfrage">
@@ -228,8 +258,70 @@ const ImmoSuite = () => {
 					<GradientDivider />
 				</HeroWrapper>
 
-				{/* 6 Säulen */}
+				{/* ── PROBLEM ── */}
 				<Section>
+					<ProblemGrid>
+						<ProblemText>
+							<SectionHeading>
+								Deine Objekte stecken in der Maklersoftware fest
+							</SectionHeading>
+							<ProblemDesc>
+								Du pflegst Immobilien in OnOffice, FlowFact oder JustImmo.
+								Aber deine Website zeigt veraltete Daten, hat kein
+								vernünftiges Exposé und die Detailseiten generieren keine
+								Anfragen. Interessenten springen ab, weil sie nicht finden,
+								was sie brauchen: Finanzierungsinformationen, Lage-Bewertung,
+								ein schnelles Kontaktformular.
+							</ProblemDesc>
+							<ProblemDesc>
+								<strong>Die Immo Suite löst genau das.</strong> Objekte
+								fliessen automatisch auf die Website. Und jede Detailseite
+								bekommt die Tools, die aus einem Besucher einen Lead machen.
+							</ProblemDesc>
+						</ProblemText>
+					</ProblemGrid>
+				</Section>
+
+				{/* ── 3 SCHRITTE ── */}
+				<Section>
+					<SectionHeading>
+						So funktioniert die OpenImmo-Schnittstelle
+					</SectionHeading>
+					<StepGrid>
+						{steps.map((step) => (
+							<StepCard key={step.num}>
+								<StepNum>{step.num}</StepNum>
+								<StepTitle>{step.title}</StepTitle>
+								<StepDesc>{step.desc}</StepDesc>
+							</StepCard>
+						))}
+					</StepGrid>
+				</Section>
+
+				{/* ── KOMPATIBLE SOFTWARE ── */}
+				<Section>
+					<SectionHeading>
+						Funktioniert mit deiner Maklersoftware
+					</SectionHeading>
+					<SectionSub>
+						Die Immo Suite importiert per OpenImmo-XML. Das ist der offene
+						Branchenstandard, den alle gängigen Softwareprodukte unterstützen.
+					</SectionSub>
+					<SoftwareGrid>
+						{software.map((sw) => (
+							<SoftwareCard key={sw.name}>
+								<SoftwareName>{sw.name}</SoftwareName>
+								<SoftwareDesc>{sw.desc}</SoftwareDesc>
+							</SoftwareCard>
+						))}
+					</SoftwareGrid>
+				</Section>
+
+				{/* ── FEATURES (8 Pillars) ── */}
+				<Section>
+					<SectionHeading>
+						Was die Immo Suite deiner Website gibt
+					</SectionHeading>
 					<PillarGrid>
 						{pillars.map((p) => (
 							<PillarCard key={p.title}>
@@ -241,9 +333,9 @@ const ImmoSuite = () => {
 					</PillarGrid>
 				</Section>
 
-				{/* Wow-Features */}
+				{/* ── WAS KEIN ANDERER KANN ── */}
 				<Section>
-					<SectionHeading>Was kein anderes Plugin kann</SectionHeading>
+					<SectionHeading>Was kein anderes Immobilien-Plugin kann</SectionHeading>
 					<SectionSub>
 						WP-ImmoMakler kostet bis zu 7.999 EUR und hat keines dieser
 						Features. Frymo auch nicht. immonex auch nicht.
@@ -258,22 +350,27 @@ const ImmoSuite = () => {
 					</WowGrid>
 				</Section>
 
-				{/* Alle Features */}
+				{/* ── SEO ── */}
 				<Section>
-					<SectionHeading>Alles drin, was ein Makler braucht</SectionHeading>
+					<SectionHeading>
+						SEO für Immobilien: strukturierte Daten und saubere Technik
+					</SectionHeading>
+					<SectionSub>
+						Deine Objekte sollen nicht nur gut aussehen, sondern auch
+						gefunden werden. Die Immo Suite liefert alles, was Google
+						und andere Suchmaschinen brauchen.
+					</SectionSub>
 					<FeatureList>
-						{allFeatures.map((item) => (
+						{seoFeatures.map((item) => (
 							<FeatureItem key={item}>
-								<FeatureIcon>
-									<FaCheck />
-								</FeatureIcon>
+								<FeatureIcon><FaCheck /></FeatureIcon>
 								<span>{item}</span>
 							</FeatureItem>
 						))}
 					</FeatureList>
 				</Section>
 
-				{/* Vergleichstabelle */}
+				{/* ── VERGLEICH ── */}
 				<Section>
 					<SectionHeading>
 						Immo Suite vs. WP-ImmoMakler, immonex und Frymo
@@ -296,15 +393,9 @@ const ImmoSuite = () => {
 										<TdHighlight>
 											<CellValue value={row.immo} highlight />
 										</TdHighlight>
-										<Td>
-											<CellValue value={row.wpImmo} />
-										</Td>
-										<Td>
-											<CellValue value={row.immonex} />
-										</Td>
-										<Td>
-											<CellValue value={row.frymo} />
-										</Td>
+										<Td><CellValue value={row.wpImmo} /></Td>
+										<Td><CellValue value={row.immonex} /></Td>
+										<Td><CellValue value={row.frymo} /></Td>
 									</tr>
 								))}
 							</tbody>
@@ -312,7 +403,20 @@ const ImmoSuite = () => {
 					</CompareWrapper>
 				</Section>
 
-				{/* Voraussetzungen */}
+				{/* ── ALLE FEATURES ── */}
+				<Section>
+					<SectionHeading>Alles drin, was ein Makler braucht</SectionHeading>
+					<FeatureList>
+						{allFeatures.map((item) => (
+							<FeatureItem key={item}>
+								<FeatureIcon><FaCheck /></FeatureIcon>
+								<span>{item}</span>
+							</FeatureItem>
+						))}
+					</FeatureList>
+				</Section>
+
+				{/* ── VORAUSSETZUNGEN ── */}
 				<Section>
 					<SectionHeading>Voraussetzungen</SectionHeading>
 					<ReqGrid>
@@ -335,7 +439,7 @@ const ImmoSuite = () => {
 					</ReqGrid>
 				</Section>
 
-				{/* Anfrage */}
+				{/* ── ANFRAGE ── */}
 				<InquirySection id="anfrage">
 					<InquiryCard>
 						<InquiryHeading>
@@ -353,13 +457,13 @@ const ImmoSuite = () => {
 								e.preventDefault();
 								const form = e.target;
 								const firma = form.firma.value;
-								const software = form.software.value;
+								const sw = form.software.value;
 								const website = form.website.value;
 								const subject = encodeURIComponent(
 									`Immo Suite Anfrage - ${firma}`
 								);
 								const body = encodeURIComponent(
-									`Firma: ${firma}\nMaklersoftware: ${software}\nWebsite: ${website}`
+									`Firma: ${firma}\nMaklersoftware: ${sw}\nWebsite: ${website}`
 								);
 								window.location.href = `mailto:dennis@dbw-media.de?subject=${subject}&body=${body}`;
 							}}
@@ -384,9 +488,7 @@ const ImmoSuite = () => {
 									<option value="FlowFact">FlowFact</option>
 									<option value="JustImmo">JustImmo</option>
 									<option value="Propstack">Propstack</option>
-									<option value="OpenImmo (andere)">
-										OpenImmo (andere Software)
-									</option>
+									<option value="OpenImmo (andere)">OpenImmo (andere Software)</option>
 									<option value="Noch keine">Noch keine</option>
 								</FormSelect>
 							</FormField>
@@ -417,6 +519,10 @@ const ImmoSuite = () => {
 
 export default ImmoSuite;
 
+/* ═══════════════════════════════════════════
+   STYLES
+   ═══════════════════════════════════════════ */
+
 /* ── Hero (hell) ── */
 
 const PageContent = styled.main`
@@ -431,14 +537,7 @@ const HeroWrapper = styled.div`
 const GradientDivider = styled.div`
 	width: 100%;
 	height: 8px;
-	background: linear-gradient(
-		90deg,
-		#ea2b1f,
-		#ff3c6f,
-		#ff4fdd,
-		#7e56ff,
-		#00b2ff
-	);
+	background: linear-gradient(90deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
 `;
 
 const Hero = styled.section`
@@ -464,20 +563,13 @@ const Breadcrumb = styled.div`
 	font-size: 0.85rem;
 	color: #888;
 	margin-bottom: 0.5rem;
-
-	span {
-		color: #666;
-	}
+	span { color: #666; }
 `;
 
 const BreadcrumbLink = styled(Link)`
 	color: #888;
 	text-decoration: none;
-	transition: color 0.2s ease;
-
-	&:hover {
-		color: #111;
-	}
+	&:hover { color: #111; }
 `;
 
 const HeroIconRow = styled.div`
@@ -500,36 +592,20 @@ const Eyebrow = styled.span`
 	letter-spacing: 0.12em;
 	color: #fff;
 	border-radius: 999px;
-	background: linear-gradient(
-		135deg,
-		#ea2b1f,
-		#ff3c6f,
-		#ff4fdd,
-		#7e56ff,
-		#00b2ff
-	);
+	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
 `;
 
 const Title = styled.h1`
-	font-size: 3.5rem;
+	font-size: 2.75rem;
 	font-weight: 800;
 	color: #111;
-	line-height: 1.1;
+	line-height: 1.15;
+	max-width: 700px;
 	margin: 0;
 
 	@media screen and (max-width: 768px) {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
-`;
-
-const Tagline = styled.p`
-	font-size: 1.35rem;
-	font-weight: 600;
-	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	margin: 0;
 `;
 
 const Intro = styled.p`
@@ -552,55 +628,35 @@ const HeroActions = styled.div`
 	flex-wrap: wrap;
 `;
 
-const PriceBadge = styled.span`
-	display: inline-flex;
-	align-items: center;
-	padding: 0.75rem 1.5rem;
-	font-size: 1.1rem;
-	font-weight: 800;
-	color: #111;
-	background: linear-gradient(135deg, rgba(234, 43, 31, 0.1), rgba(126, 86, 255, 0.1));
-	border: 2px solid rgba(126, 86, 255, 0.3);
-	border-radius: 999px;
-`;
-
 const PrimaryButton = styled.a`
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
+	padding: 0.85rem 1.75rem;
 	background: #111;
 	color: #fff;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	font-weight: 600;
 	border-radius: 999px;
 	text-decoration: none;
 	transition: all 0.2s ease;
-
-	&:hover {
-		background: #333;
-		transform: translateY(-2px);
-	}
+	&:hover { background: #333; transform: translateY(-2px); }
 `;
 
 const SecondaryButton = styled.a`
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
+	padding: 0.85rem 1.75rem;
 	background: transparent;
 	color: #111;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	font-weight: 600;
 	border: 1.5px solid #ddd;
 	border-radius: 999px;
 	text-decoration: none;
 	transition: all 0.2s ease;
-
-	&:hover {
-		border-color: #999;
-		transform: translateY(-2px);
-	}
+	&:hover { border-color: #999; transform: translateY(-2px); }
 `;
 
 /* ── Sections (dunkel) ── */
@@ -623,7 +679,7 @@ const SectionHeading = styled.h2`
 	margin: 0 0 1rem;
 
 	@media screen and (max-width: 768px) {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 	}
 `;
 
@@ -631,15 +687,135 @@ const SectionSub = styled.p`
 	font-size: 1.05rem;
 	color: ${(props) => props.theme.textSecondary};
 	margin: 0 0 2.5rem;
-	max-width: 600px;
+	max-width: 620px;
 `;
 
-/* ── Pillars (2x3 Grid) ── */
+/* ── Problem ── */
+
+const ProblemGrid = styled.div`
+	max-width: 700px;
+`;
+
+const ProblemText = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+`;
+
+const ProblemDesc = styled.p`
+	font-size: 1.05rem;
+	line-height: 1.7;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0;
+
+	strong {
+		color: ${(props) => props.theme.text};
+		font-weight: 600;
+	}
+`;
+
+/* ── 3-Schritte ── */
+
+const StepGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+const StepCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 2rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1.25rem;
+`;
+
+const StepNum = styled.span`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	font-size: 1.1rem;
+	font-weight: 800;
+	color: #fff;
+	background: ${(props) => props.theme.gradient};
+`;
+
+const StepTitle = styled.h3`
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+	margin: 0;
+`;
+
+const StepDesc = styled.p`
+	font-size: 0.9rem;
+	line-height: 1.65;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0;
+`;
+
+/* ── Software-Kompatibilität ── */
+
+const SoftwareGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+const SoftwareCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1.5rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1rem;
+	transition: border-color 0.2s ease;
+
+	&:hover {
+		border-color: ${(props) => props.theme.borderCardHover};
+	}
+`;
+
+const SoftwareName = styled.h3`
+	font-size: 1rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+	margin: 0;
+`;
+
+const SoftwareDesc = styled.p`
+	font-size: 0.8rem;
+	line-height: 1.55;
+	color: ${(props) => props.theme.textMuted};
+	margin: 0;
+`;
+
+/* ── Pillars (4 Spalten) ── */
 
 const PillarGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 1.5rem;
+	margin-top: 1.5rem;
 
 	@media (max-width: 1200px) {
 		grid-template-columns: repeat(2, 1fr);
@@ -654,7 +830,7 @@ const PillarCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
-	padding: 2rem;
+	padding: 1.75rem;
 	background: ${(props) => props.theme.bgCard};
 	border: 1px solid ${(props) => props.theme.borderCard};
 	border-radius: 1.25rem;
@@ -670,29 +846,29 @@ const PillarIcon = styled.span`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 2.75rem;
-	height: 2.75rem;
-	border-radius: 0.75rem;
-	font-size: 1.2rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 0.65rem;
+	font-size: 1.1rem;
 	color: #fff;
 	background: ${(props) => props.theme.gradient};
 `;
 
 const PillarTitle = styled.h3`
-	font-size: 1.15rem;
+	font-size: 1.05rem;
 	font-weight: 700;
 	color: ${(props) => props.theme.text};
 	margin: 0;
 `;
 
 const PillarDesc = styled.p`
-	font-size: 0.9rem;
-	line-height: 1.65;
+	font-size: 0.85rem;
+	line-height: 1.6;
 	color: ${(props) => props.theme.textSecondary};
 	margin: 0;
 `;
 
-/* ── Wow Features (2x2 mit Gradient-Border) ── */
+/* ── Wow Features (Gradient Border) ── */
 
 const WowGrid = styled.div`
 	display: grid;
@@ -711,8 +887,6 @@ const WowCard = styled.div`
 	padding: 2rem;
 	background: ${(props) => props.theme.bgCard};
 	border-radius: 1.25rem;
-	border: 1px solid transparent;
-	background-clip: padding-box;
 	position: relative;
 
 	&::before {
@@ -730,7 +904,7 @@ const WowCard = styled.div`
 `;
 
 const WowTitle = styled.h3`
-	font-size: 1.15rem;
+	font-size: 1.1rem;
 	font-weight: 700;
 	color: ${(props) => props.theme.text};
 	margin: 0;
@@ -795,11 +969,7 @@ const Th = styled.th`
 	letter-spacing: 0.06em;
 	color: ${(props) => props.theme.textMuted};
 	border-bottom: 1px solid ${(props) => props.theme.borderCard};
-
-	&:first-child {
-		text-align: left;
-		padding-left: 1.5rem;
-	}
+	&:first-child { text-align: left; padding-left: 1.5rem; }
 `;
 
 const ThHighlight = styled(Th)`
@@ -813,10 +983,7 @@ const Td = styled.td`
 	font-size: 0.9rem;
 	color: ${(props) => props.theme.textSecondary};
 	border-bottom: 1px solid ${(props) => props.theme.borderCard};
-
-	tr:last-child & {
-		border-bottom: none;
-	}
+	tr:last-child & { border-bottom: none; }
 `;
 
 const TdFeature = styled(Td)`
@@ -865,7 +1032,45 @@ const CellText = styled.span`
 		props.$highlight ? props.theme.accent : props.theme.textSecondary};
 `;
 
-/* ── Anfrage-Section ── */
+/* ── Voraussetzungen ── */
+
+const ReqGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+
+	@media (max-width: 700px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+`;
+
+const ReqItem = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding: 1.5rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1rem;
+	text-align: center;
+`;
+
+const ReqLabel = styled.span`
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: ${(props) => props.theme.textMuted};
+`;
+
+const ReqValue = styled.span`
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+`;
+
+/* ── Anfrage ── */
 
 const InquirySection = styled.section`
 	max-width: calc(1200px + 8rem);
@@ -944,14 +1149,8 @@ const FormInput = styled.input`
 	border-radius: 0.75rem;
 	outline: none;
 	transition: border-color 0.2s ease;
-
-	&::placeholder {
-		color: ${(props) => props.theme.textMuted};
-	}
-
-	&:focus {
-		border-color: ${(props) => props.theme.accent};
-	}
+	&::placeholder { color: ${(props) => props.theme.textMuted}; }
+	&:focus { border-color: ${(props) => props.theme.accent}; }
 `;
 
 const FormSelect = styled.select`
@@ -963,11 +1162,7 @@ const FormSelect = styled.select`
 	border-radius: 0.75rem;
 	outline: none;
 	cursor: pointer;
-	transition: border-color 0.2s ease;
-
-	&:focus {
-		border-color: ${(props) => props.theme.accent};
-	}
+	&:focus { border-color: ${(props) => props.theme.accent}; }
 `;
 
 const SubmitButton = styled.button`
@@ -981,47 +1176,5 @@ const SubmitButton = styled.button`
 	cursor: pointer;
 	margin-top: 0.5rem;
 	transition: opacity 0.2s ease, transform 0.2s ease;
-
-	&:hover {
-		opacity: 0.9;
-		transform: translateY(-2px);
-	}
-`;
-
-/* ── Voraussetzungen ── */
-
-const ReqGrid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 1.5rem;
-	margin-top: 1.5rem;
-
-	@media (max-width: 700px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-`;
-
-const ReqItem = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-	padding: 1.5rem;
-	background: ${(props) => props.theme.bgCard};
-	border: 1px solid ${(props) => props.theme.borderCard};
-	border-radius: 1rem;
-	text-align: center;
-`;
-
-const ReqLabel = styled.span`
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: ${(props) => props.theme.textMuted};
-`;
-
-const ReqValue = styled.span`
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: ${(props) => props.theme.text};
+	&:hover { opacity: 0.9; transform: translateY(-2px); }
 `;
