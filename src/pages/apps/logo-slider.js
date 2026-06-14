@@ -1,104 +1,148 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import FinalCTA from "../../../components/FinalCTA";
-import { FaGithub, FaWordpress, FaCheck } from "react-icons/fa";
+import { FaWordpress, FaCheck, FaTimes } from "react-icons/fa";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
 
 const features = [
 	{
 		title: "Endlos-Loop ohne Ruckler",
-		desc: "Nahtlose, unterbrechungsfreie Animation. Pausiert automatisch bei Hover und Touch.",
+		desc: "Nahtlose, unterbrechungsfreie CSS-Animation. Pausiert bei Hover und Touch. Kein Flackern, kein Sprung.",
 	},
 	{
 		title: "Mehrere Reihen",
-		desc: "Bis zu 4 Reihen mit alternierenden Laufrichtungen und individuellen Geschwindigkeiten.",
+		desc: "Bis zu 4 Reihen mit alternierenden Laufrichtungen. Für grosse Logo-Sammlungen.",
 	},
 	{
 		title: "Capsule-Styling",
 		desc: "Filled, Outline oder Glow-Effekt. Checkerboard-Pattern, individuelle Rundung und Padding.",
 	},
 	{
-		title: "Ohne jQuery, lazy-loaded",
-		desc: "Reines JavaScript, Lazy Loading für Bilder, width/height-Attribute gegen Layout Shift.",
+		title: "Ohne jQuery",
+		desc: "Reines JavaScript, Lazy Loading, width/height-Attribute. Kein jQuery-Ballast, gut für Core Web Vitals.",
 	},
 	{
 		title: "Links pro Logo",
-		desc: "Individuelle URL, Target, Rel-Attribute (nofollow, sponsored) und Title-Tooltips.",
+		desc: "Individuelle URL, Target, Rel-Attribute (nofollow, sponsored) und Title-Tooltips pro Logo.",
 	},
 	{
 		title: "Responsiv und barrierefrei",
-		desc: "Responsive Logo-Höhe via CSS clamp(), Touch-Support, prefers-reduced-motion wird respektiert.",
+		desc: "Responsive Höhe via CSS clamp(), Touch-Support, prefers-reduced-motion wird respektiert.",
 	},
 ];
 
 const highlights = [
 	"Speed-Presets (Slow, Medium, Fast) oder Custom-Wert",
-	"Logo-Spacing: Small, Medium, Large",
 	"Logo-Höhe: 30-150 px mit responsive Skalierung",
 	"Edge-Overlay mit konfigurierbarer Farbe",
-	"Black-Logos-Modus für einheitliche Optik",
+	"Black-Logos-Modus oder Custom Color Tint",
 	"Kompatibel mit Elementor (Block Widget) und Divi (Block Module)",
 	"Deutsch und Englisch",
-	"Offiziell auf WordPress.org, 5-Sterne-Bewertung",
+	"5-Sterne-Bewertung auf WordPress.org",
+	"Konsistente Scroll-Geschwindigkeit, egal wie viele Logos",
+];
+
+const compareRows = [
+	{ feature: "Gutenberg-Block nativ", ours: true, gs: false, shaped: false, awesome: true },
+	{ feature: "Endlos-Loop (CSS)", ours: true, gs: "jQuery", shaped: "jQuery", awesome: true },
+	{ feature: "Multi-Row (bis 4)", ours: true, gs: false, shaped: false, awesome: false },
+	{ feature: "Capsule-Styling + Glow", ours: true, gs: false, shaped: false, awesome: false },
+	{ feature: "Custom Color Tint", ours: true, gs: false, shaped: "Pro", awesome: false },
+	{ feature: "Links pro Logo", ours: true, gs: true, shaped: true, awesome: true },
+	{ feature: "jQuery-frei", ours: true, gs: false, shaped: false, awesome: true },
+	{ feature: "Kein Shortcode nötig", ours: true, gs: false, shaped: false, awesome: true },
+	{ feature: "Preis", ours: "Kostenlos", gs: "Free + Pro", shaped: "Free + Pro", awesome: "Kostenlos" },
+];
+
+const faqs = [
+	{
+		q: "Brauche ich Elementor oder einen Page Builder?",
+		a: "Nein. Der Logo Slider ist ein nativer Gutenberg-Block. Du fügst ihn direkt im WordPress-Editor ein. Falls du Elementor oder Divi nutzt, funktioniert er trotzdem über das Block Widget bzw. Block Module.",
+	},
+	{
+		q: "Wie viele Logos kann ich hinzufügen?",
+		a: "So viele du willst. Die Scroll-Geschwindigkeit bleibt konstant, egal ob 5 oder 50 Logos.",
+	},
+	{
+		q: "Kann ich die Logos verlinken?",
+		a: "Ja. Jedes Logo kann eine eigene URL, ein Link-Target (neues Fenster/gleiches Fenster) und Rel-Attribute (nofollow, sponsored) bekommen.",
+	},
+	{
+		q: "Wird die Seite langsamer?",
+		a: "Nein. Der Slider lädt kein jQuery, nutzt Lazy Loading und setzt width/height-Attribute für alle Bilder. Gut für Core Web Vitals.",
+	},
 ];
 
 const logoSliderSchema = {
 	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
 	name: "Logo Slider - Infinite Carousel Block",
-	description:
-		"Gutenberg-Block fuer endlos scrollende Logo-Carousels. Mehrreihig, responsiv, ohne jQuery.",
+	description: "Gutenberg-Block fuer endlos scrollende Logo-Carousels. Mehrreihig, responsive, ohne jQuery. Kostenlos auf WordPress.org.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/logo-slider`,
-	offers: {
-		"@type": "Offer",
-		price: "0",
-		priceCurrency: "EUR",
-	},
-	author: {
-		"@type": "Person",
-		name: "Dennis Buchwald",
-		url: SITE_URL,
-	},
+	offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+	author: { "@type": "Person", name: "Dennis Buchwald", url: SITE_URL },
+};
+
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((f) => ({
+		"@type": "Question",
+		name: f.q,
+		acceptedAnswer: { "@type": "Answer", text: f.a },
+	})),
+};
+
+const CellValue = ({ value, highlight }) => {
+	if (value === true) return <CellCheck $highlight={highlight}><FaCheck /></CellCheck>;
+	if (value === false) return <CellCross><FaTimes /></CellCross>;
+	return <CellText $highlight={highlight}>{value}</CellText>;
+};
+
+const AccordionItem = ({ question, answer }) => {
+	const [open, setOpen] = useState(false);
+	return (
+		<AccordionWrapper>
+			<AccordionTrigger onClick={() => setOpen(!open)}>
+				<span>{question}</span>
+				<AccordionIcon $open={open}>+</AccordionIcon>
+			</AccordionTrigger>
+			<AccordionContent $open={open}>
+				<AccordionText>{answer}</AccordionText>
+			</AccordionContent>
+		</AccordionWrapper>
+	);
 };
 
 const LogoSlider = () => {
 	return (
 		<div id="top">
 			<Head>
-				<title>
-					Logo Slider - Infinite Carousel Block fuer WordPress
-				</title>
+				<title>Logo Slider - Endlos-Carousel als Gutenberg-Block fuer WordPress</title>
 				<meta
 					name="description"
-					content="Gutenberg-Block fuer endlos scrollende Logo-Carousels: mehrreihig, responsive, ohne jQuery. Capsule-Styling, Glow-Effekte, Links pro Logo. Kostenlos auf WordPress.org."
+					content="Logo Slider: Gutenberg-Block fuer endlos scrollende Logo-Carousels. Mehrreihig, Capsule-Styling, Glow-Effekte, ohne jQuery. Kostenlos auf WordPress.org."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/logo-slider`} />
-				<meta
-					property="og:title"
-					content="Logo Slider - Infinite Carousel Block fuer WordPress"
-				/>
-				<meta
-					property="og:description"
-					content="Endlos scrollende Logo-Carousels als Gutenberg-Block. Ohne jQuery, responsive, mit Capsule-Styling. Kostenlos."
-				/>
+				<meta property="og:title" content="Logo Slider - Endlos-Carousel als Gutenberg-Block" />
+				<meta property="og:description" content="Kundenlogos endlos scrollen lassen. Gutenberg-Block, ohne jQuery, kostenlos." />
 				<meta property="og:url" content={`${SITE_URL}/apps/logo-slider`} />
 				<meta property="og:type" content="website" />
 				<script
 					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify(logoSliderSchema),
-					}}
+					dangerouslySetInnerHTML={{ __html: JSON.stringify([logoSliderSchema, faqSchema]) }}
 				/>
 			</Head>
 			<Header />
 			<PageContent>
-				{/* Hero */}
+				{/* ── HERO ── */}
 				<HeroWrapper>
 					<Hero>
 						<Breadcrumb>
@@ -107,18 +151,17 @@ const LogoSlider = () => {
 							<span>Logo Slider</span>
 						</Breadcrumb>
 						<HeroIconRow>
-							<HeroIcon
-								src="/apps/icons/logoslider-app.svg"
-								alt="Logo Slider"
-							/>
+							<HeroIcon src="/apps/icons/logoslider-app.svg" alt="Logo Slider" />
 							<Eyebrow>WordPress.org Plugin</Eyebrow>
 						</HeroIconRow>
-						<Title>Logo Slider</Title>
-						<Tagline>Endlos laufende Logo-Carousels als Gutenberg-Block.</Tagline>
+						<Title>
+							Logo-Carousel direkt im Editor. Ohne Shortcode, ohne jQuery.
+						</Title>
 						<Intro>
-							Kundenlogos, Partnerlogos, Zertifikate: einfach Bilder reinwerfen,
-							Style wählen, fertig. Der Block läuft nahtlos im Loop, pausiert
-							bei Hover und sieht auf jedem Gerät gut aus.
+							Wir haben jahrelang für Kundenprojekte Logo-Slider von Hand
+							gebaut. Irgendwann dachten wir: es muss doch einen modernen,
+							kostenlosen Gutenberg-Block dafür geben. Gab es nicht. Also
+							haben wir ihn gebaut.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
@@ -133,58 +176,102 @@ const LogoSlider = () => {
 					<GradientDivider />
 				</HeroWrapper>
 
-				{/* Features */}
+				{/* ── PROBLEM ── */}
 				<Section>
-					
-						<SectionHeading>Was der Block kann</SectionHeading>
-						<FeatureGrid>
-							{features.map((feature) => (
-								<FeatureCard key={feature.title}>
-									<FeatureTitle>{feature.title}</FeatureTitle>
-									<FeatureDesc>{feature.desc}</FeatureDesc>
-								</FeatureCard>
-							))}
-						</FeatureGrid>
+					<ProblemText>
+						<SectionHeading>
+							Logo-Slider sollten kein Projekt sein
+						</SectionHeading>
+						<ProblemDesc>
+							Die meisten Logo-Carousel-Plugins nutzen Shortcodes,
+							laden jQuery, und für Multi-Row oder Styling-Optionen
+							musst du auf Pro upgraden. Oder du bastelst es mit
+							Custom CSS zusammen. Beides kostet Zeit und Nerven.
+						</ProblemDesc>
+						<ProblemDesc>
+							<strong>Der Logo Slider Block macht es einfach:</strong> Bilder
+							reinwerfen, Style wählen, fertig. Ein Gutenberg-Block, der
+							alles mitbringt. Kostenlos, ohne Pro-Upsell.
+						</ProblemDesc>
+					</ProblemText>
 				</Section>
 
-				{/* Highlights */}
+				{/* ── FEATURES ── */}
 				<Section>
-					
-						<SectionHeading>Und ausserdem</SectionHeading>
-						<HighlightList>
-							{highlights.map((item) => (
-								<HighlightItem key={item}>
-									<HighlightIcon>
-										<FaCheck />
-									</HighlightIcon>
-									<span>{item}</span>
-								</HighlightItem>
-							))}
-						</HighlightList>
+					<SectionHeading>Was der Block kann</SectionHeading>
+					<FeatureGrid>
+						{features.map((f) => (
+							<FeatureCard key={f.title}>
+								<FeatureTitle>{f.title}</FeatureTitle>
+								<FeatureDesc>{f.desc}</FeatureDesc>
+							</FeatureCard>
+						))}
+					</FeatureGrid>
 				</Section>
 
-				{/* Voraussetzungen */}
+				{/* ── HIGHLIGHTS ── */}
 				<Section>
-					
-						<SectionHeading>Voraussetzungen</SectionHeading>
-						<ReqGrid>
-							<ReqItem>
-								<ReqLabel>WordPress</ReqLabel>
-								<ReqValue>5.8+</ReqValue>
-							</ReqItem>
-							<ReqItem>
-								<ReqLabel>PHP</ReqLabel>
-								<ReqValue>7.2+</ReqValue>
-							</ReqItem>
-							<ReqItem>
-								<ReqLabel>Editor</ReqLabel>
-								<ReqValue>Gutenberg</ReqValue>
-							</ReqItem>
-							<ReqItem>
-								<ReqLabel>Preis</ReqLabel>
-								<ReqValue>Kostenlos</ReqValue>
-							</ReqItem>
-						</ReqGrid>
+					<SectionHeading>Und ausserdem</SectionHeading>
+					<HighlightList>
+						{highlights.map((item) => (
+							<HighlightItem key={item}>
+								<HighlightIcon><FaCheck /></HighlightIcon>
+								<span>{item}</span>
+							</HighlightItem>
+						))}
+					</HighlightList>
+				</Section>
+
+				{/* ── VERGLEICH ── */}
+				<Section>
+					<SectionHeading>
+						Logo Slider vs. GS Logo Slider, Logo Carousel und Co.
+					</SectionHeading>
+					<CompareWrapper>
+						<CompareTable>
+							<thead>
+								<tr>
+									<Th></Th>
+									<ThHighlight>Logo Slider</ThHighlight>
+									<Th>GS Logo Slider</Th>
+									<Th>Logo Carousel</Th>
+									<Th>Awesome Logo</Th>
+								</tr>
+							</thead>
+							<tbody>
+								{compareRows.map((row) => (
+									<tr key={row.feature}>
+										<TdFeature>{row.feature}</TdFeature>
+										<TdHighlight><CellValue value={row.ours} highlight /></TdHighlight>
+										<Td><CellValue value={row.gs} /></Td>
+										<Td><CellValue value={row.shaped} /></Td>
+										<Td><CellValue value={row.awesome} /></Td>
+									</tr>
+								))}
+							</tbody>
+						</CompareTable>
+					</CompareWrapper>
+				</Section>
+
+				{/* ── FAQ ── */}
+				<Section>
+					<SectionHeading>Häufige Fragen</SectionHeading>
+					<FaqList>
+						{faqs.map((faq) => (
+							<AccordionItem key={faq.q} question={faq.q} answer={faq.a} />
+						))}
+					</FaqList>
+				</Section>
+
+				{/* ── VORAUSSETZUNGEN ── */}
+				<Section>
+					<SectionHeading>Voraussetzungen</SectionHeading>
+					<ReqGrid>
+						<ReqItem><ReqLabel>WordPress</ReqLabel><ReqValue>5.8+</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>PHP</ReqLabel><ReqValue>7.2+</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>Editor</ReqLabel><ReqValue>Gutenberg</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>Preis</ReqLabel><ReqValue>Kostenlos</ReqValue></ReqItem>
+					</ReqGrid>
 				</Section>
 
 				<FinalCTA />
@@ -196,28 +283,16 @@ const LogoSlider = () => {
 
 export default LogoSlider;
 
-/* ── Hero (hell) ── */
+/* ═══════════════════════════════════════════ STYLES ═══════════════════════════════════════════ */
 
-const PageContent = styled.main`
-	flex-grow: 1;
-`;
+const PageContent = styled.main` flex-grow: 1; `;
 
-const HeroWrapper = styled.div`
-	background: #fbfbfd;
-	width: 100%;
-`;
+const HeroWrapper = styled.div` background: #fbfbfd; width: 100%; `;
 
 const GradientDivider = styled.div`
 	width: 100%;
 	height: 8px;
-	background: linear-gradient(
-		90deg,
-		#ea2b1f,
-		#ff3c6f,
-		#ff4fdd,
-		#7e56ff,
-		#00b2ff
-	);
+	background: linear-gradient(90deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
 `;
 
 const Hero = styled.section`
@@ -229,277 +304,167 @@ const Hero = styled.section`
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-
-	@media screen and (max-width: 768px) {
-		padding: 2rem 1.5rem 3rem;
-		padding-top: 120px;
-	}
+	@media screen and (max-width: 768px) { padding: 2rem 1.5rem 3rem; padding-top: 120px; }
 `;
 
 const Breadcrumb = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-size: 0.85rem;
-	color: #888;
-	margin-bottom: 0.5rem;
-
-	span {
-		color: #666;
-	}
+	display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #888; margin-bottom: 0.5rem;
+	span { color: #666; }
 `;
+const BreadcrumbLink = styled(Link)` color: #888; text-decoration: none; &:hover { color: #111; } `;
 
-const BreadcrumbLink = styled(Link)`
-	color: #888;
-	text-decoration: none;
-	transition: color 0.2s ease;
-
-	&:hover {
-		color: #111;
-	}
-`;
-
-const HeroIconRow = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-`;
-
-const HeroIcon = styled.img`
-	width: 7rem;
-	height: 7rem;
-`;
+const HeroIconRow = styled.div` display: flex; align-items: center; gap: 1rem; `;
+const HeroIcon = styled.img` width: 7rem; height: 7rem; `;
 
 const Eyebrow = styled.span`
-	display: inline-block;
-	padding: 0.28rem 0.85rem;
-	font-size: 0.75rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.12em;
-	color: #fff;
-	border-radius: 999px;
-	background: linear-gradient(
-		135deg,
-		#ea2b1f,
-		#ff3c6f,
-		#ff4fdd,
-		#7e56ff,
-		#00b2ff
-	);
+	display: inline-block; padding: 0.28rem 0.85rem; font-size: 0.75rem; font-weight: 700;
+	text-transform: uppercase; letter-spacing: 0.12em; color: #fff; border-radius: 999px;
+	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
 `;
 
 const Title = styled.h1`
-	font-size: 3.5rem;
-	font-weight: 800;
-	color: #111;
-	line-height: 1.1;
-	margin: 0;
-
-	@media screen and (max-width: 768px) {
-		font-size: 2.5rem;
-	}
-`;
-
-const Tagline = styled.p`
-	font-size: 1.35rem;
-	font-weight: 600;
-	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	margin: 0;
+	font-size: 2.75rem; font-weight: 800; color: #111; line-height: 1.15; max-width: 700px; margin: 0;
+	@media screen and (max-width: 768px) { font-size: 2rem; }
 `;
 
 const Intro = styled.p`
-	font-size: 1.15rem;
-	line-height: 1.7;
-	color: #444;
-	max-width: 620px;
-	margin: 0;
-
-	@media screen and (max-width: 768px) {
-		font-size: 1.05rem;
-	}
+	font-size: 1.15rem; line-height: 1.7; color: #444; max-width: 640px; margin: 0;
+	@media screen and (max-width: 768px) { font-size: 1.05rem; }
 `;
 
-const HeroActions = styled.div`
-	display: flex;
-	gap: 1rem;
-	margin-top: 0.5rem;
-	flex-wrap: wrap;
-`;
+const HeroActions = styled.div` display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; `;
 
 const PrimaryButton = styled.a`
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	background: #111;
-	color: #fff;
-	font-size: 0.95rem;
-	font-weight: 600;
-	border-radius: 999px;
-	text-decoration: none;
-	transition: all 0.2s ease;
-
-	&:hover {
-		background: #333;
-		transform: translateY(-2px);
-	}
+	display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem;
+	background: #111; color: #fff; font-size: 1rem; font-weight: 600; border-radius: 999px;
+	text-decoration: none; transition: all 0.2s ease;
+	&:hover { background: #333; transform: translateY(-2px); }
 `;
-
-const SecondaryButton = styled.a`
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	background: transparent;
-	color: #111;
-	font-size: 0.95rem;
-	font-weight: 600;
-	border: 1.5px solid #ddd;
-	border-radius: 999px;
-	text-decoration: none;
-	transition: all 0.2s ease;
-
-	&:hover {
-		border-color: #999;
-		transform: translateY(-2px);
-	}
-`;
-
-/* ── Sections (dunkel) ── */
 
 const Section = styled.section`
-	max-width: calc(1200px + 8rem);
-	width: 100%;
-	margin: 0 auto;
-	padding: 5rem 4rem;
-
-	@media screen and (max-width: 768px) {
-		padding: 3rem 1.5rem;
-	}
+	max-width: calc(1200px + 8rem); width: 100%; margin: 0 auto; padding: 5rem 4rem;
+	@media screen and (max-width: 768px) { padding: 3rem 1.5rem; }
 `;
 
 const SectionHeading = styled.h2`
-	font-size: 2rem;
-	font-weight: 700;
-	color: ${(props) => props.theme.text};
-	margin: 0 0 2.5rem;
-
-	@media screen and (max-width: 768px) {
-		font-size: 1.6rem;
-	}
+	font-size: 2rem; font-weight: 700; color: ${(p) => p.theme.text}; margin: 0 0 1.5rem;
+	@media screen and (max-width: 768px) { font-size: 1.5rem; }
 `;
 
-/* ── Feature Grid ── */
+const ProblemText = styled.div` display: flex; flex-direction: column; gap: 1.25rem; max-width: 700px; `;
+const ProblemDesc = styled.p`
+	font-size: 1.05rem; line-height: 1.7; color: ${(p) => p.theme.textSecondary}; margin: 0;
+	strong { color: ${(p) => p.theme.text}; font-weight: 600; }
+`;
 
 const FeatureGrid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5rem;
-
-	@media (max-width: 1024px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@media (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+	@media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+	@media (max-width: 600px) { grid-template-columns: 1fr; }
 `;
 
 const FeatureCard = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	padding: 1.75rem;
-	background: ${(props) => props.theme.bgCard};
-	border: 1px solid ${(props) => props.theme.borderCard};
-	border-radius: 1.25rem;
-	transition: border-color 0.2s ease, transform 0.2s ease;
-
-	&:hover {
-		border-color: ${(props) => props.theme.borderCardHover};
-		transform: translateY(-3px);
-	}
+	display: flex; flex-direction: column; gap: 0.5rem; padding: 1.75rem;
+	background: ${(p) => p.theme.bgCard}; border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 1.25rem; transition: border-color 0.2s ease, transform 0.2s ease;
+	&:hover { border-color: ${(p) => p.theme.borderCardHover}; transform: translateY(-3px); }
 `;
 
-const FeatureTitle = styled.h3`
-	font-size: 1.05rem;
-	font-weight: 700;
-	color: ${(props) => props.theme.text};
-	margin: 0;
-`;
-
-const FeatureDesc = styled.p`
-	font-size: 0.9rem;
-	line-height: 1.6;
-	color: ${(props) => props.theme.textSecondary};
-	margin: 0;
-`;
-
-/* ── Highlights ── */
+const FeatureTitle = styled.h3` font-size: 1.05rem; font-weight: 700; color: ${(p) => p.theme.text}; margin: 0; `;
+const FeatureDesc = styled.p` font-size: 0.9rem; line-height: 1.6; color: ${(p) => p.theme.textSecondary}; margin: 0; `;
 
 const HighlightList = styled.div`
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 1.25rem;
-
-	@media (max-width: 700px) {
-		grid-template-columns: 1fr;
-	}
+	display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+	@media (max-width: 700px) { grid-template-columns: 1fr; }
 `;
 
 const HighlightItem = styled.div`
-	display: flex;
-	align-items: flex-start;
-	gap: 0.75rem;
-	font-size: 0.95rem;
-	color: ${(props) => props.theme.textSecondary};
-	line-height: 1.5;
+	display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem;
+	color: ${(p) => p.theme.textSecondary}; line-height: 1.5;
 `;
 
-const HighlightIcon = styled.span`
-	color: ${(props) => props.theme.accent};
-	font-size: 0.75rem;
-	margin-top: 0.3rem;
-	flex-shrink: 0;
+const HighlightIcon = styled.span` color: ${(p) => p.theme.accent}; font-size: 0.75rem; margin-top: 0.3rem; flex-shrink: 0; `;
+
+const CompareWrapper = styled.div`
+	overflow-x: auto; margin-top: 1.5rem;
+	border: 1px solid ${(p) => p.theme.borderCard}; border-radius: 1.25rem;
 `;
 
-/* ── Voraussetzungen ── */
+const CompareTable = styled.table` width: 100%; border-collapse: collapse; min-width: 640px; `;
+
+const Th = styled.th`
+	text-align: center; padding: 1.25rem 0.75rem; font-size: 0.8rem; font-weight: 600;
+	text-transform: uppercase; letter-spacing: 0.06em; color: ${(p) => p.theme.textMuted};
+	border-bottom: 1px solid ${(p) => p.theme.borderCard};
+	&:first-child { text-align: left; padding-left: 1.5rem; }
+`;
+
+const ThHighlight = styled(Th)` color: #fff; background: ${(p) => p.theme.accent}; `;
+
+const Td = styled.td`
+	text-align: center; padding: 0.85rem 0.75rem; font-size: 0.9rem;
+	color: ${(p) => p.theme.textSecondary}; border-bottom: 1px solid ${(p) => p.theme.borderCard};
+	tr:last-child & { border-bottom: none; }
+`;
+
+const TdFeature = styled(Td)` text-align: left; padding-left: 1.5rem; font-weight: 500; color: ${(p) => p.theme.text}; `;
+const TdHighlight = styled(Td)` background: rgba(126, 86, 255, 0.06); `;
+
+const CellCheck = styled.span`
+	display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem;
+	border-radius: 50%; font-size: 0.7rem; color: #fff;
+	background: ${(p) => p.$highlight ? "linear-gradient(135deg, #ea2b1f, #ff3c6f, #7e56ff)" : "#22c55e"};
+`;
+
+const CellCross = styled.span`
+	display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem;
+	border-radius: 50%; font-size: 0.7rem; color: ${(p) => p.theme.textMuted};
+	background: ${(p) => p.theme.bgCard}; border: 1px solid ${(p) => p.theme.borderCard};
+`;
+
+const CellText = styled.span`
+	font-size: 0.8rem; font-weight: ${(p) => (p.$highlight ? "700" : "400")};
+	color: ${(p) => p.$highlight ? p.theme.accent : p.theme.textSecondary};
+`;
+
+const FaqList = styled.div` display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; `;
+
+const AccordionWrapper = styled.div`
+	border-bottom: 1px solid ${(p) => p.theme.borderCard};
+	&:first-child { border-top: 1px solid ${(p) => p.theme.borderCard}; }
+`;
+
+const AccordionTrigger = styled.button`
+	display: flex; justify-content: space-between; align-items: center; width: 100%;
+	padding: 1.25rem 0; background: none; border: none; cursor: pointer; text-align: left;
+	font-size: 1.05rem; font-weight: 600; color: ${(p) => p.theme.text};
+	&:hover { color: ${(p) => p.theme.accent}; }
+`;
+
+const AccordionIcon = styled.span`
+	font-size: 1.4rem; font-weight: 300; color: ${(p) => p.theme.textMuted};
+	transition: transform 0.3s ease; transform: ${(p) => (p.$open ? "rotate(45deg)" : "rotate(0)")};
+	flex-shrink: 0; margin-left: 1rem;
+`;
+
+const AccordionContent = styled.div`
+	max-height: ${(p) => (p.$open ? "200px" : "0")}; overflow: hidden; transition: max-height 0.3s ease;
+`;
+
+const AccordionText = styled.p`
+	font-size: 0.95rem; line-height: 1.65; color: ${(p) => p.theme.textSecondary}; margin: 0; padding-bottom: 1.25rem;
+`;
 
 const ReqGrid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 1.5rem;
-
-	@media (max-width: 700px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
+	display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1.5rem;
+	@media (max-width: 700px) { grid-template-columns: repeat(2, 1fr); }
 `;
 
 const ReqItem = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-	padding: 1.5rem;
-	background: ${(props) => props.theme.bgCard};
-	border: 1px solid ${(props) => props.theme.borderCard};
-	border-radius: 1rem;
-	text-align: center;
+	display: flex; flex-direction: column; gap: 0.25rem; padding: 1.5rem;
+	background: ${(p) => p.theme.bgCard}; border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 1rem; text-align: center;
 `;
 
-const ReqLabel = styled.span`
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: ${(props) => props.theme.textMuted};
-`;
-
-const ReqValue = styled.span`
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: ${(props) => props.theme.text};
-`;
+const ReqLabel = styled.span` font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: ${(p) => p.theme.textMuted}; `;
+const ReqValue = styled.span` font-size: 1.25rem; font-weight: 700; color: ${(p) => p.theme.text}; `;
