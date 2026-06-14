@@ -235,7 +235,7 @@ const Hero = styled.section`
 	width: 100%;
 	margin: 0 auto;
 	padding: 2rem 4rem 4rem;
-	padding-top: 140px;
+	padding-top: 160px;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;

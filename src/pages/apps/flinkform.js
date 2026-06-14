@@ -8,6 +8,7 @@ import {
 	FaGithub,
 	FaWordpress,
 	FaCheck,
+	FaTimes,
 	FaShieldAlt,
 	FaCubes,
 	FaBolt,
@@ -52,36 +53,77 @@ const features = [
 	"Redirect nach Absenden mit Conversion-Tracking (GA4, Meta Pixel)",
 ];
 
-const competitors = [
+// true = hat das Feature, false = nicht, string = Sonderwert
+const compareRows = [
 	{
-		feature: "Multi-Step + Logik",
-		flinkform: "Kostenlos",
-		others: "Ab 99 $/Jahr",
+		feature: "Multi-Step-Formulare",
+		flinkform: true,
+		cf7: false,
+		wpforms: "Ab 199 $/J.",
+		gravity: "Ab 99 $/J.",
+	},
+	{
+		feature: "Bedingte Logik",
+		flinkform: true,
+		cf7: false,
+		wpforms: "Ab 199 $/J.",
+		gravity: "Ab 99 $/J.",
 	},
 	{
 		feature: "Spam ohne ext. Dienst",
-		flinkform: "Eingebaut",
-		others: "reCAPTCHA / Akismet",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
 	},
 	{
 		feature: "Keine IP-Speicherung",
-		flinkform: "Standard",
-		others: "Oft nicht möglich",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
+	},
+	{
+		feature: "Block-Editor nativ",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
 	},
 	{
 		feature: "theme.json Support",
-		flinkform: "Vollständig",
-		others: "Nicht vorhanden",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
 	},
 	{
 		feature: "jQuery-frei",
-		flinkform: "Ja",
-		others: "Nein (meistens)",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
 	},
 	{
-		feature: "Frontend JS",
-		flinkform: "<15 KB",
-		others: "50-200 KB+",
+		feature: "Frontend < 15 KB",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
+	},
+	{
+		feature: "DSGVO-Datenlöschung",
+		flinkform: true,
+		cf7: false,
+		wpforms: false,
+		gravity: false,
+	},
+	{
+		feature: "Preis",
+		flinkform: "Kostenlos",
+		cf7: "Kostenlos",
+		wpforms: "Ab 49 $/J.",
+		gravity: "Ab 99 $/J.",
 	},
 ];
 
@@ -219,26 +261,40 @@ const Flinkform = () => {
 				<Section>
 					<SectionInner>
 						<SectionHeading>
-							Flinkform vs. WPForms, Gravity Forms & Co.
+							Wie Flinkform im Vergleich abschneidet
 						</SectionHeading>
-						<CompareTable>
-							<thead>
-								<tr>
-									<Th></Th>
-									<ThHighlight>Flinkform</ThHighlight>
-									<Th>Andere Plugins</Th>
-								</tr>
-							</thead>
-							<tbody>
-								{competitors.map((row) => (
-									<tr key={row.feature}>
-										<Td>{row.feature}</Td>
-										<TdHighlight>{row.flinkform}</TdHighlight>
-										<Td>{row.others}</Td>
+						<CompareWrapper>
+							<CompareTable>
+								<thead>
+									<tr>
+										<Th></Th>
+										<ThHighlight>Flinkform</ThHighlight>
+										<Th>Contact Form 7</Th>
+										<Th>WPForms</Th>
+										<Th>Gravity Forms</Th>
 									</tr>
-								))}
-							</tbody>
-						</CompareTable>
+								</thead>
+								<tbody>
+									{compareRows.map((row) => (
+										<tr key={row.feature}>
+											<TdFeature>{row.feature}</TdFeature>
+											<TdHighlight>
+												<CellValue value={row.flinkform} highlight />
+											</TdHighlight>
+											<Td>
+												<CellValue value={row.cf7} />
+											</Td>
+											<Td>
+												<CellValue value={row.wpforms} />
+											</Td>
+											<Td>
+												<CellValue value={row.gravity} />
+											</Td>
+										</tr>
+									))}
+								</tbody>
+							</CompareTable>
+						</CompareWrapper>
 					</SectionInner>
 				</Section>
 
@@ -274,6 +330,14 @@ const Flinkform = () => {
 	);
 };
 
+const CellValue = ({ value, highlight }) => {
+	if (value === true)
+		return <CellCheck $highlight={highlight}><FaCheck /></CellCheck>;
+	if (value === false)
+		return <CellCross><FaTimes /></CellCross>;
+	return <CellText $highlight={highlight}>{value}</CellText>;
+};
+
 export default Flinkform;
 
 /* ── Hero (hell) ── */
@@ -305,7 +369,7 @@ const Hero = styled.section`
 	width: 100%;
 	margin: 0 auto;
 	padding: 2rem 4rem 4rem;
-	padding-top: 140px;
+	padding-top: 160px;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -567,37 +631,97 @@ const FeatureIcon = styled.span`
 
 /* ── Vergleichstabelle ── */
 
+const CompareWrapper = styled.div`
+	overflow-x: auto;
+	margin-top: 1.5rem;
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1.25rem;
+`;
+
 const CompareTable = styled.table`
 	width: 100%;
 	border-collapse: collapse;
-	margin-top: 1.5rem;
+	min-width: 640px;
 `;
 
 const Th = styled.th`
-	text-align: left;
-	padding: 1rem 1.25rem;
-	font-size: 0.85rem;
+	text-align: center;
+	padding: 1.25rem 1rem;
+	font-size: 0.8rem;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	color: ${(props) => props.theme.textMuted};
 	border-bottom: 1px solid ${(props) => props.theme.borderCard};
+
+	&:first-child {
+		text-align: left;
+		padding-left: 1.5rem;
+	}
 `;
 
 const ThHighlight = styled(Th)`
-	color: ${(props) => props.theme.accent};
+	color: #fff;
+	background: ${(props) => props.theme.accent};
+	position: relative;
 `;
 
 const Td = styled.td`
-	padding: 1rem 1.25rem;
-	font-size: 0.95rem;
+	text-align: center;
+	padding: 1rem;
+	font-size: 0.9rem;
 	color: ${(props) => props.theme.textSecondary};
 	border-bottom: 1px solid ${(props) => props.theme.borderCard};
+
+	tr:last-child & {
+		border-bottom: none;
+	}
+`;
+
+const TdFeature = styled(Td)`
+	text-align: left;
+	padding-left: 1.5rem;
+	font-weight: 500;
+	color: ${(props) => props.theme.text};
 `;
 
 const TdHighlight = styled(Td)`
-	color: ${(props) => props.theme.text};
-	font-weight: 600;
+	background: rgba(126, 86, 255, 0.06);
+`;
+
+const CellCheck = styled.span`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	font-size: 0.7rem;
+	color: #fff;
+	background: ${(props) =>
+		props.$highlight
+			? "linear-gradient(135deg, #ea2b1f, #ff3c6f, #7e56ff)"
+			: "#22c55e"};
+`;
+
+const CellCross = styled.span`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	font-size: 0.7rem;
+	color: ${(props) => props.theme.textMuted};
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+`;
+
+const CellText = styled.span`
+	font-size: 0.85rem;
+	font-weight: ${(props) => (props.$highlight ? "700" : "400")};
+	color: ${(props) =>
+		props.$highlight ? props.theme.accent : props.theme.textSecondary};
 `;
 
 /* ── Voraussetzungen ── */
