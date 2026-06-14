@@ -11,7 +11,7 @@ const projects = [
 	{
 		title: "Pokemon Battler",
 		description:
-			"Capstone-Projekt bei neue fische – ein interaktives Browser-Game mit Echtzeit-Kampfsystem.",
+			"Capstone-Projekt bei neue fische: ein interaktives Browser-Game mit Echtzeit-Kampfsystem.",
 		tags: ["Next.js", "React", "Styled Components"],
 		githubLink:
 			"https://github.com/dennisbuchwald/capstone-project-pokemon-battler",
@@ -21,7 +21,7 @@ const projects = [
 	{
 		title: "Kanto Pokedex",
 		description:
-			"React-App mit PokéAPI-Integration – entstanden an einem Coding-Wochenende.",
+			"React-App mit PokéAPI-Integration, entstanden an einem Coding-Wochenende.",
 		tags: ["React", "PokéAPI", "Photoshop"],
 		githubLink: "https://github.com/dennisbuchwald/pokedex-react-app",
 		demoLink: "https://pokedex.dennisbuchwald.de/",
@@ -30,7 +30,7 @@ const projects = [
 	{
 		title: "Portfolio Website",
 		description:
-			"Diese Webseite – selbst designt und entwickelt als persönliche Visitenkarte.",
+			"Diese Webseite, selbst designt und entwickelt als persönliche Visitenkarte.",
 		tags: ["Next.js", "React", "Vercel"],
 		githubLink: "https://github.com/dennisbuchwald/dennisbuchwald-de",
 		demoLink: "https://www.dennisbuchwald.de",
@@ -39,7 +39,7 @@ const projects = [
 	{
 		title: "Wetter App",
 		description:
-			"Wetter-Dashboard mit OpenWeatherMap API – Echtzeit-Daten, clean dargestellt.",
+			"Wetter-Dashboard mit OpenWeatherMap API. Echtzeit-Daten, clean dargestellt.",
 		tags: ["Next.js", "React", "OpenWeatherMap API"],
 		githubLink: "https://github.com/dennisbuchwald/nextjs-wheaterapp",
 		demoLink: "https://wetter.dennisbuchwald.de",

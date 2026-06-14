@@ -10,7 +10,7 @@ const videos = [
 	{
 		title: "Die größten Fehler beim WordPress-Setup",
 		description:
-			"Diese typischen Fehler passieren beim WordPress-Setup immer wieder – und wie du sie von Anfang an vermeidest.",
+			"Diese typischen Fehler passieren beim WordPress-Setup immer wieder. So vermeidest du sie von Anfang an.",
 		tags: ["#WordPress", "#Webdesign"],
 		link: "https://www.youtube.com/watch?v=XFSnKks2C2s",
 		thumbnail: "https://img.youtube.com/vi/XFSnKks2C2s/maxresdefault.jpg",
@@ -26,7 +26,7 @@ const videos = [
 	{
 		title: "Darkweb Website",
 		description:
-			"Ich versuche eine Website im Darkweb zu veröffentlichen – ein Selbstexperiment.",
+			"Ein Selbstexperiment: Ich versuche, eine Website im Darkweb zu veröffentlichen.",
 		tags: ["#Selbstexperiment", "#Darkweb"],
 		link: "https://www.youtube.com/watch?v=0dOk40juT-Q&t=7s",
 		thumbnail: "/YT/Darkweb_Website.png",

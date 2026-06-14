@@ -10,7 +10,7 @@ const Datenschutzerklaerung = () => {
 	return (
 		<>
 			<Head>
-				<title>Datenschutzerklärung – Dennis Buchwald</title>
+				<title>Datenschutzerklärung - Dennis Buchwald</title>
 				<meta name="description" content="Datenschutzerklärung von dennisbuchwald.de." />
 				<link rel="canonical" href="https://www.dennisbuchwald.de/datenschutzerklaerung" />
 				<meta name="robots" content="noindex, follow" />

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-const WordCamp = () => {
+const Speaking = () => {
 	return (
-		<Container id="wordcamp">
+		<Container id="speaking">
 			<Inner>
 				<ImageWrapper>
 					<Image
 						src="/wcvie-2026-dennis-buchwald-schluss-mit-was-kostet-eine-website-so-machst-du-dich-als-dienst.jpg"
-						alt="WordCamp Wien 2026 – Dennis Buchwald Speaker"
+						alt="Dennis Buchwald als Speaker beim WordCamp Wien 2026"
 						width={320}
 						height={420}
 						style={{
@@ -20,44 +20,56 @@ const WordCamp = () => {
 					/>
 				</ImageWrapper>
 				<TextContent>
-					<Badge>Speaker</Badge>
-					<Heading>Schluss mit „Was kostet eine Website?"</Heading>
+					<Badge>Speaking</Badge>
+					<Heading>Auf der Bühne der WordPress-Community.</Heading>
 					<Subheading>
-						So machst du dich als Dienstleister unvergleichlich
+						Ich teile, was ich aus 9+ Jahren Agentur- und Entwickleralltag
+						gelernt habe, zuletzt auf dem WordCamp Wien 2026.
 					</Subheading>
 					<MetaRow>
 						<MetaItem>
-							<MetaLabel>Wann</MetaLabel>
-							Samstag, 11. April 2026 · 12:00 Uhr
-						</MetaItem>
-						<MetaItem>
-							<MetaLabel>Track</MetaLabel>
-							Track 1 · Deutsch · Room C1
+							<MetaLabel>Talk</MetaLabel>
+							Schluss mit „Was kostet eine Website?" - So machst du dich als
+							Dienstleister unvergleichlich
 						</MetaItem>
 						<MetaItem>
 							<MetaLabel>Event</MetaLabel>
-							WordCamp Vienna 2026 · #wcvie
+							<MetaLink
+								href="https://vienna.wordcamp.org/2026/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								WordCamp Vienna 2026
+							</MetaLink>
+							· #wcvie
+						</MetaItem>
+						<MetaItem>
+							<MetaLabel>Wann</MetaLabel>
+							11. April 2026 · Track 1 · Deutsch
 						</MetaItem>
 					</MetaRow>
 					<Description>
-						In diesem Talk nehme ich euch mit auf meine Reise – weg vom
-						klassischen Web-Dienstleister hin zum unvergleichbaren
-						Lösungsanbieter.
+						In dem Talk nehme ich euch mit auf meine Reise: weg vom klassischen
+						Web-Dienstleister, hin zum unvergleichbaren Lösungsanbieter. Du
+						suchst einen Speaker für dein Event? Meld dich gerne.
 					</Description>
-					<CTALink
-						href="https://vienna.wordcamp.org/2026/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Zum WordCamp Wien →
-					</CTALink>
+					<CTAGroup>
+						<CTALink
+							href="https://wordpress.tv/2026/04/27/schluss-mit-was-kostet-eine-website-so-machst-du-dich-als-dienstleister-unvergleichlich/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Talk auf WordPress.tv ansehen →
+						</CTALink>
+						<SecondaryLink href="#kontakt">Als Speaker anfragen</SecondaryLink>
+					</CTAGroup>
 				</TextContent>
 			</Inner>
 		</Container>
 	);
 };
 
-export default WordCamp;
+export default Speaking;
 
 const Container = styled.section`
 	width: 100%;
@@ -147,6 +159,17 @@ const MetaItem = styled.div`
 	gap: 0.5rem;
 `;
 
+const MetaLink = styled.a`
+	color: ${(props) => props.theme.textSecondary};
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.text};
+	}
+`;
+
 const MetaLabel = styled.span`
 	font-weight: 600;
 	color: ${(props) => props.theme.text};
@@ -158,6 +181,33 @@ const Description = styled.p`
 	line-height: 1.75;
 	color: ${(props) => props.theme.textSecondary};
 	margin: 0;
+`;
+
+const CTAGroup = styled.div`
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+	flex-wrap: wrap;
+`;
+
+const SecondaryLink = styled.a`
+	display: inline-flex;
+	align-items: center;
+	padding: 0.8rem 1.75rem;
+	background: transparent;
+	color: ${(props) => props.theme.textSecondary};
+	font-size: 0.95rem;
+	font-weight: 700;
+	border: 1.5px solid ${(props) => props.theme.borderCard};
+	border-radius: 999px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+
+	&:hover {
+		color: ${(props) => props.theme.text};
+		border-color: ${(props) => props.theme.borderCardHover};
+		transform: translateY(-2px);
+	}
 `;
 
 const CTALink = styled.a`

@@ -6,7 +6,7 @@ const Footer = () => {
 		<StyledFooter>
 			<FooterInner>
 				<FooterLeft>
-					Mit ❤️ gemacht in Heilbronn – &copy; {new Date().getFullYear()}{" "}
+					Mit ❤️ gemacht in Heilbronn · &copy; {new Date().getFullYear()}{" "}
 					<AccentLink
 						href="https://dbw-media.de"
 						target="_blank"
@@ -16,6 +16,7 @@ const Footer = () => {
 					</AccentLink>
 				</FooterLeft>
 				<FooterRight>
+					<FooterNavLink href="/apps">Apps & Plugins</FooterNavLink>
 					<FooterNavLink href="/impressum">Impressum</FooterNavLink>
 					<FooterNavLink href="/datenschutzerklaerung">
 						Datenschutzerklärung
@@ -29,9 +30,7 @@ const Footer = () => {
 export default Footer;
 
 const FooterNavLink = ({ href, children }) => (
-	<Link href={href} passHref legacyBehavior>
-		<StyledNavLink>{children}</StyledNavLink>
-	</Link>
+	<StyledNavLink href={href}>{children}</StyledNavLink>
 );
 
 const StyledFooter = styled.footer`
@@ -77,7 +76,7 @@ const FooterRight = styled.nav`
 	gap: 1.5rem;
 `;
 
-const StyledNavLink = styled.a`
+const StyledNavLink = styled(Link)`
 	font-size: 0.9rem;
 	color: ${(props) => props.theme.textMuted};
 	text-decoration: none;
