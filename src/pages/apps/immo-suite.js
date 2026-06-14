@@ -160,6 +160,45 @@ const compareRows = [
 	{ feature: "Preis", immo: "499 EUR/J.", wpImmo: "Ab 649 EUR", immonex: "Auf Anfrage", frymo: "Ab 348 EUR/J." },
 ];
 
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: [
+		{
+			"@type": "Question",
+			name: "Muss ich meine Objekte doppelt pflegen?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Nein. Du pflegst alles in deiner Maklersoftware wie bisher. Die Immo Suite holt sich die Daten automatisch und haelt deine Website immer aktuell.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Wie viele Objekte kann ich anzeigen?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder 500 Immobilien.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Brauche ich technisches Wissen?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Nein. Wir richten die Immo Suite komplett fuer dich ein. Du musst nichts installieren, konfigurieren oder programmieren.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Ist die Website DSGVO-konform?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Ja. Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Karte laeuft ohne Google Maps.",
+			},
+		},
+	],
+};
+
 const immoSuiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
@@ -214,7 +253,7 @@ const ImmoSuite = () => {
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
-						__html: JSON.stringify(immoSuiteSchema),
+						__html: JSON.stringify([immoSuiteSchema, faqSchema]),
 					}}
 				/>
 			</Head>
@@ -233,14 +272,14 @@ const ImmoSuite = () => {
 							<Eyebrow>WordPress Immobilien-Plugin</Eyebrow>
 						</HeroIconRow>
 						<Title>
-							Deine Objekte automatisch auf der Website. Mit allem, was Anfragen bringt.
+							Wie ImmoScout und Kleinanzeigen, nur auf deiner eigenen Website.
 						</Title>
 						<Intro>
-							Die Immo Suite verbindet deine Maklersoftware mit WordPress
-							und macht aus jeder Objektseite eine Verkaufsmaschine:
-							Finanzierungsrechner, Infrastruktur-Score, druckfertiges
-							Exposé, Kontaktmodal und WhatsApp. Wir richten alles für
-							dich ein. Keine Objektlimits, keine versteckten Kosten.
+							Stell dir vor, du veröffentlichst ein neues Objekt in deiner
+							Maklersoftware und es erscheint im selben Moment auf deiner
+							Website. Mit Finanzierungsrechner, Lage-Bewertung,
+							druckfertigem Exposé und einem Kontaktformular, das direkt
+							Anfragen bringt. Genau das macht die Immo Suite.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton href="#anfrage">
@@ -263,20 +302,21 @@ const ImmoSuite = () => {
 					<ProblemGrid>
 						<ProblemText>
 							<SectionHeading>
-								Deine Objekte stecken in der Maklersoftware fest
+								Du veröffentlichst auf ImmoScout. Warum nicht auch auf deiner eigenen Seite?
 							</SectionHeading>
 							<ProblemDesc>
-								Du pflegst deine Objekte in der Maklersoftware. Aber auf
-								deiner Website sieht es anders aus: veraltete Daten, kein
-								vernünftiges Exposé und Detailseiten, die keine Anfragen
-								bringen. Interessenten springen ab, weil sie nicht finden,
-								was sie brauchen: was kostet die Finanzierung? Wie ist die
-								Lage? Wie erreiche ich den Makler?
+								Wenn du ein Objekt in deiner Maklersoftware freigibst,
+								geht es an ImmoScout, Kleinanzeigen, Immowelt. Aber
+								deine eigene Website? Die hinkt hinterher. Veraltete
+								Daten, kein Exposé, keine Anfragen. Dabei ist deine
+								Website der einzige Kanal, der dir gehört und auf dem
+								du keine Provision zahlst.
 							</ProblemDesc>
 							<ProblemDesc>
-								<strong>Die Immo Suite löst genau das.</strong> Objekte
-								fliessen automatisch auf die Website. Und jede Detailseite
-								bekommt die Tools, die aus einem Besucher einen Lead machen.
+								<strong>Mit der Immo Suite wird deine Website zum
+								eigenen Portal.</strong> Objekte erscheinen automatisch,
+								Detailseiten generieren Anfragen. Direkt von dir, ohne
+								Umweg über Drittanbieter.
 							</ProblemDesc>
 						</ProblemText>
 					</ProblemGrid>
@@ -510,6 +550,60 @@ const ImmoSuite = () => {
 						</InquiryForm>
 					</InquiryCard>
 				</InquirySection>
+
+				{/* ── FAQ ── */}
+				<Section>
+					<SectionHeading>Häufige Fragen</SectionHeading>
+					<FaqGrid>
+						<FaqItem>
+							<FaqTitle>Muss ich meine Objekte doppelt pflegen?</FaqTitle>
+							<FaqText>
+								Nein. Du pflegst alles in deiner Maklersoftware wie bisher.
+								Die Immo Suite holt sich die Daten automatisch und hält
+								deine Website immer aktuell.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Wie viele Objekte kann ich anzeigen?</FaqTitle>
+							<FaqText>
+								Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder
+								500 Immobilien.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Brauche ich technisches Wissen?</FaqTitle>
+							<FaqText>
+								Nein. Wir richten die Immo Suite komplett für dich ein.
+								Du musst nichts installieren, konfigurieren oder
+								programmieren.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Was passiert, wenn ein Objekt verkauft wird?</FaqTitle>
+							<FaqText>
+								Sobald du das Objekt in deiner Maklersoftware als verkauft
+								markierst, wird es auf der Website automatisch archiviert
+								oder in den Referenzen angezeigt.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Funktioniert das mit meinem WordPress-Theme?</FaqTitle>
+							<FaqText>
+								Ja. Die Immo Suite bringt eigene Templates mit und passt
+								sich über den Customizer an dein Design an. Kein PageBuilder
+								nötig.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Ist die Website DSGVO-konform?</FaqTitle>
+							<FaqText>
+								Ja. Keine externen Dienste, keine Tracking-Cookies, keine
+								IP-Speicherung. Die Karte läuft ohne Google Maps.
+								Datenschutz-Platzhalter sind eingebaut.
+							</FaqText>
+						</FaqItem>
+					</FaqGrid>
+				</Section>
 
 				{/* ── SEO KEYWORD SEKTIONEN ── */}
 				<Section>
