@@ -364,6 +364,10 @@ const ImmoSuite = () => {
 					</SoftwareGrid>
 				</Section>
 
+				<CtaBanner href="#anfrage">
+					Klingt gut? Unverbindlich anfragen
+				</CtaBanner>
+
 				{/* ── FEATURES (8 Pillars) ── */}
 				<Section>
 					<SectionHeading>
@@ -396,6 +400,10 @@ const ImmoSuite = () => {
 						))}
 					</WowGrid>
 				</Section>
+
+				<CtaBanner href="#anfrage">
+					Das will ich auch. Jetzt anfragen
+				</CtaBanner>
 
 				{/* ── SEO ── */}
 				<Section>
@@ -449,6 +457,10 @@ const ImmoSuite = () => {
 						</CompareTable>
 					</CompareWrapper>
 				</Section>
+
+				<CtaBanner href="#anfrage">
+					Überzeugt? Lass uns sprechen
+				</CtaBanner>
 
 				{/* ── ALLE FEATURES ── */}
 				<Section>
@@ -1208,12 +1220,41 @@ const ReqValue = styled.span`
 	color: ${(props) => props.theme.text};
 `;
 
+/* ── CTA Banner ── */
+
+const CtaBanner = styled.a`
+	display: block;
+	max-width: calc(1200px + 8rem);
+	width: 100%;
+	margin: 0 auto;
+	padding: 1.5rem 4rem;
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: ${(p) => p.theme.accent};
+	text-decoration: none;
+	border-top: 1px solid ${(p) => p.theme.borderCard};
+	border-bottom: 1px solid ${(p) => p.theme.borderCard};
+	transition: color 0.2s ease, background 0.2s ease;
+
+	&:hover {
+		color: #fff;
+		background: ${(p) => p.theme.accent};
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 1.25rem 1.5rem;
+		font-size: 1rem;
+	}
+`;
+
 /* ── FAQ Akkordeon ── */
 
 const FaqList = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 800px;
+	margin: 0 auto;
 `;
 
 const AccordionWrapper = styled.div`

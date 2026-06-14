@@ -757,6 +757,7 @@ const FaqList = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 800px;
+	margin: 0 auto;
 `;
 
 const AccordionWrapper = styled.div`
