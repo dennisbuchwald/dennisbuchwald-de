@@ -10,7 +10,7 @@ export const apps = [
 		tagline: "Das letzte Formular-Plugin, das du installieren wirst.",
 		description:
 			"Block-basiertes Formular-Plugin für WordPress: nativ im Editor, schlank, ohne jQuery und mit eingebautem Spam-Schutz. 13 Feldtypen, Multi-Step, bedingte Logik, Submissions-Dashboard.",
-		badges: ["Bald auf WordPress.org", "Kostenlos"],
+		badges: ["WordPress.org", "Kostenlos"],
 		tags: ["WordPress", "Gutenberg", "Formulare"],
 		links: [],
 		schema: {

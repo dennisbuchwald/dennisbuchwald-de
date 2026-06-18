@@ -210,7 +210,7 @@ const Flinkform = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<FaWordpress /> Bald auf WordPress.org
+								<FaWordpress /> Kostenlos auf WordPress.org
 							</PrimaryButton>
 						</HeroActions>
 					</Hero>
