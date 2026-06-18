@@ -12,7 +12,13 @@ export const apps = [
 			"Block-basiertes Formular-Plugin für WordPress: nativ im Editor, schlank, ohne jQuery und mit eingebautem Spam-Schutz. 13 Feldtypen, Multi-Step, bedingte Logik, Submissions-Dashboard.",
 		badges: ["WordPress.org", "Kostenlos"],
 		tags: ["WordPress", "Gutenberg", "Formulare"],
-		links: [],
+		links: [
+			{
+				label: "WordPress.org",
+				href: "https://wordpress.org/plugins/flinkform/",
+				type: "wordpress",
+			},
+		],
 		schema: {
 			price: "0",
 			category: "Plugin",
