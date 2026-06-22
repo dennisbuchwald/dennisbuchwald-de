@@ -18,11 +18,17 @@ import {
 	FaShieldAlt,
 	FaPlug,
 	FaWordpress,
+	FaCreditCard,
 } from "react-icons/fa";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
 
 const proModules = [
+	{
+		icon: <FaCreditCard />,
+		title: "Stripe Payments",
+		desc: "Zahlungen direkt im Formular: fester Betrag oder Produktauswahl mit Preisen. Stripe Elements für sichere Kreditkarteneingabe, serverseitige Verifizierung, kein Redirect. Kartendaten berühren nie deinen Server.",
+	},
 	{
 		icon: <FaCloud />,
 		title: "SMTP-Versand",
@@ -56,6 +62,8 @@ const proModules = [
 ];
 
 const highlights = [
+	"Stripe Payments: Kreditkarte und SEPA direkt im Formular",
+	"Fester Betrag oder Produktauswahl mit individuellen Preisen",
 	"SMTP mit 7 Provider-Presets und verschlüsselten Credentials",
 	"Webhooks mit Retry-Logik und vollständigem Delivery-Log",
 	"Datei-Upload mit Content-Sniffing und DSGVO-konformer Löschkaskade",
@@ -69,6 +77,7 @@ const highlights = [
 ];
 
 const compareRows = [
+	{ feature: "Stripe Payments im Formular", pro: true, manual: "WooCommerce o.Ä." },
 	{ feature: "SMTP-Versand", pro: true, manual: "Separates Plugin" },
 	{ feature: "Sende-Log mit Fehlerdiagnose", pro: true, manual: false },
 	{ feature: "Webhooks mit Retry-Logik", pro: true, manual: "Zapier o.Ä." },

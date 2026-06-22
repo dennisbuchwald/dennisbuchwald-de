@@ -31,9 +31,9 @@ export const apps = [
 		name: "Flinkform Pro",
 		tagline: "SMTP, Webhooks, Uploads und mehr.",
 		description:
-			"Premium Add-on für Flinkform: SMTP-Versand, Webhooks mit Retry-Logik, sicherer Datei-Upload, Newsletter-Anbindung (Brevo, Mailchimp, CleverReach), CSV-Export und Custom CSS pro Formular.",
+			"Premium Add-on für Flinkform: Stripe Payments, SMTP-Versand, Webhooks mit Retry-Logik, sicherer Datei-Upload, Newsletter-Anbindung (Brevo, Mailchimp, CleverReach), CSV-Export und Custom CSS.",
 		badges: ["Add-on", "Kommerziell"],
-		tags: ["WordPress", "Formulare", "SMTP", "Webhooks"],
+		tags: ["WordPress", "Formulare", "Stripe", "Webhooks"],
 		links: [],
 		schema: {
 			category: "Plugin",
