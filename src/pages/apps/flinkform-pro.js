@@ -174,8 +174,8 @@ const FlinkformPro = () => {
 					content="Flinkform Pro: Stripe Payments direkt im Formular, Webhooks ins CRM, sicherer Datei-Upload, SMTP, Newsletter-Anbindung. Das Premium Add-on fuer Flinkform."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/flinkform-pro`} />
-				<meta property="og:title" content="Flinkform Pro - Zahlungen direkt im WordPress-Formular" />
-				<meta property="og:description" content="Stripe Payments, Webhooks, Datei-Upload, SMTP und Newsletter: ein Add-on, keine sechs Plugins. Baut auf dem kostenlosen Flinkform auf." />
+				<meta property="og:title" content="Flinkform Pro - Payments, Webhooks, SMTP und mehr" />
+				<meta property="og:description" content="Stripe-Zahlungen, Webhooks ins CRM, SMTP, Datei-Upload und Newsletter: ein Add-on statt fuenf Plugins. Baut auf dem kostenlosen Flinkform auf." />
 				<meta property="og:url" content={`${SITE_URL}/apps/flinkform-pro`} />
 				<meta property="og:type" content="website" />
 				<script
@@ -200,15 +200,14 @@ const FlinkformPro = () => {
 							<Eyebrow>Premium Add-on</Eyebrow>
 						</HeroIconRow>
 						<Title>
-							Zahlungen direkt im Formular. Ohne WooCommerce, ohne Redirect.
+							Zahlungen, Webhooks, SMTP, Uploads. Ein Add-on statt fünf Plugins.
 						</Title>
 						<Intro>
-							Buchungsformular mit Anzahlung, Bestellformular mit
-							Produktauswahl, Workshop-Anmeldung mit Teilnahmegebühr:
-							Flinkform Pro macht aus jedem Formular einen Checkout.
-							Stripe Elements, serverseitige Verifizierung, PCI-konform.
-							Dazu: Webhooks, SMTP, Uploads und Newsletter in einem
-							einzigen Add-on.
+							Flinkform deckt Formulare ab. Aber im Agenturalltag
+							brauchst du mehr: Stripe-Zahlungen direkt im Formular,
+							Einreichungen automatisch ins CRM, zuverlässigen
+							Mailversand, Datei-Uploads und Newsletter-Anbindung.
+							Flinkform Pro packt das alles in ein einziges Add-on.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
@@ -230,37 +229,43 @@ const FlinkformPro = () => {
 				<Section>
 					<ProblemText>
 						<SectionHeading>
-							Dein Kunde will online bezahlen. Was jetzt?
+							Im Agenturalltag brauchst du mehr als ein Kontaktformular.
 						</SectionHeading>
 						<ProblemDesc>
-							Bisher hiess das: WooCommerce installieren, ein
-							Payment-Gateway-Plugin dazu, dann Stripe konfigurieren,
-							ein Produkt anlegen, eine Checkout-Seite bauen. Für eine
-							simple Anzahlung oder eine Workshop-Anmeldung mit Gebühr.
+							Flinkform löst das Formular-Problem. Aber dann kommen die
+							Anforderungen aus echten Kundenprojekten:
 						</ProblemDesc>
 						<NeedsList>
 							<NeedItem>
 								<NeedIcon><FaCreditCard /></NeedIcon>
-								<span>Buchungsformular mit Anzahlung? Kreditkarte direkt im Formular.</span>
+								<span>Buchungsformular mit Anzahlung. Der Kunde will direkt im Formular bezahlen.</span>
 							</NeedItem>
 							<NeedItem>
-								<NeedIcon><FaCreditCard /></NeedIcon>
-								<span>Bestellformular mit Produktauswahl? Radio-Buttons mit Preisen.</span>
+								<NeedIcon><FaExchangeAlt /></NeedIcon>
+								<span>Einreichungen sollen automatisch ins CRM oder Projektmanagement fliessen.</span>
 							</NeedItem>
 							<NeedItem>
-								<NeedIcon><FaCreditCard /></NeedIcon>
-								<span>Workshop-Anmeldung? Fester Betrag, ein Klick, bezahlt.</span>
+								<NeedIcon><FaCloud /></NeedIcon>
+								<span>Der Hoster verschluckt Mails. Du brauchst einen eigenen SMTP-Server.</span>
+							</NeedItem>
+							<NeedItem>
+								<NeedIcon><FaCloudUploadAlt /></NeedIcon>
+								<span>Bewerbungsformular: Lebenslauf und Anschreiben als PDF hochladen.</span>
+							</NeedItem>
+							<NeedItem>
+								<NeedIcon><FaNewspaper /></NeedIcon>
+								<span>Newsletter-Anmeldung direkt im Kontaktformular. Ohne Zapier-Umwege.</span>
 							</NeedItem>
 						</NeedsList>
 						<ProblemDesc>
-							WPForms will dafür 199 Dollar pro Jahr. Gravity Forms
-							verlangt ein separates Stripe-Add-on. WooCommerce ist
-							ein ganzer Shop, wenn du nur ein Formular brauchst.
+							Normalerweise heisst das: fünf weitere Plugins installieren.
+							Fünf Konfigurationen, fünf Update-Zyklen, fünf potenzielle
+							Konflikte. Bei WPForms zahlst du für diese Features 199 Dollar
+							pro Jahr.
 						</ProblemDesc>
 						<ProblemDesc>
-							<strong>Flinkform Pro macht das in einem Block.</strong> Stripe
-							Elements direkt im Formular, Kartendaten berühren nie deinen
-							Server, serverseitige Verifizierung jeder Zahlung.
+							<strong>Flinkform Pro packt das alles in ein Add-on.</strong> Nahtlos
+							integriert, DSGVO-konform, aus einer Hand.
 						</ProblemDesc>
 					</ProblemText>
 				</Section>
@@ -268,7 +273,7 @@ const FlinkformPro = () => {
 				{/* -- 7 MODULE -- */}
 				<Section>
 					<SectionHeading>
-						Payments und sechs weitere Module. Ein Add-on.
+						Sieben Module. Ein Add-on.
 					</SectionHeading>
 					<ModuleGrid>
 						{proModules.map((m) => (
