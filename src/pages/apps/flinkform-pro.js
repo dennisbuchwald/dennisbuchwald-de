@@ -212,9 +212,9 @@ const FlinkformPro = () => {
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
-								href="/kontakt"
+								href="#anfrage"
 							>
-								<FaEnvelope /> Jetzt anfragen
+								<FaEnvelope /> Unverbindlich anfragen
 							</PrimaryButton>
 							<SecondaryButton
 								href="/apps/flinkform"
@@ -371,6 +371,73 @@ const FlinkformPro = () => {
 						</StepItem>
 					</StepsGrid>
 				</Section>
+
+				{/* -- ANFRAGE -- */}
+				<InquirySection id="anfrage">
+					<InquiryCard>
+						<InquiryHeading>
+							Interesse an Flinkform Pro?
+						</InquiryHeading>
+						<InquiryDesc>
+							Sag mir kurz, wofür du Pro einsetzen willst und wo
+							deine Website steht. Ich melde mich persönlich bei dir.
+						</InquiryDesc>
+						<InquiryForm
+							onSubmit={(e) => {
+								e.preventDefault();
+								const form = e.target;
+								const name = form.name.value;
+								const website = form.website.value;
+								const usecase = form.usecase.value;
+								const subject = encodeURIComponent(
+									`Flinkform Pro Anfrage - ${name}`
+								);
+								const body = encodeURIComponent(
+									`Name: ${name}\nWebsite: ${website}\nEinsatzzweck: ${usecase}`
+								);
+								window.location.href = `mailto:dennis@dbw-media.de?subject=${subject}&body=${body}`;
+							}}
+						>
+							<FormField>
+								<FormLabel htmlFor="name">Name / Firma</FormLabel>
+								<FormInput
+									id="name"
+									name="name"
+									type="text"
+									placeholder="Max Mustermann"
+									required
+								/>
+							</FormField>
+							<FormField>
+								<FormLabel htmlFor="website">Website</FormLabel>
+								<FormInput
+									id="website"
+									name="website"
+									type="text"
+									placeholder="www.deine-website.de"
+								/>
+							</FormField>
+							<FormField>
+								<FormLabel htmlFor="usecase">
+									Wofür brauchst du Pro?
+								</FormLabel>
+								<FormSelect id="usecase" name="usecase" required>
+									<option value="">Bitte wählen</option>
+									<option value="Zahlungen (Stripe)">Zahlungen (Stripe)</option>
+									<option value="Webhooks / CRM-Anbindung">Webhooks / CRM-Anbindung</option>
+									<option value="SMTP / Mailversand">SMTP / Mailversand</option>
+									<option value="Datei-Upload">Datei-Upload</option>
+									<option value="Newsletter-Integration">Newsletter-Integration</option>
+									<option value="Mehrere Features">Mehrere Features</option>
+									<option value="Alles">Das komplette Paket</option>
+								</FormSelect>
+							</FormField>
+							<SubmitButton type="submit">
+								Anfrage absenden
+							</SubmitButton>
+						</InquiryForm>
+					</InquiryCard>
+				</InquirySection>
 
 				{/* -- FAQ -- */}
 				<Section>
@@ -904,4 +971,105 @@ const ReqValue = styled.span`
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: ${(p) => p.theme.text};
+`;
+
+/* -- Inquiry Form -- */
+
+const InquirySection = styled.section`
+	max-width: calc(1200px + 8rem);
+	width: 100%;
+	margin: 0 auto;
+	padding: 5rem 4rem;
+	@media screen and (max-width: 768px) { padding: 3rem 1.5rem; }
+`;
+
+const InquiryCard = styled.div`
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 3rem;
+	background: ${(p) => p.theme.bgCard};
+	border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 1.5rem;
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #7e56ff, #00b2ff);
+	}
+`;
+
+const InquiryHeading = styled.h2`
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: ${(p) => p.theme.text};
+	margin: 0 0 0.75rem;
+`;
+
+const InquiryDesc = styled.p`
+	font-size: 1rem;
+	line-height: 1.6;
+	color: ${(p) => p.theme.textSecondary};
+	margin: 0 0 2rem;
+`;
+
+const InquiryForm = styled.form`
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+`;
+
+const FormField = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+`;
+
+const FormLabel = styled.label`
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: ${(p) => p.theme.text};
+`;
+
+const FormInput = styled.input`
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	color: ${(p) => p.theme.text};
+	background: ${(p) => p.theme.bg};
+	border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 0.75rem;
+	outline: none;
+	transition: border-color 0.2s ease;
+	&::placeholder { color: ${(p) => p.theme.textMuted}; }
+	&:focus { border-color: ${(p) => p.theme.accent}; }
+`;
+
+const FormSelect = styled.select`
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	color: ${(p) => p.theme.text};
+	background: ${(p) => p.theme.bg};
+	border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 0.75rem;
+	outline: none;
+	cursor: pointer;
+	&:focus { border-color: ${(p) => p.theme.accent}; }
+`;
+
+const SubmitButton = styled.button`
+	padding: 0.85rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(135deg, #7e56ff, #00b2ff);
+	border: none;
+	border-radius: 999px;
+	cursor: pointer;
+	margin-top: 0.5rem;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	&:hover { opacity: 0.9; transform: translateY(-2px); }
 `;
