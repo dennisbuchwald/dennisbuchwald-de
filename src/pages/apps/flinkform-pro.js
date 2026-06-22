@@ -85,7 +85,7 @@ const compareRows = [
 	{ feature: "Datei-Upload (sicher)", pro: true, wpforms: "Ab 49 $/J.", gravity: true, woo: false },
 	{ feature: "Newsletter-Integration", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on", woo: "Plugin" },
 	{ feature: "DSGVO-konform (kein reCAPTCHA)", pro: true, wpforms: false, gravity: false, woo: false },
-	{ feature: "Preis", pro: "Einmalig", wpforms: "Ab 199 $/J.", gravity: "Ab 59 $/J.", woo: "Kostenlos*" },
+	{ feature: "Preis", pro: "49 EUR/J.", wpforms: "Ab 199 $/J.", gravity: "Ab 59 $/J.", woo: "Kostenlos*" },
 ];
 
 const faqs = [
@@ -456,7 +456,7 @@ const FlinkformPro = () => {
 						<ReqItem><ReqLabel>WordPress</ReqLabel><ReqValue>6.5+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>PHP</ReqLabel><ReqValue>8.1+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>Flinkform</ReqLabel><ReqValue>1.0.0+</ReqValue></ReqItem>
-						<ReqItem><ReqLabel>Lizenz</ReqLabel><ReqValue>Erforderlich</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>Preis</ReqLabel><ReqValue>49 EUR/J.</ReqValue></ReqItem>
 					</ReqGrid>
 				</Section>
 
