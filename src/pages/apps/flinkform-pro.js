@@ -77,39 +77,41 @@ const highlights = [
 ];
 
 const compareRows = [
-	{ feature: "Stripe Payments im Formular", pro: true, manual: "WooCommerce o.Ä." },
-	{ feature: "SMTP-Versand", pro: true, manual: "Separates Plugin" },
-	{ feature: "Sende-Log mit Fehlerdiagnose", pro: true, manual: false },
-	{ feature: "Webhooks mit Retry-Logik", pro: true, manual: "Zapier o.Ä." },
-	{ feature: "Webhook Delivery-Log", pro: true, manual: false },
-	{ feature: "Datei-Upload (sicher)", pro: true, manual: "Separates Plugin" },
-	{ feature: "Newsletter-Integration", pro: true, manual: "Separates Plugin" },
-	{ feature: "CSV-Export", pro: true, manual: false },
-	{ feature: "Custom CSS pro Formular", pro: true, manual: "Theme-Code" },
-	{ feature: "Verschlüsselte Credentials", pro: true, manual: false },
-	{ feature: "Alles aus einer Hand", pro: true, manual: false },
+	{ feature: "Stripe Payments im Formular", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on nötig", woo: true },
+	{ feature: "Kein Shop/Checkout nötig", pro: true, wpforms: true, gravity: true, woo: false },
+	{ feature: "Block-Editor nativ", pro: true, wpforms: false, gravity: false, woo: false },
+	{ feature: "Webhooks mit Retry-Logik", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on", woo: false },
+	{ feature: "SMTP + Sende-Log", pro: true, wpforms: false, gravity: false, woo: false },
+	{ feature: "Datei-Upload (sicher)", pro: true, wpforms: "Ab 49 $/J.", gravity: true, woo: false },
+	{ feature: "Newsletter-Integration", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on", woo: "Plugin" },
+	{ feature: "DSGVO-konform (kein reCAPTCHA)", pro: true, wpforms: false, gravity: false, woo: false },
+	{ feature: "Preis", pro: "Einmalig", wpforms: "Ab 199 $/J.", gravity: "Ab 59 $/J.", woo: "Kostenlos*" },
 ];
 
 const faqs = [
+	{
+		q: "Brauche ich ein Stripe-Konto?",
+		a: "Ja, aber es ist kostenlos und in zwei Minuten erstellt. Du bekommst sofort Test-Keys zum Ausprobieren. Im Live-Betrieb gehen Zahlungen direkt auf dein Stripe-Konto, Flinkform Pro ist nie dazwischen.",
+	},
+	{
+		q: "Sind die Zahlungen PCI-konform?",
+		a: "Ja. Kartendaten werden ausschliesslich von Stripe verarbeitet (Stripe Elements). Sie berühren nie deinen Server. Der Server verifiziert nur, ob die Zahlung bei Stripe als erfolgreich bestätigt wurde, bevor die Einreichung gespeichert wird.",
+	},
+	{
+		q: "Was passiert, wenn die Zahlung fehlschlägt?",
+		a: "Das Formular wird nicht abgeschickt. Der Besucher sieht eine Fehlermeldung direkt am Kartenfeld und kann es erneut versuchen. Keine Einreichung ohne bestätigte Zahlung.",
+	},
 	{
 		q: "Brauche ich Flinkform (kostenlos), um Pro zu nutzen?",
 		a: "Ja. Flinkform Pro ist ein Add-on, das auf dem kostenlosen Flinkform-Plugin aufbaut. Du installierst zuerst das kostenlose Plugin und aktivierst dann Pro als Erweiterung. Alle Free-Features bleiben erhalten.",
 	},
 	{
-		q: "Was passiert mit meinen Daten, wenn ich Pro deaktiviere?",
-		a: "Nichts. Deine Webhooks, SMTP-Einstellungen und Upload-Dateien bleiben gespeichert. Erst bei einer kompletten Deinstallation werden die Pro-Datenbanktabellen und Upload-Dateien entfernt.",
-	},
-	{
-		q: "Kann ich meinen bestehenden SMTP-Provider weiternutzen?",
-		a: "Ja. Flinkform Pro erkennt, wenn bereits ein anderes SMTP-Plugin aktiv ist, und zeigt einen Hinweis. Du kannst den eingebauten SMTP-Versand nutzen oder bei deinem bestehenden Setup bleiben.",
-	},
-	{
-		q: "Wie sicher ist der Datei-Upload?",
-		a: "Dreifach abgesichert: Dateityp-Prüfung per Extension und Content-Sniffing, randomisierte Dateinamen und ein geschützter Upload-Ordner mit .htaccess. Dateien werden automatisch gelöscht, wenn die Einreichung gelöscht wird.",
-	},
-	{
 		q: "Ist Flinkform Pro DSGVO-konform?",
-		a: "Ja. Alle Pro-Module sind in die WordPress-Privacy-Tools integriert: Datenexport, Datenlöschung und Privacy-Policy-Hinweise. Zugangsdaten werden AES-256-verschlüsselt gespeichert. Das Sende-Log speichert keine Mail-Inhalte.",
+		a: "Ja. Kartendaten laufen nur über Stripe, nicht über deinen Server. Alle Pro-Module sind in die WordPress-Privacy-Tools integriert: Datenexport, Datenlöschung, Privacy-Policy-Hinweise. API-Keys werden AES-256-verschlüsselt gespeichert.",
+	},
+	{
+		q: "Was passiert mit meinen Daten, wenn ich Pro deaktiviere?",
+		a: "Nichts. Deine Webhooks, SMTP-Einstellungen, Stripe-Keys und Upload-Dateien bleiben gespeichert. Erst bei einer kompletten Deinstallation werden die Pro-Datenbanktabellen und Upload-Dateien entfernt.",
 	},
 	{
 		q: "Wie kommen Updates?",
@@ -122,7 +124,7 @@ const flinkformProSchema = {
 	"@type": "SoftwareApplication",
 	name: "Flinkform Pro",
 	description:
-		"Premium Add-on für Flinkform: SMTP, Webhooks, Datei-Upload, Newsletter-Anbindung, CSV-Export und Custom CSS. Für professionelle WordPress-Formulare.",
+		"Premium Add-on für Flinkform: Stripe Payments direkt im Formular, Webhooks, Datei-Upload, SMTP, Newsletter und Custom CSS. Für professionelle WordPress-Formulare.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/flinkform-pro`,
@@ -165,15 +167,15 @@ const FlinkformPro = () => {
 		<div id="top">
 			<Head>
 				<title>
-					Flinkform Pro - SMTP, Webhooks, Uploads und mehr für dein WordPress-Formular
+					Flinkform Pro - Zahlungen, Webhooks und Uploads direkt im WordPress-Formular
 				</title>
 				<meta
 					name="description"
-					content="Flinkform Pro: SMTP-Versand, Webhooks, Datei-Upload, Newsletter-Anbindung, CSV-Export und Custom CSS. Das Premium Add-on fuer professionelle WordPress-Formulare."
+					content="Flinkform Pro: Stripe Payments direkt im Formular, Webhooks ins CRM, sicherer Datei-Upload, SMTP, Newsletter-Anbindung. Das Premium Add-on fuer Flinkform."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/flinkform-pro`} />
-				<meta property="og:title" content="Flinkform Pro - Premium Add-on für WordPress-Formulare" />
-				<meta property="og:description" content="SMTP, Webhooks, Datei-Upload, Newsletter, CSV-Export: alles in einem Add-on. Baut auf dem kostenlosen Flinkform auf." />
+				<meta property="og:title" content="Flinkform Pro - Zahlungen direkt im WordPress-Formular" />
+				<meta property="og:description" content="Stripe Payments, Webhooks, Datei-Upload, SMTP und Newsletter: ein Add-on, keine sechs Plugins. Baut auf dem kostenlosen Flinkform auf." />
 				<meta property="og:url" content={`${SITE_URL}/apps/flinkform-pro`} />
 				<meta property="og:type" content="website" />
 				<script
@@ -198,13 +200,15 @@ const FlinkformPro = () => {
 							<Eyebrow>Premium Add-on</Eyebrow>
 						</HeroIconRow>
 						<Title>
-							Webhooks, SMTP, Uploads. Für die, die mehr brauchen.
+							Zahlungen direkt im Formular. Ohne WooCommerce, ohne Redirect.
 						</Title>
 						<Intro>
-							Flinkform deckt alles ab, was ein gutes Formular braucht.
-							Aber wenn Einreichungen automatisch ins CRM fliessen sollen,
-							Mails zuverlässig über deinen eigenen SMTP-Server rausgehen
-							und Besucher Dateien hochladen können: dafür gibt es Pro.
+							Buchungsformular mit Anzahlung, Bestellformular mit
+							Produktauswahl, Workshop-Anmeldung mit Teilnahmegebühr:
+							Flinkform Pro macht aus jedem Formular einen Checkout.
+							Stripe Elements, serverseitige Verifizierung, PCI-konform.
+							Dazu: Webhooks, SMTP, Uploads und Newsletter in einem
+							einzigen Add-on.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
@@ -226,46 +230,45 @@ const FlinkformPro = () => {
 				<Section>
 					<ProblemText>
 						<SectionHeading>
-							Dein Formular funktioniert. Und dann?
+							Dein Kunde will online bezahlen. Was jetzt?
 						</SectionHeading>
 						<ProblemDesc>
-							Kontaktformular eingerichtet, Spam-Schutz läuft,
-							Einreichungen kommen an. Aber dann brauchst du mehr:
+							Bisher hiess das: WooCommerce installieren, ein
+							Payment-Gateway-Plugin dazu, dann Stripe konfigurieren,
+							ein Produkt anlegen, eine Checkout-Seite bauen. Für eine
+							simple Anzahlung oder eine Workshop-Anmeldung mit Gebühr.
 						</ProblemDesc>
 						<NeedsList>
 							<NeedItem>
-								<NeedIcon><FaCloud /></NeedIcon>
-								<span>Der Hoster verschluckt Mails. Du brauchst SMTP.</span>
+								<NeedIcon><FaCreditCard /></NeedIcon>
+								<span>Buchungsformular mit Anzahlung? Kreditkarte direkt im Formular.</span>
 							</NeedItem>
 							<NeedItem>
-								<NeedIcon><FaExchangeAlt /></NeedIcon>
-								<span>Einreichungen sollen automatisch ins CRM. Du brauchst Webhooks.</span>
+								<NeedIcon><FaCreditCard /></NeedIcon>
+								<span>Bestellformular mit Produktauswahl? Radio-Buttons mit Preisen.</span>
 							</NeedItem>
 							<NeedItem>
-								<NeedIcon><FaCloudUploadAlt /></NeedIcon>
-								<span>Kunden sollen Dateien mitsenden. Du brauchst einen sicheren Upload.</span>
-							</NeedItem>
-							<NeedItem>
-								<NeedIcon><FaNewspaper /></NeedIcon>
-								<span>Newsletter-Anmeldung im Formular. Du brauchst eine Anbindung.</span>
+								<NeedIcon><FaCreditCard /></NeedIcon>
+								<span>Workshop-Anmeldung? Fester Betrag, ein Klick, bezahlt.</span>
 							</NeedItem>
 						</NeedsList>
 						<ProblemDesc>
-							Normalerweise heisst das: vier weitere Plugins installieren.
-							Vier Konfigurationen, vier Update-Zyklen, vier potenzielle
-							Konflikte.
+							WPForms will dafür 199 Dollar pro Jahr. Gravity Forms
+							verlangt ein separates Stripe-Add-on. WooCommerce ist
+							ein ganzer Shop, wenn du nur ein Formular brauchst.
 						</ProblemDesc>
 						<ProblemDesc>
-							<strong>Flinkform Pro packt das alles in ein Add-on.</strong> Nahtlos
-							integriert, aus einer Hand, mit einer Konfiguration.
+							<strong>Flinkform Pro macht das in einem Block.</strong> Stripe
+							Elements direkt im Formular, Kartendaten berühren nie deinen
+							Server, serverseitige Verifizierung jeder Zahlung.
 						</ProblemDesc>
 					</ProblemText>
 				</Section>
 
-				{/* -- 6 MODULE -- */}
+				{/* -- 7 MODULE -- */}
 				<Section>
 					<SectionHeading>
-						Sechs Module. Ein Add-on.
+						Payments und sechs weitere Module. Ein Add-on.
 					</SectionHeading>
 					<ModuleGrid>
 						{proModules.map((m) => (
@@ -299,7 +302,7 @@ const FlinkformPro = () => {
 				{/* -- VERGLEICH -- */}
 				<Section>
 					<SectionHeading>
-						Ein Add-on vs. vier separate Plugins
+						Flinkform Pro vs. WPForms, Gravity Forms und WooCommerce
 					</SectionHeading>
 					<CompareWrapper>
 						<CompareTable>
@@ -307,7 +310,9 @@ const FlinkformPro = () => {
 								<tr>
 									<Th></Th>
 									<ThHighlight>Flinkform Pro</ThHighlight>
-									<Th>Manuell / Einzelplugins</Th>
+									<Th>WPForms</Th>
+									<Th>Gravity</Th>
+									<Th>Woo</Th>
 								</tr>
 							</thead>
 							<tbody>
@@ -315,12 +320,19 @@ const FlinkformPro = () => {
 									<tr key={row.feature}>
 										<TdFeature>{row.feature}</TdFeature>
 										<TdHighlight><CellValue value={row.pro} /></TdHighlight>
-										<Td><CellValue value={row.manual} /></Td>
+										<Td><CellValue value={row.wpforms} /></Td>
+										<Td><CellValue value={row.gravity} /></Td>
+										<Td><CellValue value={row.woo} /></Td>
 									</tr>
 								))}
 							</tbody>
 						</CompareTable>
 					</CompareWrapper>
+					<CompareNote>
+						* WooCommerce ist kostenlos, aber ein kompletter Shop. Für ein
+						einzelnes Zahlungsformular brauchst du trotzdem ein Payment-Gateway-Plugin
+						und eine Checkout-Konfiguration.
+					</CompareNote>
 				</Section>
 
 				{/* -- WIE ES FUNKTIONIERT -- */}
@@ -742,6 +754,13 @@ const CellText = styled.span`
 	font-size: 0.8rem;
 	font-weight: 400;
 	color: ${(p) => p.theme.textSecondary};
+`;
+
+const CompareNote = styled.p`
+	font-size: 0.8rem;
+	color: ${(p) => p.theme.textMuted};
+	margin: 1rem 0 0;
+	font-style: italic;
 `;
 
 /* -- Steps -- */
