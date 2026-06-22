@@ -25,6 +25,21 @@ export const apps = [
 		},
 	},
 	{
+		slug: "flinkform-pro",
+		icon: "/apps/icons/flinkform-app.svg",
+		detailPage: "/apps/flinkform-pro",
+		name: "Flinkform Pro",
+		tagline: "SMTP, Webhooks, Uploads und mehr.",
+		description:
+			"Premium Add-on für Flinkform: SMTP-Versand, Webhooks mit Retry-Logik, sicherer Datei-Upload, Newsletter-Anbindung (Brevo, Mailchimp, CleverReach), CSV-Export und Custom CSS pro Formular.",
+		badges: ["Add-on", "Kommerziell"],
+		tags: ["WordPress", "Formulare", "SMTP", "Webhooks"],
+		links: [],
+		schema: {
+			category: "Plugin",
+		},
+	},
+	{
 		slug: "dbw-immo-suite",
 		icon: "/apps/icons/immosuite-app.svg",
 		detailPage: "/apps/immo-suite",
