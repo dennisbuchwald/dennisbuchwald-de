@@ -203,11 +203,12 @@ const FlinkformPro = () => {
 							Zahlungen, Webhooks, SMTP, Uploads. Ein Add-on statt fünf Plugins.
 						</Title>
 						<Intro>
-							Flinkform deckt Formulare ab. Aber im Agenturalltag
-							brauchst du mehr: Stripe-Zahlungen direkt im Formular,
-							Einreichungen automatisch ins CRM, zuverlässigen
-							Mailversand, Datei-Uploads und Newsletter-Anbindung.
-							Flinkform Pro packt das alles in ein einziges Add-on.
+							Flinkform deckt Formulare ab. Aber sobald es
+							professionell wird, brauchst du mehr: Stripe-Zahlungen
+							direkt im Formular, Einreichungen automatisch ins CRM,
+							zuverlässigen Mailversand, Datei-Uploads und
+							Newsletter-Anbindung. Flinkform Pro packt das alles in
+							ein einziges Add-on.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
@@ -229,11 +230,11 @@ const FlinkformPro = () => {
 				<Section>
 					<ProblemText>
 						<SectionHeading>
-							Im Agenturalltag brauchst du mehr als ein Kontaktformular.
+							Ein Kontaktformular reicht? Nicht lange.
 						</SectionHeading>
 						<ProblemDesc>
-							Flinkform löst das Formular-Problem. Aber dann kommen die
-							Anforderungen aus echten Kundenprojekten:
+							Flinkform löst das Formular-Problem. Aber dann kommen
+							die echten Anforderungen:
 						</ProblemDesc>
 						<NeedsList>
 							<NeedItem>
