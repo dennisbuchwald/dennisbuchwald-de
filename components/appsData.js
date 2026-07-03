@@ -5,7 +5,7 @@ export const apps = [
 	{
 		slug: "flinkform",
 		icon: "/apps/icons/flinkform-app.svg",
-		detailPage: "/apps/flinkform",
+		detailPage: "https://flinkform.de/",
 		name: "Flinkform",
 		tagline: "Das letzte Formular-Plugin, das du installieren wirst.",
 		description:
@@ -27,7 +27,7 @@ export const apps = [
 	{
 		slug: "flinkform-pro",
 		icon: "/apps/icons/flinkform-app.svg",
-		detailPage: "/apps/flinkform-pro",
+		detailPage: "https://flinkform.de/pro",
 		name: "Flinkform Pro",
 		tagline: "Das Formular, das Geld verdient.",
 		description:
