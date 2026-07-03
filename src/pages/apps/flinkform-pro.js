@@ -473,12 +473,35 @@ const FlinkformPro = () => {
 						<PricingTrustItem><FaCheck /> Jeder Plan enthält alle Features</PricingTrustItem>
 						<PricingTrustItem><FaCheck /> Jährlich kündbar</PricingTrustItem>
 					</PricingTrustRow>
-					<PricingNote>
-						Zum Launch gibt es zusätzlich eine limitierte
-						Lifetime-Lizenz (399 € einmalig, bis zu 25 Websites) - nur
-						für kurze Zeit. Der Verkauf startet in Kürze; bis dahin
-						kannst du dich unverbindlich vormerken lassen.
-					</PricingNote>
+					<LifetimeCard>
+						<LifetimeContent>
+							<LifetimeBadge>Nur zum Launch · Limitiert</LifetimeBadge>
+							<LifetimeHeading>
+								Einmal zahlen. Für immer nutzen.
+							</LifetimeHeading>
+							<LifetimeDesc>
+								Zum Launch gibt es eine limitierte Lifetime-Lizenz:
+								alle Pro-Features auf bis zu 25 Websites, keine
+								jährliche Verlängerung, Updates inklusive. Das
+								Angebot wird nach der Launch-Phase dauerhaft
+								abgeschaltet - danach gibt es Flinkform Pro nur
+								noch im Abo.
+							</LifetimeDesc>
+						</LifetimeContent>
+						<LifetimeAside>
+							<LifetimePrice>
+								399 €<LifetimePeriod>einmalig</LifetimePeriod>
+							</LifetimePrice>
+							<LifetimeSites>Bis zu 25 Websites</LifetimeSites>
+							<LifetimeButton href="#anfrage">
+								Unverbindlich vormerken
+							</LifetimeButton>
+							<LifetimeHint>
+								Verkauf startet in Kürze - Vorgemerkte erfahren
+								es zuerst.
+							</LifetimeHint>
+						</LifetimeAside>
+					</LifetimeCard>
 				</Section>
 
 				{/* -- ANFRAGE -- */}
@@ -1225,11 +1248,125 @@ const PricingButton = styled.a`
 	&:hover { opacity: 0.9; transform: translateY(-2px); ${(p) => (p.$featured ? "" : "border-color: #7e56ff;")} }
 `;
 
-const PricingNote = styled.p`
+/* -- Lifetime Launch Card -- */
+
+const LifetimeCard = styled.div`
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 2.5rem;
+	margin-top: 2rem;
+	padding: 2.5rem 3rem;
+	background: #111;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+	}
+	@media (max-width: 900px) {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.75rem;
+		padding: 2rem 1.5rem;
+	}
+`;
+
+const LifetimeContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	flex: 1;
+`;
+
+const LifetimeBadge = styled.span`
+	display: inline-block;
+	align-self: flex-start;
+	padding: 0.3rem 0.9rem;
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #fff;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #ea2b1f, #ff3c6f);
+`;
+
+const LifetimeHeading = styled.h3`
+	font-size: 1.6rem;
+	font-weight: 800;
+	color: #fff;
+	margin: 0;
+	@media (max-width: 768px) { font-size: 1.3rem; }
+`;
+
+const LifetimeDesc = styled.p`
+	font-size: 0.95rem;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, 0.72);
+	margin: 0;
+	max-width: 560px;
+`;
+
+const LifetimeAside = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	flex-shrink: 0;
+	text-align: center;
+	@media (max-width: 900px) { align-items: stretch; }
+`;
+
+const LifetimePrice = styled.div`
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: #fff;
+	line-height: 1.1;
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+	justify-content: center;
+`;
+
+const LifetimePeriod = styled.span`
+	font-size: 1rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.6);
+`;
+
+const LifetimeSites = styled.span`
 	font-size: 0.9rem;
-	color: ${(p) => p.theme.textSecondary};
-	margin: 2rem 0 0;
-	max-width: 640px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.85);
+`;
+
+const LifetimeButton = styled.a`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.75rem;
+	padding: 0.85rem 1.75rem;
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #111;
+	background: #fff;
+	border-radius: 999px;
+	text-decoration: none;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	&:hover { opacity: 0.9; transform: translateY(-2px); }
+`;
+
+const LifetimeHint = styled.span`
+	font-size: 0.75rem;
+	color: rgba(255, 255, 255, 0.55);
+	max-width: 220px;
+	@media (max-width: 900px) { max-width: none; }
 `;
 
 /* -- Inquiry Form -- */
