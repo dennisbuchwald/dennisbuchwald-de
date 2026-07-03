@@ -105,21 +105,32 @@ const pricingPlans = [
 		name: "Single",
 		price: "59",
 		sites: "1 Website",
-		desc: "Für Freelancer und die eigene Website.",
+		perSite: "59 € pro Website",
+		desc: "Für die eigene Website.",
+		featured: false,
+	},
+	{
+		name: "Studio",
+		price: "99",
+		sites: "3 Websites",
+		perSite: "33 € pro Website",
+		desc: "Für Freelancer mit den ersten Kundenprojekten.",
 		featured: false,
 	},
 	{
 		name: "Agency",
 		price: "149",
 		sites: "Bis zu 25 Websites",
-		desc: "Für Agenturen und Freelancer mit Kundenprojekten. Eine Lizenz für alle Kundenseiten.",
+		perSite: "Unter 6 € pro Website",
+		desc: "Nur 50 € mehr als Studio - für 22 zusätzliche Websites. Eine Lizenz für alle Kundenprojekte.",
 		featured: true,
 	},
 	{
 		name: "Unlimited",
 		price: "299",
 		sites: "Unbegrenzte Websites",
-		desc: "Für große Agenturen und Power-User ohne Limits.",
+		perSite: "Keine Limits",
+		desc: "Für große Agenturen und Power-User.",
 		featured: false,
 	},
 ];
@@ -127,7 +138,7 @@ const pricingPlans = [
 const faqs = [
 	{
 		q: "Was kostet Flinkform Pro?",
-		a: "Flinkform Pro kostet 59 Euro pro Jahr für eine Website, 149 Euro pro Jahr für bis zu 25 Websites (Agency) und 299 Euro pro Jahr ohne Site-Limit. Alle Pläne enthalten sämtliche Pro-Features, die Staffelung richtet sich nur nach der Anzahl der Websites.",
+		a: "Flinkform Pro kostet 59 Euro pro Jahr für eine Website, 99 Euro für 3 Websites (Studio), 149 Euro für bis zu 25 Websites (Agency) und 299 Euro ohne Site-Limit. Alle Pläne enthalten sämtliche Pro-Features - die Staffelung richtet sich nur nach der Anzahl der Websites. Dazu gibt es eine 14-Tage-Geld-zurück-Garantie.",
 	},
 	{
 		q: "Welche Zahlungsarten unterstützt das Payment-Feld?",
@@ -177,7 +188,7 @@ const flinkformProSchema = {
 		lowPrice: "59",
 		highPrice: "299",
 		priceCurrency: "EUR",
-		offerCount: "3",
+		offerCount: "4",
 	},
 	author: { "@type": "Person", name: "Dennis Buchwald", url: SITE_URL },
 };
@@ -439,17 +450,17 @@ const FlinkformPro = () => {
 					<PricingGrid>
 						{pricingPlans.map((plan) => (
 							<PricingCard key={plan.name} $featured={plan.featured}>
-								{plan.featured && <PricingBadge>Beliebt bei Agenturen</PricingBadge>}
+								{plan.featured && <PricingBadge>Bestseller</PricingBadge>}
 								<PricingName>{plan.name}</PricingName>
 								<PricingPrice>
 									{plan.price} €<PricingPeriod>/Jahr</PricingPeriod>
 								</PricingPrice>
 								<PricingSites>{plan.sites}</PricingSites>
+								<PricingPerSite $featured={plan.featured}>{plan.perSite}</PricingPerSite>
 								<PricingDesc>{plan.desc}</PricingDesc>
 								<PricingFeatures>
 									<PricingFeature><FaCheck /> Alle 8 Pro-Module</PricingFeature>
 									<PricingFeature><FaCheck /> Updates & Support</PricingFeature>
-									<PricingFeature><FaCheck /> Baut auf dem kostenlosen Flinkform auf</PricingFeature>
 								</PricingFeatures>
 								<PricingButton href="#anfrage" $featured={plan.featured}>
 									Anfragen
@@ -457,6 +468,11 @@ const FlinkformPro = () => {
 							</PricingCard>
 						))}
 					</PricingGrid>
+					<PricingTrustRow>
+						<PricingTrustItem><FaCheck /> 14 Tage Geld-zurück-Garantie</PricingTrustItem>
+						<PricingTrustItem><FaCheck /> Jeder Plan enthält alle Features</PricingTrustItem>
+						<PricingTrustItem><FaCheck /> Jährlich kündbar</PricingTrustItem>
+					</PricingTrustRow>
 					<PricingNote>
 						Zum Launch gibt es zusätzlich eine limitierte
 						Lifetime-Lizenz (399 € einmalig, bis zu 25 Websites) - nur
@@ -1071,11 +1087,12 @@ const ReqValue = styled.span`
 
 const PricingGrid = styled.div`
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5rem;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.25rem;
 	margin-top: 1.5rem;
 	align-items: stretch;
-	@media (max-width: 900px) { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+	@media (max-width: 1100px) { grid-template-columns: repeat(2, 1fr); }
+	@media (max-width: 600px) { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
 `;
 
 const PricingCard = styled.div`
@@ -1132,6 +1149,36 @@ const PricingSites = styled.div`
 	font-size: 0.95rem;
 	font-weight: 600;
 	color: ${(p) => p.theme.text};
+`;
+
+const PricingPerSite = styled.div`
+	display: inline-block;
+	align-self: flex-start;
+	padding: 0.2rem 0.6rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	border-radius: 999px;
+	${(p) =>
+		p.$featured
+			? `color: #fff; background: linear-gradient(135deg, #7e56ff, #00b2ff);`
+			: `color: ${p.theme.textMuted}; background: ${p.theme.bg}; border: 1px solid ${p.theme.borderCard};`}
+`;
+
+const PricingTrustRow = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	justify-content: center;
+	margin-top: 1.75rem;
+`;
+
+const PricingTrustItem = styled.span`
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-size: 0.875rem;
+	color: ${(p) => p.theme.textSecondary};
+	svg { color: ${(p) => p.theme.accent}; font-size: 0.7rem; }
 `;
 
 const PricingDesc = styled.p`
