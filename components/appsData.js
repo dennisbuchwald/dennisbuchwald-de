@@ -29,13 +29,14 @@ export const apps = [
 		icon: "/apps/icons/flinkform-app.svg",
 		detailPage: "/apps/flinkform-pro",
 		name: "Flinkform Pro",
-		tagline: "SMTP, Webhooks, Uploads und mehr.",
+		tagline: "Das Formular, das Geld verdient.",
 		description:
-			"Premium Add-on für Flinkform: Stripe Payments, SMTP-Versand, Webhooks mit Retry-Logik, sicherer Datei-Upload, Newsletter-Anbindung (Brevo, Mailchimp, CleverReach), CSV-Export und Custom CSS.",
-		badges: ["Add-on", "Kommerziell"],
-		tags: ["WordPress", "Formulare", "Stripe", "Webhooks"],
+			"Besucher zahlen per SEPA, Apple Pay oder Karte direkt im Formular. Preise berechnen sich live, während sie tippen. Einreichungen landen automatisch im CRM. Ein Add-on statt fünf Plugins, DSGVO-konform aus Deutschland.",
+		badges: ["Premium Add-on", "Ab 59 €/Jahr"],
+		tags: ["WordPress", "Stripe & SEPA", "Berechnungen", "Webhooks"],
 		links: [],
 		schema: {
+			price: "59",
 			category: "Plugin",
 		},
 	},
