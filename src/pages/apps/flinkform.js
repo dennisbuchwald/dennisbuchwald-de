@@ -15,6 +15,11 @@ import {
 	FaUniversalAccess,
 	FaPuzzlePiece,
 	FaInbox,
+	FaCreditCard,
+	FaCalculator,
+	FaCloudUploadAlt,
+	FaExchangeAlt,
+	FaArrowRight,
 } from "react-icons/fa";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
@@ -108,6 +113,10 @@ const faqs = [
 	{
 		q: "Kann ich meine Contact-Form-7-Formulare migrieren?",
 		a: "Aktuell gibt es keinen automatischen Importer. Aber: ein einfaches Kontaktformular in Flinkform zu bauen dauert unter 5 Minuten. Du baust es direkt im Editor, wie einen normalen WordPress-Beitrag.",
+	},
+	{
+		q: "Gibt es eine Pro-Version?",
+		a: "Ja. Flinkform Pro erweitert das kostenlose Plugin um Stripe-Zahlungen (Kreditkarte, SEPA, Apple Pay, Google Pay), Berechnungsfelder, Webhooks, Datei-Upload, SMTP-Versand und Newsletter-Anbindung. Das kostenlose Plugin bleibt dabei voll funktionsfähig - Pro ist ein Add-on, kein Ersatz.",
 	},
 	{
 		q: "Ist Flinkform DSGVO-konform?",
@@ -320,6 +329,45 @@ const Flinkform = () => {
 						* CF7 kostenlos, aber Multi-Step, Submissions und bedingte Logik
 						erfordern 3-4 zusätzliche Plugins.
 					</CompareNote>
+				</Section>
+
+				{/* ── PRO TEASER ── */}
+				<Section>
+					<ProTeaserCard>
+						<ProTeaserContent>
+							<ProTeaserEyebrow>Flinkform Pro</ProTeaserEyebrow>
+							<ProTeaserHeading>
+								Wenn dein Formular mehr können muss als Kontakt.
+							</ProTeaserHeading>
+							<ProTeaserDesc>
+								Zahlungen direkt im Formular, Angebotsrechner,
+								CRM-Anbindung, Datei-Uploads: Flinkform Pro erweitert
+								das kostenlose Plugin um alles, was professionelle
+								Projekte brauchen. Ab 59 € pro Jahr.
+							</ProTeaserDesc>
+							<ProTeaserGrid>
+								<ProTeaserItem>
+									<ProTeaserIcon><FaCreditCard /></ProTeaserIcon>
+									<span>Stripe Payments: Kreditkarte, SEPA, Apple Pay & Google Pay</span>
+								</ProTeaserItem>
+								<ProTeaserItem>
+									<ProTeaserIcon><FaCalculator /></ProTeaserIcon>
+									<span>Berechnungsfelder für Angebots- und Preisrechner</span>
+								</ProTeaserItem>
+								<ProTeaserItem>
+									<ProTeaserIcon><FaExchangeAlt /></ProTeaserIcon>
+									<span>Webhooks ins CRM, SMTP-Versand, Newsletter-Anbindung</span>
+								</ProTeaserItem>
+								<ProTeaserItem>
+									<ProTeaserIcon><FaCloudUploadAlt /></ProTeaserIcon>
+									<span>Datei-Upload mit bis zu 10 Dateien pro Feld</span>
+								</ProTeaserItem>
+							</ProTeaserGrid>
+							<ProTeaserButton href="/apps/flinkform-pro">
+								Flinkform Pro entdecken <FaArrowRight />
+							</ProTeaserButton>
+						</ProTeaserContent>
+					</ProTeaserCard>
 				</Section>
 
 				{/* ── FAQ ── */}
@@ -872,4 +920,107 @@ const ReqValue = styled.span`
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: ${(p) => p.theme.text};
+`;
+
+/* ── Pro Teaser ── */
+
+const ProTeaserCard = styled.div`
+	position: relative;
+	padding: 3rem;
+	background: ${(p) => p.theme.bgCard};
+	border: 1px solid ${(p) => p.theme.borderCard};
+	border-radius: 1.5rem;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #7e56ff, #00b2ff);
+	}
+	@media (max-width: 768px) { padding: 2rem 1.5rem; }
+`;
+
+const ProTeaserContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 720px;
+`;
+
+const ProTeaserEyebrow = styled.span`
+	display: inline-block;
+	align-self: flex-start;
+	padding: 0.28rem 0.85rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: #fff;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #7e56ff, #00b2ff);
+`;
+
+const ProTeaserHeading = styled.h2`
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: ${(p) => p.theme.text};
+	margin: 0;
+	@media (max-width: 768px) { font-size: 1.4rem; }
+`;
+
+const ProTeaserDesc = styled.p`
+	font-size: 1rem;
+	line-height: 1.65;
+	color: ${(p) => p.theme.textSecondary};
+	margin: 0;
+`;
+
+const ProTeaserGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.85rem;
+	margin: 0.5rem 0;
+	@media (max-width: 700px) { grid-template-columns: 1fr; }
+`;
+
+const ProTeaserItem = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: 0.9rem;
+	color: ${(p) => p.theme.textSecondary};
+	line-height: 1.45;
+`;
+
+const ProTeaserIcon = styled.span`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.5rem;
+	font-size: 0.8rem;
+	color: #fff;
+	background: linear-gradient(135deg, #7e56ff, #00b2ff);
+	flex-shrink: 0;
+`;
+
+const ProTeaserButton = styled(Link)`
+	display: inline-flex;
+	align-items: center;
+	align-self: flex-start;
+	gap: 0.5rem;
+	margin-top: 0.5rem;
+	padding: 0.85rem 1.75rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(135deg, #7e56ff, #00b2ff);
+	border-radius: 999px;
+	text-decoration: none;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	&:hover { opacity: 0.9; transform: translateY(-2px); }
 `;

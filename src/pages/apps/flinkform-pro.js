@@ -19,6 +19,7 @@ import {
 	FaPlug,
 	FaWordpress,
 	FaCreditCard,
+	FaCalculator,
 } from "react-icons/fa";
 
 const SITE_URL = "https://www.dennisbuchwald.de";
@@ -27,7 +28,12 @@ const proModules = [
 	{
 		icon: <FaCreditCard />,
 		title: "Stripe Payments",
-		desc: "Zahlungen direkt im Formular: fester Betrag oder Produktauswahl mit Preisen. Stripe Elements für sichere Kreditkarteneingabe, serverseitige Verifizierung, kein Redirect. Kartendaten berühren nie deinen Server.",
+		desc: "Zahlungen direkt im Formular: Kreditkarte, SEPA-Lastschrift, Apple Pay, Google Pay und Link über das Stripe Payment Element. Fester Betrag oder Produktauswahl, serverseitige Verifizierung, Zahlungsstatus direkt in der Einreichung. Kartendaten berühren nie deinen Server.",
+	},
+	{
+		icon: <FaCalculator />,
+		title: "Berechnungsfelder",
+		desc: "Angebotsrechner und Konfiguratoren direkt im Formular: Formeln wie (Menge × 49,90) + Setup rechnen live, während der Besucher tippt. Felder per Dropdown einfügen, serverseitig sicher nachgerechnet.",
 	},
 	{
 		icon: <FaCloud />,
@@ -42,7 +48,7 @@ const proModules = [
 	{
 		icon: <FaCloudUploadAlt />,
 		title: "Datei-Upload",
-		desc: "Besucher können Dateien an Formulare anhängen. Erlaubte Dateitypen und Maximalgröße pro Feld konfigurierbar. Content-Sniffing, randomisierte Dateinamen, geschützter Upload-Ordner. Dateien werden mit der Einreichung gelöscht.",
+		desc: "Besucher können Dateien an Formulare anhängen — auf Wunsch mehrere pro Feld (bis zu 10, ideal für Bewerbungen). Dateitypen und Maximalgröße konfigurierbar, Größen-Check schon vor dem Absenden. Content-Sniffing, randomisierte Dateinamen, geschützter Upload-Ordner, DSGVO-Löschkaskade.",
 	},
 	{
 		icon: <FaNewspaper />,
@@ -52,7 +58,7 @@ const proModules = [
 	{
 		icon: <FaFileExport />,
 		title: "CSV-Export",
-		desc: "Gefilterte Einreichungen als CSV exportieren. Direkt aus dem WordPress-Admin, ein Klick.",
+		desc: "Gefilterte Einreichungen als CSV exportieren, inklusive Datumsbereich und Zahlungsdaten (Status, Betrag, Währung). Excel-kompatibel, direkt aus dem WordPress-Admin, ein Klick.",
 	},
 	{
 		icon: <FaPaintBrush />,
@@ -62,14 +68,18 @@ const proModules = [
 ];
 
 const highlights = [
-	"Stripe Payments: Kreditkarte und SEPA direkt im Formular",
+	"Stripe Payments: Kreditkarte, SEPA-Lastschrift, Apple Pay, Google Pay, Link",
 	"Fester Betrag oder Produktauswahl mit individuellen Preisen",
+	"Zahlungsstatus, Betrag und Zahlart direkt in der Einreichung sichtbar",
+	"Automatische Stripe-Quittung per E-Mail an den Zahlenden",
+	"Berechnungsfelder: Angebotsrechner mit Live-Vorschau, serverseitig verifiziert",
+	"Mehrfach-Upload: bis zu 10 Dateien pro Feld, Größen-Check vor dem Absenden",
 	"SMTP mit 7 Provider-Presets und verschlüsselten Credentials",
 	"Webhooks mit Retry-Logik und vollständigem Delivery-Log",
-	"Datei-Upload mit Content-Sniffing und DSGVO-konformer Löschkaskade",
 	"Newsletter-Anbindung: Brevo, Mailchimp, CleverReach",
-	"CSV-Export aus dem Submissions-Dashboard",
+	"CSV-Export mit Datumsbereich und Zahlungsspalten",
 	"Custom CSS pro Formular im Editor",
+	"Doppelklick-Schutz: keine doppelten Einreichungen, Mails oder Zahlungen",
 	"SSRF-gehärtet: Webhook-Requests werden gegen unsichere URLs geprüft",
 	"AES-256-Verschlüsselung für alle gespeicherten Zugangsdaten",
 	"Komplette DSGVO-Abdeckung: Privacy-Tools, Eraser-Kaskaden, Daten-Export",
@@ -78,24 +88,58 @@ const highlights = [
 
 const compareRows = [
 	{ feature: "Stripe Payments im Formular", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on nötig", woo: true },
+	{ feature: "SEPA, Apple Pay & Google Pay", pro: true, wpforms: "Teils", gravity: "Add-on", woo: "Plugin" },
 	{ feature: "Kein Shop/Checkout nötig", pro: true, wpforms: true, gravity: true, woo: false },
+	{ feature: "Berechnungsfelder", pro: true, wpforms: "Ab 199 $/J.", gravity: true, woo: false },
+	{ feature: "Mehrfach-Datei-Upload", pro: true, wpforms: "Ab 49 $/J.", gravity: true, woo: false },
 	{ feature: "Block-Editor nativ", pro: true, wpforms: false, gravity: false, woo: false },
 	{ feature: "Webhooks mit Retry-Logik", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on", woo: false },
 	{ feature: "SMTP + Sende-Log", pro: true, wpforms: false, gravity: false, woo: false },
-	{ feature: "Datei-Upload (sicher)", pro: true, wpforms: "Ab 49 $/J.", gravity: true, woo: false },
 	{ feature: "Newsletter-Integration", pro: true, wpforms: "Ab 199 $/J.", gravity: "Add-on", woo: "Plugin" },
 	{ feature: "DSGVO-konform (kein reCAPTCHA)", pro: true, wpforms: false, gravity: false, woo: false },
-	{ feature: "Preis", pro: "49 EUR/J.", wpforms: "Ab 199 $/J.", gravity: "Ab 59 $/J.", woo: "Kostenlos*" },
+	{ feature: "Preis", pro: "Ab 59 €/J.", wpforms: "Ab 199 $/J.", gravity: "Ab 59 $/J.", woo: "Kostenlos*" },
+];
+
+const pricingPlans = [
+	{
+		name: "Single",
+		price: "59",
+		sites: "1 Website",
+		desc: "Für Freelancer und die eigene Website.",
+		featured: false,
+	},
+	{
+		name: "Agency",
+		price: "149",
+		sites: "Bis zu 25 Websites",
+		desc: "Für Agenturen und Freelancer mit Kundenprojekten. Eine Lizenz für alle Kundenseiten.",
+		featured: true,
+	},
+	{
+		name: "Unlimited",
+		price: "299",
+		sites: "Unbegrenzte Websites",
+		desc: "Für große Agenturen und Power-User ohne Limits.",
+		featured: false,
+	},
 ];
 
 const faqs = [
+	{
+		q: "Was kostet Flinkform Pro?",
+		a: "Flinkform Pro kostet 59 Euro pro Jahr für eine Website, 149 Euro pro Jahr für bis zu 25 Websites (Agency) und 299 Euro pro Jahr ohne Site-Limit. Alle Pläne enthalten sämtliche Pro-Features, die Staffelung richtet sich nur nach der Anzahl der Websites.",
+	},
+	{
+		q: "Welche Zahlungsarten unterstützt das Payment-Feld?",
+		a: "Kreditkarte, SEPA-Lastschrift, Apple Pay, Google Pay und Stripe Link über das Stripe Payment Element. Welche Zahlarten deinen Besuchern angezeigt werden, steuerst du in deinem Stripe-Dashboard. SEPA-Zahlungen werden als 'in Bearbeitung' angenommen und automatisch bestätigt, sobald Stripe die Abbuchung meldet.",
+	},
 	{
 		q: "Brauche ich ein Stripe-Konto?",
 		a: "Ja, aber es ist kostenlos und in zwei Minuten erstellt. Du bekommst sofort Test-Keys zum Ausprobieren. Im Live-Betrieb gehen Zahlungen direkt auf dein Stripe-Konto, Flinkform Pro ist nie dazwischen.",
 	},
 	{
 		q: "Sind die Zahlungen PCI-konform?",
-		a: "Ja. Kartendaten werden ausschliesslich von Stripe verarbeitet (Stripe Elements). Sie berühren nie deinen Server. Der Server verifiziert nur, ob die Zahlung bei Stripe als erfolgreich bestätigt wurde, bevor die Einreichung gespeichert wird.",
+		a: "Ja. Zahlungsdaten werden ausschliesslich von Stripe verarbeitet (Stripe Payment Element). Sie berühren nie deinen Server. Der Server verifiziert nur, ob die Zahlung bei Stripe bestätigt wurde und ob Betrag und Währung zum Formular passen, bevor die Einreichung gespeichert wird.",
 	},
 	{
 		q: "Was passiert, wenn die Zahlung fehlschlägt?",
@@ -124,10 +168,17 @@ const flinkformProSchema = {
 	"@type": "SoftwareApplication",
 	name: "Flinkform Pro",
 	description:
-		"Premium Add-on für Flinkform: Stripe Payments direkt im Formular, Webhooks, Datei-Upload, SMTP, Newsletter und Custom CSS. Für professionelle WordPress-Formulare.",
+		"Premium Add-on für Flinkform: Stripe Payments (Kreditkarte, SEPA, Apple Pay, Google Pay) direkt im Formular, Berechnungsfelder, Webhooks, Mehrfach-Datei-Upload, SMTP, Newsletter und Custom CSS. Für professionelle WordPress-Formulare.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/flinkform-pro`,
+	offers: {
+		"@type": "AggregateOffer",
+		lowPrice: "59",
+		highPrice: "299",
+		priceCurrency: "EUR",
+		offerCount: "3",
+	},
 	author: { "@type": "Person", name: "Dennis Buchwald", url: SITE_URL },
 };
 
@@ -167,15 +218,15 @@ const FlinkformPro = () => {
 		<div id="top">
 			<Head>
 				<title>
-					Flinkform Pro - Zahlungen, Webhooks und Uploads direkt im WordPress-Formular
+					Flinkform Pro - Stripe-Zahlungen mit SEPA, Berechnungsfelder und Webhooks im WordPress-Formular
 				</title>
 				<meta
 					name="description"
-					content="Flinkform Pro: Stripe Payments direkt im Formular, Webhooks ins CRM, sicherer Datei-Upload, SMTP, Newsletter-Anbindung. Das Premium Add-on fuer Flinkform."
+					content="Flinkform Pro: Stripe Payments mit Kreditkarte, SEPA, Apple Pay und Google Pay direkt im Formular. Berechnungsfelder, Webhooks ins CRM, Mehrfach-Upload, SMTP, Newsletter. Ab 59 Euro pro Jahr."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/flinkform-pro`} />
-				<meta property="og:title" content="Flinkform Pro - Payments, Webhooks, SMTP und mehr" />
-				<meta property="og:description" content="Stripe-Zahlungen, Webhooks ins CRM, SMTP, Datei-Upload und Newsletter: ein Add-on statt fuenf Plugins. Baut auf dem kostenlosen Flinkform auf." />
+				<meta property="og:title" content="Flinkform Pro - Payments mit SEPA, Berechnungsfelder, Webhooks und mehr" />
+				<meta property="og:description" content="Stripe-Zahlungen mit SEPA und Wallets, Berechnungsfelder, Webhooks ins CRM, SMTP, Mehrfach-Upload und Newsletter: ein Add-on statt fuenf Plugins. Ab 59 Euro pro Jahr." />
 				<meta property="og:url" content={`${SITE_URL}/apps/flinkform-pro`} />
 				<meta property="og:type" content="website" />
 				<script
@@ -204,11 +255,12 @@ const FlinkformPro = () => {
 						</Title>
 						<Intro>
 							Flinkform deckt Formulare ab. Aber sobald es
-							professionell wird, brauchst du mehr: Stripe-Zahlungen
-							direkt im Formular, Einreichungen automatisch ins CRM,
-							zuverlässigen Mailversand, Datei-Uploads und
-							Newsletter-Anbindung. Flinkform Pro packt das alles in
-							ein einziges Add-on.
+							professionell wird, brauchst du mehr: Zahlungen direkt
+							im Formular - per Kreditkarte, SEPA-Lastschrift oder
+							Apple Pay -, Angebotsrechner mit Live-Berechnung,
+							Einreichungen automatisch ins CRM, zuverlässigen
+							Mailversand, Datei-Uploads und Newsletter-Anbindung.
+							Flinkform Pro packt das alles in ein einziges Add-on.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton
@@ -239,7 +291,11 @@ const FlinkformPro = () => {
 						<NeedsList>
 							<NeedItem>
 								<NeedIcon><FaCreditCard /></NeedIcon>
-								<span>Buchungsformular mit Anzahlung. Der Kunde will direkt im Formular bezahlen.</span>
+								<span>Buchungsformular mit Anzahlung. Der Kunde will direkt im Formular bezahlen - am liebsten per SEPA oder Apple Pay.</span>
+							</NeedItem>
+							<NeedItem>
+								<NeedIcon><FaCalculator /></NeedIcon>
+								<span>Angebotsrechner: Der Preis soll sich live aus Menge und Optionen berechnen.</span>
 							</NeedItem>
 							<NeedItem>
 								<NeedIcon><FaExchangeAlt /></NeedIcon>
@@ -274,7 +330,7 @@ const FlinkformPro = () => {
 				{/* -- 7 MODULE -- */}
 				<Section>
 					<SectionHeading>
-						Sieben Module. Ein Add-on.
+						Acht Module. Ein Add-on.
 					</SectionHeading>
 					<ModuleGrid>
 						{proModules.map((m) => (
@@ -372,6 +428,43 @@ const FlinkformPro = () => {
 					</StepsGrid>
 				</Section>
 
+				{/* -- PREISE -- */}
+				<Section id="preise">
+					<SectionHeading>Preise</SectionHeading>
+					<SectionSub>
+						Alle Pläne enthalten sämtliche Pro-Features - gestaffelt wird
+						nur nach der Anzahl deiner Websites. Jährliche Abrechnung,
+						inklusive Updates und Support.
+					</SectionSub>
+					<PricingGrid>
+						{pricingPlans.map((plan) => (
+							<PricingCard key={plan.name} $featured={plan.featured}>
+								{plan.featured && <PricingBadge>Beliebt bei Agenturen</PricingBadge>}
+								<PricingName>{plan.name}</PricingName>
+								<PricingPrice>
+									{plan.price} €<PricingPeriod>/Jahr</PricingPeriod>
+								</PricingPrice>
+								<PricingSites>{plan.sites}</PricingSites>
+								<PricingDesc>{plan.desc}</PricingDesc>
+								<PricingFeatures>
+									<PricingFeature><FaCheck /> Alle 8 Pro-Module</PricingFeature>
+									<PricingFeature><FaCheck /> Updates & Support</PricingFeature>
+									<PricingFeature><FaCheck /> Baut auf dem kostenlosen Flinkform auf</PricingFeature>
+								</PricingFeatures>
+								<PricingButton href="#anfrage" $featured={plan.featured}>
+									Anfragen
+								</PricingButton>
+							</PricingCard>
+						))}
+					</PricingGrid>
+					<PricingNote>
+						Zum Launch gibt es zusätzlich eine limitierte
+						Lifetime-Lizenz (399 € einmalig, bis zu 25 Websites) - nur
+						für kurze Zeit. Der Verkauf startet in Kürze; bis dahin
+						kannst du dich unverbindlich vormerken lassen.
+					</PricingNote>
+				</Section>
+
 				{/* -- ANFRAGE -- */}
 				<InquirySection id="anfrage">
 					<InquiryCard>
@@ -423,7 +516,8 @@ const FlinkformPro = () => {
 								</FormLabel>
 								<FormSelect id="usecase" name="usecase" required>
 									<option value="">Bitte wählen</option>
-									<option value="Zahlungen (Stripe)">Zahlungen (Stripe)</option>
+									<option value="Zahlungen (Stripe)">Zahlungen (Stripe, SEPA, Wallets)</option>
+									<option value="Berechnungsfelder / Angebotsrechner">Berechnungsfelder / Angebotsrechner</option>
 									<option value="Webhooks / CRM-Anbindung">Webhooks / CRM-Anbindung</option>
 									<option value="SMTP / Mailversand">SMTP / Mailversand</option>
 									<option value="Datei-Upload">Datei-Upload</option>
@@ -456,7 +550,7 @@ const FlinkformPro = () => {
 						<ReqItem><ReqLabel>WordPress</ReqLabel><ReqValue>6.5+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>PHP</ReqLabel><ReqValue>8.1+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>Flinkform</ReqLabel><ReqValue>1.0.0+</ReqValue></ReqItem>
-						<ReqItem><ReqLabel>Preis</ReqLabel><ReqValue>49 EUR/J.</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>Preis</ReqLabel><ReqValue>Ab 59 €/J.</ReqValue></ReqItem>
 					</ReqGrid>
 				</Section>
 
@@ -971,6 +1065,124 @@ const ReqValue = styled.span`
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: ${(p) => p.theme.text};
+`;
+
+/* -- Pricing -- */
+
+const PricingGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+	align-items: stretch;
+	@media (max-width: 900px) { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+`;
+
+const PricingCard = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 2.25rem 1.75rem 1.75rem;
+	background: ${(p) => p.theme.bgCard};
+	border: 1.5px solid ${(p) => (p.$featured ? "#7e56ff" : p.theme.borderCard)};
+	border-radius: 1.25rem;
+	box-shadow: ${(p) => (p.$featured ? "0 8px 32px rgba(126, 86, 255, 0.12)" : "none")};
+`;
+
+const PricingBadge = styled.span`
+	position: absolute;
+	top: -0.8rem;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0.3rem 1rem;
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #fff;
+	white-space: nowrap;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #7e56ff, #00b2ff);
+`;
+
+const PricingName = styled.h3`
+	font-size: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: ${(p) => p.theme.textMuted};
+	margin: 0;
+`;
+
+const PricingPrice = styled.div`
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: ${(p) => p.theme.text};
+	line-height: 1.1;
+`;
+
+const PricingPeriod = styled.span`
+	font-size: 1rem;
+	font-weight: 500;
+	color: ${(p) => p.theme.textMuted};
+`;
+
+const PricingSites = styled.div`
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: ${(p) => p.theme.text};
+`;
+
+const PricingDesc = styled.p`
+	font-size: 0.875rem;
+	line-height: 1.55;
+	color: ${(p) => p.theme.textSecondary};
+	margin: 0;
+	flex-grow: 1;
+`;
+
+const PricingFeatures = styled.ul`
+	list-style: none;
+	margin: 0.75rem 0 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+`;
+
+const PricingFeature = styled.li`
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.85rem;
+	color: ${(p) => p.theme.textSecondary};
+	svg { color: ${(p) => p.theme.accent}; font-size: 0.7rem; flex-shrink: 0; }
+`;
+
+const PricingButton = styled.a`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.25rem;
+	padding: 0.75rem 1.5rem;
+	font-size: 0.95rem;
+	font-weight: 700;
+	border-radius: 999px;
+	text-decoration: none;
+	transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+	${(p) =>
+		p.$featured
+			? `color: #fff; background: linear-gradient(135deg, #7e56ff, #00b2ff); border: none;`
+			: `color: ${p.theme.text}; background: transparent; border: 1.5px solid ${p.theme.borderCard};`}
+	&:hover { opacity: 0.9; transform: translateY(-2px); ${(p) => (p.$featured ? "" : "border-color: #7e56ff;")} }
+`;
+
+const PricingNote = styled.p`
+	font-size: 0.9rem;
+	color: ${(p) => p.theme.textSecondary};
+	margin: 2rem 0 0;
+	max-width: 640px;
 `;
 
 /* -- Inquiry Form -- */
