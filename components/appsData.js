@@ -45,10 +45,10 @@ export const apps = [
 		icon: "/apps/icons/immosuite-app.svg",
 		detailPage: "/apps/immo-suite",
 		name: "Immo Suite",
-		tagline: "Die Immobilien-Komplettlösung für WordPress.",
+		tagline: "Wie ImmoScout, nur auf deiner eigenen Website.",
 		description:
-			"Immobilien präsentieren und verwalten: automatischer OpenImmo-Import, Filter, Karten, Exposé-PDFs und Referenzen-System. Im Einsatz bei Maklern und Hausverwaltungen.",
-		badges: ["Kommerziell", "Lizenz"],
+			"Objekte erscheinen automatisch aus der Maklersoftware (OpenImmo), Detailseiten mit Finanzierungsrechner und PDF-Exposé sammeln Anfragen, und jeder Lead landet gesichert in der Anfragen-Inbox. Datenschutzfreundlich ohne externe Dienste.",
+		badges: ["Kommerziell", "499 €/Jahr"],
 		tags: ["WordPress", "OpenImmo", "Immobilien"],
 		links: [],
 		schema: {

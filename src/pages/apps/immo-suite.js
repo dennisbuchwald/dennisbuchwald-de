@@ -35,8 +35,8 @@ const steps = [
 	},
 	{
 		num: "3",
-		title: "Anfragen kommen rein",
-		desc: "Jede Detailseite wird zur Verkaufsmaschine: Finanzrechner, Exposé, Kontaktmodal, WhatsApp. Der Interessent findet alles und meldet sich direkt bei dir.",
+		title: "Anfragen kommen rein und gehen nie verloren",
+		desc: "Jede Detailseite wird zur Verkaufsmaschine: Finanzrechner, Exposé, Kontaktmodal, WhatsApp. Jede Anfrage kommt per E-Mail UND landet gesichert in deiner Anfragen-Inbox im Backend. Selbst wenn eine Mail im Spam verschwindet, ist der Lead noch da.",
 	},
 ];
 
@@ -81,8 +81,8 @@ const pillars = [
 	},
 	{
 		icon: <FaShieldAlt />,
-		title: "DSGVO von Grund auf",
-		desc: "Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Merkliste funktioniert ohne Benutzerkonten. Datenschutzkonform ohne Zusatzaufwand.",
+		title: "Datenschutzfreundlich by design",
+		desc: "Keine externen Dienste, keine Cookies, kein Tracking. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Fertiger Textbaustein für deine Datenschutzerklärung inklusive.",
 	},
 	{
 		icon: <FaUniversalAccess />,
@@ -93,8 +93,16 @@ const pillars = [
 
 const wowFeatures = [
 	{
+		title: "Anfragen-Inbox: kein Lead geht verloren",
+		desc: "Jede Anfrage landet zusätzlich zur E-Mail gesichert im Backend, mit Anliegen, Wunschtermin und Kontaktdaten. Status-Workflow (Neu, Kontaktiert, Erledigt), Zähler im Menü und automatische Löschfristen für den Datenschutz.",
+	},
+	{
+		title: "Import-Überwachung eingebaut",
+		desc: "Schlägt ein Import fehl oder liefert die Maklersoftware keinen Feed mehr, meldet sich die Website von selbst: Warnung im Backend plus E-Mail. Ein kaputter FTP-Upload fällt sofort auf, nicht erst nach Wochen.",
+	},
+	{
 		title: "Kontaktmodal, das Leads qualifiziert",
-		desc: "Erst wählt der Interessent seinen Intent (Besichtigung, Infos, Preisauskunft, Rückruf), dann kommen passende Felder. Objekt-Preview im Header, Fortschrittsbalken, animierter Erfolgsscreen.",
+		desc: "Erst wählt der Interessent seinen Intent (Besichtigung, Infos, Preisauskunft, Rückruf), dann kommen passende Felder. Objekt-Preview im Header, Fortschrittsbalken, animierter Erfolgsscreen. Der Finanzierungsrechner öffnet das Modal direkt mit dem passenden Anliegen.",
 	},
 	{
 		title: "Energiekostenrechner",
@@ -123,13 +131,19 @@ const seoFeatures = [
 ];
 
 const allFeatures = [
+	"Anfragen-Inbox mit Status-Workflow (Neu, Kontaktiert, Erledigt) und Anliegen-Badges",
+	"Import-Überwachung: Warnung und E-Mail-Alarm, wenn der Feed stockt oder ein Import fehlschlägt",
+	"Merkliste auf Karten und Detailseite, per localStorage ohne Accounts",
 	"Galerie-Slider mit Thumbnails, Lightbox und Image Counter",
 	"Sticky Section-Navigation mit Scroll-Spy und Lesefortschritt",
-	"Merkliste per localStorage (DSGVO-konform, ohne Accounts)",
 	"Energieausweis-Skala mit visueller Pfeilanzeige (EnEV A+ bis H)",
 	"Referenzen-System: Verkauft, Reserviert, Referenz mit Statusschutz",
 	"7-Tab-Property-Editor (Basis, Preise, Flächen, Ausstattung, Technik, Kontakt, Import)",
-	"Import-Dashboard: Status, manueller Import, Verlauf der letzten Importe",
+	"Import-Dashboard mit Cron-Status: nächster Lauf, letzter Lauf, Verlauf",
+	"Einrichtungs-Checkliste im Backend: Lizenz, Import-Pfad, erster Import, Design",
+	"Fertiger Textbaustein für die Datenschutzerklärung, zum Kopieren im Backend",
+	"Consent-Protokollierung: jede Anfrage mit Zeitstempel der Datenschutz-Zustimmung",
+	"Automatische Löschfristen für gespeicherte Anfragen (DSGVO-Speicherbegrenzung)",
 	"25+ Design-Optionen: Farben, Sichtbarkeit, Layout direkt im Customizer",
 	"Fertige Blöcke für den WordPress-Editor: Immobilien-Grid und Referenzen",
 	"Stadtseiten: zeige nur Objekte aus einem bestimmten Ort",
@@ -138,6 +152,7 @@ const allFeatures = [
 	"Honeypot und Rate Limiting für alle Formulare",
 	"Stündlicher automatischer Abgleich mit deiner Maklersoftware",
 	"Intelligente Duplikaterkennung (unveränderte Objekte werden übersprungen)",
+	"Minifizierte Assets und Ladeoptimierung: CSS/JS nur auf Immobilienseiten",
 ];
 
 const compareRows = [
@@ -149,13 +164,15 @@ const compareRows = [
 	{ feature: "Preis/qm-Vergleich", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "PDF-Exposé (druckfertig)", immo: true, wpImmo: "Ab PLUS", immonex: "Add-on", frymo: false },
 	{ feature: "Kontaktmodal mit Intent", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Anfragen-Inbox im Backend", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Import-Überwachung mit Alarm", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "WhatsApp-Integration", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Karte ohne API-Key", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
 	{ feature: "Merkliste (DSGVO-safe)", immo: true, wpImmo: true, immonex: false, frymo: false },
 	{ feature: "Schema.org JSON-LD", immo: true, wpImmo: false, immonex: true, frymo: true },
 	{ feature: "Gutenberg-Blöcke nativ", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Kein PageBuilder nötig", immo: true, wpImmo: false, immonex: true, frymo: false },
-	{ feature: "DSGVO (keine ext. Dienste)", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
+	{ feature: "Datenschutz (keine ext. Dienste)", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
 	{ feature: "Unbegrenzte Objekte", immo: true, wpImmo: false, immonex: true, frymo: "Ab Pro" },
 	{ feature: "Preis", immo: "499 EUR/J.", wpImmo: "Ab 649 EUR", immonex: "Auf Anfrage", frymo: "Ab 348 EUR/J." },
 ];
@@ -190,10 +207,18 @@ const faqSchema = {
 		},
 		{
 			"@type": "Question",
-			name: "Ist die Website DSGVO-konform?",
+			name: "Ist die Website datenschutzfreundlich?",
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: "Ja. Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Karte laeuft ohne Google Maps.",
+				text: "Ja, sie ist dafuer gebaut: keine externen Dienste, keine Tracking-Cookies, Karte ohne Google Maps mit Zwei-Klick-Einwilligung. Anfragen werden nur zur Bearbeitung gespeichert und automatisch geloescht. Ein fertiger Textbaustein fuer die Datenschutzerklaerung ist eingebaut.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "Was passiert mit den Anfragen von der Website?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Jede Anfrage geht per E-Mail an den zustaendigen Ansprechpartner und landet zusaetzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
 			},
 		},
 	],
@@ -204,9 +229,10 @@ const immoSuiteSchema = {
 	"@type": "SoftwareApplication",
 	name: "Immo Suite",
 	description:
-		"WordPress Immobilien-Plugin mit OpenImmo-Import, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé. Die Komplettlösung fuer Makler und Hausverwaltungen.",
+		"WordPress Immobilien-Plugin mit OpenImmo-Import, Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé. Die Komplettlösung fuer Makler und Hausverwaltungen.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
+	softwareVersion: "2.4",
 	url: `${SITE_URL}/apps/immo-suite`,
 	offers: {
 		"@type": "Offer",
@@ -218,6 +244,25 @@ const immoSuiteSchema = {
 		name: "Dennis Buchwald",
 		url: SITE_URL,
 	},
+};
+
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			position: 1,
+			name: "Apps & Plugins",
+			item: `${SITE_URL}/apps`,
+		},
+		{
+			"@type": "ListItem",
+			position: 2,
+			name: "Immo Suite",
+			item: `${SITE_URL}/apps/immo-suite`,
+		},
+	],
 };
 
 const CellValue = ({ value, highlight }) => {
@@ -237,7 +282,7 @@ const ImmoSuite = () => {
 				</title>
 				<meta
 					name="description"
-					content="Immo Suite: WordPress Immobilien-Plugin mit automatischem OpenImmo-Import aus OnOffice, FlowFact und JustImmo. Kaufnebenkostenrechner, Infrastruktur-Score, PDF-Exposé, AJAX-Filter und Kartenansicht. Ab 499 EUR/Jahr."
+					content="Immo Suite: WordPress Immobilien-Plugin mit automatischem OpenImmo-Import aus OnOffice, FlowFact und JustImmo. Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score, PDF-Exposé und Kartenansicht. Ab 499 EUR/Jahr."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/immo-suite`} />
 				<meta
@@ -253,7 +298,7 @@ const ImmoSuite = () => {
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
-						__html: JSON.stringify([immoSuiteSchema, faqSchema]),
+						__html: JSON.stringify([immoSuiteSchema, faqSchema, breadcrumbSchema]),
 					}}
 				/>
 			</Head>
@@ -277,9 +322,9 @@ const ImmoSuite = () => {
 						<Intro>
 							Stell dir vor, du veröffentlichst ein neues Objekt in deiner
 							Maklersoftware und es erscheint im selben Moment auf deiner
-							Website. Mit Finanzierungsrechner, Lage-Bewertung,
-							druckfertigem Exposé und einem Kontaktformular, das direkt
-							Anfragen bringt. Genau das macht die Immo Suite.
+							Website. Mit Finanzierungsrechner, Lage-Bewertung und
+							druckfertigem Exposé. Jede Anfrage landet gesichert in
+							deiner Inbox im Backend. Genau das macht die Immo Suite.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton href="#anfrage">
@@ -595,8 +640,12 @@ const ImmoSuite = () => {
 								a: "Ja. Die Immo Suite bringt eigene Templates mit und passt sich über den Customizer an dein Design an. Kein PageBuilder nötig.",
 							},
 							{
-								q: "Ist die Website DSGVO-konform?",
-								a: "Ja. Keine externen Dienste, keine Tracking-Cookies, keine IP-Speicherung. Die Karte läuft ohne Google Maps. Datenschutz-Platzhalter sind eingebaut.",
+								q: "Was passiert mit den Anfragen von der Website?",
+								a: "Jede Anfrage geht per E-Mail an den zuständigen Ansprechpartner und landet zusätzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
+							},
+							{
+								q: "Ist die Website datenschutzfreundlich?",
+								a: "Ja, sie ist dafür gebaut: keine externen Dienste, keine Tracking-Cookies, Karte ohne Google Maps mit Zwei-Klick-Einwilligung. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Ein fertiger Textbaustein für deine Datenschutzerklärung ist eingebaut.",
 							},
 						].map((faq) => (
 							<AccordionItem key={faq.q} question={faq.q} answer={faq.a} />
@@ -640,6 +689,27 @@ const ImmoSuite = () => {
 								Propstack-Nutzer können ihre Objekte direkt mit WordPress
 								synchronisieren. Die Immo Suite übernimmt den Import
 								und hält deine Website immer auf dem aktuellen Stand.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Immobilien-Anfragen zentral verwalten</FaqTitle>
+							<FaqText>
+								Anfragen von der Website landen bei der Immo Suite nicht
+								nur im E-Mail-Postfach, sondern gesichert in einer
+								Anfragen-Inbox im WordPress-Backend: mit Anliegen
+								(Besichtigung, Preis, Rückruf), Wunschtermin und
+								Status-Workflow. So behältst du jeden Lead im Blick,
+								auch wenn eine Mail im Spam landet.
+							</FaqText>
+						</FaqItem>
+						<FaqItem>
+							<FaqTitle>Makler-Website datenschutzfreundlich betreiben</FaqTitle>
+							<FaqText>
+								Die Immo Suite lädt keine externen Dienste, setzt keine
+								Tracking-Cookies und zeigt Karten erst nach Klick-Einwilligung
+								(ohne Google Maps). Anfragen werden automatisch nach einer
+								einstellbaren Frist gelöscht, und ein fertiger Textbaustein
+								für die Datenschutzerklärung liegt zum Kopieren im Backend.
 							</FaqText>
 						</FaqItem>
 					</FaqGrid>
