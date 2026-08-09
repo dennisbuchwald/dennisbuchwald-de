@@ -114,7 +114,7 @@ const logoSliderSchema = {
 	description: "Gutenberg-Blocks fuer endlos scrollende Logo-Carousels und Text-Marquees. Mehrreihig, responsive, barrierefrei, ohne jQuery. Kostenlos auf WordPress.org.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
-	softwareVersion: "2.0.0",
+	softwareVersion: "2.1.0",
 	url: `${SITE_URL}/apps/logo-slider`,
 	offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
 	author: { "@type": "Person", name: "Dennis Buchwald", url: SITE_URL },
