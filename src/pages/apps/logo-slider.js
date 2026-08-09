@@ -15,6 +15,10 @@ const features = [
 		desc: "Nahtlose, unterbrechungsfreie CSS-Animation. Pausiert bei Hover und Touch. Kein Flackern, kein Sprung.",
 	},
 	{
+		title: "Text-Marquee-Block (neu in 2.0)",
+		desc: "Zweiter Block inklusive: endlos laufender Text-Ticker für Bewertungen, Badges oder Angebote. Mit Trennzeichen, Farben und eigener Textgrösse.",
+	},
+	{
 		title: "Mehrere Reihen",
 		desc: "Bis zu 4 Reihen mit alternierenden Laufrichtungen. Für grosse Logo-Sammlungen.",
 	},
@@ -23,26 +27,37 @@ const features = [
 		desc: "Filled, Outline oder Glow-Effekt. Checkerboard-Pattern, individuelle Rundung und Padding.",
 	},
 	{
+		title: "Ausgewogene Logo-Grössen",
+		desc: "Breite Wortmarken und kompakte Logos wirken gleich stark: optionaler Flächen-Ausgleich statt starrer Einheitshöhe.",
+	},
+	{
+		title: "Logo-Farbmodi",
+		desc: "Original, Schwarz, Weiss, eigene Farbe oder Graustufen, die beim Hover wieder farbig werden.",
+	},
+	{
+		title: "Mobile Logo-Höhe",
+		desc: "Logos verkleinern sich auf dem Handy automatisch. Oder du setzt einen festen eigenen Wert für Bildschirme unter 600 px.",
+	},
+	{
+		title: "Barrierefrei",
+		desc: "Optionaler Pause-Button (WCAG 2.2.2), prefers-reduced-motion wird respektiert, Alt-Texte pro Logo, Touch-Support.",
+	},
+	{
 		title: "Ohne jQuery",
-		desc: "Reines JavaScript, Lazy Loading, width/height-Attribute. Kein jQuery-Ballast, gut für Core Web Vitals.",
-	},
-	{
-		title: "Links pro Logo",
-		desc: "Individuelle URL, Target, Rel-Attribute (nofollow, sponsored) und Title-Tooltips pro Logo.",
-	},
-	{
-		title: "Responsiv und barrierefrei",
-		desc: "Responsive Höhe via CSS clamp(), Touch-Support, prefers-reduced-motion wird respektiert.",
+		desc: "Reines JavaScript, width/height-Attribute gegen Layout-Shift. Kein jQuery-Ballast, gut für Core Web Vitals.",
 	},
 ];
 
 const highlights = [
 	"Speed-Presets (Slow, Medium, Fast) oder Custom-Wert",
-	"Logo-Höhe: 30-150 px mit responsive Skalierung",
+	"Logo-Höhe 30-150 px, auf dem Handy separat einstellbar",
+	"Abstände bis Extra gross oder als freier Pixelwert (Logos und Reihen)",
+	"Links pro Logo mit Target, Rel-Attributen und Tooltip",
 	"Edge-Overlay mit konfigurierbarer Farbe",
-	"Black-Logos-Modus oder Custom Color Tint",
+	"Live-Vorschau direkt im Editor: du siehst das laufende Karussell beim Bearbeiten",
+	"Breit- und Vollbreit-Ausrichtung im Editor",
+	"Komplett auf Deutsch, inklusive Plugin-Beschreibung",
 	"Kompatibel mit Elementor (Block Widget) und Divi (Block Module)",
-	"Deutsch und Englisch",
 	"5-Sterne-Bewertung auf WordPress.org",
 	"Konsistente Scroll-Geschwindigkeit, egal wie viele Logos",
 ];
@@ -52,6 +67,8 @@ const compareRows = [
 	{ feature: "Endlos-Loop (CSS)", ours: true, gs: "jQuery", shaped: "jQuery", awesome: true },
 	{ feature: "Multi-Row (bis 4)", ours: true, gs: false, shaped: false, awesome: false },
 	{ feature: "Capsule-Styling + Glow", ours: true, gs: false, shaped: false, awesome: false },
+	{ feature: "Text-Marquee-Block inklusive", ours: true, gs: false, shaped: false, awesome: false },
+	{ feature: "Ausgewogene Logo-Grössen", ours: true, gs: false, shaped: false, awesome: false },
 	{ feature: "Custom Color Tint", ours: true, gs: false, shaped: "Pro", awesome: false },
 	{ feature: "Links pro Logo", ours: true, gs: true, shaped: true, awesome: true },
 	{ feature: "jQuery-frei", ours: true, gs: false, shaped: false, awesome: true },
@@ -74,17 +91,30 @@ const faqs = [
 	},
 	{
 		q: "Wird die Seite langsamer?",
-		a: "Nein. Der Slider lädt kein jQuery, nutzt Lazy Loading und setzt width/height-Attribute für alle Bilder. Gut für Core Web Vitals.",
+		a: "Nein. Der Slider lädt kein jQuery und setzt width/height-Attribute für alle Bilder gegen Layout-Shift. Gut für Core Web Vitals.",
+	},
+	{
+		q: "Was ist der Text-Marquee-Block?",
+		a: "Ein zweiter Block, der seit Version 2.0 dabei ist: ein endlos laufender Text-Ticker für Bewertungen, Badges oder Angebote, z.B. '★ 5,0 Google Bewertungen ★ Seit 2015 ★'. Mit Trennzeichen, Farben, Textgrösse und Laufrichtung.",
+	},
+	{
+		q: "Manche Logos wirken viel grösser als andere. Was tun?",
+		a: "Aktiviere 'Ausgewogene Logo-Grössen' im Logo-Grösse-Panel. Breite Wortmarken werden dann automatisch etwas kleiner, kompakte Logos etwas grösser dargestellt, sodass alle ähnlich stark wirken.",
+	},
+	{
+		q: "Kann ich die Logo-Grösse fürs Handy separat einstellen?",
+		a: "Ja. Standardmässig verkleinern sich die Logos auf kleinen Bildschirmen automatisch. Alternativ aktivierst du 'Eigene Höhe auf Smartphones' und setzt einen festen Wert für Bildschirme unter 600 px.",
 	},
 ];
 
 const logoSliderSchema = {
 	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
-	name: "Logo Slider - Infinite Carousel Block",
-	description: "Gutenberg-Block fuer endlos scrollende Logo-Carousels. Mehrreihig, responsive, ohne jQuery. Kostenlos auf WordPress.org.",
+	name: "Logo Slider - Infinite Carousel & Marquee Block",
+	description: "Gutenberg-Blocks fuer endlos scrollende Logo-Carousels und Text-Marquees. Mehrreihig, responsive, barrierefrei, ohne jQuery. Kostenlos auf WordPress.org.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
+	softwareVersion: "2.0.0",
 	url: `${SITE_URL}/apps/logo-slider`,
 	offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
 	author: { "@type": "Person", name: "Dennis Buchwald", url: SITE_URL },
@@ -128,7 +158,7 @@ const LogoSlider = () => {
 				<title>Logo Slider - Endlos-Carousel als Gutenberg-Block fuer WordPress</title>
 				<meta
 					name="description"
-					content="Logo Slider: Gutenberg-Block fuer endlos scrollende Logo-Carousels. Mehrreihig, Capsule-Styling, Glow-Effekte, ohne jQuery. Kostenlos auf WordPress.org."
+					content="Logo Slider: Gutenberg-Blocks fuer endlos scrollende Logo-Carousels und Text-Marquees. Mehrreihig, Capsule-Styling, ausgewogene Logo-Groessen, ohne jQuery. Kostenlos auf WordPress.org."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/logo-slider`} />
 				<meta property="og:title" content="Logo Slider - Endlos-Carousel als Gutenberg-Block" />
@@ -267,7 +297,7 @@ const LogoSlider = () => {
 				<Section>
 					<SectionHeading>Voraussetzungen</SectionHeading>
 					<ReqGrid>
-						<ReqItem><ReqLabel>WordPress</ReqLabel><ReqValue>5.8+</ReqValue></ReqItem>
+						<ReqItem><ReqLabel>WordPress</ReqLabel><ReqValue>6.0+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>PHP</ReqLabel><ReqValue>7.2+</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>Editor</ReqLabel><ReqValue>Gutenberg</ReqValue></ReqItem>
 						<ReqItem><ReqLabel>Preis</ReqLabel><ReqValue>Kostenlos</ReqValue></ReqItem>

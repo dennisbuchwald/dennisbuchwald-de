@@ -59,12 +59,12 @@ export const apps = [
 		slug: "infinite-logo-carousel-block",
 		icon: "/apps/icons/logoslider-app.svg",
 		detailPage: "/apps/logo-slider",
-		name: "Logo Slider - Infinite Carousel",
-		tagline: "Logos im endlos laufenden Carousel.",
+		name: "Logo Slider - Infinite Carousel & Marquee",
+		tagline: "Logos und Text im endlos laufenden Carousel.",
 		description:
-			"Gutenberg-Block für endlos scrollende Logo-Carousels: mehrreihig, responsiv, ohne jQuery. Offiziell im WordPress.org Plugin-Verzeichnis, 5-Sterne-Bewertung.",
+			"Zwei Gutenberg-Blocks: endlos scrollende Logo-Carousels (mehrreihig, Capsule-Styling, ausgewogene Logo-Grössen) und ein Text-Marquee für Bewertungen und Badges. Ohne jQuery, barrierefrei mit Pause-Button. Offiziell im WordPress.org Plugin-Verzeichnis, 5-Sterne-Bewertung.",
 		badges: ["WordPress.org", "Kostenlos"],
-		tags: ["WordPress", "Gutenberg Block", "Logo Carousel"],
+		tags: ["WordPress", "Gutenberg Block", "Logo Carousel", "Text Marquee"],
 		links: [
 			{
 				label: "WordPress.org",
