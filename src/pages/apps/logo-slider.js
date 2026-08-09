@@ -161,8 +161,8 @@ const LogoSlider = () => {
 					content="Logo Slider: Gutenberg-Blocks fuer endlos scrollende Logo-Carousels und Text-Marquees. Mehrreihig, Capsule-Styling, ausgewogene Logo-Groessen, ohne jQuery. Kostenlos auf WordPress.org."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/logo-slider`} />
-				<meta property="og:title" content="Logo Slider - Endlos-Carousel als Gutenberg-Block" />
-				<meta property="og:description" content="Kundenlogos endlos scrollen lassen. Gutenberg-Block, ohne jQuery, kostenlos." />
+				<meta property="og:title" content="Logo Slider & Text-Marquee - Endlos-Carousel als Gutenberg-Block" />
+				<meta property="og:description" content="Kundenlogos und Texte endlos scrollen lassen. Zwei Gutenberg-Bloecke, barrierefrei, ohne jQuery, kostenlos." />
 				<meta property="og:url" content={`${SITE_URL}/apps/logo-slider`} />
 				<meta property="og:type" content="website" />
 				<script
