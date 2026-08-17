@@ -8,6 +8,7 @@ const menuItems = [
 	{ id: "about", text: "Über Mich", href: "/#about" },
 	{ id: "apps", text: "Apps", href: "/apps" },
 	{ id: "speaking", text: "Speaking", href: "/#speaking" },
+	{ id: "presse", text: "Presse", href: "/#presse" },
 	{ id: "youtube", text: "YouTube", href: "/#youtube" },
 	{ id: "kontakt", text: "Kontakt", href: "#kontakt" },
 ];

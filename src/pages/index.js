@@ -7,6 +7,7 @@ import UeberMich from "../../components/UeberMich";
 import Projekte from "../../components/Projekte";
 import Youtube from "../../components/Youtube";
 import Speaking from "../../components/Speaking";
+import Presse from "../../components/Presse";
 import AppsTeaser from "../../components/AppsTeaser";
 import DBWMedia from "../../components/DBWMedia";
 import FinalCTA from "../../components/FinalCTA";
@@ -72,6 +73,42 @@ const Home = () => {
 									"https://www.youtube.com/@dennisbuchwald",
 									"https://www.instagram.com/dennisbuchwald/",
 								],
+								subjectOf: [
+									{
+										"@type": "NewsArticle",
+										headline:
+											"1000-Euro-Bu\u00dfgelddrohung im Begr\u00fc\u00dfungsbrief: Heilbronn reagiert auf Kritik eines Gr\u00fcnders",
+										datePublished: "2026-08-13T09:43:00+02:00",
+										author: {
+											"@type": "Person",
+											name: "Vanessa Lutz",
+										},
+										publisher: {
+											"@type": "NewsMediaOrganization",
+											name: "Heilbronner Stimme",
+											url: "https://www.stimme.de",
+										},
+										url: "https://www.stimme.de/heilbronn/stadt-heilbronn/unternehmer-gruender-brief-rathaus-kritik-tiktok-buerokratie-bussgeld-drohung-muell-reaktion-aenderung-geplant-begruessung-art-5203986",
+										isAccessibleForFree: false,
+									},
+									{
+										"@type": "NewsArticle",
+										headline:
+											"Gr\u00fcnder kritisiert Brief von Stadt Heilbronn: \u201eDirekt Drohung mit 1000 Euro Bu\u00dfgeld\u201c",
+										datePublished: "2026-08-12T11:40:00+02:00",
+										author: {
+											"@type": "Person",
+											name: "Vanessa Lutz",
+										},
+										publisher: {
+											"@type": "NewsMediaOrganization",
+											name: "Heilbronner Stimme",
+											url: "https://www.stimme.de",
+										},
+										url: "https://www.stimme.de/heilbronn/stadt-heilbronn/buerokratie-wahnsinn-gruender-jungunternehmer-bussgeld-drohung-1000-euro-muellgebuehr-auswandern-aerger-rathaus-brief-art-5203624",
+										isAccessibleForFree: false,
+									},
+								],
 							},
 							{
 								"@context": "https://schema.org",
@@ -125,6 +162,7 @@ const Home = () => {
 					<AppsTeaser />
 				</Section>
 				<Speaking />
+				<Presse />
 				<SliderSection>
 					<Youtube />
 				</SliderSection>
