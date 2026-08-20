@@ -116,6 +116,14 @@ const wowFeatures = [
 		title: "View Transitions",
 		desc: "Das Objektbild morpht nahtlos von der Listenansicht zur Detailseite. Modernes UI-Pattern, das professionelle Websites von Standard-Plugins unterscheidet.",
 	},
+	{
+		title: "Wochenbericht per E-Mail",
+		desc: "Jeden Montag eine Zusammenfassung in dein Postfach: neue Objekte, Verkäufe, Anfragen und die meistgesehenen Exposés der Woche. Du siehst, dass deine Website für dich arbeitet, ohne dich einzuloggen.",
+	},
+	{
+		title: "Exposé-Statistiken",
+		desc: "Jede Detailseite zählt ihre Aufrufe: cookielos, ohne Consent-Banner, direkt in der Objektliste sichtbar. Perfekt als Vermarktungsnachweis gegenüber dem Eigentümer: dein Objekt wurde 214 Mal angesehen.",
+	},
 ];
 
 const seoFeatures = [
@@ -128,6 +136,7 @@ const seoFeatures = [
 	"Kompatibel mit Yoast SEO und RankMath (keine doppelte Ausgabe)",
 	"Responsive Images mit srcset, fetchpriority und Lazy Loading",
 	"Conditional Asset Loading: CSS/JS nur auf Immobilienseiten",
+	"301-Weiterleitungen statt 404: verkaufte und gelöschte Objekte leiten auf Referenzen bzw. Archiv",
 ];
 
 const allFeatures = [
@@ -152,6 +161,11 @@ const allFeatures = [
 	"Honeypot und Rate Limiting für alle Formulare",
 	"Stündlicher automatischer Abgleich mit deiner Maklersoftware",
 	"Intelligente Duplikaterkennung (unveränderte Objekte werden übersprungen)",
+	"Import-Testlauf: Vorschau, was ein Import ändern würde, bevor er läuft",
+	"Import-Log direkt im Dashboard einsehbar",
+	"Wochenbericht per E-Mail: neue Objekte, Verkäufe, Anfragen, Top-Exposés",
+	"Aufruf-Statistik pro Objekt, cookielos und DSGVO-freundlich",
+	"Proaktive Betreuung: täglicher technischer Status an uns, Störungen fallen auf, bevor du sie merkst",
 	"Minifizierte Assets und Ladeoptimierung: CSS/JS nur auf Immobilienseiten",
 ];
 
@@ -166,6 +180,9 @@ const compareRows = [
 	{ feature: "Kontaktmodal mit Intent", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Anfragen-Inbox im Backend", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Import-Überwachung mit Alarm", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Wochenbericht per E-Mail", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Aufruf-Statistik pro Objekt", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Import-Testlauf (Vorschau)", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "WhatsApp-Integration", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Karte ohne API-Key", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
 	{ feature: "Merkliste (DSGVO-safe)", immo: true, wpImmo: true, immonex: false, frymo: false },
@@ -221,6 +238,14 @@ const faqSchema = {
 				text: "Jede Anfrage geht per E-Mail an den zustaendigen Ansprechpartner und landet zusaetzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
 			},
 		},
+		{
+			"@type": "Question",
+			name: "Sehe ich, wie meine Objekte performen?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Ja. Jedes Expose zaehlt seine Aufrufe (cookielos, ohne Consent-Banner) und jeden Montag kommt ein Wochenbericht per E-Mail: neue Objekte, Verkaeufe, Anfragen und die meistgesehenen Exposes der Woche.",
+			},
+		},
 	],
 };
 
@@ -232,7 +257,7 @@ const immoSuiteSchema = {
 		"WordPress Immobilien-Plugin mit OpenImmo-Import, Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé. Die Komplettlösung fuer Makler und Hausverwaltungen.",
 	applicationCategory: "Plugin",
 	operatingSystem: "WordPress",
-	softwareVersion: "2.4",
+	softwareVersion: "2.8",
 	url: `${SITE_URL}/apps/immo-suite`,
 	offers: {
 		"@type": "Offer",
@@ -642,6 +667,10 @@ const ImmoSuite = () => {
 							{
 								q: "Was passiert mit den Anfragen von der Website?",
 								a: "Jede Anfrage geht per E-Mail an den zuständigen Ansprechpartner und landet zusätzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
+							},
+							{
+								q: "Sehe ich, wie meine Objekte performen?",
+								a: "Ja. Jedes Exposé zählt seine Aufrufe (cookielos, ohne Consent-Banner) und jeden Montag kommt ein Wochenbericht per E-Mail: neue Objekte, Verkäufe, Anfragen und die meistgesehenen Exposés der Woche.",
 							},
 							{
 								q: "Ist die Website datenschutzfreundlich?",

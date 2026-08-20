@@ -47,7 +47,7 @@ export const apps = [
 		name: "Immo Suite",
 		tagline: "Wie ImmoScout, nur auf deiner eigenen Website.",
 		description:
-			"Objekte erscheinen automatisch aus der Maklersoftware (OpenImmo), Detailseiten mit Finanzierungsrechner und PDF-Exposé sammeln Anfragen, und jeder Lead landet gesichert in der Anfragen-Inbox. Datenschutzfreundlich ohne externe Dienste.",
+			"Objekte erscheinen automatisch aus der Maklersoftware (OpenImmo), Detailseiten mit Finanzierungsrechner und PDF-Exposé sammeln Anfragen, und jeder Lead landet gesichert in der Anfragen-Inbox. Wochenbericht und Aufruf-Statistik zeigen, dass die Website arbeitet. Datenschutzfreundlich ohne externe Dienste.",
 		badges: ["Kommerziell", "499 €/Jahr"],
 		tags: ["WordPress", "OpenImmo", "Immobilien"],
 		links: [],
