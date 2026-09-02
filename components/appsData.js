@@ -77,4 +77,26 @@ export const apps = [
 			category: "Plugin",
 		},
 	},
+	{
+		slug: "wp-mcp-connector-plus",
+		icon: "/apps/icons/wpmcp-app.svg",
+		detailPage: "/apps/wp-mcp-connector",
+		name: "WP MCP Connector Plus",
+		tagline: "Die KI, die deine Website versteht, statt nur reinzuschreiben.",
+		description:
+			"Rund 15 MCP-Plugins gibt es im Verzeichnis, und fast alle reichen der KI einfach das post_content-Feld. Dieses arbeitet auf dem Gutenberg-Blockbaum: Der Agent bekommt den echten Baukasten mit Block-Schemas, Verschachtelungsregeln und Design-Tokens aus theme.json. Jede Änderung wird vor dem Speichern geprüft, Entwürfe bleiben Entwürfe. Für Entwickler und Agenturen, nicht für Endkunden.",
+		badges: ["Open Source", "Kostenlos"],
+		tags: ["WordPress", "MCP", "Gutenberg", "KI-Agent"],
+		links: [
+			{
+				label: "GitHub",
+				href: "https://github.com/dennisbuchwald/wp-mcp-connector-plus",
+				type: "github",
+			},
+		],
+		schema: {
+			price: "0",
+			category: "Plugin",
+		},
+	},
 ];
