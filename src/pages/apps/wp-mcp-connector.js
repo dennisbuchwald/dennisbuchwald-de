@@ -68,7 +68,7 @@ const landscape = [
 	{
 		name: "WordPress/mcp-adapter",
 		role: "Das Fundament, nicht die Konkurrenz",
-		desc: "Der offizielle Adapter beantwortet die Frage, wie ein Agent überhaupt an WordPress-Fähigkeiten herankommt. Der Connector zieht ihn als Composer-Abhängigkeit, fest auf Version 0.6.1, und setzt auf der Abilities API auf. Ihn mit dem Connector zu vergleichen, wäre wie den Motor mit dem Auto zu vergleichen.",
+		desc: "Der offizielle Adapter beantwortet die Frage, wie ein Agent überhaupt an WordPress-Fähigkeiten herankommt. Der Connector bringt ihn fertig mit, fest auf Version 0.6.1, und setzt auf der Abilities API auf. Du installierst nichts zusätzlich, ein ZIP genügt. Ihn mit dem Connector zu vergleichen, wäre wie den Motor mit dem Auto zu vergleichen.",
 		href: "https://github.com/WordPress/mcp-adapter",
 	},
 	{
@@ -109,7 +109,7 @@ const faqs = [
 	},
 	{
 		q: "Ist das nicht dasselbe wie der offizielle mcp-adapter von WordPress?",
-		a: "Nein, der Connector baut darauf auf. Der mcp-adapter ist das offizielle WordPress-Paket, das Abilities als MCP-Werkzeuge nach aussen gibt. Er beantwortet die Frage, wie ein Agent an WordPress-Fähigkeiten herankommt. Er beantwortet nicht die Frage, was der Agent über deine Seite wissen muss, damit er sie nicht zerlegt. Genau diese Schicht liegt im Connector: acht Abilities rund um Blockkatalog, Blockbaum und Validierung. Wenn du nur Abilities aus deinen eigenen Plugins ansprechen willst, reicht der Adapter allein.",
+		a: "Nein, der Connector baut darauf auf. Der mcp-adapter ist das offizielle WordPress-Paket, das Abilities als MCP-Werkzeuge nach aussen gibt. Er beantwortet die Frage, wie ein Agent an WordPress-Fähigkeiten herankommt. Er beantwortet nicht die Frage, was der Agent über deine Seite wissen muss, damit er sie nicht zerlegt. Genau diese Schicht liegt im Connector: acht Abilities rund um Blockkatalog, Blockbaum und Validierung. Getrennt installieren musst du den Adapter nicht, er liegt im Plugin. Wenn du nur Abilities aus deinen eigenen Plugins ansprechen willst, reicht der Adapter allein.",
 	},
 	{
 		q: "Was ist mit dem MCP-Plugin von Automattic?",
