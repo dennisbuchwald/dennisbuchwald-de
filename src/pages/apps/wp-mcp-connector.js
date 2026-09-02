@@ -64,27 +64,6 @@ const notForYou = [
 	},
 ];
 
-const landscape = [
-	{
-		name: "WordPress/mcp-adapter",
-		role: "Das Fundament, nicht die Konkurrenz",
-		desc: "Der offizielle Adapter beantwortet die Frage, wie ein Agent überhaupt an WordPress-Fähigkeiten herankommt. Der Connector bringt ihn fertig mit, fest auf Version 0.6.1, und setzt auf der Abilities API auf. Du installierst nichts zusätzlich, ein ZIP genügt. Ihn mit dem Connector zu vergleichen, wäre wie den Motor mit dem Auto zu vergleichen.",
-		href: "https://github.com/WordPress/mcp-adapter",
-	},
-	{
-		name: "Automattic/wordpress-mcp",
-		role: "Seit Januar 2026 archiviert",
-		desc: "Das Plugin aus der WordPress-Mutterfirma ist am 19. Januar 2026 auf read-only gestellt worden. Automattic verweist selbst auf den mcp-adapter als kanonischen Nachfolger. Wer danach sucht, landet auf einem Stand, der nicht mehr weitergepflegt wird.",
-		href: "https://github.com/Automattic/wordpress-mcp",
-	},
-	{
-		name: "Die Plugins im Verzeichnis",
-		role: "Die eigentliche Vergleichsgruppe",
-		desc: "Rund 15 MCP-Plugins stehen auf wordpress.org, alle vom Typ \"verbinde eine KI mit WordPress\". Über Breite ist da nichts zu gewinnen, WordPress baut selbst an einem Site Agent. Der Unterschied liegt in der Tiefe: Block-Schemas, Verschachtelungsregeln, Design-Tokens, Validierung.",
-		href: null,
-	},
-];
-
 const compareRows = [
 	{ feature: "Arbeitet auf", ours: "Blockbaum", others: "post_content" },
 	{ feature: "Kennt Block-Attribute deines Themes", ours: true, others: false },
@@ -106,14 +85,6 @@ const faqs = [
 	{
 		q: "Was unterscheidet es von den anderen MCP-Plugins für WordPress?",
 		a: "Die anderen geben der KI Zugang zu WordPress. Dieses gibt ihr Urteilsvermögen. Konkret: Statt das post_content-Feld zu übergeben, liefert es den Blockbaum samt Block-Schemas, erlaubten Kind-Blöcken und Design-Tokens. Der Agent weiss dadurch, womit er arbeitet, und jede Änderung läuft vor dem Speichern durch fünf Prüfstufen.",
-	},
-	{
-		q: "Ist das nicht dasselbe wie der offizielle mcp-adapter von WordPress?",
-		a: "Nein, der Connector baut darauf auf. Der mcp-adapter ist das offizielle WordPress-Paket, das Abilities als MCP-Werkzeuge nach aussen gibt. Er beantwortet die Frage, wie ein Agent an WordPress-Fähigkeiten herankommt. Er beantwortet nicht die Frage, was der Agent über deine Seite wissen muss, damit er sie nicht zerlegt. Genau diese Schicht liegt im Connector: acht Abilities rund um Blockkatalog, Blockbaum und Validierung. Getrennt installieren musst du den Adapter nicht, er liegt im Plugin. Wenn du nur Abilities aus deinen eigenen Plugins ansprechen willst, reicht der Adapter allein.",
-	},
-	{
-		q: "Was ist mit dem MCP-Plugin von Automattic?",
-		a: "Automattic/wordpress-mcp ist seit dem 19. Januar 2026 archiviert und wird nicht mehr weiterentwickelt. Automattic verweist selbst auf den mcp-adapter als Nachfolger. Wer heute anfängt, sollte nicht mehr darauf aufsetzen.",
 	},
 	{
 		q: "Funktioniert das mit Claude?",
@@ -190,7 +161,7 @@ const WpMcpConnector = () => {
 				<title>WP MCP Connector Plus - MCP-Server fuer WordPress mit Gutenberg-Blockbaum</title>
 				<meta
 					name="description"
-					content="MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, theme.json und fuenfstufige Validierung vor jedem Speichern. Baut auf dem offiziellen WordPress mcp-adapter auf. Kostenlos, Open Source, fuer Entwickler und Agenturen."
+					content="MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, theme.json und fuenfstufige Validierung vor jedem Speichern. Kostenlos, Open Source, fuer Entwickler und Agenturen."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/wp-mcp-connector`} />
 				<meta property="og:title" content="WP MCP Connector Plus - die KI, die deine Website versteht" />
@@ -279,41 +250,6 @@ const WpMcpConnector = () => {
 					</FeatureGrid>
 				</Section>
 
-				{/* ── EINORDNUNG ── */}
-				<Section>
-					<SectionHeading>Einordnung: wer hier eigentlich gegen wen antritt</SectionHeading>
-					<SectionSub>
-						Bevor die Tabelle kommt, die Ehrlichkeit vorweg. Zwei der bekanntesten
-						Namen im Umfeld sind gar keine Gegner.
-					</SectionSub>
-					<LandscapeGrid>
-						{landscape.map((item) => (
-							<LandscapeCard key={item.name}>
-								<LandscapeRole>{item.role}</LandscapeRole>
-								{item.href ? (
-									<LandscapeLink href={item.href} target="_blank" rel="noopener noreferrer">
-										{item.name}
-									</LandscapeLink>
-								) : (
-									<LandscapeName>{item.name}</LandscapeName>
-								)}
-								<FeatureDesc>{item.desc}</FeatureDesc>
-							</LandscapeCard>
-						))}
-					</LandscapeGrid>
-					<ProblemText>
-						<ProblemDesc>
-							Und weil die Frage naheliegt: <strong>Besser ist das falsche Wort.</strong>{" "}
-							Der offizielle Adapter ist breiter, hat 36 Beitragende und deckt
-							jede Ability ab, die ein Plugin registriert. Der Connector ist
-							schmaler und tiefer. Er kann genau eine Sache, dafür richtig:
-							Inhalte als Blockbaum bearbeiten, mit dem Wissen über deinen
-							Baukasten und einer Prüfung vor jedem Speichern. Er ist jung,
-							Version 0.2.1, und aus unserer eigenen Agenturarbeit entstanden.
-						</ProblemDesc>
-					</ProblemText>
-				</Section>
-
 				{/* ── VERGLEICH ── */}
 				<Section>
 					<SectionHeading>
@@ -342,8 +278,7 @@ const WpMcpConnector = () => {
 					<TableNote>
 						Stand September 2026, nach einem Blick in das WordPress-Verzeichnis.
 						Die rechte Spalte fasst zusammen, was dort verbreitet ist, und
-						beschreibt kein einzelnes Plugin. Der offizielle mcp-adapter steht
-						bewusst nicht in der Tabelle, weil der Connector auf ihm aufbaut.
+						beschreibt kein einzelnes Plugin.
 					</TableNote>
 				</Section>
 
@@ -553,32 +488,6 @@ const NotForIcon = styled.span`
 	background: ${(p) => p.theme.bg}; border: 1px solid ${(p) => p.theme.borderCard};
 `;
 
-const LandscapeGrid = styled.div`
-	display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem;
-	@media (max-width: 1024px) { grid-template-columns: 1fr; }
-`;
-
-const LandscapeCard = styled.div`
-	display: flex; flex-direction: column; gap: 0.4rem; padding: 1.75rem;
-	background: ${(p) => p.theme.bgCard}; border: 1px solid ${(p) => p.theme.borderCard};
-	border-radius: 1.25rem;
-`;
-
-const LandscapeRole = styled.span`
-	font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-	color: ${(p) => p.theme.textMuted};
-`;
-
-const LandscapeName = styled.h3`
-	font-size: 1.05rem; font-weight: 700; color: ${(p) => p.theme.text}; margin: 0 0 0.35rem;
-`;
-
-const LandscapeLink = styled.a`
-	font-size: 1.05rem; font-weight: 700; color: ${(p) => p.theme.accent}; margin: 0 0 0.35rem;
-	text-decoration: none; transition: color 0.2s ease;
-	&:hover { color: ${(p) => p.theme.accentHover}; }
-`;
-
 const CompareWrapper = styled.div`
 	overflow-x: auto; margin-top: 1.5rem;
 	border: 1px solid ${(p) => p.theme.borderCard}; border-radius: 1.25rem;
@@ -647,7 +556,7 @@ const AccordionIcon = styled.span`
 `;
 
 const AccordionContent = styled.div`
-	max-height: ${(p) => (p.$open ? "460px" : "0")}; overflow: hidden; transition: max-height 0.3s ease;
+	max-height: ${(p) => (p.$open ? "320px" : "0")}; overflow: hidden; transition: max-height 0.3s ease;
 `;
 
 const AccordionText = styled.p`
