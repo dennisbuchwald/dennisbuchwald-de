@@ -36,16 +36,16 @@ const features = [
 		desc: "Jeder Aufruf landet im Audit-Log im Backend. Wer hat wann welche Seite angefasst, steht schwarz auf weiss da.",
 	},
 	{
-		title: "Auf offiziellen Schienen",
-		desc: "Baut auf der WordPress Abilities API (im Core seit 6.9) und dem offiziellen mcp-adapter auf. Kein eigener Sonderweg am Core vorbei.",
+		title: "Offen und auf offiziellen Schienen",
+		desc: "Baut auf der WordPress Abilities API (im Core seit 6.9) und dem offiziellen mcp-adapter auf, kein Sonderweg am Core vorbei. Quellcode auf GitHub unter GPL-2.0-or-later.",
 	},
 	{
 		title: "Läuft auf jeder Gutenberg-Seite",
 		desc: "Das Block-Wissen kommt aus block.json und theme.json deiner Installation. Eigene Regeln hängst du über Filter dran.",
 	},
 	{
-		title: "GPL und offen",
-		desc: "Quellcode auf GitHub, GPL-2.0-or-later. Du kannst nachlesen, was der Agent darf, statt es glauben zu müssen.",
+		title: "Kein Entwickler-Zugang",
+		desc: "Kein PHP im Prozess, kein WP-CLI, keine Datenbankabfragen. Der Agent bearbeitet Inhalte, sonst nichts. Deshalb ist es kein reines Staging-Werkzeug.",
 	},
 ];
 
@@ -59,6 +59,14 @@ const notForYou = [
 		desc: "Beides macht es nicht. Der Agent arbeitet an Inhalt und Struktur. Medien und SEO-Felder bleiben deine Baustelle.",
 	},
 	{
+		title: "Du willst einen Agenten mit Serverzugang",
+		desc: "PHP ausführen, WP-CLI, direkte Datenbankabfragen: alles nicht drin, und zwar mit Absicht. Für solche Aufgaben gibt es Werkzeuge, die dafür gebaut sind. Dieses hier ist es nicht.",
+	},
+	{
+		title: "Dir fehlt der passende Block",
+		desc: "Ein Redakteur kann nichts bauen, was es nicht gibt. Fehlt in deinem Theme ein Block, kann der Agent ihn nicht erfinden. Blöcke baust du, Seiten baut er.",
+	},
+	{
 		title: "Du fährst WordPress unter 6.9",
 		desc: "Dann kannst du es gar nicht erst installieren. Die Abilities API, auf der alles aufsetzt, kam erst mit 6.9 in den Core.",
 	},
@@ -66,6 +74,7 @@ const notForYou = [
 
 const compareRows = [
 	{ feature: "Arbeitet auf", ours: "Blockbaum", others: "post_content" },
+	{ feature: "Zugriff auf PHP, WP-CLI, Datenbank", ours: "bewusst nein", others: "teils ja" },
 	{ feature: "Kennt Block-Attribute deines Themes", ours: true, others: false },
 	{ feature: "Kennt Verschachtelungsregeln", ours: true, others: false },
 	{ feature: "Design-Tokens aus theme.json", ours: true, others: false },
@@ -97,6 +106,10 @@ const faqs = [
 	{
 		q: "Kann die KI aus Versehen etwas veröffentlichen?",
 		a: "Der Agent arbeitet unter einer eigenen Rolle, der das Veröffentlichungsrecht fehlt. Ein Beitrag, den er anlegt oder ändert, bleibt ein Entwurf. Das hängt nicht an einer Anweisung im Prompt, sondern am Rechtesystem von WordPress.",
+	},
+	{
+		q: "Ist das ein Werkzeug für Entwickler?",
+		a: "Eingerichtet wird es von einem Entwickler oder einer Agentur, gearbeitet wird damit redaktionell. Der Agent bekommt bewusst keinen Serverzugang: kein PHP, kein WP-CLI, keine Datenbank. Er pflegt Inhalte innerhalb deines Baukastens. Die Blöcke baust weiter du, damit du dich auf Entwicklung konzentrieren kannst statt auf Änderungswünsche.",
 	},
 	{
 		q: "Funktioniert es mit meinem Theme oder nur mit euren Blöcken?",
@@ -161,11 +174,11 @@ const WpMcpConnector = () => {
 				<title>WP MCP Connector Plus - MCP-Server fuer WordPress mit Gutenberg-Blockbaum</title>
 				<meta
 					name="description"
-					content="MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, theme.json und fuenfstufige Validierung vor jedem Speichern. Kostenlos, Open Source, fuer Entwickler und Agenturen."
+					content="MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, theme.json und fuenfstufige Validierung vor jedem Speichern. Kein Entwickler-Zugang, sondern ein Redakteur, der dein Design-System kennt. Kostenlos und Open Source."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/wp-mcp-connector`} />
 				<meta property="og:title" content="WP MCP Connector Plus - die KI, die deine Website versteht" />
-				<meta property="og:description" content="Andere MCP-Plugins geben einer KI Zugang zu WordPress. Dieses gibt ihr Urteilsvermoegen: Blockbaum, Block-Schemas, Validierung vor dem Speichern. Kostenlos und Open Source." />
+				<meta property="og:description" content="Kein Entwickler-Zugang, sondern ein Redakteur, der dein Design-System kennt: Blockbaum, Block-Schemas, Validierung vor dem Speichern. Kostenlos und Open Source." />
 				<meta property="og:url" content={`${SITE_URL}/apps/wp-mcp-connector`} />
 				<meta property="og:type" content="website" />
 				<meta name="twitter:title" content="WP MCP Connector Plus - die KI, die deine Website versteht" />
@@ -193,10 +206,10 @@ const WpMcpConnector = () => {
 							Die KI, die deine Website versteht, statt nur reinzuschreiben.
 						</Title>
 						<Intro>
-							Ein MCP-Plugin für WordPress, das auf dem Gutenberg-Blockbaum
-							arbeitet. Der Agent bekommt den echten Baukasten deiner Seite
-							statt eines leeren Textfelds. Gebaut für Entwickler und
-							Agenturen, nicht für Endkunden.
+							Kein Entwickler-Zugang, sondern ein Redakteur, der dein
+							Design-System auswendig kennt. Der Agent bekommt den echten
+							Baukasten deiner Seite statt eines leeren Textfelds, und er
+							darf genau so viel wie ein Redakteur darf.
 						</Intro>
 						<HeroActions>
 							<PrimaryButton href={REPO_URL} target="_blank" rel="noopener noreferrer">
@@ -233,6 +246,14 @@ const WpMcpConnector = () => {
 							Der Agent bekommt den echten Baukasten mit Block-Schemas,
 							Verschachtelungsregeln und Design-Tokens, und jede Änderung wird
 							vor dem Speichern geprüft.
+						</ProblemDesc>
+						<ProblemDesc>
+							Daraus wird eine klare Arbeitsteilung. Du baust die Blöcke, der
+							Agent baut damit die Seiten. Er bekommt keinen Serverzugang, kein
+							PHP, keine Datenbank, und genau deshalb darf er auf eine
+							Kundenseite. Was übrig bleibt, ist die Arbeit, die dich ohnehin
+							aufhält: Texte einpflegen, Abschnitte umbauen, Änderungswünsche
+							nachziehen, die drei Wochen später kommen.
 						</ProblemDesc>
 					</ProblemText>
 				</Section>
@@ -286,7 +307,7 @@ const WpMcpConnector = () => {
 				<Section>
 					<SectionHeading>Für wen das nichts ist</SectionHeading>
 					<SectionSub>
-						Drei Fälle, in denen du dir den Download sparen kannst.
+						Fünf Fälle, in denen du dir den Download sparen kannst.
 					</SectionSub>
 					<NotForGrid>
 						{notForYou.map((item) => (
@@ -472,7 +493,8 @@ const FeatureDesc = styled.p` font-size: 0.9rem; line-height: 1.6; color: ${(p) 
 
 const NotForGrid = styled.div`
 	display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-	@media (max-width: 1024px) { grid-template-columns: 1fr; }
+	@media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+	@media (max-width: 700px) { grid-template-columns: 1fr; }
 `;
 
 const NotForCard = styled.div`
