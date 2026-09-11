@@ -76,13 +76,13 @@ const pillars = [
 	},
 	{
 		icon: <FaMapMarkerAlt />,
-		title: "Karte ohne Google",
-		desc: "Interaktive Karte ohne Google Maps: keine laufenden Kosten, kein Cookie-Banner nötig. Datenschutz-Platzhalter ist eingebaut.",
+		title: "Karte ohne Google Maps",
+		desc: "Interaktive Karte auf Basis von OpenStreetMap: kein API-Key, keine laufenden Kosten. Sie lädt erst, wenn der Besucher klickt. Vorher steht ein Datenschutz-Platzhalter.",
 	},
 	{
 		icon: <FaShieldAlt />,
 		title: "Datenschutzfreundlich by design",
-		desc: "Keine externen Dienste, keine Cookies, kein Tracking. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Fertiger Textbaustein für deine Datenschutzerklärung inklusive.",
+		desc: "Keine Tracking-Cookies, kein Analytics, keine externen Dienste im Hintergrund. Was nachlädt, lädt erst nach Klick. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Fertiger Textbaustein für deine Datenschutzerklärung inklusive.",
 	},
 	{
 		icon: <FaUniversalAccess />,
@@ -169,84 +169,122 @@ const allFeatures = [
 	"Minifizierte Assets und Ladeoptimierung: CSS/JS nur auf Immobilienseiten",
 ];
 
+const references = [
+	{
+		company: "Betz Immobilien GbR",
+		place: "Abstatt, Region Heilbronn",
+		objects: "13 Objekte live",
+		quote:
+			"Seit wir die Immo Suite haben, pflege ich kein Objekt mehr doppelt. Ich gebe es frei und es steht auf der Seite. Das spart mir jede Woche Stunden.",
+		person: "Daniel Betz",
+		url: "https://betz-immobilien.com",
+		label: "betz-immobilien.com",
+	},
+	{
+		company: "Stegmeier & Weber Immobilien",
+		place: "Leinfelden-Echterdingen, Region Stuttgart",
+		objects: "13 Objekte live",
+		quote:
+			"Unsere Website ist jetzt das, was sie sein sollte: ein Vertriebskanal, der von allein läuft. Anfragen kommen direkt, ohne Portal-Gebühren.",
+		person: "Mario Weber",
+		url: "https://stegmeier-weber.de",
+		label: "stegmeier-weber.de",
+	},
+];
+
 const compareRows = [
 	{ feature: "OpenImmo-XML-Import", immo: true, wpImmo: true, immonex: true, frymo: true },
 	{ feature: "Kaufnebenkostenrechner (PLZ)", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Finanzierungsrechner", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "Infrastruktur-Score", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Infrastruktur-Score", immo: true, wpImmo: false, immonex: false, frymo: "Entfernungen (Pro)" },
 	{ feature: "Energiekostenrechner", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Preis/qm-Vergleich", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "PDF-Exposé (druckfertig)", immo: true, wpImmo: "Ab PLUS", immonex: "Add-on", frymo: false },
+	{ feature: "PDF-Exposé (druckfertig)", immo: true, wpImmo: "Ab PLUS", immonex: "Add-on", frymo: null },
 	{ feature: "Kontaktmodal mit Intent", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Anfragen-Inbox im Backend", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "Import-Überwachung mit Alarm", immo: true, wpImmo: false, immonex: false, frymo: false },
+	{ feature: "Import-Überwachung mit Alarm", immo: true, wpImmo: null, immonex: null, frymo: null },
 	{ feature: "Wochenbericht per E-Mail", immo: true, wpImmo: false, immonex: false, frymo: false },
 	{ feature: "Aufruf-Statistik pro Objekt", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "Import-Testlauf (Vorschau)", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "WhatsApp-Integration", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "Karte ohne API-Key", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
-	{ feature: "Merkliste (DSGVO-safe)", immo: true, wpImmo: true, immonex: false, frymo: false },
-	{ feature: "Schema.org JSON-LD", immo: true, wpImmo: false, immonex: true, frymo: true },
+	{ feature: "Import-Testlauf (Vorschau)", immo: true, wpImmo: null, immonex: null, frymo: null },
+	{ feature: "WhatsApp-Integration", immo: true, wpImmo: false, immonex: false, frymo: "Messenger-Link" },
+	{ feature: "Karte ohne Google Maps", immo: true, wpImmo: null, immonex: "Teilweise", frymo: "Teilweise" },
+	{ feature: "Merkliste", immo: true, wpImmo: "Ab PLUS", immonex: false, frymo: "Ab Pro" },
+	{ feature: "Schema.org JSON-LD", immo: true, wpImmo: true, immonex: true, frymo: true },
 	{ feature: "Gutenberg-Blöcke nativ", immo: true, wpImmo: false, immonex: false, frymo: false },
-	{ feature: "Kein PageBuilder nötig", immo: true, wpImmo: false, immonex: true, frymo: false },
-	{ feature: "Datenschutz (keine ext. Dienste)", immo: true, wpImmo: false, immonex: "Teilweise", frymo: false },
+	{ feature: "Kein PageBuilder nötig", immo: true, wpImmo: true, immonex: true, frymo: false },
 	{ feature: "Unbegrenzte Objekte", immo: true, wpImmo: false, immonex: true, frymo: "Ab Pro" },
-	{ feature: "Preis", immo: "499 EUR/J.", wpImmo: "Ab 649 EUR", immonex: "Auf Anfrage", frymo: "Ab 348 EUR/J." },
+	{
+		feature: "Preis",
+		immo: "499 €/Jahr",
+		wpImmo: "ab 649 € einmalig (bis 30 Objekte), ab Jahr 2 Service ab 49 €/Monat",
+		immonex: "399 €/Jahr oder 1.199 € dauerhaft (OpenImmo2WP)",
+		frymo: "ab 390 €/Jahr (bis 50 Objekte), Elementor nötig",
+	},
+];
+
+const compareNotes = [
+	"Stand: 11.09.2026. Preise und Funktionen laut Websites der Anbieter.",
+	"Ein Kreuz heißt: der Anbieter führt diese Funktion auf seiner Website nicht auf. „Keine Angabe“ heißt: wir konnten es nicht prüfen.",
+	"WP-ImmoMakler staffelt den Funktionsumfang nach Lizenz (BASIC, PLUS, PREMIUM). Bei immonex ist OpenImmo2WP der Importer, die Anzeige übernimmt Kickstart mit Add-ons. Frymo setzt Elementor Pro voraus.",
+	"Fehler entdeckt? Schreib uns, wir korrigieren das.",
+];
+
+const DBW_MEDIA_ORG = {
+	"@type": "Organization",
+	name: "dbw media",
+	url: "https://dbw-media.de/",
+};
+
+const faqs = [
+	{
+		q: "Muss ich meine Objekte doppelt pflegen?",
+		a: "Nein. Du pflegst alles in deiner Maklersoftware wie bisher. Die Immo Suite holt sich die Daten automatisch und hält deine Website immer aktuell.",
+	},
+	{
+		q: "Wie viele Objekte kann ich anzeigen?",
+		a: "Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder 500 Immobilien.",
+	},
+	{
+		q: "Brauche ich technisches Wissen?",
+		a: "Nein. Wir richten die Immo Suite komplett für dich ein. Du musst nichts installieren, konfigurieren oder programmieren.",
+	},
+	{
+		q: "Was passiert, wenn ich meine Maklersoftware wechsle?",
+		a: "Deine Website bleibt, wie sie ist. Du legst in der neuen Software nur einen OpenImmo-Export an und wir tragen die neuen Zugangsdaten ein. Danach laufen die Objekte weiter wie vorher. Kein Relaunch, kein neues Plugin, keine neuen URLs.",
+	},
+	{
+		q: "Was passiert, wenn ein Objekt verkauft wird?",
+		a: "Sobald du das Objekt in deiner Maklersoftware als verkauft markierst, wird es auf der Website automatisch archiviert oder in den Referenzen angezeigt.",
+	},
+	{
+		q: "Funktioniert das mit meinem WordPress-Theme?",
+		a: "Ja. Die Immo Suite bringt eigene Templates mit und passt sich über den Customizer an dein Design an. Kein PageBuilder nötig.",
+	},
+	{
+		q: "Was passiert mit den Anfragen von der Website?",
+		a: "Jede Anfrage geht per E-Mail an den zuständigen Ansprechpartner und landet zusätzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
+	},
+	{
+		q: "Sehe ich, wie meine Objekte performen?",
+		a: "Ja. Jedes Exposé zählt seine Aufrufe (cookielos, ohne Consent-Banner) und jeden Montag kommt ein Wochenbericht per E-Mail: neue Objekte, Verkäufe, Anfragen und die meistgesehenen Exposés der Woche.",
+	},
+	{
+		q: "Ist die Website datenschutzfreundlich?",
+		a: "Ja, sie ist dafür gebaut: keine Tracking-Cookies, keine externen Dienste im Hintergrund. Die Karte kommt ohne Google Maps und lädt erst, wenn der Besucher sie anklickt. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Ein fertiger Textbaustein für deine Datenschutzerklärung ist eingebaut.",
+	},
 ];
 
 const faqSchema = {
 	"@context": "https://schema.org",
 	"@type": "FAQPage",
-	mainEntity: [
-		{
-			"@type": "Question",
-			name: "Muss ich meine Objekte doppelt pflegen?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Nein. Du pflegst alles in deiner Maklersoftware wie bisher. Die Immo Suite holt sich die Daten automatisch und haelt deine Website immer aktuell.",
-			},
+	mainEntity: faqs.map((faq) => ({
+		"@type": "Question",
+		name: faq.q,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: faq.a,
 		},
-		{
-			"@type": "Question",
-			name: "Wie viele Objekte kann ich anzeigen?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder 500 Immobilien.",
-			},
-		},
-		{
-			"@type": "Question",
-			name: "Brauche ich technisches Wissen?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Nein. Wir richten die Immo Suite komplett fuer dich ein. Du musst nichts installieren, konfigurieren oder programmieren.",
-			},
-		},
-		{
-			"@type": "Question",
-			name: "Ist die Website datenschutzfreundlich?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Ja, sie ist dafuer gebaut: keine externen Dienste, keine Tracking-Cookies, Karte ohne Google Maps mit Zwei-Klick-Einwilligung. Anfragen werden nur zur Bearbeitung gespeichert und automatisch geloescht. Ein fertiger Textbaustein fuer die Datenschutzerklaerung ist eingebaut.",
-			},
-		},
-		{
-			"@type": "Question",
-			name: "Was passiert mit den Anfragen von der Website?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Jede Anfrage geht per E-Mail an den zustaendigen Ansprechpartner und landet zusaetzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
-			},
-		},
-		{
-			"@type": "Question",
-			name: "Sehe ich, wie meine Objekte performen?",
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: "Ja. Jedes Expose zaehlt seine Aufrufe (cookielos, ohne Consent-Banner) und jeden Montag kommt ein Wochenbericht per E-Mail: neue Objekte, Verkaeufe, Anfragen und die meistgesehenen Exposes der Woche.",
-			},
-		},
-	],
+	})),
 };
 
 const immoSuiteSchema = {
@@ -254,16 +292,36 @@ const immoSuiteSchema = {
 	"@type": "SoftwareApplication",
 	name: "Immo Suite",
 	description:
-		"WordPress Immobilien-Plugin mit OpenImmo-Import, Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé. Die Komplettlösung fuer Makler und Hausverwaltungen.",
-	applicationCategory: "Plugin",
+		"Immobilien-Plugin für WordPress mit OpenImmo-Import aus onOffice, FlowFact, Propstack und JustImmo. Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score und PDF-Exposé für Makler und Hausverwaltungen.",
+	applicationCategory: "BusinessApplication",
+	applicationSubCategory: "WordPress-Plugin",
 	operatingSystem: "WordPress",
 	softwareVersion: "2.8",
+	softwareRequirements: "WordPress 6.4 oder neuer, PHP 8.1 oder neuer",
+	inLanguage: "de",
 	url: `${SITE_URL}/apps/immo-suite`,
 	offers: {
 		"@type": "Offer",
 		price: "499",
 		priceCurrency: "EUR",
+		availability: "https://schema.org/InStock",
+		url: `${SITE_URL}/apps/immo-suite`,
+		priceSpecification: {
+			"@type": "UnitPriceSpecification",
+			price: "499",
+			priceCurrency: "EUR",
+			unitCode: "ANN",
+			billingDuration: 1,
+			billingIncrement: 1,
+			referenceQuantity: {
+				"@type": "QuantitativeValue",
+				value: 1,
+				unitCode: "ANN",
+			},
+		},
 	},
+	provider: DBW_MEDIA_ORG,
+	publisher: DBW_MEDIA_ORG,
 	author: {
 		"@type": "Person",
 		name: "Dennis Buchwald",
@@ -295,6 +353,7 @@ const CellValue = ({ value, highlight }) => {
 		return <CellCheck $highlight={highlight}><FaCheck /></CellCheck>;
 	if (value === false)
 		return <CellCross><FaTimes /></CellCross>;
+	if (value === null) return <CellNA>keine Angabe</CellNA>;
 	return <CellText $highlight={highlight}>{value}</CellText>;
 };
 
@@ -307,7 +366,7 @@ const ImmoSuite = () => {
 				</title>
 				<meta
 					name="description"
-					content="Immo Suite: WordPress Immobilien-Plugin mit automatischem OpenImmo-Import aus OnOffice, FlowFact und JustImmo. Anfragen-Inbox, Kaufnebenkostenrechner, Infrastruktur-Score, PDF-Exposé und Kartenansicht. Ab 499 EUR/Jahr."
+					content="Immo Suite: WordPress Immobilien-Plugin mit OpenImmo-Import aus onOffice, FlowFact, Propstack und JustImmo. Anfragen-Inbox, Exposé, Rechner. 499 €/Jahr."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps/immo-suite`} />
 				<meta
@@ -316,7 +375,7 @@ const ImmoSuite = () => {
 				/>
 				<meta
 					property="og:description"
-					content="Objekte automatisch importieren, professionell präsentieren, mehr Anfragen generieren. Die Komplettlösung fuer Makler und Hausverwaltungen."
+					content="Das Immobilien-Plugin für WordPress: Objekte automatisch importieren, professionell präsentieren, mehr Anfragen bekommen. Ein Produkt von dbw media."
 				/>
 				<meta property="og:url" content={`${SITE_URL}/apps/immo-suite`} />
 				<meta property="og:type" content="website" />
@@ -363,6 +422,16 @@ const ImmoSuite = () => {
 								Live-Demo ansehen
 							</SecondaryButton>
 						</HeroActions>
+						<HeroByline>
+							Ein Produkt von{" "}
+							<HeroBylineLink
+								href="https://dbw-media.de/"
+								target="_blank"
+								rel="noopener"
+							>
+								dbw media
+							</HeroBylineLink>
+						</HeroByline>
 					</Hero>
 					<GradientDivider />
 				</HeroWrapper>
@@ -414,6 +483,49 @@ const ImmoSuite = () => {
 					</StepGrid>
 				</Section>
 
+				{/* ── REFERENZEN ── */}
+				<Section>
+					<SectionHeading>Zwei Maklerbüros arbeiten schon so</SectionHeading>
+					<SectionSub>
+						Beide Websites laufen mit der Immo Suite. Die Objekte kommen
+						aus der Maklersoftware, die Anfragen landen direkt im Büro.
+					</SectionSub>
+					<RefGrid>
+						{references.map((ref) => (
+							<RefCard key={ref.company}>
+								<RefQuote>„{ref.quote}“</RefQuote>
+								<RefPerson>{ref.person}</RefPerson>
+								<RefCompany>{ref.company}</RefCompany>
+								<RefMeta>
+									{ref.place} · {ref.objects}
+								</RefMeta>
+								<RefLink
+									href={ref.url}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{ref.label}
+								</RefLink>
+							</RefCard>
+						))}
+						<DemoCard>
+							<DemoTitle>Lieber selbst klicken?</DemoTitle>
+							<DemoDesc>
+								Die Demo hat 38 Objekte. Filter, Kartenansicht,
+								Exposé-Download und Finanzierungsrechner sind
+								freigeschaltet. Ohne Anmeldung, ohne Formular.
+							</DemoDesc>
+							<DemoButton
+								href="https://immo-suite-demo.dbw-development.de/immobilien/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Demo ansehen
+							</DemoButton>
+						</DemoCard>
+					</RefGrid>
+				</Section>
+
 				{/* ── KOMPATIBLE SOFTWARE ── */}
 				<Section>
 					<SectionHeading>
@@ -432,6 +544,24 @@ const ImmoSuite = () => {
 							</SoftwareCard>
 						))}
 					</SoftwareGrid>
+					<SectionLinks>
+						{/* Blogbeitrag ist noch Entwurf. Freischalten, sobald er live ist:
+						<SectionLink
+							href="https://dbw-media.de/backstage/openimmo-wordpress/"
+							target="_blank"
+							rel="noopener"
+						>
+							So funktioniert OpenImmo mit WordPress
+						</SectionLink>
+						*/}
+						<SectionLink
+							href="https://dbw-media.de/branchen/immobilienmakler-website/"
+							target="_blank"
+							rel="noopener"
+						>
+							Komplette Website für Immobilienmakler
+						</SectionLink>
+					</SectionLinks>
 				</Section>
 
 				<CtaBanner href="#anfrage">
@@ -441,7 +571,7 @@ const ImmoSuite = () => {
 				{/* ── FEATURES (8 Pillars) ── */}
 				<Section>
 					<SectionHeading>
-						Was die Immo Suite deiner Website gibt
+						Was das Immobilien-Plugin für WordPress deiner Website gibt
 					</SectionHeading>
 					<PillarGrid>
 						{pillars.map((p) => (
@@ -458,8 +588,9 @@ const ImmoSuite = () => {
 				<Section>
 					<SectionHeading>Was kein anderes Immobilien-Plugin kann</SectionHeading>
 					<SectionSub>
-						WP-ImmoMakler kostet bis zu 7.999 EUR und hat keines dieser
-						Features. Frymo auch nicht. immonex auch nicht.
+						Die meisten Immobilien-Plugins zeigen deine Objekte an. Die
+						Immo Suite sorgt zusätzlich dafür, dass keine Anfrage
+						verloren geht und du merkst, wenn der Import stockt.
 					</SectionSub>
 					<WowGrid>
 						{wowFeatures.map((f) => (
@@ -526,6 +657,11 @@ const ImmoSuite = () => {
 							</tbody>
 						</CompareTable>
 					</CompareWrapper>
+					<CompareNotes>
+						{compareNotes.map((note) => (
+							<CompareNote key={note}>{note}</CompareNote>
+						))}
+					</CompareNotes>
 				</Section>
 
 				<CtaBanner href="#anfrage">
@@ -563,7 +699,7 @@ const ImmoSuite = () => {
 						</ReqItem>
 						<ReqItem>
 							<ReqLabel>Preis</ReqLabel>
-							<ReqValue>499 EUR/J.</ReqValue>
+							<ReqValue>499 €/Jahr</ReqValue>
 						</ReqItem>
 					</ReqGrid>
 				</Section>
@@ -643,40 +779,7 @@ const ImmoSuite = () => {
 				<Section>
 					<SectionHeading>Häufige Fragen</SectionHeading>
 					<FaqList>
-						{[
-							{
-								q: "Muss ich meine Objekte doppelt pflegen?",
-								a: "Nein. Du pflegst alles in deiner Maklersoftware wie bisher. Die Immo Suite holt sich die Daten automatisch und hält deine Website immer aktuell.",
-							},
-							{
-								q: "Wie viele Objekte kann ich anzeigen?",
-								a: "Unbegrenzt. Es gibt kein Objektlimit. Egal ob 10 oder 500 Immobilien.",
-							},
-							{
-								q: "Brauche ich technisches Wissen?",
-								a: "Nein. Wir richten die Immo Suite komplett für dich ein. Du musst nichts installieren, konfigurieren oder programmieren.",
-							},
-							{
-								q: "Was passiert, wenn ein Objekt verkauft wird?",
-								a: "Sobald du das Objekt in deiner Maklersoftware als verkauft markierst, wird es auf der Website automatisch archiviert oder in den Referenzen angezeigt.",
-							},
-							{
-								q: "Funktioniert das mit meinem WordPress-Theme?",
-								a: "Ja. Die Immo Suite bringt eigene Templates mit und passt sich über den Customizer an dein Design an. Kein PageBuilder nötig.",
-							},
-							{
-								q: "Was passiert mit den Anfragen von der Website?",
-								a: "Jede Anfrage geht per E-Mail an den zuständigen Ansprechpartner und landet zusätzlich gesichert in der Anfragen-Inbox im WordPress-Backend, mit Anliegen, Wunschtermin und Status-Workflow. Landet eine Mail im Spam, ist der Lead trotzdem da.",
-							},
-							{
-								q: "Sehe ich, wie meine Objekte performen?",
-								a: "Ja. Jedes Exposé zählt seine Aufrufe (cookielos, ohne Consent-Banner) und jeden Montag kommt ein Wochenbericht per E-Mail: neue Objekte, Verkäufe, Anfragen und die meistgesehenen Exposés der Woche.",
-							},
-							{
-								q: "Ist die Website datenschutzfreundlich?",
-								a: "Ja, sie ist dafür gebaut: keine externen Dienste, keine Tracking-Cookies, Karte ohne Google Maps mit Zwei-Klick-Einwilligung. Anfragen werden nur zur Bearbeitung gespeichert und automatisch gelöscht. Ein fertiger Textbaustein für deine Datenschutzerklärung ist eingebaut.",
-							},
-						].map((faq) => (
+						{faqs.map((faq) => (
 							<AccordionItem key={faq.q} question={faq.q} answer={faq.a} />
 						))}
 					</FaqList>
@@ -734,9 +837,10 @@ const ImmoSuite = () => {
 						<FaqItem>
 							<FaqTitle>Makler-Website datenschutzfreundlich betreiben</FaqTitle>
 							<FaqText>
-								Die Immo Suite lädt keine externen Dienste, setzt keine
-								Tracking-Cookies und zeigt Karten erst nach Klick-Einwilligung
-								(ohne Google Maps). Anfragen werden automatisch nach einer
+								Die Immo Suite setzt keine Tracking-Cookies und lädt im
+								Hintergrund keine externen Dienste. Die Karte kommt ohne
+								Google Maps und lädt erst, wenn der Besucher sie anklickt.
+								Anfragen werden automatisch nach einer
 								einstellbaren Frist gelöscht, und ein fertiger Textbaustein
 								für die Datenschutzerklärung liegt zum Kopieren im Backend.
 							</FaqText>
@@ -908,6 +1012,20 @@ const SecondaryButton = styled.a`
 	&:hover { border-color: #999; transform: translateY(-2px); }
 `;
 
+const HeroByline = styled.p`
+	font-size: 0.9rem;
+	color: #666;
+	margin: 0.75rem 0 0;
+`;
+
+const HeroBylineLink = styled.a`
+	color: #111;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	&:hover { color: #7e56ff; }
+`;
+
 /* ── Sections (dunkel) ── */
 
 const Section = styled.section`
@@ -1011,6 +1129,136 @@ const StepDesc = styled.p`
 	line-height: 1.65;
 	color: ${(props) => props.theme.textSecondary};
 	margin: 0;
+`;
+
+/* ── Referenzen ── */
+
+const RefGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+const RefCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 2rem;
+	background: ${(props) => props.theme.bgCard};
+	border: 1px solid ${(props) => props.theme.borderCard};
+	border-radius: 1.25rem;
+`;
+
+const RefQuote = styled.blockquote`
+	font-size: 1rem;
+	line-height: 1.7;
+	color: ${(props) => props.theme.text};
+	margin: 0 0 1rem;
+`;
+
+const RefPerson = styled.span`
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+`;
+
+const RefCompany = styled.span`
+	font-size: 0.9rem;
+	color: ${(props) => props.theme.textSecondary};
+`;
+
+const RefMeta = styled.span`
+	font-size: 0.8rem;
+	color: ${(props) => props.theme.textMuted};
+`;
+
+const RefLink = styled.a`
+	margin-top: 0.75rem;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: ${(props) => props.theme.accent};
+	text-decoration: none;
+	align-self: flex-start;
+
+	&:hover { text-decoration: underline; }
+`;
+
+const DemoCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 2rem;
+	background: ${(props) => props.theme.bgCard};
+	border-radius: 1.25rem;
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: -1px;
+		border-radius: 1.35rem;
+		padding: 1px;
+		background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		pointer-events: none;
+	}
+`;
+
+const DemoTitle = styled.h3`
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: ${(props) => props.theme.text};
+	margin: 0;
+`;
+
+const DemoDesc = styled.p`
+	font-size: 0.9rem;
+	line-height: 1.65;
+	color: ${(props) => props.theme.textSecondary};
+	margin: 0;
+`;
+
+const DemoButton = styled.a`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: flex-start;
+	margin-top: auto;
+	padding: 0.8rem 1.6rem;
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff);
+	border-radius: 999px;
+	text-decoration: none;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+
+	&:hover { opacity: 0.9; transform: translateY(-2px); }
+`;
+
+/* ── Querverweise unter einer Sektion ── */
+
+const SectionLinks = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	margin-top: 2rem;
+`;
+
+const SectionLink = styled.a`
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: ${(props) => props.theme.accent};
+	text-decoration: none;
+
+	&:hover { text-decoration: underline; }
 `;
 
 /* ── Software-Kompatibilität ── */
@@ -1281,6 +1529,26 @@ const CellText = styled.span`
 		props.$highlight ? props.theme.accent : props.theme.textSecondary};
 `;
 
+const CellNA = styled.span`
+	font-size: 0.78rem;
+	color: ${(props) => props.theme.textMuted};
+	font-style: italic;
+`;
+
+const CompareNotes = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	margin-top: 1rem;
+`;
+
+const CompareNote = styled.p`
+	font-size: 0.8rem;
+	line-height: 1.6;
+	color: ${(props) => props.theme.textMuted};
+	margin: 0;
+`;
+
 /* ── Voraussetzungen ── */
 
 const ReqGrid = styled.div`
@@ -1395,7 +1663,7 @@ const AccordionIcon = styled.span`
 `;
 
 const AccordionContent = styled.div`
-	max-height: ${(props) => (props.$open ? "200px" : "0")};
+	max-height: ${(props) => (props.$open ? "420px" : "0")};
 	overflow: hidden;
 	transition: max-height 0.3s ease;
 `;
