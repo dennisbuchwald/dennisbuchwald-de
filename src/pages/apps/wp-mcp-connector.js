@@ -44,6 +44,18 @@ const features = [
 		desc: "Das Block-Wissen kommt aus block.json und theme.json deiner Installation. Eigene Regeln hängst du über Filter dran.",
 	},
 	{
+		title: "SEO-Felder gleich mit",
+		desc: "Titel, Meta-Description, Focus-Keyword und Canonical für Rank Math und Yoast, im selben Schreibvorgang wie der Inhalt. Eine fertige Seite ist wirklich fertig, statt im Backend nachbearbeitet zu werden.",
+	},
+	{
+		title: "Sucht über die ganze Seite",
+		desc: "Eine Telefonnummer über achtzehn Seiten ändern, mit dem echten Text um jede Fundstelle herum. Der Agent ändert, was da steht, statt zu raten, was da stehen könnte.",
+	},
+	{
+		title: "Ändert chirurgisch, nicht auf Verdacht",
+		desc: "Einen Satz in einer 30.000-Zeichen-Datenschutzerklärung tauschen, ohne den Rest neu zu schreiben. Der Ankertext muss genau einmal vorkommen, sonst fragt er nach.",
+	},
+	{
 		title: "Kein Entwickler-Zugang",
 		desc: "Kein PHP im Prozess, kein WP-CLI, keine Datenbankabfragen. Der Agent bearbeitet Inhalte, sonst nichts. Deshalb ist es kein reines Staging-Werkzeug.",
 	},
@@ -55,8 +67,8 @@ const notForYou = [
 		desc: "Dann gibt es keinen Blockbaum, an dem das Plugin arbeiten könnte. Was in solchen Seiten steckt, ist Page-Builder-Markup, und genau das versteht der Connector nicht.",
 	},
 	{
-		title: "Du erwartest Bilder-Upload oder SEO-Felder",
-		desc: "Beides macht es nicht. Der Agent arbeitet an Inhalt und Struktur. Medien und SEO-Felder bleiben deine Baustelle.",
+		title: "Du erwartest, dass die KI Bilder hochlädt",
+		desc: "Das macht sie nicht, und zwar mit Absicht. Sie sieht die Mediathek, setzt Alt-Texte und sagt dir, auf welchen Seiten ein Bild hängt. Neue Dateien lädst du hoch.",
 	},
 	{
 		title: "Du willst einen Agenten mit Serverzugang",
@@ -83,6 +95,8 @@ const compareRows = [
 	{ feature: "Rolle ohne Veröffentlichungsrecht", ours: true, others: false },
 	{ feature: "Revision je Änderung", ours: true, others: "teilweise" },
 	{ feature: "Audit-Log im Backend", ours: true, others: false },
+	{ feature: "SEO-Felder im selben Aufruf", ours: true, others: false },
+	{ feature: "Textstelle ändern statt Block ersetzen", ours: true, others: false },
 	{ feature: "Preis", ours: "Kostenlos", others: "Free + Pro" },
 ];
 
@@ -116,6 +130,14 @@ const faqs = [
 		a: "Mit jedem Theme, das Gutenberg nutzt. Das Wissen über Blöcke liest das Plugin aus den block.json-Dateien deiner Installation und aus deiner theme.json. Eigene Regeln, etwa welche Container offen sind oder welche Blöcke der Agent nicht anfassen soll, hängst du über Filter dran.",
 	},
 	{
+		q: "Kann die KI auch SEO-Titel und Meta-Description setzen?",
+		a: "Ja, im selben Aufruf wie der Inhalt. Unterstützt werden die Felder von Rank Math und Yoast: Titel, Meta-Description, Focus-Keyword und Canonical. Es ist eine feste Liste, keine offene Tür zu allen Metadaten einer Seite. Und weil WordPress Metadaten nicht versioniert, steht der alte Wert im Protokoll, bevor der neue geschrieben wird.",
+	},
+	{
+		q: "Kann sie Bilder hochladen?",
+		a: "Nein. Sie sieht die Mediathek, setzt Alt-Texte und zeigt dir zu jedem Bild, auf welchen Seiten es eingebunden ist, Beitragsbilder eingerechnet. Neue Dateien lädst du selbst hoch. Ein Agent, der Dateien auf deinen Server schreiben darf, ist eine andere Art von Zugang als einer, der Absätze umschreibt.",
+	},
+	{
 		q: "Was kostet es?",
 		a: "Nichts. Der Quellcode liegt unter GPL-2.0-or-later auf GitHub.",
 	},
@@ -126,7 +148,7 @@ const appSchema = {
 	"@type": "SoftwareApplication",
 	name: "WP MCP Connector Plus",
 	description:
-		"MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, Design-Tokens aus theme.json und fuenfstufige Validierung vor jedem Speichern. Kostenlos und Open Source.",
+		"MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, Design-Tokens aus theme.json, fuenfstufige Validierung vor jedem Speichern, seitenweite Suche, SEO-Felder fuer Rank Math und Yoast und Alt-Texte aus der Mediathek. Kostenlos und Open Source.",
 	applicationCategory: "DeveloperApplication",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/wp-mcp-connector`,
