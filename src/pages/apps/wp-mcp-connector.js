@@ -28,6 +28,10 @@ const features = [
 		desc: "Der Agent arbeitet unter einer Rolle ohne publish-Cap. Entwürfe bleiben Entwürfe, und das erzwingt WordPress selbst, nicht ein gut gemeinter Prompt.",
 	},
 	{
+		title: "Arbeitssitzung auf Zeit",
+		desc: "Für einen Relaunch-Nachmittag öffnest du eine Sitzung für 1, 4 oder 8 Stunden. Dann darf der Agent veröffentlichen und Bilder hochladen, danach schließt sich alles von selbst. Die Rechte gelten je Aufruf, nie dauerhaft an der Rolle.",
+	},
+	{
 		title: "Jede Änderung eine Revision",
 		desc: "Zurückrollen geht mit WordPress-Bordmitteln. Du siehst im Editor, was sich geändert hat, und stellst den Stand davor mit einem Klick wieder her.",
 	},
@@ -56,6 +60,18 @@ const features = [
 		desc: "Einen Satz in einer 30.000-Zeichen-Datenschutzerklärung tauschen, ohne den Rest neu zu schreiben. Der Ankertext muss genau einmal vorkommen, sonst fragt er nach.",
 	},
 	{
+		title: "Zwanzig Seiten in einem Rutsch",
+		desc: "Dieselbe Korrektur auf bis zu 20 Seiten in einem Aufruf. Jede Seite wird vorher geprüft, gespeichert wird nur, wenn alle bestehen. Ein Fehler auf Seite 14 hinterlässt keine halb geänderte Website.",
+	},
+	{
+		title: "Strukturierte Daten inklusive",
+		desc: "FAQ-, Artikel- oder Firmen-Schema als JSON-LD schreibt der Agent direkt mit. Andere Scripts bleiben gesperrt, und die Daten werden so gespeichert, dass sie nicht aus ihrem Tag ausbrechen können.",
+	},
+	{
+		title: "Prüft, was live ankommt",
+		desc: "Nach dem Speichern fragt der Agent die öffentliche Seite ab, am Cache vorbei, und prüft gezielt, ob die Änderung beim Besucher ankommt, im Inhalt und nicht nur im Menü.",
+	},
+	{
 		title: "Kein Entwickler-Zugang",
 		desc: "Kein PHP im Prozess, kein WP-CLI, keine Datenbankabfragen. Der Agent bearbeitet Inhalte, sonst nichts. Deshalb ist es kein reines Staging-Werkzeug.",
 	},
@@ -67,8 +83,8 @@ const notForYou = [
 		desc: "Dann gibt es keinen Blockbaum, an dem das Plugin arbeiten könnte. Was in solchen Seiten steckt, ist Page-Builder-Markup, und genau das versteht der Connector nicht.",
 	},
 	{
-		title: "Du erwartest, dass die KI Bilder hochlädt",
-		desc: "Das macht sie nicht, und zwar mit Absicht. Sie sieht die Mediathek, setzt Alt-Texte und sagt dir, auf welchen Seiten ein Bild hängt. Neue Dateien lädst du hoch.",
+		title: "Du willst der KI dauerhaft freie Hand geben",
+		desc: "Veröffentlichen und Hochladen gibt es nur in einer Arbeitssitzung, die du bewusst öffnest und die von selbst wieder endet. Einen Schalter für immer gibt es nicht, und zwar mit Absicht.",
 	},
 	{
 		title: "Du willst einen Agenten mit Serverzugang",
@@ -93,6 +109,8 @@ const compareRows = [
 	{ feature: "Prüfung vor dem Speichern", ours: "5 Stufen", others: false },
 	{ feature: "Testlauf als Standard", ours: true, others: false },
 	{ feature: "Rolle ohne Veröffentlichungsrecht", ours: true, others: false },
+	{ feature: "Freigabe auf Zeit statt dauerhaft", ours: true, others: false },
+	{ feature: "Mehrere Seiten, alles oder nichts", ours: true, others: false },
 	{ feature: "Revision je Änderung", ours: true, others: "teilweise" },
 	{ feature: "Audit-Log im Backend", ours: true, others: false },
 	{ feature: "SEO-Felder im selben Aufruf", ours: true, others: false },
@@ -119,7 +137,7 @@ const faqs = [
 	},
 	{
 		q: "Kann die KI aus Versehen etwas veröffentlichen?",
-		a: "Der Agent arbeitet unter einer eigenen Rolle, der das Veröffentlichungsrecht fehlt. Ein Beitrag, den er anlegt oder ändert, bleibt ein Entwurf. Das hängt nicht an einer Anweisung im Prompt, sondern am Rechtesystem von WordPress.",
+		a: "Nein. Der Agent arbeitet unter einer eigenen Rolle, der das Veröffentlichungsrecht fehlt. Ein Beitrag, den er anlegt oder ändert, bleibt ein Entwurf. Das hängt nicht an einer Anweisung im Prompt, sondern am Rechtesystem von WordPress. Veröffentlichen kann er nur in einer Arbeitssitzung, die du im Backend für einige Stunden öffnest, und auch dann nur, wenn er es ausdrücklich verlangt.",
 	},
 	{
 		q: "Ist das ein Werkzeug für Entwickler?",
@@ -135,7 +153,11 @@ const faqs = [
 	},
 	{
 		q: "Kann sie Bilder hochladen?",
-		a: "Nein. Sie sieht die Mediathek, setzt Alt-Texte und zeigt dir zu jedem Bild, auf welchen Seiten es eingebunden ist, Beitragsbilder eingerechnet. Neue Dateien lädst du selbst hoch. Ein Agent, der Dateien auf deinen Server schreiben darf, ist eine andere Art von Zugang als einer, der Absätze umschreibt.",
+		a: "Ja, aber nur in einer Arbeitssitzung. Erlaubt sind JPEG, PNG und WebP, geprüft am Dateiinhalt statt am Namen, bis 8 MB und immer mit Alt-Text. SVG und Dateien mit PHP-Code werden abgelehnt, Bilder aus fremden URLs holt der Server nicht. Außerhalb einer Sitzung sieht sie die Mediathek, setzt Alt-Texte und zeigt dir, auf welchen Seiten ein Bild eingebunden ist.",
+	},
+	{
+		q: "Kann sie Schema-Markup wie FAQ oder Artikel anlegen?",
+		a: "Ja. Strukturierte Daten als JSON-LD schreibt der Agent direkt in die Seite. Das ist die eine Art Script, die er darf: Browser führen JSON-LD nicht aus, und das Plugin speichert die Daten so, dass sie nicht aus ihrem Tag ausbrechen können. Jedes andere Script lehnt es ab.",
 	},
 	{
 		q: "Was kostet es?",
@@ -148,7 +170,7 @@ const appSchema = {
 	"@type": "SoftwareApplication",
 	name: "WP MCP Connector Plus",
 	description:
-		"MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, Design-Tokens aus theme.json, fuenfstufige Validierung vor jedem Speichern, seitenweite Suche, SEO-Felder fuer Rank Math und Yoast und Alt-Texte aus der Mediathek. Kostenlos und Open Source.",
+		"MCP-Plugin fuer WordPress, das auf dem Gutenberg-Blockbaum arbeitet statt auf post_content: Block-Schemas, Verschachtelungsregeln, Design-Tokens aus theme.json, fuenfstufige Validierung vor jedem Speichern, seitenweite Suche, Aenderungen ueber mehrere Seiten, SEO-Felder fuer Rank Math und Yoast, JSON-LD, Alt-Texte und Bild-Upload in einer zeitlich begrenzten Arbeitssitzung. Kostenlos und Open Source.",
 	applicationCategory: "DeveloperApplication",
 	operatingSystem: "WordPress",
 	url: `${SITE_URL}/apps/wp-mcp-connector`,
@@ -401,7 +423,7 @@ const WpMcpConnector = () => {
 							<KeywordTitle>KI im Backend, ohne die Kontrolle abzugeben</KeywordTitle>
 							<KeywordText>
 								Testlauf als Standard, fünf Prüfstufen vor dem Speichern, eine
-								Rolle ohne Veröffentlichungsrecht, eine Revision je Änderung
+								Rolle ohne Veröffentlichungsrecht, Freigaben nur auf Zeit, eine Revision je Änderung
 								und ein vollständiges Protokoll im Backend. Was der Agent tut,
 								kannst du vorher sehen und hinterher zurücknehmen.
 							</KeywordText>
