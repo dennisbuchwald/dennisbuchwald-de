@@ -20,7 +20,7 @@ const appsSchema = {
 			name: app.name,
 			description: app.description,
 			applicationCategory: app.schema.category,
-			operatingSystem: "WordPress",
+			operatingSystem: app.schema.os || "WordPress",
 			url: app.links[0]?.href,
 			author: {
 				"@type": "Person",
@@ -45,7 +45,7 @@ const Apps = () => {
 				<title>Apps & WordPress-Plugins - Dennis Buchwald</title>
 				<meta
 					name="description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block. Kostenlos und kommerziell."
+					content="Eigenentwicklungen von Dennis Buchwald: der Mail-Tester e-mail-check.de und WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block. Kostenlos und kommerziell."
 				/>
 				<link rel="canonical" href={`${SITE_URL}/apps`} />
 				<meta
@@ -54,7 +54,7 @@ const Apps = () => {
 				/>
 				<meta
 					property="og:description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
+					content="Eigenentwicklungen von Dennis Buchwald: der Mail-Tester e-mail-check.de und WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
 				/>
 				<meta property="og:url" content={`${SITE_URL}/apps`} />
 				<meta
@@ -63,7 +63,7 @@ const Apps = () => {
 				/>
 				<meta
 					name="twitter:description"
-					content="Eigenentwicklungen von Dennis Buchwald: WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
+					content="Eigenentwicklungen von Dennis Buchwald: der Mail-Tester e-mail-check.de und WordPress-Plugins wie Flinkform, die dbw Immo Suite und der Logo Slider Block."
 				/>
 				<script
 					type="application/ld+json"
@@ -81,8 +81,10 @@ const Apps = () => {
 							Bei <strong>dbw media</strong> bauen wir individuelle Websites
 							auf WordPress-Basis. Und wenn dieselbe Herausforderung immer
 							wieder auftaucht, wird aus der Lösung ein Produkt. Vom
-							kostenlosen WordPress.org-Plugin bis zur kommerziellen
-							Komplettlösung.
+							kostenlosen WordPress.org-Plugin über Web-Tools wie den
+							Mail-Tester{" "}
+							<a href="https://e-mail-check.de/">e-mail-check.de</a> bis zur
+							kommerziellen Komplettlösung.
 						</Intro>
 					</Hero>
 					<GradientDivider />
@@ -172,6 +174,13 @@ const Intro = styled.p`
 	strong {
 		color: #111;
 		font-weight: 600;
+	}
+
+	a {
+		color: #111;
+		font-weight: 600;
+		text-decoration-color: #ff3c6f;
+		text-underline-offset: 3px;
 	}
 
 	@media screen and (max-width: 768px) {

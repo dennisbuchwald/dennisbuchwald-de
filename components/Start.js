@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { FaYoutube, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { apps } from "./appsData";
 
 const GRADIENT =
 	"linear-gradient(135deg, #ea2b1f, #ff3c6f, #ff4fdd, #7e56ff, #00b2ff)";
@@ -86,7 +87,7 @@ const Start = () => {
 						<StatLabel>Websites analysiert</StatLabel>
 					</Stat>
 					<Stat>
-						<StatNumber>3</StatNumber>
+						<StatNumber>{apps.length}</StatNumber>
 						<StatLabel>eigene Apps & Plugins</StatLabel>
 					</Stat>
 				</StatsRow>

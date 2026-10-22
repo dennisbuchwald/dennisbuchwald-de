@@ -17,6 +17,7 @@ const Footer = () => {
 				</FooterLeft>
 				<FooterRight>
 					<FooterNavLink href="/apps">Apps & Plugins</FooterNavLink>
+					<StyledNavLink href="https://e-mail-check.de/">Mail-Tester</StyledNavLink>
 					<FooterNavLink href="/impressum">Impressum</FooterNavLink>
 					<FooterNavLink href="/datenschutzerklaerung">
 						Datenschutzerklärung

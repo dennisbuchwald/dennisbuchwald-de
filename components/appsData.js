@@ -3,6 +3,29 @@
 
 export const apps = [
 	{
+		slug: "e-mail-check",
+		icon: "/apps/icons/emailcheck-app.svg",
+		detailPage: "/apps/e-mail-check",
+		name: "e-mail-check.de",
+		tagline: "Der deutsche Mail-Tester für alle, die keine Mail-Techniker sind.",
+		description:
+			"Testmail schicken, nach 30 Sekunden steht der Score von 0 bis 10: SPF, DKIM, DMARC, Sperrlisten und Spamfilter in Klartext. Mit Schritt-für-Schritt-Anleitung für IONOS, STRATO, ALL-INKL & Co. Kostenlos, ohne Tageslimit, ohne Konto, Server in Deutschland.",
+		badges: ["Web-App", "Kostenlos"],
+		tags: ["Mail-Tester", "SPF / DKIM / DMARC", "Open Source"],
+		links: [
+			{
+				label: "e-mail-check.de",
+				href: "https://e-mail-check.de/",
+				type: "website",
+			},
+		],
+		schema: {
+			price: "0",
+			category: "UtilitiesApplication",
+			os: "Web",
+		},
+	},
+	{
 		slug: "flinkform",
 		icon: "/apps/icons/flinkform-app.svg",
 		detailPage: "https://flinkform.de/",
