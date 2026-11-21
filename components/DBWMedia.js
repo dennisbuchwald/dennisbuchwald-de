@@ -44,6 +44,28 @@ const DBWMedia = () => {
 					>
 						dbw-media.de besuchen →
 					</CTALink>
+					<Family>
+						<FamilyLabel>Aus dem Haus dbw media</FamilyLabel>
+						<FamilyLink
+							href="https://buchwald.digital/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<Image
+								src="/buchwald-digital-logo-white.svg"
+								alt="buchwald.digital"
+								unoptimized
+								width={647}
+								height={91}
+								style={{ width: "170px", height: "auto" }}
+							/>
+							<FamilyText>
+								Mails, Telefon und Dateien für kleine Firmen. Eingerichtet und
+								betreut aus Heilbronn.
+							</FamilyText>
+							<FamilyMore>buchwald.digital ansehen →</FamilyMore>
+						</FamilyLink>
+					</Family>
 				</Content>
 				<BottomLine />
 			</Inner>
@@ -117,6 +139,49 @@ const Services = styled.div`
 const Sep = styled.span`
 	margin-left: 0.75rem;
 	color: ${(props) => props.theme.textMuted};
+`;
+
+const Family = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 2.5rem;
+	padding-top: 2.5rem;
+	width: 100%;
+	max-width: 520px;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+`;
+
+const FamilyLabel = styled.span`
+	font-size: 0.8rem;
+	color: ${(props) => props.theme.textMuted};
+`;
+
+const FamilyLink = styled.a`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+	text-decoration: none;
+	opacity: 0.85;
+	transition: opacity 0.2s ease;
+
+	&:hover {
+		opacity: 1;
+	}
+`;
+
+const FamilyText = styled.span`
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: ${(props) => props.theme.textSecondary};
+`;
+
+const FamilyMore = styled.span`
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: ${(props) => props.theme.accent};
 `;
 
 const CTALink = styled.a`

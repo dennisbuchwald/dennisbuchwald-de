@@ -27,6 +27,19 @@ const UeberMich = () => {
 						Anfragen, mehr Umsatz. Das ist der Anspruch, den ich an jedes
 						Projekt stelle.
 					</Text>
+					<Text>
+						Und weil viele Kunden auch bei Mails, Telefon und Dateien jemanden
+						brauchen, der sich kümmert, gibt es dafür{" "}
+						<AccentLink
+							href="https://buchwald.digital/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							buchwald.digital
+						</AccentLink>
+						: Google Workspace, Telefonanlage und Betreuung für Firmen mit 1 bis
+						100 Leuten, aus demselben Haus.
+					</Text>
 				</TextContent>
 				<ImageWrapper>
 					<Image

@@ -60,6 +60,11 @@ const Home = () => {
 									"@type": "Organization",
 									name: "dbw media",
 									url: "https://dbw-media.de",
+									brand: {
+										"@type": "Brand",
+										name: "buchwald.digital",
+										url: "https://buchwald.digital",
+									},
 								},
 								address: {
 									"@type": "PostalAddress",
